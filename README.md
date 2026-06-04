@@ -1,149 +1,168 @@
-# Unsaid — Semantic 10-K Disclosure-Removal Detector
+# Unsaid
+### Semantic 10-K Disclosure-Removal Detector
 
-Surface what companies quietly removed or softened in their annual SEC 10-K filings.
-Year-over-year semantic diff of Item 1A (Risk Factors) and Item 7A (Market Risk),
-powered by Claude as the judge.
-
-> **Honest framing:** This tool democratises a capability available in institutional
-> platforms like AlphaSense and Verity. It surfaces changes in risk-disclosure language.
-> It does not make return predictions or claim to have invented the underlying signal
-> (see: Cohen, Malloy & Nguyen 2020, "Lazy Prices").
+> Companies announce good news loudly. They bury bad news quietly — by removing or softening language in their annual SEC filings. Unsaid surfaces what they stopped saying.
 
 ---
 
-## The headline demo — Silicon Valley Bank
+## The problem
 
-SVB filed their FY2022 10-K on **24 Feb 2023**. The bank collapsed on **10 Mar 2023**.
-The FY2022 filing quietly removed the **Economic Value of Equity (EVE) sensitivity table**
-from Item 7A, which in FY2021 had shown EVE falling ~27% (~$5.7bn) on a +200bp rate move.
-It also dropped all discussion of interest-rate hedges. Unsaid surfaces this as a REMOVED
-disclosure tagged to Item 7A — derived automatically from the real SEC filings.
+Every year, public companies file a 10-K with the SEC. Most of the attention goes to the numbers. Almost none goes to *what language disappeared* between one year and the next.
+
+Academic research (Cohen, Malloy & Nguyen 2020 — "Lazy Prices") shows that ~86% of year-over-year textual changes in 10-Ks are negative in sentiment, and that markets systematically underprice them. Institutional platforms like AlphaSense and Verity charge enterprise rates to detect these changes. No free, open, *semantic* version exists.
+
+Unsaid is that tool.
+
+It fetches two consecutive 10-K filings from SEC EDGAR, semantically compares every risk disclosure in Item 1A (Risk Factors) and Item 7A (Market Risk), and classifies each Year-1 disclosure as **REMOVED**, **SOFTENED**, **REWORDED**, **RETAINED**, or **ABSORBED** — using Claude as the judge, not keyword matching.
 
 ---
 
-## Quick start — Docker (recommended)
+## The demo — Silicon Valley Bank
 
-The easiest way to run the app. No Python/Node setup needed.
+SVB filed their FY2022 10-K on **24 February 2023**. The bank collapsed on **10 March 2023** — 14 days later.
 
-### Prerequisites
-- Docker Desktop
-- An Anthropic API key
-- Pre-computed cache files in `cache/` (run the ingest pipeline first, or copy existing `.json` files)
+Running Unsaid on the real EDGAR filings reveals what was quietly removed from Item 7A (Market Risk Disclosures):
 
-### Run
+```
+[REMOVED] [Item 7A]  EVE Hedging — Interest Rate Swaps and Sensitivity Reduction
+  confidence: 0.86
+
+  Year-1 (FY2021):
+  "In March 2021 we purchased interest rate swaps to offset some of the additional
+  EVE sensitivity... The addition of pay fixed swaps reduces this exposure to
+  -13.9 percent in the same scenario."
+
+  Year-2 (FY2022): No corresponding disclosure found.
+
+  Reasoning: The Year-1 disclosure described an active EVE hedge using pay fixed
+  swaps that reduced rate-shock sensitivity. Year-2 explicitly states the pay fixed
+  swaps portfolio was terminated, with no replacement hedging disclosed.
+
+──────────────────────────────────────────────────────────────────────────────
+
+[SOFTENED] [Item 7A]  EVE and NII Sensitivity Table — Rate Shock Scenarios
+  confidence: 0.72
+
+  Year-1 (FY2021):
+  "December 31, 2021: +200bps → EVE $(5,722)M  (27.7)%  |  NII $981M  22.9%"
+
+  Year-2 (FY2022): EVE column removed entirely. Only NII sensitivity shown.
+
+  Reasoning: The FY2022 table drops the EVE sensitivity disclosure entirely —
+  no longer quantifying the -27.7% / -$5.7bn EVE decline on a +200bp rate move.
+  The same interest-rate risk persists but the EVE dimension is no longer disclosed.
+```
+
+This is not hand-coded. It is the raw output of the pipeline run against the actual SEC filings.
+
+---
+
+## What Unsaid does
+
+Given a company ticker and two fiscal years, Unsaid:
+
+1. Fetches both 10-K filings from SEC EDGAR
+2. Extracts Item 1A (Risk Factors) and Item 7A (Market Risk) as clean prose
+3. Segments each section into discrete disclosure units using Claude
+4. Aligns Year-1 units to their closest Year-2 counterparts using semantic embeddings
+5. Asks Claude to classify every Year-1 unit: was it retained, reworded, softened, removed, or absorbed?
+6. Flags Year-2 units with no Year-1 match as NEW disclosures
+7. Caches the result as JSON; the web app renders it instantly
+
+The output is a prioritised feed of signal — REMOVED and SOFTENED findings first, with verbatim quotes and Claude's one-line reasoning for each.
+
+**Three companies are pre-cached and load instantly:**
+| Ticker | Company | Period | Signal |
+|--------|---------|--------|--------|
+| SIVB | SVB Financial Group | FY2021 → FY2022 | 4 REMOVED, 4 SOFTENED |
+| PTON | Peloton Interactive | FY2021 → FY2022 | 1 SOFTENED |
+| META | Meta Platforms | FY2021 → FY2022 | 1 SOFTENED |
+
+---
+
+## How it works
+
+### Why Claude judges instead of embeddings
+
+Vector embeddings are used only to find candidate matches between years — not to classify them. The reason: embeddings fail at negation and softening. *"We are exposed to significant interest-rate risk"* and *"We are no longer exposed to significant interest-rate risk"* score >0.90 cosine similarity despite being opposites. Detecting exactly that inversion is the entire point of the tool.
+
+Claude Opus receives the Year-1 disclosure and its top-5 Year-2 candidates and classifies the change. Every classification in the output passed through the LLM judge. Cosine similarity never makes the final call.
+
+### Why Item 7A as well as Item 1A
+
+The SVB finding lives in Item 7A (Market Risk), not Item 1A (Risk Factors). A tool that only diffs Item 1A would miss it entirely. Unsaid extracts both sections and tags every finding with its source.
+
+### Why results are cached
+
+EDGAR rate-limits requests and LLM calls take time. The pipeline (fetch → segment → align → judge) runs offline and writes a single JSON file. The web app reads from disk and renders in milliseconds. The demo cannot fail due to network or API latency.
+
+### Pipeline
+
+```
+SEC EDGAR
+    │
+    ▼
+edgartools          fetch 10-K filings (rate-throttled, ≤10 req/s)
+    │
+    ▼
+extractor.py        pull Item 1A + Item 7A as clean prose text
+    │
+    ▼
+segmenter.py        Claude Sonnet (claude-sonnet-4-6)
+                    section text → discrete disclosure units [{id, title, text, section}]
+    │
+    ▼
+aligner.py          all-mpnet-base-v2 (sentence-transformers, local)
+                    embed all units → cosine similarity matrix → top-5 candidates per Year-1 unit
+    │
+    ▼
+judge.py            Claude Opus (claude-opus-4-8)
+                    Year-1 unit + top-5 Year-2 candidates → classification + reasoning
+    │
+    ▼
+cache/{TICKER}_{YEAR1}_{YEAR2}.json
+```
+
+---
+
+## Running the demo
+
+### Docker (recommended)
 
 ```bash
-# 1. Set your API key
-echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
-
-# 2. Build images (first time ~10 min — downloads the embedding model)
-docker compose build
-
-# 3. Start
+# Clone and start
+git clone <repo> && cd Unsaid
 docker compose up
-
-# Open http://localhost:3000
 ```
 
-The `cache/` directory is bind-mounted, so pre-computed analyses load instantly.
+Open `http://localhost:3000`. The SVB demo loads from cache instantly — no API key needed.
 
-To run the ingest pipeline inside Docker:
+To analyse a new ticker (requires `ANTHROPIC_API_KEY` in `.env`):
 ```bash
-docker compose run --rm api python -m unsaid.ingest --ticker SIVB --cik 0000719739 --years 2021 2022
+docker compose run --rm api python -m unsaid.ingest --ticker AAPL --years 2022 2023
 ```
 
----
-
-## Quick start — local (< 10 minutes)
-
-### Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- An Anthropic API key
-
-### 1. Clone and set up Python
+### Local
 
 ```bash
-git clone <repo>
-cd Unsaid
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
-
+# Python setup
+python -m venv .venv && source .venv/bin/activate   # or .venv\Scripts\activate on Windows
 pip install -r requirements.txt
-```
 
-### 2. Configure your API key
-
-```bash
-cp .env.example .env
-# Edit .env and set:
-# ANTHROPIC_API_KEY=sk-ant-...
-```
-
-### 3. Run the SVB ingest pipeline
-
-```bash
-python -m unsaid.ingest --ticker SIVB --cik 0000719739 --years 2021 2022
-```
-
-This takes **5–15 minutes** (EDGAR downloads + Claude API calls).
-When complete, `cache/SIVB_2021_2022.json` will contain the full analysis.
-
-**Verify the headline finding:**
-
-```bash
-python -c "
-import json
-d = json.load(open('cache/SIVB_2021_2022.json'))
-signals = [c for c in d['changes'] if c['classification'] in ('REMOVED','SOFTENED')]
-for c in signals:
-    print(f\"[{c['classification']}] [{c['section']}] {c['title']}\")
-    print(f\"  {c['year1_quote'][:120]}...\")
-    print()
-"
-```
-
-You should see a REMOVED item tagged `7A` referencing EVE / interest-rate sensitivity.
-
-### 4. (Optional) Pre-cache additional companies
-
-```bash
-python -m unsaid.ingest --ticker PTON --years 2021 2022
-python -m unsaid.ingest --ticker META --years 2021 2022
-```
-
-### 5. Start the FastAPI backend
-
-```bash
+# Start API (demo cache works without an API key)
 uvicorn api.main:app --port 8000 --reload
+
+# Start frontend (separate terminal)
+cd frontend && npm install && npm run dev
 ```
 
-Verify: `http://localhost:8000/demos` should list cached tickers.
+Open `http://localhost:3000`.
 
-### 6. Start the Next.js frontend
-
+**To run ingest on a new ticker**, add `ANTHROPIC_API_KEY` to `.env` first:
 ```bash
-cd frontend
-npm install   # first time only
-npm run dev
+python -m unsaid.ingest --ticker MSFT --years 2022 2023
+# Runs in ~10–15 min; result cached to cache/MSFT_2022_2023.json
 ```
-
-Open `http://localhost:3000` — you should see the landing page with the SVB demo card.
-Click the SVB card to load the analysis from cache. REMOVED items appear at the top in red.
-
----
-
-## Running the demo live
-
-The default demo reads from `cache/` — no live API calls. The SVB card appears automatically
-if `cache/SIVB_2021_2022.json` exists.
-
-For a fresh ticker during the demo, use the ticker input box on the landing page. This calls
-`POST /run` which runs the pipeline in the background (~5–15 min). A loading state is shown.
 
 ---
 
@@ -153,55 +172,49 @@ For a fresh ticker during the demo, use the ticker input box on the landing page
 Unsaid/
 ├── unsaid/
 │   ├── fetcher.py       # EDGAR retrieval (edgartools, rate-throttled)
-│   ├── extractor.py     # Item 1A / 7A text extraction + HTML cleaning
-│   ├── segmenter.py     # Claude Sonnet: section → discrete disclosure units
-│   ├── aligner.py       # sentence-transformers: cosine top-K candidate matching
-│   ├── judge.py         # Claude Opus: classify each Year-1 unit vs Year-2 candidates
+│   ├── extractor.py     # Item 1A / 7A extraction + HTML cleaning
+│   ├── segmenter.py     # Claude Sonnet segmentation
+│   ├── aligner.py       # Embedding alignment (all-mpnet-base-v2)
+│   ├── judge.py         # Claude Opus classification
 │   ├── cache.py         # JSON cache read/write
 │   └── ingest.py        # CLI orchestrator
 ├── api/
+│   ├── Dockerfile
 │   └── main.py          # FastAPI: /diff/{ticker}, /demos, /run
 ├── frontend/
-│   ├── app/
-│   │   ├── page.tsx                 # Landing page
-│   │   └── diff/[ticker]/page.tsx  # Results view
-│   ├── components/                  # ChangeCard, SummaryBar, DemoCard, SectionTag
-│   └── lib/                         # API client, types, constants
-├── cache/               # Pre-computed JSON results
+│   ├── Dockerfile
+│   ├── app/page.tsx               # Landing page
+│   ├── app/diff/[ticker]/page.tsx # Results view
+│   ├── components/                # ChangeCard, SummaryBar, DemoCard, SectionTag
+│   └── lib/                       # API client, types, constants
+├── cache/               # Pre-computed results (SIVB, PTON, META committed)
+├── docker-compose.yml
 └── requirements.txt
 ```
 
-## Architecture notes
+---
 
-**Rule 1 — Embeddings align, Claude judges.**
-`sentence-transformers/all-mpnet-base-v2` is used only to find candidate Year-2 units for
-each Year-1 unit. Claude Opus makes every classification call. Cosine similarity never
-determines the outcome — this is essential because embeddings fail at negation.
+## What this is not
 
-**Rule 2 — Item 1A and Item 7A both extracted.**
-The SVB demo finding (EVE removal) lives in Item 7A, not Item 1A. Every change card shows
-which section it came from.
+This tool surfaces changes in disclosure language. It does not predict stock returns, guarantee alpha, or claim to have invented the underlying signal. The "Lazy Prices" anomaly is published academic research. Unsaid makes it accessible without an enterprise contract.
 
-**Rule 3 — Demo runs from cache.**
-`cache/*.json` files are pre-computed offline. The live app reads JSON from disk and renders
-instantly. No EDGAR or LLM calls happen during a demo.
+---
 
 ## Environment variables
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | Yes (ingest only) | — | Anthropic API key |
-| `EDGAR_IDENTITY` | No | `Unsaid/1.0 tobiojebiyi@gmail.com` | SEC EDGAR user-agent string |
+| `ANTHROPIC_API_KEY` | Ingest only | — | Only needed to analyse new tickers |
+| `EDGAR_IDENTITY` | No | `Unsaid/1.0 tobiojebiyi@gmail.com` | SEC EDGAR user-agent |
 | `NEXT_PUBLIC_API_URL` | No | `http://localhost:8000` | FastAPI base URL |
 
-## CLI reference
+## CLI
 
 ```
-python -m unsaid.ingest [OPTIONS]
+python -m unsaid.ingest --ticker TICKER --years YEAR1 YEAR2 [--cik CIK] [--force]
 
-Options:
-  --ticker TEXT        Company ticker (e.g. SIVB, PTON)
-  --cik TEXT           SEC CIK number (for delisted companies; e.g. 0000719739)
-  --years YEAR1 YEAR2  Two fiscal years to compare (required)
-  --force              Re-run even if cache file already exists
+  --ticker    Company ticker (e.g. PTON, META)
+  --cik       SEC CIK — use for delisted companies (e.g. 0000719739 for SIVB)
+  --years     Two fiscal years to compare
+  --force     Overwrite existing cache file
 ```
