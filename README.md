@@ -21,7 +21,40 @@ disclosure tagged to Item 7A — derived automatically from the real SEC filings
 
 ---
 
-## Quick start (< 10 minutes)
+## Quick start — Docker (recommended)
+
+The easiest way to run the app. No Python/Node setup needed.
+
+### Prerequisites
+- Docker Desktop
+- An Anthropic API key
+- Pre-computed cache files in `cache/` (run the ingest pipeline first, or copy existing `.json` files)
+
+### Run
+
+```bash
+# 1. Set your API key
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+
+# 2. Build images (first time ~10 min — downloads the embedding model)
+docker compose build
+
+# 3. Start
+docker compose up
+
+# Open http://localhost:3000
+```
+
+The `cache/` directory is bind-mounted, so pre-computed analyses load instantly.
+
+To run the ingest pipeline inside Docker:
+```bash
+docker compose run --rm api python -m unsaid.ingest --ticker SIVB --cik 0000719739 --years 2021 2022
+```
+
+---
+
+## Quick start — local (< 10 minutes)
 
 ### Prerequisites
 
