@@ -8,7 +8,7 @@ interface SummaryBarProps {
 }
 
 export function SummaryBar({ counts, activeFilter, onFilter }: SummaryBarProps) {
-  const total = Object.values(counts).reduce((s, v) => s + (v ?? 0), 0);
+  const total = Object.values(counts).reduce((s, v) => (s ?? 0) + (v ?? 0), 0) ?? 0;
 
   return (
     <div className="flex flex-wrap items-center gap-2 py-3 border-b border-zinc-800">
