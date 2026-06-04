@@ -1,7 +1,19 @@
 # Unsaid
 ### Semantic 10-K Disclosure-Removal Detector
 
-> Companies announce good news loudly. They bury bad news quietly — by removing or softening language in their annual SEC filings. Unsaid surfaces what they stopped saying.
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.136-009688?logo=fastapi&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-Opus%204%20%7C%20Sonnet%204-D97706?logo=anthropic&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+
+> Companies announce good news loudly, while they bury bad news quietly by removing or softening language in their annual SEC filings. Unsaid surfaces what they stopped saying.
+
+---
+
+![Landing page](assets/screenshot-landing.png)
+
+![SVB results — REMOVED and SOFTENED disclosures tagged to Item 7A](assets/screenshot-removed-expanded.png)
 
 ---
 
@@ -130,7 +142,6 @@ cache/{TICKER}_{YEAR1}_{YEAR2}.json
 ### Docker (recommended)
 
 ```bash
-# Clone and start
 git clone <repo> && cd Unsaid
 docker compose up
 ```
