@@ -1,0 +1,63 @@
+{
+  "ticker": "PTON",
+  "company_name": "PELOTON INTERACTIVE, INC.",
+  "year1": 2021,
+  "year2": 2022,
+  "generated_at": "2026-06-04T21:13:01.379010+00:00",
+  "summary_counts": {
+    "RETAINED": 4,
+    "SOFTENED": 1
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have not been exposed, nor do we anticipate being exposed, to material risks due to changes in interest rates. A hypothetical 10% increase in interest rates during any of the periods presented would not have had a material impact on our consolidated financial statements.",
+      "year2_quote_or_null": "We have not been exposed, nor do we anticipate being exposed, to material risks due to changes in interest rates. A hypothetical 10% increase in interest rates during any of the periods presented in this Annual Report on Form 10-K would not have had a material impact on our consolidated financial statements.",
+      "reasoning": "Candidate 1 (similarity 0.96) addresses the identical economic risk—interest rate exposure on cash and investments—with materially identical language and the same conclusion of no material impact. The only differences are the cash balance figure and a minor \"marketable securities\" wording change, neither of which alters the underlying risk assessment.",
+      "section": "7A",
+      "confidence": 0.95,
+      "id": "7A_0_000_interest_rate_risk_investments",
+      "title": "Interest Rate Risk — Cash, Equivalents & Marketable Securities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are primarily exposed to changes in short-term interest rates with respect to our cost of borrowing under our Amended Credit Agreement... A hypothetical 10% change in the interest rate... would not have a material impact on our consolidated financial statements.",
+      "year2_quote_or_null": "We are primarily exposed to changes in short-term interest rates with respect to our cost of borrowing under our Second Amended and Restated Credit Agreement... A hypothetical 10% change in the interest rate... would not have a material impact on our consolidated financial statements.",
+      "reasoning": "Candidate 1 discloses the identical economic risk—interest rate exposure on credit agreement borrowing cost with the same 10% hypothetical and immateriality conclusion. The only change is the agreement name update (Amended to Second Amended and Restated), which is cosmetic and does not alter the underlying risk.",
+      "section": "7A",
+      "confidence": 0.97,
+      "id": "7A_0_001_interest_rate_risk_borrowing",
+      "title": "Interest Rate Risk — Amended Credit Agreement Borrowing Cost"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "However, we believe that the exposure to foreign currency fluctuation from operating expenses is relatively small at this time as the related costs do not constitute a significant portion of our total expenses.",
+      "year2_quote_or_null": "We use derivative instruments, such as foreign currency forwards, and have the ability to use option contracts, to hedge certain exposures to fluctuations in foreign currency exchange rates. Our exposure to foreign currency exchange rates has historically been partially hedged...",
+      "reasoning": "The same underlying FX risk on revenue, operating expenses, and supplier costs is retained, but Year-2 adds hedging language (forwards, options, natural hedge) characterizing exposure as \"partially hedged,\" which downgrades and mitigates the disclosed risk relative to Year-1.",
+      "section": "7A",
+      "confidence": 0.82,
+      "id": "7A_0_002_foreign_currency_risk_revenue_expenses",
+      "title": "Foreign Currency Risk — Revenue, Operating Expenses & Supplier Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We use derivative instruments, such as foreign currency forwards, and have the ability to use option contracts, to hedge certain exposures to fluctuations in foreign currency exchange rates. Our exposure to foreign currency exchange rates has historically been partially hedged as our foreign currency denominated inflows create a natural hedge against our foreign currency denominated expenses.",
+      "year2_quote_or_null": "We use derivative instruments, such as foreign currency forwards, and have the ability to use option contracts, to hedge certain exposures to fluctuations in foreign currency exchange rates. Our exposure to foreign currency exchange rates has historically been partially hedged as our foreign currency denominated inflows create a natural hedge against our foreign currency denominated expenses.",
+      "reasoning": "Candidate 1 contains the identical hedging-strategy and natural-hedge language verbatim; the surrounding Year-2 disclosure adds context (Taiwanese dollar exposures, supplier cost pass-through) but the underlying economic risk and hedging posture are unchanged.",
+      "section": "7A",
+      "confidence": 0.95,
+      "id": "7A_0_003_foreign_currency_risk_hedging",
+      "title": "Foreign Currency Risk — Hedging Strategy & Natural Hedge"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We do not believe that inflation has had a material effect on our business... If our costs become subject to significant inflationary pressures, we may not be able to fully offset such higher costs through price increases.",
+      "year2_quote_or_null": "Although we do not believe that inflation has had a material impact on our business, financial condition or results of operations, our business could be more affected by inflation in the future... if we are unable to fully offset such higher costs through price increases.",
+      "reasoning": "Candidate 1 addresses the identical inflation risk with the same core assertion (no material impact to date) and the same key vulnerability (inability to fully offset higher costs via price increases). Year-2 adds specificity on supply chain/labor/supplier costs but the underlying economic risk is materially unchanged and arguably expanded, not softened.",
+      "section": "7A",
+      "confidence": 0.9,
+      "id": "7A_0_004_inflation_risk",
+      "title": "Inflation Risk — Potential Impact on Costs and Operations"
+    }
+  ]
+}
