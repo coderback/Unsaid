@@ -1,6 +1,11 @@
 import type { DiffResult, DemoMeta } from "./types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+// In the browser, use the Next.js rewrites proxy (/api/*) to avoid CORS.
+// For SSR / server components, call FastAPI directly.
+const API_BASE =
+  typeof window !== "undefined"
+    ? "/api"
+    : (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000");
 
 export async function fetchDiff(ticker: string): Promise<DiffResult> {
   const res = await fetch(`${API_BASE}/diff/${ticker.toUpperCase()}`, {
