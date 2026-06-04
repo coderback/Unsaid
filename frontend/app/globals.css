@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e4e4e7;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Remove default focus ring; use custom border highlight */
+*:focus-visible {
+  outline: 1px solid #71717a;
+  outline-offset: 2px;
+}
+
+/* Scrollbar — terminal dark */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
