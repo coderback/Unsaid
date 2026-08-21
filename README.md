@@ -73,71 +73,28 @@ This is not hand-coded. It is the raw output of the pipeline run against the act
 
 Given a company ticker and two fiscal years, Unsaid:
 
-1. Fetches both 10-K filings from SEC EDGAR
-2. Extracts Item 1A (Risk Factors) and Item 7A (Market Risk) as clean prose
-3. Segments each section into discrete disclosure units using Claude
-4. Aligns Year-1 units to their closest Year-2 counterparts using semantic embeddings
-5. Asks Claude to classify every Year-1 unit: was it retained, reworded, softened, removed, or absorbed?
-6. Flags Year-2 units with no Year-1 match as NEW disclosures
-7. Caches the result as JSON; the web app renders it instantly
-
-The output is a prioritised feed of signal — REMOVED and SOFTENED findings first, with verbatim quotes and Claude's one-line reasoning for each.
-
-**Three companies are pre-cached and load instantly:**
-| Ticker | Company | Period | Signal |
-|--------|---------|--------|--------|
-| SIVB | SVB Financial Group | FY2021 → FY2022 | 4 REMOVED, 4 SOFTENED |
-| PTON | Peloton Interactive | FY2021 → FY2022 | 1 SOFTENED |
-| META | Meta Platforms | FY2021 → FY2022 | 1 SOFTENED |
+1. **Auto-Discovers Filings**: Queries SEC EDGAR in real-time to list all available 10-K fiscal years.
+2. **Extracts Prose & Tables**: Extracts Item 1A (Risk Factors) and Item 7A (Market Risk) while preserving quantitative sensitivity matrices.
+3. **Segments Disclosures**: Splits monolithic sections into discrete, self-contained risk units via Claude Sonnet.
+4. **Aligns Semantically**: Uses `all-mpnet-base-v2` dense vector embeddings to compute candidate pairings and detect new disclosures.
+5. **LLM Judgment**: Claude Opus evaluates economic risk shifts: **REMOVED**, **SOFTENED**, **NEW**, **ABSORBED**, **REWORDED**, or **RETAINED**.
+6. **Caches & Streams Progress**: Live progress with multi-stage progress tracking and execution console logs; caches results to disk for zero-latency review.
+7. **Exports & Shares**: One-click export to CSV spreadsheet, Markdown executive memo, or raw JSON.
 
 ---
 
-## How it works
+## Tool Capabilities & Features
 
-### Why Claude judges instead of embeddings
-
-Vector embeddings are used only to find candidate matches between years — not to classify them. The reason: embeddings fail at negation and softening. *"We are exposed to significant interest-rate risk"* and *"We are no longer exposed to significant interest-rate risk"* score >0.90 cosine similarity despite being opposites. Detecting exactly that inversion is the entire point of the tool.
-
-Claude Opus receives the Year-1 disclosure and its top-5 Year-2 candidates and classifies the change. Every classification in the output passed through the LLM judge. Cosine similarity never makes the final call.
-
-### Why Item 7A as well as Item 1A
-
-The SVB finding lives in Item 7A (Market Risk), not Item 1A (Risk Factors). A tool that only diffs Item 1A would miss it entirely. Unsaid extracts both sections and tags every finding with its source.
-
-### Why results are cached
-
-EDGAR rate-limits requests and LLM calls take time. The pipeline (fetch → segment → align → judge) runs offline and writes a single JSON file. The web app reads from disk and renders in milliseconds. The demo cannot fail due to network or API latency.
-
-### Pipeline
-
-```
-SEC EDGAR
-    │
-    ▼
-edgartools          fetch 10-K filings (rate-throttled, ≤10 req/s)
-    │
-    ▼
-extractor.py        pull Item 1A + Item 7A as clean prose text
-    │
-    ▼
-segmenter.py        Claude Sonnet (claude-sonnet-4-6)
-                    section text → discrete disclosure units [{id, title, text, section}]
-    │
-    ▼
-aligner.py          all-mpnet-base-v2 (sentence-transformers, local)
-                    embed all units → cosine similarity matrix → top-5 candidates per Year-1 unit
-    │
-    ▼
-judge.py            Claude Opus (claude-opus-4-8)
-                    Year-1 unit + top-5 Year-2 candidates → classification + reasoning
-    │
-    ▼
-cache/{TICKER}_{YEAR1}_{YEAR2}.json
-```
+- **Interactive Research Terminal**: Look up any public company ticker (e.g. `NVDA`, `AAPL`, `MSFT`, `SIVB`) and choose any two fiscal years to compare.
+- **Real-Time Live Ingestion Dashboard**: Watch the 6-stage extraction and LLM judging pipeline execute live with real-time logs and percentage progress.
+- **Search & Multi-Dimensional Filtering**: Search through verbatim quotes and AI reasoning; filter by signal severity, confidence threshold, and Item 1A vs Item 7A.
+- **Multi-Format Export Suite**: Export full comparative disclosure analyses to **CSV** (for quantitative spreadsheets), **Markdown Briefing Report** (for investment committee memos), or **JSON**.
+- **Delisted Company Support**: Supports direct SEC CIK lookup (e.g. `0000719739` for SVB).
+- **Flexible Authentication**: Works with server-level `ANTHROPIC_API_KEY` or user-provided session keys configured right in the UI.
 
 ---
 
-## Running the demo
+## Running the Web App
 
 ### Docker (recommended)
 
@@ -146,86 +103,46 @@ git clone <repo> && cd Unsaid
 docker compose up
 ```
 
-Open `http://localhost:3000`. The SVB demo loads from cache instantly — no API key needed.
+Open `http://localhost:3000`. Explore pre-computed research archives or run new companies.
 
-To analyse a new ticker (requires `ANTHROPIC_API_KEY` in `.env`):
-```bash
-docker compose run --rm api python -m unsaid.ingest --ticker AAPL --years 2022 2023
-```
-
-### Local
+### Local Development
 
 ```bash
-# Python setup
-python -m venv .venv && source .venv/bin/activate   # or .venv\Scripts\activate on Windows
+# 1. Backend Setup
+python -m venv .venv
+.venv\Scripts\activate   # or source .venv/bin/activate on Linux/macOS
 pip install -r requirements.txt
 
-# Start API (demo cache works without an API key)
+# Start FastAPI server
 uvicorn api.main:app --port 8000 --reload
 
-# Start frontend (separate terminal)
-cd frontend && npm install && npm run dev
+# 2. Frontend Setup (separate terminal)
+cd frontend
+npm install
+npm run dev
 ```
 
 Open `http://localhost:3000`.
 
-**To run ingest on a new ticker**, add `ANTHROPIC_API_KEY` to `.env` first:
+---
+
+## API Endpoints
+
+| Method | Route | Description |
+|---|---|---|
+| `GET` | `/health` | Backend status and Anthropic API key availability |
+| `GET` | `/filings/{ticker}` | Query SEC EDGAR for available 10-K fiscal years |
+| `GET` | `/library` | List all cached/analyzed company reports |
+| `GET` | `/diff/{ticker}` | Retrieve comparison JSON (optional `?year1=&year2=`) |
+| `POST` | `/run` | Launch live ingestion pipeline in background |
+| `GET` | `/run/{job_id}` | Poll real-time progress, steps, and logs |
+| `DELETE` | `/cache/{ticker}` | Remove a cached report from disk |
+
+---
+
+## CLI Ingest (Optional)
+
 ```bash
-python -m unsaid.ingest --ticker MSFT --years 2022 2023
-# Runs in ~10–15 min; result cached to cache/MSFT_2022_2023.json
-```
-
----
-
-## Project structure
-
-```
-Unsaid/
-├── unsaid/
-│   ├── fetcher.py       # EDGAR retrieval (edgartools, rate-throttled)
-│   ├── extractor.py     # Item 1A / 7A extraction + HTML cleaning
-│   ├── segmenter.py     # Claude Sonnet segmentation
-│   ├── aligner.py       # Embedding alignment (all-mpnet-base-v2)
-│   ├── judge.py         # Claude Opus classification
-│   ├── cache.py         # JSON cache read/write
-│   └── ingest.py        # CLI orchestrator
-├── api/
-│   ├── Dockerfile
-│   └── main.py          # FastAPI: /diff/{ticker}, /demos, /run
-├── frontend/
-│   ├── Dockerfile
-│   ├── app/page.tsx               # Landing page
-│   ├── app/diff/[ticker]/page.tsx # Results view
-│   ├── components/                # ChangeCard, SummaryBar, DemoCard, SectionTag
-│   └── lib/                       # API client, types, constants
-├── cache/               # Pre-computed results (SIVB, PTON, META committed)
-├── docker-compose.yml
-└── requirements.txt
-```
-
----
-
-## What this is not
-
-This tool surfaces changes in disclosure language. It does not predict stock returns, guarantee alpha, or claim to have invented the underlying signal. The "Lazy Prices" anomaly is published academic research. Unsaid makes it accessible without an enterprise contract.
-
----
-
-## Environment variables
-
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `ANTHROPIC_API_KEY` | Ingest only | — | Only needed to analyse new tickers |
-| `EDGAR_IDENTITY` | No | `Unsaid/1.0 tobiojebiyi@gmail.com` | SEC EDGAR user-agent |
-| `NEXT_PUBLIC_API_URL` | No | `http://localhost:8000` | FastAPI base URL |
-
-## CLI
-
-```
 python -m unsaid.ingest --ticker TICKER --years YEAR1 YEAR2 [--cik CIK] [--force]
-
-  --ticker    Company ticker (e.g. PTON, META)
-  --cik       SEC CIK — use for delisted companies (e.g. 0000719739 for SIVB)
-  --years     Two fiscal years to compare
-  --force     Overwrite existing cache file
 ```
+
