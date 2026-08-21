@@ -43,4 +43,68 @@ export interface DemoMeta {
   year1: number;
   year2: number;
   summary_counts: SummaryCounts;
+  total_changes?: number;
+  signals_count?: number;
+  generated_at?: string;
 }
+
+export interface AnalysisLibraryItem {
+  ticker: string;
+  company_name: string;
+  year1: number;
+  year2: number;
+  generated_at?: string;
+  summary_counts: SummaryCounts;
+  total_changes?: number;
+  signals_count?: number;
+}
+
+export interface FilingYearInfo {
+  year: number;
+  period_of_report: string;
+  filing_date: string;
+  accession_no: string;
+  form: string;
+}
+
+export interface CompanyFilingMeta {
+  ticker: string;
+  company_name: string;
+  cik: string;
+  filings: FilingYearInfo[];
+  total_available: number;
+}
+
+export interface JobLogEntry {
+  time: string;
+  step: string;
+  pct: number;
+  msg: string;
+}
+
+export interface JobProgressState {
+  job_id: string;
+  status: "queued" | "running" | "done" | "error";
+  step: string;
+  pct: number;
+  ticker: string;
+  year1: number;
+  year2: number;
+  message: string;
+  details?: string | null;
+  logs: JobLogEntry[];
+  started_at: string;
+  finished_at?: string | null;
+  result_url?: string;
+  result_path?: string;
+}
+
+export interface HealthStatus {
+  status: string;
+  has_api_key: boolean;
+  version: string;
+  model_segmenter: string;
+  model_judge: string;
+  embed_model: string;
+}
+
