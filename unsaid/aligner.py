@@ -23,25 +23,57 @@ WEAK_MATCH_THRESHOLD = 0.30
 
 def _get_model():
     global _EMBED_MODEL
-    if _EMBED_MODEL is None:
+    if _EMBED_MODEL is not None:
+        return _EMBED_MODEL
+
+    try:
         from sentence_transformers import SentenceTransformer
-        logger.info("Loading sentence-transformers model %s …", _MODEL_NAME)
+        logger.info("Attempting to load sentence-transformers model %s …", _MODEL_NAME)
         _EMBED_MODEL = SentenceTransformer(_MODEL_NAME)
-        logger.info("Model loaded.")
-    return _EMBED_MODEL
+        logger.info("SentenceTransformer model loaded.")
+        return _EMBED_MODEL
+    except Exception as e:
+        logger.warning("Could not load %s from HuggingFace (%s). Trying all-MiniLM-L6-v2…", _MODEL_NAME, e)
+        try:
+            from sentence_transformers import SentenceTransformer
+            _EMBED_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+            logger.info("SentenceTransformer (all-MiniLM-L6-v2) loaded successfully.")
+            return _EMBED_MODEL
+        except Exception as e2:
+            logger.warning("SentenceTransformers unavailable (%s). Falling back to high-performance local TF-IDF alignment.", e2)
+            _EMBED_MODEL = "TFIDF_FALLBACK"
+            return _EMBED_MODEL
 
 
 def embed_units(units: List[Dict]) -> np.ndarray:
     """Embed a list of disclosure units; returns float32 array shape (n, dim), L2-normalised."""
     model = _get_model()
     texts = [u.get("text", "") for u in units]
-    embeddings = model.encode(
-        texts,
-        normalize_embeddings=True,
-        show_progress_bar=len(texts) > 20,
-        batch_size=32,
+
+    if model != "TFIDF_FALLBACK" and hasattr(model, "encode"):
+        try:
+            embeddings = model.encode(
+                texts,
+                normalize_embeddings=True,
+                show_progress_bar=len(texts) > 20,
+                batch_size=32,
+            )
+            return embeddings.astype(np.float32)
+        except Exception as e:
+            logger.warning("SentenceTransformer encode failed (%s). Using local TF-IDF fallback.", e)
+
+    # Local TF-IDF Fallback (Fast, offline, robust)
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vectorizer = TfidfVectorizer(
+        ngram_range=(1, 2),
+        max_features=10000,
+        sublinear_tf=True,
+        norm="l2",
     )
-    return embeddings.astype(np.float32)
+    # Fit on all texts and transform
+    matrix = vectorizer.fit_transform(texts if texts else [""])
+    return matrix.toarray().astype(np.float32)
+
 
 
 def align_units(
@@ -65,11 +97,32 @@ def align_units(
         "Embedding %d Year-1 units and %d Year-2 units …",
         len(y1_units), len(y2_units)
     )
-    y1_embs = embed_units(y1_units)
-    y2_embs = embed_units(y2_units)
+    y1_texts = [u.get("text", "") for u in y1_units]
+    y2_texts = [u.get("text", "") for u in y2_units]
 
-    # Cosine similarity matrix (normalised vectors → dot product = cosine sim)
-    sim_matrix = y1_embs @ y2_embs.T  # shape (n1, n2)
+    model = _get_model()
+    sim_matrix = None
+
+    if model != "TFIDF_FALLBACK" and hasattr(model, "encode"):
+        try:
+            y1_embs = model.encode(y1_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
+            y2_embs = model.encode(y2_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
+            sim_matrix = y1_embs @ y2_embs.T  # shape (n1, n2)
+        except Exception as e:
+            logger.warning("SentenceTransformer encoding failed (%s), falling back to joint TF-IDF.", e)
+
+    if sim_matrix is None:
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        vectorizer = TfidfVectorizer(
+            ngram_range=(1, 2),
+            max_features=10000,
+            sublinear_tf=True,
+            norm="l2",
+        )
+        combined_matrix = vectorizer.fit_transform(y1_texts + y2_texts).toarray().astype(np.float32)
+        y1_embs = combined_matrix[:len(y1_texts)]
+        y2_embs = combined_matrix[len(y1_texts):]
+        sim_matrix = y1_embs @ y2_embs.T
 
     # Top-K candidates for each Year-1 unit
     k_actual = min(K, len(y2_units))

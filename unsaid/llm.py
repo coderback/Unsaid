@@ -240,6 +240,25 @@ def call_structured_tool(
                         if tc.function.name == tool_name:
                             return json.loads(tc.function.arguments)
 
+                # Fallback: check if the model returned raw JSON in choice.message.content
+                if choice.message.content:
+                    raw_text = choice.message.content.strip()
+                    if raw_text.startswith("```"):
+                        parts = raw_text.split("```")
+                        if len(parts) >= 2:
+                            raw_text = parts[1]
+                            if raw_text.startswith("json"):
+                                raw_text = raw_text[4:]
+                            raw_text = raw_text.strip()
+                    try:
+                        parsed = json.loads(raw_text)
+                        if isinstance(parsed, dict):
+                            if tool_name in parsed and isinstance(parsed[tool_name], dict):
+                                return parsed[tool_name]
+                            return parsed
+                    except Exception:
+                        pass
+
                 logger.warning("%s returned no matching tool_call on attempt %d", prov, attempt + 1)
             except openai.RateLimitError:
                 wait = 30 * (attempt + 1)
