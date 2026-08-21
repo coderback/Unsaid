@@ -5,6 +5,7 @@ import type {
   CompanyFilingMeta,
   JobProgressState,
   HealthStatus,
+  RunOptions,
 } from "./types";
 
 // In the browser, use Next.js rewrites proxy (/api/*) to avoid CORS issues.
@@ -76,12 +77,8 @@ export async function startRun(
   ticker: string,
   year1: number,
   year2: number,
-  options?: {
-    cik?: string;
-    apiKey?: string;
-    force?: boolean;
-  }
-): Promise<{ job_id: string; status: string; ticker: string }> {
+  options?: RunOptions
+): Promise<{ job_id: string; status: string; ticker: string; provider?: string }> {
   const res = await fetch(`${API_BASE}/run`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -90,7 +87,12 @@ export async function startRun(
       year1,
       year2,
       cik: options?.cik || undefined,
+      provider: options?.provider || "anthropic",
+      model_judge: options?.model_judge || undefined,
+      model_segmenter: options?.model_segmenter || undefined,
       api_key: options?.apiKey || undefined,
+      azure_endpoint: options?.azureEndpoint || undefined,
+      azure_api_version: options?.azureApiVersion || undefined,
       force: options?.force ?? false,
     }),
   });

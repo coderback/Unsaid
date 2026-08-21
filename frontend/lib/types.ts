@@ -6,6 +6,8 @@ export type Classification =
   | "RETAINED"
   | "ABSORBED";
 
+export type ModelProvider = "anthropic" | "azure_foundry" | "openai";
+
 export interface DisclosureChange {
   id: string;
   title: string;
@@ -32,6 +34,9 @@ export interface DiffResult {
   company_name: string;
   year1: number;
   year2: number;
+  model_provider?: ModelProvider | string;
+  model_judge?: string;
+  model_segmenter?: string;
   generated_at: string;
   summary_counts: SummaryCounts;
   changes: DisclosureChange[];
@@ -42,6 +47,8 @@ export interface DemoMeta {
   company_name: string;
   year1: number;
   year2: number;
+  model_provider?: string;
+  model_judge?: string;
   summary_counts: SummaryCounts;
   total_changes?: number;
   signals_count?: number;
@@ -53,6 +60,9 @@ export interface AnalysisLibraryItem {
   company_name: string;
   year1: number;
   year2: number;
+  model_provider?: string;
+  model_judge?: string;
+  model_segmenter?: string;
   generated_at?: string;
   summary_counts: SummaryCounts;
   total_changes?: number;
@@ -90,6 +100,9 @@ export interface JobProgressState {
   ticker: string;
   year1: number;
   year2: number;
+  provider?: string;
+  model_judge?: string;
+  model_segmenter?: string;
   message: string;
   details?: string | null;
   logs: JobLogEntry[];
@@ -99,12 +112,32 @@ export interface JobProgressState {
   result_path?: string;
 }
 
+export interface ProviderDetail {
+  available: boolean;
+  default_judge: string;
+  default_segmenter: string;
+}
+
 export interface HealthStatus {
   status: string;
   has_api_key: boolean;
   version: string;
-  model_segmenter: string;
-  model_judge: string;
+  providers?: {
+    anthropic?: ProviderDetail;
+    azure_foundry?: ProviderDetail;
+    openai?: ProviderDetail;
+    [key: string]: ProviderDetail | undefined;
+  };
   embed_model: string;
 }
 
+export interface RunOptions {
+  cik?: string;
+  provider?: ModelProvider;
+  model_judge?: string;
+  model_segmenter?: string;
+  apiKey?: string;
+  azureEndpoint?: string;
+  azureApiVersion?: string;
+  force?: boolean;
+}

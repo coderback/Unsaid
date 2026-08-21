@@ -61,7 +61,16 @@ export default function DiffPage() {
     if (!data) return;
     setRerunLoading(true);
     try {
+      const savedProvider = (typeof window !== "undefined" ? sessionStorage.getItem("unsaid_provider") : null) || (data.model_provider as any) || "anthropic";
+      const savedKey = typeof window !== "undefined" ? sessionStorage.getItem(`unsaid_${savedProvider}_key`) : undefined;
+      const savedEndpoint = typeof window !== "undefined" ? sessionStorage.getItem("unsaid_azure_endpoint") : undefined;
+      const savedJudge = typeof window !== "undefined" ? sessionStorage.getItem("unsaid_model_judge") : undefined;
+
       const res = await startRun(data.ticker, data.year1, data.year2, {
+        provider: savedProvider,
+        model_judge: savedJudge || data.model_judge,
+        apiKey: savedKey || undefined,
+        azureEndpoint: savedEndpoint || undefined,
         force: true,
       });
       setActiveRerunJobId(res.job_id);
@@ -214,10 +223,24 @@ export default function DiffPage() {
                   {data.company_name}
                 </span>
               </div>
-              <p className="text-xs text-zinc-500 mt-1 tracking-wider">
-                COMPARING <strong className="text-zinc-300">FY{data.year1}</strong> ➔{" "}
-                <strong className="text-zinc-300">FY{data.year2}</strong> · ITEM 1A (RISK FACTORS) + ITEM 7A (MARKET RISK)
-              </p>
+              <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-zinc-500 tracking-wider">
+                <span>
+                  COMPARING <strong className="text-zinc-300">FY{data.year1}</strong> ➔{" "}
+                  <strong className="text-zinc-300">FY{data.year2}</strong> · ITEM 1A + 7A
+                </span>
+                {data.model_provider && (
+                  <span className={`text-[10px] px-2 py-0.5 border ${
+                    data.model_provider === "azure_foundry"
+                      ? "border-blue-800 bg-blue-950/40 text-blue-300 font-semibold"
+                      : data.model_provider === "openai"
+                      ? "border-emerald-800 bg-emerald-950/40 text-emerald-300 font-semibold"
+                      : "border-purple-800 bg-purple-950/40 text-purple-300 font-semibold"
+                  }`}>
+                    {data.model_provider === "azure_foundry" ? "🔷 Azure AI Foundry" : data.model_provider === "openai" ? "🟢 OpenAI" : "🟣 Claude Opus"}
+                    {data.model_judge ? ` (${data.model_judge})` : ""}
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="flex items-center gap-2">

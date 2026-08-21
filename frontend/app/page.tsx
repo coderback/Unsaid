@@ -15,6 +15,7 @@ import type {
   AnalysisLibraryItem,
   CompanyFilingMeta,
   HealthStatus,
+  ModelProvider,
 } from "@/lib/types";
 
 type TabView = "ANALYZER" | "LIBRARY" | "CASE_STUDIES" | "METHODOLOGY";
@@ -25,9 +26,18 @@ export default function LandingPage() {
   const [activeTab, setActiveTab] = useState<TabView>("ANALYZER");
   const [ticker, setTicker] = useState("");
   const [cik, setCik] = useState("");
-  const [apiKey, setApiKey] = useState("");
   const [forceRerun, setForceRerun] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+
+  // Model & Provider configuration
+  const [provider, setProvider] = useState<ModelProvider>("anthropic");
+  const [modelJudge, setModelJudge] = useState<string>("claude-opus-4-8");
+  const [modelSegmenter, setModelSegmenter] = useState<string>("claude-sonnet-4-6");
+  const [azureEndpoint, setAzureEndpoint] = useState<string>("https://models.inference.ai.azure.com");
+  const [azureApiVersion, setAzureApiVersion] = useState<string>("2024-05-01-preview");
+
+  // API Keys per provider stored in state & session
+  const [apiKey, setApiKey] = useState("");
 
   // Available filing years for selected ticker
   const [filingMeta, setFilingMeta] = useState<CompanyFilingMeta | null>(null);
@@ -54,17 +64,55 @@ export default function LandingPage() {
   // Load health & library on mount
   useEffect(() => {
     fetchHealth()
-      .then(setHealth)
+      .then((h) => {
+        setHealth(h);
+        // Default to Azure if available and Anthropic is not
+        if (!h.providers?.anthropic?.available && h.providers?.azure_foundry?.available) {
+          selectProvider("azure_foundry");
+        }
+      })
       .catch(() => setHealth(null));
 
     loadLibrary();
 
-    // Check sessionStorage for saved custom API key
+    // Check sessionStorage for saved keys
     if (typeof window !== "undefined") {
-      const savedKey = sessionStorage.getItem("unsaid_api_key");
-      if (savedKey) setApiKey(savedKey);
+      const savedProvider = (sessionStorage.getItem("unsaid_provider") as ModelProvider) || "anthropic";
+      setProvider(savedProvider);
+      loadSavedKeyForProvider(savedProvider);
+      
+      const savedEndpoint = sessionStorage.getItem("unsaid_azure_endpoint");
+      if (savedEndpoint) setAzureEndpoint(savedEndpoint);
+
+      const savedJudge = sessionStorage.getItem("unsaid_model_judge");
+      if (savedJudge) setModelJudge(savedJudge);
     }
   }, []);
+
+  function loadSavedKeyForProvider(p: ModelProvider) {
+    if (typeof window === "undefined") return;
+    const key = sessionStorage.getItem(`unsaid_${p}_key`) || "";
+    setApiKey(key);
+  }
+
+  function selectProvider(p: ModelProvider) {
+    setProvider(p);
+    if (p === "azure_foundry") {
+      setModelJudge("gpt-5.6-luna");
+      setModelSegmenter("gpt-5.6-luna");
+    } else if (p === "openai") {
+      setModelJudge("gpt-4o");
+      setModelSegmenter("gpt-4o-mini");
+    } else {
+      setModelJudge("claude-opus-4-8");
+      setModelSegmenter("claude-sonnet-4-6");
+    }
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("unsaid_provider", p);
+    }
+    loadSavedKeyForProvider(p);
+  }
 
   function loadLibrary() {
     setLoadingLibrary(true);
@@ -74,12 +122,26 @@ export default function LandingPage() {
       .finally(() => setLoadingLibrary(false));
   }
 
-  // When API key changes, persist to sessionStorage
+  // When API key changes, persist to sessionStorage for current provider
   function handleApiKeyChange(val: string) {
     setApiKey(val);
     if (typeof window !== "undefined") {
-      if (val) sessionStorage.setItem("unsaid_api_key", val);
-      else sessionStorage.removeItem("unsaid_api_key");
+      if (val) sessionStorage.setItem(`unsaid_${provider}_key`, val);
+      else sessionStorage.removeItem(`unsaid_${provider}_key`);
+    }
+  }
+
+  function handleEndpointChange(val: string) {
+    setAzureEndpoint(val);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("unsaid_azure_endpoint", val);
+    }
+  }
+
+  function handleJudgeChange(val: string) {
+    setModelJudge(val);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("unsaid_model_judge", val);
     }
   }
 
@@ -156,7 +218,12 @@ export default function LandingPage() {
     try {
       const res = await startRun(t, year1, year2, {
         cik: cik || undefined,
+        provider,
+        model_judge: modelJudge || undefined,
+        model_segmenter: modelSegmenter || undefined,
         apiKey: apiKey || undefined,
+        azureEndpoint: provider === "azure_foundry" ? azureEndpoint || undefined : undefined,
+        azureApiVersion: provider === "azure_foundry" ? azureApiVersion || undefined : undefined,
         force: forceRerun,
       });
       setActiveJobId(res.job_id);
@@ -190,6 +257,13 @@ export default function LandingPage() {
     );
   });
 
+  const isCurrentProviderAvailable = Boolean(
+    (provider === "anthropic" && health?.providers?.anthropic?.available) ||
+    (provider === "azure_foundry" && health?.providers?.azure_foundry?.available) ||
+    (provider === "openai" && health?.providers?.openai?.available) ||
+    apiKey
+  );
+
   return (
     <main className="min-h-screen bg-[#09090b] text-zinc-100 font-mono flex flex-col selection:bg-cyan-500 selection:text-black">
       {/* Top System Status Ribbon */}
@@ -201,31 +275,28 @@ export default function LandingPage() {
           </div>
           <span className="text-zinc-700">|</span>
           <div className="flex items-center gap-1.5 hidden sm:flex">
-            <span className="text-zinc-500">LLM Judge:</span>
-            <span className="text-zinc-300">Claude Opus 4</span>
-          </div>
-          <span className="text-zinc-700 hidden sm:inline">|</span>
-          <div className="flex items-center gap-1.5 hidden md:flex">
-            <span className="text-zinc-500">Segmentation:</span>
-            <span className="text-zinc-300">Claude Sonnet 4</span>
+            <span className="text-zinc-500">Active Engine:</span>
+            <span className="text-cyan-300 font-bold">
+              {provider === "azure_foundry"
+                ? `Azure AI Foundry (${modelJudge})`
+                : provider === "openai"
+                ? `OpenAI (${modelJudge})`
+                : `Anthropic (${modelJudge})`}
+            </span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          {health?.has_api_key ? (
+          {isCurrentProviderAvailable ? (
             <span className="text-emerald-400 border border-emerald-900/60 bg-emerald-950/30 px-2 py-0.5 text-[10px]">
-              API Key Active
-            </span>
-          ) : apiKey ? (
-            <span className="text-cyan-400 border border-cyan-900/60 bg-cyan-950/30 px-2 py-0.5 text-[10px]">
-              User Key Set
+              ● Provider Ready
             </span>
           ) : (
             <span className="text-amber-400 border border-amber-900/60 bg-amber-950/30 px-2 py-0.5 text-[10px]">
-              Demo Cache Only
+              ⚠️ Needs API Key in Advanced Settings
             </span>
           )}
-          <span className="text-zinc-600 text-[10px]">v1.1</span>
+          <span className="text-zinc-600 text-[10px]">v1.2</span>
         </div>
       </div>
 
@@ -235,7 +306,7 @@ export default function LandingPage() {
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-bold tracking-[0.3em] text-white">UNSAID</span>
             <span className="text-[10px] text-cyan-400 uppercase tracking-widest hidden sm:inline">
-              10-K Disclosure Intelligence
+              10-K Disclosure Intelligence Terminal
             </span>
           </div>
         </div>
@@ -269,7 +340,7 @@ export default function LandingPage() {
         {/* TAB 1: ANALYZER COMMAND CENTER */}
         {/* ========================================================================= */}
         {activeTab === "ANALYZER" && (
-          <div className="space-y-10">
+          <div className="space-y-8">
             {/* Hero Copy */}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3 leading-tight">
@@ -278,8 +349,79 @@ export default function LandingPage() {
               <p className="text-sm text-zinc-300 leading-relaxed max-w-2xl">
                 Companies announce good news loudly. They quietly bury bad news by removing or
                 softening disclosures in Item 1A (Risk Factors) and Item 7A (Market Risk).
-                Unsaid reads both SEC 10-Ks, aligns units, and employs Claude Opus as an economic judge.
+                Unsaid aligns units via semantic embeddings and evaluates shifts with frontier LLM judges.
               </p>
+            </div>
+
+            {/* Model Provider Selector Bar */}
+            <div className="border border-zinc-800 bg-zinc-950/90 p-4 space-y-2.5">
+              <span className="text-[11px] text-zinc-400 font-semibold uppercase tracking-wider block">
+                Select Model Provider &amp; Inference Engine:
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {/* Azure AI Foundry */}
+                <button
+                  type="button"
+                  onClick={() => selectProvider("azure_foundry")}
+                  className={`p-3 border text-left transition-all ${
+                    provider === "azure_foundry"
+                      ? "border-blue-500 bg-blue-950/30 text-blue-200 shadow-lg"
+                      : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs">🔷 Azure AI Foundry</span>
+                    {provider === "azure_foundry" && (
+                      <span className="text-[10px] text-blue-400 font-mono">SELECTED</span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-zinc-400">
+                    Model: <strong className="text-zinc-200">GPT-5.6 Luna</strong> (or custom deployment)
+                  </p>
+                </button>
+
+                {/* Anthropic Claude */}
+                <button
+                  type="button"
+                  onClick={() => selectProvider("anthropic")}
+                  className={`p-3 border text-left transition-all ${
+                    provider === "anthropic"
+                      ? "border-purple-500 bg-purple-950/30 text-purple-200 shadow-lg"
+                      : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs">🟣 Anthropic Claude</span>
+                    {provider === "anthropic" && (
+                      <span className="text-[10px] text-purple-400 font-mono">SELECTED</span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-zinc-400">
+                    Judge: <strong className="text-zinc-200">Claude Opus 4.8</strong> · Sonnet 4.6
+                  </p>
+                </button>
+
+                {/* Direct OpenAI */}
+                <button
+                  type="button"
+                  onClick={() => selectProvider("openai")}
+                  className={`p-3 border text-left transition-all ${
+                    provider === "openai"
+                      ? "border-emerald-500 bg-emerald-950/30 text-emerald-200 shadow-lg"
+                      : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs">🟢 OpenAI Direct</span>
+                    {provider === "openai" && (
+                      <span className="text-[10px] text-emerald-400 font-mono">SELECTED</span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-zinc-400">
+                    Model: <strong className="text-zinc-200">GPT-4o</strong>
+                  </p>
+                </button>
+              </div>
             </div>
 
             {/* Quick-Pick Popular Tickers */}
@@ -444,42 +586,96 @@ export default function LandingPage() {
                   onClick={() => setShowAdvanced(!showAdvanced)}
                   className="text-xs text-zinc-500 hover:text-zinc-300 flex items-center gap-2 focus:outline-none"
                 >
-                  <span>{showAdvanced ? "▼" : "▶"} Advanced Configuration</span>
-                  <span className="text-[10px] text-zinc-600">(CIK Override, Custom API Key, Force Ingest)</span>
+                  <span>{showAdvanced ? "▼" : "▶"} Model &amp; Ingestion Configuration</span>
+                  <span className="text-[10px] text-zinc-600">(Deployment name, Azure Endpoint, Custom API Key)</span>
                 </button>
 
                 {showAdvanced && (
                   <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 border border-zinc-800 bg-black/40">
+                    {/* Model Deployment Name */}
                     <div className="space-y-1">
                       <label className="text-[11px] text-zinc-400 font-semibold">
-                        SEC CIK NUMBER (OPTIONAL)
+                        MODEL / DEPLOYMENT NAME
                       </label>
                       <input
-                        value={cik}
-                        onChange={(e) => setCik(e.target.value)}
-                        placeholder="e.g. 0000719739"
+                        value={modelJudge}
+                        onChange={(e) => handleJudgeChange(e.target.value)}
+                        placeholder={provider === "azure_foundry" ? "gpt-5.6-luna" : "claude-opus-4-8"}
                         className="w-full bg-zinc-900 border border-zinc-700 text-xs px-3 py-2 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
                       />
                       <p className="text-[10px] text-zinc-600">
-                        Use for delisted firms (e.g. SIVB).
+                        Target model for risk judgments.
                       </p>
                     </div>
 
+                    {/* Azure Endpoint (when Azure AI Foundry selected) */}
+                    {provider === "azure_foundry" ? (
+                      <div className="space-y-1">
+                        <label className="text-[11px] text-zinc-400 font-semibold">
+                          AZURE AI FOUNDRY ENDPOINT URL
+                        </label>
+                        <input
+                          value={azureEndpoint}
+                          onChange={(e) => handleEndpointChange(e.target.value)}
+                          placeholder="https://models.inference.ai.azure.com"
+                          className="w-full bg-zinc-900 border border-zinc-700 text-xs px-3 py-2 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
+                        />
+                        <p className="text-[10px] text-zinc-600">
+                          Azure AI Foundry or Serverless endpoint.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        <label className="text-[11px] text-zinc-400 font-semibold">
+                          SEC CIK NUMBER (OPTIONAL)
+                        </label>
+                        <input
+                          value={cik}
+                          onChange={(e) => setCik(e.target.value)}
+                          placeholder="e.g. 0000719739"
+                          className="w-full bg-zinc-900 border border-zinc-700 text-xs px-3 py-2 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
+                        />
+                        <p className="text-[10px] text-zinc-600">
+                          For delisted firms (e.g. SIVB).
+                        </p>
+                      </div>
+                    )}
+
+                    {/* API Key Input */}
                     <div className="space-y-1">
                       <label className="text-[11px] text-zinc-400 font-semibold">
-                        CUSTOM ANTHROPIC KEY (OPTIONAL)
+                        {provider === "azure_foundry"
+                          ? "AZURE AI FOUNDRY API KEY"
+                          : provider === "openai"
+                          ? "OPENAI API KEY"
+                          : "ANTHROPIC API KEY"}
                       </label>
                       <input
                         type="password"
                         value={apiKey}
                         onChange={(e) => handleApiKeyChange(e.target.value)}
-                        placeholder="sk-ant-api..."
+                        placeholder="sk-..."
                         className="w-full bg-zinc-900 border border-zinc-700 text-xs px-3 py-2 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
                       />
                       <p className="text-[10px] text-zinc-600">
                         Saved in browser session storage.
                       </p>
                     </div>
+
+                    {/* Force Rerun & CIK for Azure */}
+                    {provider === "azure_foundry" && (
+                      <div className="space-y-1">
+                        <label className="text-[11px] text-zinc-400 font-semibold">
+                          SEC CIK NUMBER (OPTIONAL)
+                        </label>
+                        <input
+                          value={cik}
+                          onChange={(e) => setCik(e.target.value)}
+                          placeholder="e.g. 0000719739"
+                          className="w-full bg-zinc-900 border border-zinc-700 text-xs px-3 py-2 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
+                        />
+                      </div>
+                    )}
 
                     <div className="flex flex-col justify-center pt-2">
                       <label className="flex items-center gap-2 text-xs text-zinc-300 cursor-pointer">
@@ -492,7 +688,7 @@ export default function LandingPage() {
                         <span>Force Fresh Ingest</span>
                       </label>
                       <p className="text-[10px] text-zinc-600 mt-1">
-                        Bypasses existing local cache.
+                        Bypasses existing cache.
                       </p>
                     </div>
                   </div>
@@ -528,7 +724,7 @@ export default function LandingPage() {
                   Analysis Archive &amp; Research Library
                 </h2>
                 <p className="text-xs text-zinc-400 mt-1">
-                  All 10-K disclosure comparisons currently computed and cached on disk.
+                  All 10-K disclosure comparisons computed and cached on disk.
                 </p>
               </div>
 
@@ -559,9 +755,16 @@ export default function LandingPage() {
                         <span className="text-lg font-bold text-zinc-100">
                           [{item.ticker}]
                         </span>
-                        <span className="text-xs text-zinc-500">
-                          FY{item.year1} → FY{item.year2}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          {item.model_provider && (
+                            <span className="text-[10px] text-zinc-500 border border-zinc-800 px-1.5 py-0.2">
+                              {item.model_provider === "azure_foundry" ? "🔷 Azure" : "🟣 Claude"}
+                            </span>
+                          )}
+                          <span className="text-xs text-zinc-500">
+                            FY{item.year1} → FY{item.year2}
+                          </span>
+                        </div>
                       </div>
                       <p className="text-xs text-zinc-400 truncate mb-3">{item.company_name}</p>
 
@@ -744,7 +947,7 @@ export default function LandingPage() {
 
             <div className="p-4 border border-zinc-800 bg-zinc-950 space-y-3">
               <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-wider">
-                2. Why Vector Embeddings Cannot Make Classification Decisions
+                2. Multi-Model Support &amp; Why Embeddings Alone Fail
               </h3>
               <p>
                 Vector embeddings measure semantic closeness, but fail completely at <strong>negation</strong> and <strong>degree</strong>:
@@ -755,7 +958,7 @@ export default function LandingPage() {
                 <p className="text-zinc-500">→ Cosine Similarity: &gt;0.92 (High Match), yet economic meaning is 100% opposite.</p>
               </div>
               <p>
-                In Unsaid, dense embeddings (`all-mpnet-base-v2`) are restricted strictly to <strong>candidate recall (Top-5)</strong>. <strong>Claude Opus</strong> is the ultimate judge evaluating economic substance.
+                In Unsaid, dense embeddings (`all-mpnet-base-v2`) are restricted strictly to <strong>candidate recall (Top-5)</strong>. Frontier judges (e.g. <strong>GPT-5.6 Luna on Azure AI Foundry</strong> or <strong>Claude Opus 4.8</strong>) evaluate the economic substance.
               </p>
             </div>
 
@@ -788,8 +991,8 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-zinc-900 px-6 py-4 mt-auto bg-[#070708]">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between text-xs text-zinc-600 gap-2">
-          <span>UNSAID · Open Semantic Disclosure Detector</span>
-          <span>SEC EDGAR · Claude Opus &amp; Sonnet · sentence-transformers</span>
+          <span>UNSAID · Multi-Model Disclosure Intelligence</span>
+          <span>Azure AI Foundry (GPT-5.6 Luna) · Claude Opus · SEC EDGAR</span>
         </div>
       </footer>
     </main>

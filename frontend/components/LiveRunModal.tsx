@@ -99,9 +99,23 @@ export function LiveRunModal({
           <div className="flex items-center gap-3">
             <span className="inline-block w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
             <div>
-              <h3 className="text-sm font-bold text-zinc-100 tracking-wider">
-                ANALYSIS IN PROGRESS: [{ticker}]
-              </h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-bold text-zinc-100 tracking-wider">
+                  ANALYSIS IN PROGRESS: [{ticker}]
+                </h3>
+                {jobState?.provider && (
+                  <span className={`text-[10px] px-1.5 py-0.5 border ${
+                    jobState.provider === "azure_foundry"
+                      ? "border-blue-800 bg-blue-950/40 text-blue-300"
+                      : jobState.provider === "openai"
+                      ? "border-emerald-800 bg-emerald-950/40 text-emerald-300"
+                      : "border-purple-800 bg-purple-950/40 text-purple-300"
+                  }`}>
+                    {jobState.provider === "azure_foundry" ? "🔷 Azure AI Foundry" : jobState.provider === "openai" ? "🟢 OpenAI" : "🟣 Anthropic"}
+                    {jobState.model_judge ? ` (${jobState.model_judge})` : ""}
+                  </span>
+                )}
+              </div>
               <p className="text-xs text-zinc-500">
                 FY{year1} → FY{year2} · Job ID: {jobId}
               </p>
