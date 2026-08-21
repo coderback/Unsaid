@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { DemoCard } from "@/components/DemoCard";
 import { LiveRunModal } from "@/components/LiveRunModal";
+import { SettingsWorkspace } from "@/components/SettingsWorkspace";
+import { loadSettings } from "@/lib/settings";
 import {
   fetchLibrary,
   fetchFilingYears,
@@ -18,7 +20,8 @@ import type {
   ModelProvider,
 } from "@/lib/types";
 
-type TabView = "ANALYZER" | "LIBRARY" | "CASE_STUDIES" | "METHODOLOGY";
+type TabView = "ANALYZER" | "LIBRARY" | "CASE_STUDIES" | "METHODOLOGY" | "SETTINGS";
+
 
 const POPULAR_TICKERS = ["SIVB", "PTON", "META", "NVDA", "AAPL", "MSFT", "TSLA", "AMZN"];
 
@@ -318,6 +321,7 @@ export default function LandingPage() {
             { id: "LIBRARY", label: `📁 ARCHIVE (${library.length})` },
             { id: "CASE_STUDIES", label: "★ CASE STUDIES" },
             { id: "METHODOLOGY", label: "📖 METHODOLOGY" },
+            { id: "SETTINGS", label: "⚙️ SETTINGS" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -971,6 +975,37 @@ export default function LandingPage() {
               </p>
             </div>
           </div>
+        )}
+
+        {/* ========================================================================= */}
+        {/* TAB 5: SYSTEM CONFIGURATION & SETTINGS */}
+        {/* ========================================================================= */}
+        {activeTab === "SETTINGS" && (
+          <SettingsWorkspace
+            health={health}
+            library={library}
+            onSettingsUpdated={() => {
+              const loaded = loadSettings();
+              setProvider(loaded.defaultProvider);
+              if (loaded.defaultProvider === "azure_foundry") {
+                setModelJudge(loaded.azureModelJudge);
+                setModelSegmenter(loaded.azureModelSegmenter);
+                setAzureEndpoint(loaded.azureEndpoint);
+                setApiKey(loaded.azureApiKey);
+              } else if (loaded.defaultProvider === "openai") {
+                setModelJudge(loaded.openaiModelJudge);
+                setModelSegmenter(loaded.openaiModelSegmenter);
+                setApiKey(loaded.openaiApiKey);
+              } else {
+                setModelJudge(loaded.anthropicModelJudge);
+                setModelSegmenter(loaded.anthropicModelSegmenter);
+                setApiKey(loaded.anthropicApiKey);
+              }
+            }}
+            onPurgeCache={() => {
+              loadLibrary();
+            }}
+          />
         )}
       </div>
 

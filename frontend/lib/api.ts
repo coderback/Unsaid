@@ -129,3 +129,42 @@ export async function deleteAnalysis(
     throw new Error(err.detail ?? `HTTP ${res.status}`);
   }
 }
+
+export async function testConnection(options: {
+  provider: string;
+  model?: string;
+  apiKey?: string;
+  azureEndpoint?: string;
+  azureApiVersion?: string;
+}): Promise<{
+  success: boolean;
+  provider: string;
+  model: string;
+  latency_ms: number;
+  message?: string;
+  error?: string;
+}> {
+  const res = await fetch(`${API_BASE}/health/test-connection`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      provider: options.provider,
+      model: options.model || undefined,
+      api_key: options.apiKey || undefined,
+      azure_endpoint: options.azureEndpoint || undefined,
+      azure_api_version: options.azureApiVersion || undefined,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+    return {
+      success: false,
+      provider: options.provider,
+      model: options.model || "default",
+      latency_ms: 0,
+      error: err.error || err.detail || `HTTP ${res.status}`,
+    };
+  }
+  return res.json();
+}
+
