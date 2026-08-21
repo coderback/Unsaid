@@ -209,13 +209,30 @@ def call_structured_tool(
                     {"role": "user", "content": user_prompt},
                 ]
 
-                response = client.chat.completions.create(
-                    model=target_model,
-                    messages=messages,
-                    tools=[openai_tool],
-                    tool_choice={"type": "function", "function": {"name": tool_name}},
-                    max_tokens=max_tokens,
-                )
+                kwargs: Dict[str, Any] = {
+                    "model": target_model,
+                    "messages": messages,
+                    "tools": [openai_tool],
+                    "tool_choice": {"type": "function", "function": {"name": tool_name}},
+                }
+
+                # Newer models (GPT-5.6 Luna, o1, o3, latest Azure Foundry) require max_completion_tokens
+                try:
+                    response = client.chat.completions.create(
+                        **kwargs,
+                        max_completion_tokens=max_tokens,
+                    )
+                except openai.BadRequestError as b_err:
+                    err_msg = str(b_err).lower()
+                    if "max_completion_tokens" in err_msg or "unsupported_parameter" in err_msg:
+                        # Fallback for legacy OpenAI endpoints that only accept max_tokens
+                        response = client.chat.completions.create(
+                            **kwargs,
+                            max_tokens=max_tokens,
+                        )
+                    else:
+                        raise
+
 
                 choice = response.choices[0]
                 if choice.message.tool_calls:
