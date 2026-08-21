@@ -46,13 +46,19 @@ _jobs: Dict[str, Dict[str, Any]] = {}
 
 @app.get("/health")
 def health():
-    has_key = bool(os.environ.get("ANTHROPIC_API_KEY"))
+    has_anthropic = bool(os.environ.get("ANTHROPIC_API_KEY"))
+    has_azure = bool(os.environ.get("AZURE_AI_API_KEY") or os.environ.get("AZURE_OPENAI_API_KEY"))
+    has_openai = bool(os.environ.get("OPENAI_API_KEY"))
+    
     return {
         "status": "ok",
-        "has_api_key": has_key,
-        "version": "1.1.0",
-        "model_segmenter": "claude-sonnet-4-6",
-        "model_judge": "claude-opus-4-8",
+        "has_api_key": has_anthropic or has_azure or has_openai,
+        "providers": {
+            "anthropic": {"available": has_anthropic, "default_judge": "claude-opus-4-8", "default_segmenter": "claude-sonnet-4-6"},
+            "azure_foundry": {"available": has_azure, "default_judge": "gpt-5.6-luna", "default_segmenter": "gpt-5.6-luna"},
+            "openai": {"available": has_openai, "default_judge": "gpt-4o", "default_segmenter": "gpt-4o-mini"},
+        },
+        "version": "1.2.0",
         "embed_model": "all-mpnet-base-v2",
     }
 
@@ -125,7 +131,12 @@ class RunRequest(BaseModel):
     year1: int
     year2: int
     cik: Optional[str] = None
+    provider: Optional[str] = "anthropic"
+    model_judge: Optional[str] = None
+    model_segmenter: Optional[str] = None
     api_key: Optional[str] = None
+    azure_endpoint: Optional[str] = None
+    azure_api_version: Optional[str] = None
     force: bool = False
 
 
@@ -137,6 +148,7 @@ def start_run(req: RunRequest):
     """
     job_id = str(uuid.uuid4())[:8]
     now_iso = datetime.now(timezone.utc).isoformat()
+    provider = req.provider or "anthropic"
 
     _jobs[job_id] = {
         "job_id": job_id,
@@ -146,14 +158,17 @@ def start_run(req: RunRequest):
         "ticker": req.ticker.upper(),
         "year1": req.year1,
         "year2": req.year2,
-        "message": f"Queued analysis for {req.ticker.upper()} (FY{req.year1} → FY{req.year2})",
+        "provider": provider,
+        "model_judge": req.model_judge,
+        "model_segmenter": req.model_segmenter,
+        "message": f"Queued analysis for {req.ticker.upper()} (FY{req.year1} → FY{req.year2}) via {provider}",
         "details": None,
         "logs": [
-            {"time": now_iso, "step": "queued", "pct": 0, "msg": f"Job queued for {req.ticker.upper()}"}
+            {"time": now_iso, "step": "queued", "pct": 0, "msg": f"Job queued for {req.ticker.upper()} ({provider})"}
         ],
         "started_at": now_iso,
         "finished_at": None,
-        "result_url": f"/diff/{req.ticker.upper()}",
+        "result_url": f"/diff/{req.ticker.upper()}?year1={req.year1}&year2={req.year2}",
     }
 
     def _progress_callback(step: str, pct: int, msg: str, details: Optional[str] = None):
@@ -181,7 +196,12 @@ def start_run(req: RunRequest):
                 year1=req.year1,
                 year2=req.year2,
                 force=req.force,
+                provider=provider,
+                model_judge=req.model_judge,
+                model_segmenter=req.model_segmenter,
                 api_key=req.api_key or None,
+                azure_endpoint=req.azure_endpoint or None,
+                azure_api_version=req.azure_api_version or None,
                 progress_callback=_progress_callback,
             )
             job["status"] = "done"
@@ -201,7 +221,7 @@ def start_run(req: RunRequest):
     t = threading.Thread(target=_run, daemon=True)
     t.start()
 
-    return {"job_id": job_id, "status": "queued", "ticker": req.ticker.upper()}
+    return {"job_id": job_id, "status": "queued", "ticker": req.ticker.upper(), "provider": provider}
 
 
 @app.get("/run/{job_id}")
@@ -211,4 +231,5 @@ def get_run_status(job_id: str):
     if job is None:
         raise HTTPException(status_code=404, detail=f"Job {job_id} not found")
     return job
+
 
