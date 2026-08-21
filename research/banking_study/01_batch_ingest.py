@@ -20,6 +20,15 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+# Auto-load .env from project root if present
+env_path = PROJECT_ROOT / ".env"
+if env_path.exists():
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(env_path)
+    except ImportError:
+        pass
+
 from unsaid.ingest import run_pipeline
 from unsaid.cache import read_cache
 
