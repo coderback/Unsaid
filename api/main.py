@@ -49,7 +49,7 @@ def health():
     has_anthropic = bool(os.environ.get("ANTHROPIC_API_KEY"))
     has_azure = bool(os.environ.get("AZURE_AI_API_KEY") or os.environ.get("AZURE_OPENAI_API_KEY"))
     has_openai = bool(os.environ.get("OPENAI_API_KEY"))
-    
+
     return {
         "status": "ok",
         "has_api_key": has_anthropic or has_azure or has_openai,
@@ -61,6 +61,69 @@ def health():
         "version": "1.2.0",
         "embed_model": "all-mpnet-base-v2",
     }
+
+
+class TestConnectionRequest(BaseModel):
+
+    provider: str
+    model: Optional[str] = None
+    api_key: Optional[str] = None
+    azure_endpoint: Optional[str] = None
+    azure_api_version: Optional[str] = None
+
+
+@app.post("/health/test-connection")
+def test_connection(req: TestConnectionRequest):
+    """Test connection and tool-calling capability for a given provider/model configuration."""
+    import time
+    from unsaid.llm import call_structured_tool, get_default_model
+
+    provider = req.provider.lower()
+    target_model = req.model or get_default_model(provider, "judge")
+    start_time = time.time()
+
+    try:
+        data = call_structured_tool(
+            provider=provider,
+            model=target_model,
+            system_prompt="You are a diagnostics tool evaluator. Return status='ok' and echo='ping_success'.",
+            user_prompt="Run diagnostics ping test.",
+            tool_name="ping_response",
+            tool_description="Respond to health check.",
+            parameters_schema={
+                "type": "object",
+                "properties": {
+                    "status": {"type": "string"},
+                    "echo": {"type": "string"},
+                },
+                "required": ["status", "echo"],
+            },
+            api_key=req.api_key or None,
+            azure_endpoint=req.azure_endpoint or None,
+            azure_api_version=req.azure_api_version or None,
+            max_tokens=128,
+            retries=0,
+        )
+        latency = int((time.time() - start_time) * 1000)
+        return {
+            "success": True,
+            "provider": provider,
+            "model": target_model,
+            "latency_ms": latency,
+            "message": f"Connected to {provider} ({target_model}) in {latency}ms.",
+            "data": data,
+        }
+    except Exception as e:
+        latency = int((time.time() - start_time) * 1000)
+        logger.warning("Diagnostics ping failed for %s/%s: %s", provider, target_model, e)
+        return {
+            "success": False,
+            "provider": provider,
+            "model": target_model,
+            "latency_ms": latency,
+            "error": str(e),
+        }
+
 
 
 @app.get("/filings/{ticker}")
