@@ -5,7 +5,7 @@ Each unit: {id, title, text, section}
 import os
 import json
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import anthropic
 
@@ -57,19 +57,21 @@ _SYSTEM_PROMPT = (
 _MAX_SECTION_CHARS = 40_000  # ~10k tokens; chunk if longer
 
 
-def _get_client() -> anthropic.Anthropic:
+def _get_client(api_key: Optional[str] = None) -> anthropic.Anthropic:
     global _client
+    if api_key:
+        return anthropic.Anthropic(api_key=api_key)
     if _client is None:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        if not api_key:
+        key = os.environ.get("ANTHROPIC_API_KEY")
+        if not key:
             raise EnvironmentError("ANTHROPIC_API_KEY environment variable not set")
-        _client = anthropic.Anthropic(api_key=api_key)
+        _client = anthropic.Anthropic(api_key=key)
     return _client
 
 
-def _segment_chunk(text: str, section_label: str, chunk_idx: int) -> List[Dict]:
+def _segment_chunk(text: str, section_label: str, chunk_idx: int, api_key: Optional[str] = None) -> List[Dict]:
     """Call Claude Sonnet to segment one chunk of text."""
-    client = _get_client()
+    client = _get_client(api_key)
 
     prompt = (
         f"Segment the following Item {section_label} text from a 10-K filing "
@@ -103,7 +105,7 @@ def _segment_chunk(text: str, section_label: str, chunk_idx: int) -> List[Dict]:
     return []
 
 
-def segment_section(text: str, section_label: str) -> List[Dict]:
+def segment_section(text: str, section_label: str, api_key: Optional[str] = None) -> List[Dict]:
     """
     Segment a full section text into disclosure units.
     Chunks the text if it exceeds the per-call limit.
@@ -131,7 +133,7 @@ def segment_section(text: str, section_label: str) -> List[Dict]:
 
     all_units: List[Dict] = []
     for idx, chunk in enumerate(chunks):
-        units = _segment_chunk(chunk, section_label, idx)
+        units = _segment_chunk(chunk, section_label, idx, api_key=api_key)
         for u in units:
             u["section"] = section_label  # attach source section
         all_units.extend(units)
@@ -143,7 +145,7 @@ def segment_section(text: str, section_label: str) -> List[Dict]:
     return all_units
 
 
-def segment_all_sections(sections: Dict[str, str | None]) -> List[Dict]:
+def segment_all_sections(sections: Dict[str, str | None], api_key: Optional[str] = None) -> List[Dict]:
     """
     Segment both 1A and 7A sections.
     sections = {"1A": text_or_none, "7A": text_or_none}
@@ -152,7 +154,7 @@ def segment_all_sections(sections: Dict[str, str | None]) -> List[Dict]:
     all_units: List[Dict] = []
     for label, text in sections.items():
         if text:
-            units = segment_section(text, label)
+            units = segment_section(text, label, api_key=api_key)
             all_units.extend(units)
         else:
             logger.warning("No text available for section %s", label)

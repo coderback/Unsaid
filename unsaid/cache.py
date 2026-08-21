@@ -73,9 +73,9 @@ def read_cache(ticker: str, year1: Optional[int] = None, year2: Optional[int] = 
         return json.load(f)
 
 
-def list_cached_demos() -> List[Dict]:
-    """Return metadata for all cached results."""
-    demos = []
+def list_cached_analyses() -> List[Dict]:
+    """Return enriched metadata for all cached analysis results."""
+    analyses = []
     pattern = os.path.join(_CACHE_DIR, "*.json")
     for path in sorted(glob.glob(pattern)):
         if os.path.basename(path).startswith("."):
@@ -83,13 +83,58 @@ def list_cached_demos() -> List[Dict]:
         try:
             with open(path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            demos.append({
+            
+            counts = data.get("summary_counts", {})
+            total_changes = len(data.get("changes", []))
+            signals_count = (
+                counts.get("REMOVED", 0) +
+                counts.get("SOFTENED", 0) +
+                counts.get("NEW", 0) +
+                counts.get("ABSORBED", 0)
+            )
+
+            analyses.append({
                 "ticker": data.get("ticker"),
                 "company_name": data.get("company_name"),
                 "year1": data.get("year1"),
                 "year2": data.get("year2"),
-                "summary_counts": data.get("summary_counts", {}),
+                "generated_at": data.get("generated_at"),
+                "summary_counts": counts,
+                "total_changes": total_changes,
+                "signals_count": signals_count,
             })
         except Exception as e:
             logger.debug("Could not read cache file %s: %s", path, e)
-    return demos
+            
+    # Sort by generated_at descending (or ticker)
+    analyses.sort(key=lambda x: x.get("generated_at") or "", reverse=True)
+    return analyses
+
+
+def list_cached_demos() -> List[Dict]:
+    """Backward-compatible alias for list_cached_analyses."""
+    return list_cached_analyses()
+
+
+def delete_cache(ticker: str, year1: Optional[int] = None, year2: Optional[int] = None) -> bool:
+    """Delete cached analysis file(s) for a ticker. Returns True if any file deleted."""
+    if year1 and year2:
+        path = _cache_path(ticker, year1, year2)
+        if os.path.exists(path):
+            os.remove(path)
+            logger.info("Deleted cache file %s", path)
+            return True
+        return False
+
+    pattern = os.path.join(_CACHE_DIR, f"{ticker.upper()}_*.json")
+    matches = glob.glob(pattern)
+    deleted = False
+    for path in matches:
+        try:
+            os.remove(path)
+            logger.info("Deleted cache file %s", path)
+            deleted = True
+        except Exception as e:
+            logger.warning("Failed to delete %s: %s", path, e)
+    return deleted
+

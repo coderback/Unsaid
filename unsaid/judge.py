@@ -88,13 +88,17 @@ _SYSTEM_PROMPT = (
 )
 
 
-def _get_client() -> anthropic.Anthropic:
+from typing import List, Dict, Tuple, Optional, Callable
+
+def _get_client(api_key: Optional[str] = None) -> anthropic.Anthropic:
     global _client
+    if api_key:
+        return anthropic.Anthropic(api_key=api_key)
     if _client is None:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        if not api_key:
+        key = os.environ.get("ANTHROPIC_API_KEY")
+        if not key:
             raise EnvironmentError("ANTHROPIC_API_KEY environment variable not set")
-        _client = anthropic.Anthropic(api_key=api_key)
+        _client = anthropic.Anthropic(api_key=key)
     return _client
 
 
@@ -151,12 +155,13 @@ def judge_unit(
     year1: int,
     year2: int,
     retries: int = 2,
+    api_key: Optional[str] = None,
 ) -> Dict:
     """
     Ask Claude Opus to classify one Year-1 unit against its Year-2 candidates.
     Returns a dict with all classify_change fields plus the original unit id and title.
     """
-    client = _get_client()
+    client = _get_client(api_key)
     prompt = _build_judge_prompt(y1_unit, candidates, year1, year2)
 
     for attempt in range(retries + 1):
@@ -229,6 +234,8 @@ def judge_all(
     new_candidates: List[Dict],
     year1: int,
     year2: int,
+    api_key: Optional[str] = None,
+    progress_callback: Optional[Callable[[int, int, str], None]] = None,
 ) -> List[Dict]:
     """
     Run the judge over all Year-1 units and all NEW Year-2 candidates.
@@ -238,10 +245,14 @@ def judge_all(
 
     total = len(y1_units)
     for i, (y1_unit, candidates) in enumerate(zip(y1_units, candidates_per_y1)):
-        logger.info("Judging unit %d/%d: %s", i + 1, total, y1_unit.get("title", "?")[:60])
+        unit_title = y1_unit.get("title", "?")
+        logger.info("Judging unit %d/%d: %s", i + 1, total, unit_title[:60])
+        if progress_callback:
+            progress_callback(i + 1, total, unit_title)
+
         # Filter candidates to those with at least minimal similarity (don't noise the judge)
         strong_candidates = [(u, s) for u, s in candidates if s >= 0.20]
-        result = judge_unit(y1_unit, strong_candidates, year1, year2)
+        result = judge_unit(y1_unit, strong_candidates, year1, year2, api_key=api_key)
         results.append(result)
 
     for y2_unit in new_candidates:
