@@ -32,17 +32,22 @@ def run_pipeline(
     year1: int,
     year2: int,
     force: bool = False,
+    provider: str = "anthropic",
+    model_judge: Optional[str] = None,
+    model_segmenter: Optional[str] = None,
     api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
     progress_callback: Optional[Callable[[str, int, str, Optional[str]], None]] = None,
 ) -> str:
     """
     Full ingest pipeline:
     1. Fetch 10-K filings from EDGAR
     2. Extract Item 1A + 7A text
-    3. Segment into disclosure units (Claude Sonnet)
+    3. Segment into disclosure units (Claude Sonnet or Azure Foundry model)
     4. Embed + align units (sentence-transformers)
-    5. Judge each unit (Claude Opus)
-    6. Write JSON cache
+    5. Judge each unit (Claude Opus or Azure Foundry model e.g. gpt-5.6-luna)
+    6. Write JSON cache with model provenance
     Returns the path to the cache file.
     """
     from unsaid.fetcher import get_10k_filing
@@ -51,8 +56,11 @@ def run_pipeline(
     from unsaid.aligner import align_units
     from unsaid.judge import judge_all
     from unsaid.cache import write_cache, cache_exists
+    from unsaid.llm import get_default_model
 
     effective_ticker = (ticker or cik or "UNKNOWN").upper()
+    effective_judge = model_judge or get_default_model(provider, "judge")
+    effective_segmenter = model_segmenter or get_default_model(provider, "segmenter")
 
     def report(step: str, pct: int, msg: str, details: Optional[str] = None):
         logger.info("[PROGRESS %d%%] [%s] %s", pct, step, msg)
@@ -109,12 +117,26 @@ def run_pipeline(
 
     # ── Step 3: Segment ────────────────────────────────────────────────────
     logger.info("=" * 60)
-    logger.info("STEP 3  Segmenting disclosures via Claude Sonnet")
+    logger.info("STEP 3  Segmenting disclosures via %s (%s)", provider, effective_segmenter)
     logger.info("=" * 60)
-    report("segmenting", 45, "Segmenting section texts into discrete disclosure units (Claude Sonnet)…")
+    report("segmenting", 45, f"Segmenting disclosures via {provider} ({effective_segmenter})…")
 
-    units1 = segment_all_sections(sections1, api_key=api_key)
-    units2 = segment_all_sections(sections2, api_key=api_key)
+    units1 = segment_all_sections(
+        sections1,
+        provider=provider,
+        model=effective_segmenter,
+        api_key=api_key,
+        azure_endpoint=azure_endpoint,
+        azure_api_version=azure_api_version,
+    )
+    units2 = segment_all_sections(
+        sections2,
+        provider=provider,
+        model=effective_segmenter,
+        api_key=api_key,
+        azure_endpoint=azure_endpoint,
+        azure_api_version=azure_api_version,
+    )
 
     logger.info("FY%d: %d units total", year1, len(units1))
     logger.info("FY%d: %d units total", year2, len(units2))
@@ -138,22 +160,26 @@ def run_pipeline(
     # ── Step 5: Judge ──────────────────────────────────────────────────────
     total_units = len(units1)
     logger.info("=" * 60)
-    logger.info("STEP 5  Judging %d Year-1 units + %d NEW candidates via Claude Opus",
-                total_units, len(new_candidates))
+    logger.info("STEP 5  Judging %d Year-1 units + %d NEW candidates via %s (%s)",
+                total_units, len(new_candidates), provider, effective_judge)
     logger.info("=" * 60)
 
     def on_judge_unit(curr: int, tot: int, title: str):
         pct = 65 + int((curr / max(tot, 1)) * 30)  # 65% to 95%
         report("judging", pct, f"Classifying risk shifts ({curr}/{tot}): {title[:40]}…", title)
 
-    report("judging", 65, f"Evaluating {total_units} disclosure units with Claude Opus judge…")
+    report("judging", 65, f"Evaluating {total_units} disclosure units with {provider} ({effective_judge}) judge…")
     changes = judge_all(
         units1,
         candidates_per_y1,
         new_candidates,
         year1,
         year2,
+        provider=provider,
+        model=effective_judge,
         api_key=api_key,
+        azure_endpoint=azure_endpoint,
+        azure_api_version=azure_api_version,
         progress_callback=on_judge_unit,
     )
 
@@ -171,7 +197,16 @@ def run_pipeline(
     logger.info("=" * 60)
     report("caching", 98, "Writing analysis result to local cache…")
 
-    path = write_cache(effective_ticker, company_name, year1, year2, changes)
+    path = write_cache(
+        effective_ticker,
+        company_name,
+        year1,
+        year2,
+        changes,
+        model_provider=provider,
+        model_judge=effective_judge,
+        model_segmenter=effective_segmenter,
+    )
     logger.info("Done! Cache written to: %s", path)
     report("completed", 100, f"Analysis complete for {effective_ticker} (FY{year1} → FY{year2})", path)
     return path
@@ -188,6 +223,14 @@ def main():
         required=True,
         help="Two fiscal years to compare (e.g. --years 2021 2022)"
     )
+    parser.add_argument(
+        "--provider", default="anthropic", choices=["anthropic", "azure_foundry", "openai"],
+        help="Model provider (anthropic, azure_foundry, openai)"
+    )
+    parser.add_argument("--model-judge", help="Model name for judge (e.g. gpt-5.6-luna or claude-opus-4-8)")
+    parser.add_argument("--model-segmenter", help="Model name for segmenter (e.g. gpt-5.6-luna or claude-sonnet-4-6)")
+    parser.add_argument("--azure-endpoint", help="Azure AI Foundry endpoint URL")
+    parser.add_argument("--azure-api-version", help="Azure API version")
     parser.add_argument(
         "--force", action="store_true",
         help="Re-run even if a cache file already exists"
@@ -208,8 +251,14 @@ def main():
         year1=year1,
         year2=year2,
         force=args.force,
+        provider=args.provider,
+        model_judge=args.model_judge,
+        model_segmenter=args.model_segmenter,
+        azure_endpoint=args.azure_endpoint,
+        azure_api_version=args.azure_api_version,
     )
 
 
 if __name__ == "__main__":
     main()
+

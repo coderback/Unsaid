@@ -57,21 +57,21 @@ _SYSTEM_PROMPT = (
 _MAX_SECTION_CHARS = 40_000  # ~10k tokens; chunk if longer
 
 
-def _get_client(api_key: Optional[str] = None) -> anthropic.Anthropic:
-    global _client
-    if api_key:
-        return anthropic.Anthropic(api_key=api_key)
-    if _client is None:
-        key = os.environ.get("ANTHROPIC_API_KEY")
-        if not key:
-            raise EnvironmentError("ANTHROPIC_API_KEY environment variable not set")
-        _client = anthropic.Anthropic(api_key=key)
-    return _client
+from unsaid.llm import call_structured_tool, get_default_model
 
 
-def _segment_chunk(text: str, section_label: str, chunk_idx: int, api_key: Optional[str] = None) -> List[Dict]:
-    """Call Claude Sonnet to segment one chunk of text."""
-    client = _get_client(api_key)
+def _segment_chunk(
+    text: str,
+    section_label: str,
+    chunk_idx: int,
+    provider: str = "anthropic",
+    model: Optional[str] = None,
+    api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
+) -> List[Dict]:
+    """Call LLM to segment one chunk of text."""
+    target_model = model or get_default_model(provider, "segmenter")
 
     prompt = (
         f"Segment the following Item {section_label} text from a 10-K filing "
@@ -79,33 +79,42 @@ def _segment_chunk(text: str, section_label: str, chunk_idx: int, api_key: Optio
         f"--- BEGIN TEXT ---\n{text}\n--- END TEXT ---"
     )
 
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=8096,
-        system=_SYSTEM_PROMPT,
-        tools=[SEGMENT_TOOL],
-        tool_choice={"type": "any"},
-        messages=[{"role": "user", "content": prompt}],
-    )
+    try:
+        data = call_structured_tool(
+            provider=provider,
+            model=target_model,
+            system_prompt=_SYSTEM_PROMPT,
+            user_prompt=prompt,
+            tool_name="segment_disclosures",
+            tool_description="Split a 10-K section's text into discrete, self-contained disclosure units.",
+            parameters_schema=SEGMENT_TOOL["input_schema"],
+            api_key=api_key,
+            azure_endpoint=azure_endpoint,
+            azure_api_version=azure_api_version,
+            max_tokens=8096,
+        )
+        units = data.get("units", [])
+        for i, u in enumerate(units):
+            u["id"] = f"{section_label}_{chunk_idx}_{i:03d}_{u.get('id', 'unit')}"
+        logger.info(
+            "Segmented Item %s chunk %d → %d units (%s/%s)",
+            section_label, chunk_idx, len(units), provider, target_model
+        )
+        return units
+    except Exception as e:
+        logger.error("Segmentation failed on chunk %d (%s/%s): %s", chunk_idx, provider, target_model, e)
+        return []
 
-    # Extract tool_use block
-    for block in response.content:
-        if block.type == "tool_use" and block.name == "segment_disclosures":
-            units = block.input.get("units", [])
-            # Tag each unit with a chunk-scoped id to avoid collisions
-            for i, u in enumerate(units):
-                u["id"] = f"{section_label}_{chunk_idx}_{i:03d}_{u.get('id', 'unit')}"
-            logger.info(
-                "Segmented Item %s chunk %d → %d units",
-                section_label, chunk_idx, len(units)
-            )
-            return units
 
-    logger.warning("Segmentation returned no tool_use block for chunk %d", chunk_idx)
-    return []
-
-
-def segment_section(text: str, section_label: str, api_key: Optional[str] = None) -> List[Dict]:
+def segment_section(
+    text: str,
+    section_label: str,
+    provider: str = "anthropic",
+    model: Optional[str] = None,
+    api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
+) -> List[Dict]:
     """
     Segment a full section text into disclosure units.
     Chunks the text if it exceeds the per-call limit.
@@ -133,7 +142,16 @@ def segment_section(text: str, section_label: str, api_key: Optional[str] = None
 
     all_units: List[Dict] = []
     for idx, chunk in enumerate(chunks):
-        units = _segment_chunk(chunk, section_label, idx, api_key=api_key)
+        units = _segment_chunk(
+            chunk,
+            section_label,
+            idx,
+            provider=provider,
+            model=model,
+            api_key=api_key,
+            azure_endpoint=azure_endpoint,
+            azure_api_version=azure_api_version,
+        )
         for u in units:
             u["section"] = section_label  # attach source section
         all_units.extend(units)
@@ -145,7 +163,14 @@ def segment_section(text: str, section_label: str, api_key: Optional[str] = None
     return all_units
 
 
-def segment_all_sections(sections: Dict[str, str | None], api_key: Optional[str] = None) -> List[Dict]:
+def segment_all_sections(
+    sections: Dict[str, str | None],
+    provider: str = "anthropic",
+    model: Optional[str] = None,
+    api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
+) -> List[Dict]:
     """
     Segment both 1A and 7A sections.
     sections = {"1A": text_or_none, "7A": text_or_none}
@@ -154,8 +179,17 @@ def segment_all_sections(sections: Dict[str, str | None], api_key: Optional[str]
     all_units: List[Dict] = []
     for label, text in sections.items():
         if text:
-            units = segment_section(text, label, api_key=api_key)
+            units = segment_section(
+                text,
+                label,
+                provider=provider,
+                model=model,
+                api_key=api_key,
+                azure_endpoint=azure_endpoint,
+                azure_api_version=azure_api_version,
+            )
             all_units.extend(units)
         else:
             logger.warning("No text available for section %s", label)
     return all_units
+

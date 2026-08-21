@@ -89,17 +89,7 @@ _SYSTEM_PROMPT = (
 
 
 from typing import List, Dict, Tuple, Optional, Callable
-
-def _get_client(api_key: Optional[str] = None) -> anthropic.Anthropic:
-    global _client
-    if api_key:
-        return anthropic.Anthropic(api_key=api_key)
-    if _client is None:
-        key = os.environ.get("ANTHROPIC_API_KEY")
-        if not key:
-            raise EnvironmentError("ANTHROPIC_API_KEY environment variable not set")
-        _client = anthropic.Anthropic(api_key=key)
-    return _client
+from unsaid.llm import call_structured_tool, get_default_model
 
 
 def _build_judge_prompt(
@@ -154,64 +144,64 @@ def judge_unit(
     candidates: List[Tuple[Dict, float]],
     year1: int,
     year2: int,
-    retries: int = 2,
+    provider: str = "anthropic",
+    model: Optional[str] = None,
     api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
+    retries: int = 2,
 ) -> Dict:
     """
-    Ask Claude Opus to classify one Year-1 unit against its Year-2 candidates.
-    Returns a dict with all classify_change fields plus the original unit id and title.
+    Ask LLM judge (Claude Opus or Azure AI Foundry model e.g. gpt-5.6-luna) to classify
+    one Year-1 unit against its Year-2 candidates.
     """
-    client = _get_client(api_key)
+    target_model = model or get_default_model(provider, "judge")
     prompt = _build_judge_prompt(y1_unit, candidates, year1, year2)
 
-    for attempt in range(retries + 1):
-        try:
-            response = client.messages.create(
-                model="claude-opus-4-8",
-                max_tokens=1024,
-                system=_SYSTEM_PROMPT,
-                tools=[CLASSIFY_TOOL],
-                tool_choice={"type": "any"},
-                messages=[{"role": "user", "content": prompt}],
-            )
+    try:
+        data = call_structured_tool(
+            provider=provider,
+            model=target_model,
+            system_prompt=_SYSTEM_PROMPT,
+            user_prompt=prompt,
+            tool_name="classify_change",
+            tool_description="Classify how a Year-1 disclosure unit changed in Year-2 based on economic risk.",
+            parameters_schema=CLASSIFY_TOOL["input_schema"],
+            api_key=api_key,
+            azure_endpoint=azure_endpoint,
+            azure_api_version=azure_api_version,
+            max_tokens=2048,
+            retries=retries,
+        )
 
-            for block in response.content:
-                if block.type == "tool_use" and block.name == "classify_change":
-                    result = dict(block.input)
-                    result["id"] = y1_unit.get("id", "unknown")
-                    result["title"] = y1_unit.get("title", "Untitled")
-                    # Ensure section is taken from the unit if model omits it
-                    if not result.get("section"):
-                        result["section"] = y1_unit.get("section", "?")
-                    logger.info(
-                        "Judged '%s' → %s (conf=%.2f)",
-                        result["title"][:60],
-                        result["classification"],
-                        result.get("confidence", 0),
-                    )
-                    return result
+        result = dict(data)
+        result["id"] = y1_unit.get("id", "unknown")
+        result["title"] = y1_unit.get("title", "Untitled")
+        if not result.get("section"):
+            result["section"] = y1_unit.get("section", "?")
 
-            logger.warning("Judge returned no tool_use block on attempt %d", attempt + 1)
-        except anthropic.RateLimitError:
-            wait = 60 * (attempt + 1)
-            logger.warning("Rate limit hit; waiting %ds …", wait)
-            time.sleep(wait)
-        except Exception as e:
-            logger.error("Judge error on attempt %d: %s", attempt + 1, e)
-            if attempt == retries:
-                raise
-
-    # If all retries failed, return a fallback RETAINED
-    return {
-        "id": y1_unit.get("id", "unknown"),
-        "title": y1_unit.get("title", "Untitled"),
-        "classification": "RETAINED",
-        "year1_quote": y1_unit.get("text", "")[:300],
-        "year2_quote_or_null": None,
-        "reasoning": "Classification failed after retries; defaulted to RETAINED.",
-        "section": y1_unit.get("section", "?"),
-        "confidence": 0.0,
-    }
+        logger.info(
+            "Judged '%s' → %s (conf=%.2f, via %s/%s)",
+            result["title"][:60],
+            result["classification"],
+            result.get("confidence", 0),
+            provider,
+            target_model,
+        )
+        return result
+    except Exception as e:
+        logger.error("Judge error (%s/%s): %s", provider, target_model, e)
+        # Fallback RETAINED if model call completely fails
+        return {
+            "id": y1_unit.get("id", "unknown"),
+            "title": y1_unit.get("title", "Untitled"),
+            "classification": "RETAINED",
+            "year1_quote": y1_unit.get("text", "")[:300],
+            "year2_quote_or_null": None,
+            "reasoning": f"Classification failed ({provider}/{target_model}); defaulted to RETAINED.",
+            "section": y1_unit.get("section", "?"),
+            "confidence": 0.0,
+        }
 
 
 def judge_new_unit(y2_unit: Dict, year2: int) -> Dict:
@@ -234,7 +224,11 @@ def judge_all(
     new_candidates: List[Dict],
     year1: int,
     year2: int,
+    provider: str = "anthropic",
+    model: Optional[str] = None,
     api_key: Optional[str] = None,
+    azure_endpoint: Optional[str] = None,
+    azure_api_version: Optional[str] = None,
     progress_callback: Optional[Callable[[int, int, str], None]] = None,
 ) -> List[Dict]:
     """
@@ -250,12 +244,23 @@ def judge_all(
         if progress_callback:
             progress_callback(i + 1, total, unit_title)
 
-        # Filter candidates to those with at least minimal similarity (don't noise the judge)
+        # Filter candidates to those with at least minimal similarity
         strong_candidates = [(u, s) for u, s in candidates if s >= 0.20]
-        result = judge_unit(y1_unit, strong_candidates, year1, year2, api_key=api_key)
+        result = judge_unit(
+            y1_unit,
+            strong_candidates,
+            year1,
+            year2,
+            provider=provider,
+            model=model,
+            api_key=api_key,
+            azure_endpoint=azure_endpoint,
+            azure_api_version=azure_api_version,
+        )
         results.append(result)
 
     for y2_unit in new_candidates:
         results.append(judge_new_unit(y2_unit, year2))
 
     return results
+

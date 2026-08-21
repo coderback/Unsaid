@@ -25,6 +25,9 @@ def write_cache(
     year1: int,
     year2: int,
     changes: List[Dict],
+    model_provider: str = "anthropic",
+    model_judge: Optional[str] = None,
+    model_segmenter: Optional[str] = None,
 ) -> str:
     """Write results to cache. Returns the cache file path."""
     os.makedirs(_CACHE_DIR, exist_ok=True)
@@ -40,6 +43,9 @@ def write_cache(
         "company_name": company_name,
         "year1": year1,
         "year2": year2,
+        "model_provider": model_provider,
+        "model_judge": model_judge,
+        "model_segmenter": model_segmenter,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary_counts": counts,
         "changes": changes,
@@ -49,7 +55,7 @@ def write_cache(
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    logger.info("Cache written to %s", path)
+    logger.info("Cache written to %s (provider=%s, judge=%s)", path, model_provider, model_judge)
     return path
 
 
@@ -98,6 +104,9 @@ def list_cached_analyses() -> List[Dict]:
                 "company_name": data.get("company_name"),
                 "year1": data.get("year1"),
                 "year2": data.get("year2"),
+                "model_provider": data.get("model_provider", "anthropic"),
+                "model_judge": data.get("model_judge"),
+                "model_segmenter": data.get("model_segmenter"),
                 "generated_at": data.get("generated_at"),
                 "summary_counts": counts,
                 "total_changes": total_changes,
@@ -109,6 +118,7 @@ def list_cached_analyses() -> List[Dict]:
     # Sort by generated_at descending (or ticker)
     analyses.sort(key=lambda x: x.get("generated_at") or "", reverse=True)
     return analyses
+
 
 
 def list_cached_demos() -> List[Dict]:
