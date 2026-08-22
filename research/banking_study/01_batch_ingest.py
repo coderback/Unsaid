@@ -162,7 +162,17 @@ def process_pair(
 
 def main():
     parser = argparse.ArgumentParser(description="Batch SEC Ingest Runner for Banking Universe")
-    parser.add_argument("--cohort", choices=["crisis_distressed", "regional_midcap", "megabank_control", "all"], default="all", help="Target cohort to process")
+    cohort_map = {
+        "crisis_distressed": "crisis_distressed",
+        "crisis": "crisis_distressed",
+        "regional_midcap": "regional_midcap",
+        "regional": "regional_midcap",
+        "megabank_control": "megabank_control",
+        "megabanks": "megabank_control",
+        "megabank": "megabank_control",
+        "all": "all",
+    }
+    parser.add_argument("--cohort", choices=list(cohort_map.keys()), default="all", help="Target cohort to process")
     parser.add_argument("--tickers", type=str, help="Comma-separated list of specific tickers (e.g. SIVB,FRC,WAL)")
     parser.add_argument("--provider", default="anthropic", choices=["anthropic", "azure_foundry", "openai"], help="Model inference provider")
     parser.add_argument("--model-judge", type=str, help="Judge model override")
@@ -173,6 +183,8 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Print plan without running LLM pipeline")
     args = parser.parse_args()
 
+    target_cohort = cohort_map.get(args.cohort, args.cohort)
+
     universe_data = load_universe()
     universe = universe_data["universe"]
     pairs = universe_data["comparison_pairs"]
@@ -181,8 +193,8 @@ def main():
     if args.tickers:
         selected_tickers = {t.strip().upper() for t in args.tickers.split(",")}
         targets = [u for u in universe if u["ticker"].upper() in selected_tickers]
-    elif args.cohort != "all":
-        targets = [u for u in universe if u["cohort"] == args.cohort]
+    elif target_cohort != "all":
+        targets = [u for u in universe if u["cohort"] == target_cohort]
     else:
         targets = universe
 
