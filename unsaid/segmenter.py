@@ -124,21 +124,38 @@ def segment_section(
         logger.warning("Empty text for section %s, skipping segmentation", section_label)
         return []
 
-    # Split into chunks by paragraph boundaries if text is very long
+    # Split into chunks of at most 20k chars, preserving paragraphs/lines
+    normalized = text.replace("\r\n", "\n")
+    paragraphs = [p for p in normalized.split("\n\n") if p.strip()]
+    if len(paragraphs) <= 1:
+        paragraphs = [p for p in normalized.split("\n") if p.strip()]
+
     chunks: List[str] = []
-    if len(text) <= _MAX_SECTION_CHARS:
-        chunks = [text]
-    else:
-        paragraphs = text.split("\n\n")
-        current = ""
-        for para in paragraphs:
-            if len(current) + len(para) > _MAX_SECTION_CHARS and current:
+    current = ""
+    target_limit = 20_000
+
+    for para in paragraphs:
+        if len(para) > target_limit:
+            if current:
                 chunks.append(current.strip())
-                current = para
-            else:
-                current += "\n\n" + para
-        if current.strip():
+                current = ""
+            for i in range(0, len(para), target_limit):
+                sub = para[i:i + target_limit]
+                if sub.strip():
+                    chunks.append(sub.strip())
+            continue
+
+        if len(current) + len(para) + 2 > target_limit and current:
             chunks.append(current.strip())
+            current = para
+        else:
+            current = (current + "\n\n" + para) if current else para
+
+    if current.strip():
+        chunks.append(current.strip())
+
+    if not chunks:
+        chunks = [text]
 
     all_units: List[Dict] = []
     for idx, chunk in enumerate(chunks):
