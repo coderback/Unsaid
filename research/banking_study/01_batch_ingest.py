@@ -103,7 +103,7 @@ def process_pair(
     else:
         logger.info(f"[{ticker}] FY{year1}→FY{year2}: Starting pipeline run via {provider}...")
         try:
-            analysis = run_pipeline(
+            res_path = run_pipeline(
                 ticker=ticker,
                 year1=year1,
                 year2=year2,
@@ -114,6 +114,7 @@ def process_pair(
                 azure_endpoint=azure_endpoint,
                 api_key=api_key,
             )
+            analysis = read_cache(ticker, year1, year2) or {}
         except Exception as e:
             logger.error(f"[{ticker}] FY{year1}→FY{year2}: Ingestion failed: {e}")
             return {
@@ -126,6 +127,9 @@ def process_pair(
                 "status": "failed",
                 "error": str(e),
             }
+
+    if isinstance(analysis, str):
+        analysis = read_cache(ticker, year1, year2) or {}
 
     counts = analysis.get("summary_counts", {})
     changes = analysis.get("changes", [])
