@@ -84,26 +84,39 @@ def get_10k_filing(
     if not filings or len(filings) == 0:
         raise ValueError(f"No 10-K filings found for {ticker or cik}")
 
-    # Match by period_of_report (fiscal year end date, e.g. "2021-12-31")
+    # 1. Prefer exact form == "10-K" matching period_of_report (avoids partial 10-K/A amendments)
     target = None
     for filing in filings:
         try:
-            period = str(filing.period_of_report or "")
-            if period.startswith(str(year)):
-                target = filing
-                break
+            if str(getattr(filing, "form", "")).strip().upper() == "10-K":
+                period = str(filing.period_of_report or "")
+                if period.startswith(str(year)):
+                    target = filing
+                    break
         except Exception:
             continue
 
-    # Fallback: match by filing date (FY N is typically filed in calendar year N+1)
+    # 2. If no exact 10-K, accept any 10-K variant matching period
+    if target is None:
+        for filing in filings:
+            try:
+                period = str(filing.period_of_report or "")
+                if period.startswith(str(year)):
+                    target = filing
+                    break
+            except Exception:
+                continue
+
+    # 3. Fallback: match by filing date (FY N is typically filed in calendar year N+1)
     if target is None:
         filing_year = year + 1
         for filing in filings:
             try:
-                fd = str(filing.filing_date or "")
-                if fd.startswith(str(filing_year)):
-                    target = filing
-                    break
+                if str(getattr(filing, "form", "")).strip().upper() == "10-K":
+                    fd = str(filing.filing_date or "")
+                    if fd.startswith(str(filing_year)):
+                        target = filing
+                        break
             except Exception:
                 continue
 
