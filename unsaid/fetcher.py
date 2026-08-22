@@ -43,18 +43,8 @@ def get_10k_filing(
 
     entity = None
 
-    # Try ticker first
-    if ticker:
-        try:
-            e = edgar.Company(ticker)
-            test_filings = e.get_filings(form="10-K")
-            if test_filings and len(test_filings) > 0:
-                entity = e
-        except Exception:
-            pass
-
-    # Try CIK fallback or primary if no ticker
-    if entity is None and cik:
+    # If CIK is explicitly provided, prioritize CIK as the unique SEC identifier
+    if cik:
         try:
             cik_int = int(cik.lstrip("0") or "0")
             e = edgar.Company(cik_int)
@@ -67,12 +57,22 @@ def get_10k_filing(
             cik_int = int(cik.lstrip("0") or "0")
             entity = edgar.get_entity(cik_int)
 
+    # Fall back to ticker lookup if no CIK or CIK lookup produced no entity
+    if entity is None and ticker:
+        try:
+            e = edgar.Company(ticker)
+            test_filings = e.get_filings(form="10-K")
+            if test_filings and len(test_filings) > 0:
+                entity = e
+        except Exception:
+            pass
+
     if entity is None:
-        if ticker:
-            entity = edgar.Company(ticker)
-        elif cik:
+        if cik:
             cik_int = int(cik.lstrip("0") or "0")
             entity = edgar.Company(cik_int)
+        elif ticker:
+            entity = edgar.Company(ticker)
         else:
             raise ValueError("Must supply ticker or cik")
 
@@ -133,16 +133,7 @@ def list_available_10ks(
     setup_edgar()
 
     entity = None
-    if ticker:
-        try:
-            e = edgar.Company(ticker.upper())
-            test_filings = e.get_filings(form="10-K")
-            if test_filings and len(test_filings) > 0:
-                entity = e
-        except Exception:
-            pass
-
-    if entity is None and cik:
+    if cik:
         try:
             cik_int = int(cik.lstrip("0") or "0")
             e = edgar.Company(cik_int)
@@ -155,12 +146,21 @@ def list_available_10ks(
             cik_int = int(cik.lstrip("0") or "0")
             entity = edgar.get_entity(cik_int)
 
+    if entity is None and ticker:
+        try:
+            e = edgar.Company(ticker.upper())
+            test_filings = e.get_filings(form="10-K")
+            if test_filings and len(test_filings) > 0:
+                entity = e
+        except Exception:
+            pass
+
     if entity is None:
-        if ticker:
-            entity = edgar.Company(ticker.upper())
-        elif cik:
+        if cik:
             cik_int = int(cik.lstrip("0") or "0")
             entity = edgar.Company(cik_int)
+        elif ticker:
+            entity = edgar.Company(ticker.upper())
         else:
             raise ValueError("Must supply ticker or cik")
 
