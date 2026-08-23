@@ -135,22 +135,28 @@ def extract_section(filing, section: str) -> Optional[str]:
 
     # --- Attempt 2: regex scan over full filing document (markdown / text / html) ---
     try:
-        full_text = None
-        if hasattr(filing, "markdown"):
-            try:
-                full_text = filing.markdown()
-            except Exception:
-                pass
-        if not full_text and hasattr(filing, "text"):
-            try:
-                full_text = filing.text()
-            except Exception:
-                pass
-        if not full_text and hasattr(filing, "html"):
-            try:
-                full_text = _html_to_prose(filing.html())
-            except Exception:
-                pass
+        full_text = getattr(filing, "_cached_full_text", None)
+        if not full_text:
+            if hasattr(filing, "text"):
+                try:
+                    full_text = filing.text()
+                except Exception:
+                    pass
+            if not full_text and hasattr(filing, "markdown"):
+                try:
+                    full_text = filing.markdown()
+                except Exception:
+                    pass
+            if not full_text and hasattr(filing, "html"):
+                try:
+                    full_text = _html_to_prose(filing.html())
+                except Exception:
+                    pass
+            if full_text:
+                try:
+                    setattr(filing, "_cached_full_text", full_text)
+                except Exception:
+                    pass
 
         if full_text:
             result = _extract_via_regex(full_text, section)
