@@ -133,15 +133,30 @@ def extract_section(filing, section: str) -> Optional[str]:
     except Exception as e:
         logger.debug("edgartools native extraction failed for Item %s: %s", section, e)
 
-    # --- Attempt 2: regex scan over full filing document ---
+    # --- Attempt 2: regex scan over full filing document (markdown / text / html) ---
     try:
-        tenk = filing.obj()
-        full_raw = str(tenk)
-        full_text = _html_to_prose(full_raw)
-        result = _extract_via_regex(full_text, section)
-        if result and len(result) > 200:
-            logger.info("Extracted Item %s via regex fallback (len=%d)", section, len(result))
-            return result
+        full_text = None
+        if hasattr(filing, "markdown"):
+            try:
+                full_text = filing.markdown()
+            except Exception:
+                pass
+        if not full_text and hasattr(filing, "text"):
+            try:
+                full_text = filing.text()
+            except Exception:
+                pass
+        if not full_text and hasattr(filing, "html"):
+            try:
+                full_text = _html_to_prose(filing.html())
+            except Exception:
+                pass
+
+        if full_text:
+            result = _extract_via_regex(full_text, section)
+            if result and len(result) > 200:
+                logger.info("Extracted Item %s via regex fallback (len=%d)", section, len(result))
+                return result
     except Exception as e:
         logger.debug("Regex fallback failed for Item %s: %s", section, e)
 
