@@ -1,0 +1,35 @@
+{
+  "ticker": "USB",
+  "company_name": "US BANCORP \\DE\\",
+  "year1": 2021,
+  "year2": 2022,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-23T13:49:17.932593+00:00",
+  "summary_counts": {
+    "RETAINED": 2
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 1A can be found in the 2021 Annual Report on pages 137 to 150 under the heading “Risk Factors.” That information is incorporated into this report by reference.",
+      "year2_quote_or_null": "Information in response to this Item 1A can be found in the 2022 Annual Report on pages 140 to 155 under the heading “Risk Factors.” That information is incorporated into this report by reference.",
+      "reasoning": "The underlying disclosure remains the same: Item 1A risk-factor information is incorporated by reference to the annual report’s Risk Factors section. The changed year and page range are editorial and do not alter the economic risk disclosed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_incorporated_reference",
+      "title": "Risk Factors Incorporated By Reference"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 7A can be found in the 2021 Annual Report on pages 35 to 56 under the heading “Corporate Risk Profile.” That information is incorporated into this report by reference.",
+      "year2_quote_or_null": "Information in response to this Item 7A can be found in the 2022 Annual Report on pages 35 to 56 under the heading “Corporate Risk Profile.” That information is incorporated into this report by reference.",
+      "reasoning": "The Year-2 Item 7A disclosure preserves the same economic subject—market risk information under the Corporate Risk Profile—and points to the same report pages and heading, with only the reporting year updated. The Item 1A candidate addresses a different risk-disclosure section and does not alter the Item 7A continuity.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_incorporation",
+      "title": "Market Risk Information Incorporated By Reference"
+    }
+  ]
+}

@@ -1,0 +1,750 @@
+{
+  "ticker": "UBSI",
+  "company_name": "UNITED BANKSHARES INC/WV",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T20:55:13.397335+00:00",
+  "summary_counts": {
+    "RETAINED": 51,
+    "SOFTENED": 2,
+    "REWORDED": 6,
+    "REMOVED": 3,
+    "ABSORBED": 1,
+    "NEW": 10
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United is subject to risks inherent to the Company’s business. The material risks and uncertainties that management believes affect the Company are described below.",
+      "year2_quote_or_null": "United is subject to risks inherent to the Company’s business. The material risks and uncertainties that management believes affect the Company are described below.",
+      "reasoning": "The Year-2020 candidate preserves the same economic disclosure: United faces inherent business risks, including material risks and uncertainties identified by management, as well as potentially unidentified or immaterial risks. The wording and heading are materially unchanged.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_overview",
+      "title": "Risk Factors Overview and Scope"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in economic and political conditions could adversely affect our earnings, as our borrowers’ ability to repay loans and the value of the collateral securing our loans decline",
+      "year2_quote_or_null": "Changes in economic and political conditions could adversely affect our earnings, as our borrowers’ ability to repay loans and the value of the collateral securing our loans decline",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure and preserves the same economic risks: adverse economic and political conditions may impair borrower repayment capacity, reduce collateral values, and harm earnings. The additional Candidate 3 credit-risk discussion does not alter that retained disclosure.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_001_economic_political_conditions",
+      "title": "Economic and Political Conditions"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Furthermore, future downgrades, defaults or prepayments, including the liquidation of the underlying collateral in certain securities, could result in future classifications as other-than-temporarily impaired.",
+      "year2_quote_or_null": "Furthermore, future downgrades, defaults or prepayments, including the liquidation of the underlying collateral in certain securities, could result in the recording of an allowance for credit losses related to these securities.",
+      "reasoning": "The core investment-securities valuation and credit deterioration risk is retained, but the Year-2 disclosure replaces the specific risk of other-than-temporary impairment with recording an allowance for credit losses and removes the explicit temporary-impairment/accumulated-other-comprehensive-income offset. This reflects a material change in the accounting consequence and softens the stated impairment risk, while the broader volatility risk remains materially present.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_0_002_investment_securities_volatility",
+      "title": "Investment Securities Volatility and Impairment"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "There are no assurances as to adequacy of the allowance for loan losses.",
+      "year2_quote_or_null": "There are no assurances as to adequacy of the allowance for credit losses.",
+      "reasoning": "The underlying economic risk—uncertainty that the allowance will be sufficient to absorb actual credit losses—remains expressly disclosed in Year-2020. The terminology changes from loan losses to credit losses and the methodology is updated for CECL, but the disclosure does not materially downgrade or remove the risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_003_allowance_loan_losses",
+      "title": "Allowance for Loan Losses Adequacy"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "the adoption of Accounting Standards Update (“ASU”) 2016-13 ... on January 1, 2020 will impact our methodology for estimating the allowance for loan losses.",
+      "year2_quote_or_null": "The FASB’s Accounting Standards Update 2016-13, effective for United as of January 1, 2020, substantially changes the accounting for credit losses on loans, leases and other financial assets...",
+      "reasoning": "The Year-2 disclosure continues to address the same underlying economic risk: ASU 2016-13/CECL changes the methodology for estimating credit-loss allowances. It expands the discussion to explain expected-loss measurement and related judgment, complexity, and potential effects, but does not weaken or eliminate the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_004_cecl_adoption",
+      "title": "ASU 2016-13 Credit Loss Methodology"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Therefore, changes in general market interest rates, such as a change in the monetary policy of the Board of Governors of the Federal Reserve System or otherwise beyond those which are contemplated by United’s interest rate risk model and policy, could have an effect on net interest income.",
+      "year2_quote_or_null": "Therefore, changes in general market interest rates, such as a change in the monetary policy of the Board of Governors of the Federal Reserve System or otherwise beyond those which are contemplated by United’s interest rate risk model and policy, could have an effect on net interest income.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: changes in market interest rates can adversely affect net interest income and earnings. The disclosure is materially unchanged; Candidate 2 provides related context but does not replace the retained Item 1A disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_interest_rate_risk",
+      "title": "Changes in Interest Rates"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If LIBOR ceases to exist or if the methods of calculating LIBOR change from current methods for any reason, interest rates on our floating rate obligations, loans, deposits, derivatives, and other financial instruments tied to LIBOR rates, as well as the revenue and expenses associated with those financial instruments, may be adversely affected.",
+      "year2_quote_or_null": "If LIBOR ceases to exist or if the methods of calculating LIBOR change from current methods for any reason, interest rates on our floating rate obligations, loans, deposits, derivatives, and other financial instruments tied to LIBOR rates, as well as the revenue and expenses associated with those financial instruments, may be adversely affected.",
+      "reasoning": "The core economic risk—that LIBOR reform, cessation, or calculation changes could adversely affect rates, values, revenues, and expenses for LIBOR-linked instruments—remains materially unchanged and is stated verbatim in Year-2020. The added transition dates, regulatory guidance, and timing uncertainty provide more detail but do not downgrade or eliminate the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_libor_benchmark_transition",
+      "title": "LIBOR and Benchmark Reform"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A significant decline in general economic conditions caused by inflation or deflation, recession, unemployment, changes in government fiscal and monetary policies, acts of terrorism, or other factors beyond our control could cause our borrowers to default on their loan payments, and the collateral values securing such loans to decline and be insufficient to repay any outstanding indebtedness.",
+      "year2_quote_or_null": "A significant decline in general economic conditions caused by inflation or deflation, recession, unemployment, changes in government fiscal and monetary policies, acts of terrorism, or other factors beyond our control could cause our borrowers to default on their loan payments, and the collateral values securing such loans to decline and be insufficient to repay any outstanding indebtedness.",
+      "reasoning": "The core economic risk—borrower default and declining or insufficient collateral values resulting from adverse economic conditions—appears verbatim in Year-2. Year-2 adds COVID-19-specific deterioration and related credit-quality risks, but does not weaken or remove the Year-1 disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_007_credit_risk",
+      "title": "Credit Risk and Loan Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United’s information systems may experience an interruption or breach in security.",
+      "year2_quote_or_null": "United’s information systems may experience an interruption or breach in security.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk—failure, interruption, or security breach of United’s information systems causing operational disruption and adverse financial consequences—with materially identical disclosure. Candidate 2 also addresses the same risk but is not needed because Candidate 1 is effectively unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_008_information_systems_breach",
+      "title": "Information Systems Interruption or Breach"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Unauthorized disclosure of sensitive or confidential client or customer information, whether through a cyber-attack, other breach of our computer systems or otherwise, could severely harm our business.",
+      "year2_quote_or_null": "Unauthorized disclosure of sensitive or confidential client or customer information, whether through a cyber-attack, other breach of our computer systems or otherwise, could severely harm our business.",
+      "reasoning": "Candidate 1 retains the same economic risk of unauthorized disclosure of sensitive customer information through cyber-attacks, system breaches, or related events, with the same potential for severe business harm. The added work-from-home reference is an incremental detail and does not change the underlying disclosure risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_009_customer_information_disclosure",
+      "title": "Unauthorized Customer Information Disclosure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United’s business continuity plans or data security systems could prove to be inadequate, resulting in a material interruption in, or disruption to, its business and a negative impact on results of operations.",
+      "year2_quote_or_null": "United’s business continuity plans or data security systems could prove to be inadequate, resulting in a material interruption in, or disruption to, its business and a negative impact on results of operations.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk: inadequate business continuity and data-security systems could cause material business interruption and adverse operating results. The detailed causes, affected systems, and consequences are also unchanged, so this is retained rather than merely reworded.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_010_business_continuity",
+      "title": "Business Continuity and Data Security"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "High inflation, natural disasters, acts of terrorism, including cyber-attacks, an escalation of hostilities or other international or domestic occurrences, and other factors could have a negative impact on the economy of the Mid-Atlantic regions in which United operates.",
+      "year2_quote_or_null": "High inflation, natural disasters, acts of terrorism, including cyber-attacks, an escalation of hostilities or other international or domestic occurrences, and other factors could have a negative impact on the economy of the Mid-Atlantic and Southeast regions in which United operates.",
+      "reasoning": "The underlying economic risk—terrorism and other destabilizing events causing regional economic deterioration, loan-portfolio deterioration, deposit/funding pressure, and weaker product demand—remains substantively disclosed in Year-2020. Candidate 1 retains the full risk with only a geographic expansion from the Mid-Atlantic to the Mid-Atlantic and Southeast regions; Candidate 2 also preserves the terrorism-specific portion.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_011_terrorism_economic_effects",
+      "title": "Terrorism and Destabilizing Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Loss of United’s Chief Executive Officer or other executive officers could adversely affect its business.",
+      "year2_quote_or_null": "Loss of United’s Chief Executive Officer or other executive officers could adversely affect its business.",
+      "reasoning": "The underlying risk—the adverse business impact from losing the CEO or other key executive officers—remains expressly disclosed with materially identical substance. Extending the CEO’s employment-agreement date from March 31, 2023 to March 31, 2024 does not change the disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_key_executive_loss",
+      "title": "Loss of Chief Executive Officer"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There is a risk that aggressive competition could result in United controlling a smaller share of these markets. A decline in market share could lead to a decline in net income which would have a negative impact on stockholder value.",
+      "year2_quote_or_null": "There is a risk that aggressive competition could result in United controlling a smaller share of these markets. A decline in market share could lead to a decline in net income which would have a negative impact on stockholder value.",
+      "reasoning": "The core economic risk—aggressive competition reducing United’s market share and thereby negatively affecting net income and stockholder value—is stated verbatim in Year-2. The added detail about competition for deposits, loans, client assets, and expanded markets does not alter or weaken that risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_013_market_competition",
+      "title": "Competition in Banking Markets"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "United may be adversely affected by the soundness of other financial institutions.",
+      "year2_quote_or_null": "United may be adversely affected by the soundness of other financial institutions.",
+      "reasoning": "The Year-2020 disclosure addresses the same economic risk—losses or liquidity effects arising from interconnected financial-institution counterparties—with materially identical substance. The only apparent change is cosmetic wording (“marketwide” versus “market wide”).",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_014_financial_institution_soundness",
+      "title": "Soundness of Other Financial Institutions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United is subject to extensive government regulation and supervision.",
+      "year2_quote_or_null": "United is subject to extensive government regulation and supervision.",
+      "reasoning": "The Year-2 disclosure repeats the same underlying economic risk—extensive government regulation and supervision—verbatim. The additional discussion elaborates the consequences and compliance costs but does not weaken, remove, or materially change the Year-1 risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_015_government_regulation",
+      "title": "Government Regulation and Supervision"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United is subject to extensive federal and state regulation, supervision and examination. Banking regulations are primarily intended to protect depositors’ funds, federal deposit insurance funds and the banking system as a whole, not shareholders.",
+      "year2_quote_or_null": "United is subject to extensive federal and state regulation, supervision and examination. Banking regulations are primarily intended to protect depositors’ funds, federal deposit insurance funds and the banking system as a whole, not shareholders.",
+      "reasoning": "The Year-2020 disclosure preserves the same underlying economic risk—extensive banking regulation and supervision affecting United’s operations, costs, products, and compliance exposure—with the substantive language and described consequences unchanged. The added heading and introductory sentence are cosmetic and do not alter the risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_000_regulatory_compliance",
+      "title": "Extensive Banking Regulation and Compliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In the normal course of business, United and its subsidiaries are routinely subject to examinations and challenges from federal and state tax authorities regarding the amount of taxes due in connection with investments that the Company has made and the businesses in which United has engaged.",
+      "year2_quote_or_null": "In the normal course of business, United and its subsidiaries are routinely subject to examinations and challenges from federal and state tax authorities regarding the amount of taxes due in connection with investments that the Company has made and the businesses in which United has engaged.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure: it retains the same tax-authority examination and challenge risk, including the potential for material adverse effects from unfavorable resolutions.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_tax_authority_challenges",
+      "title": "Tax Authority Challenges and Exposures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The CFPB has broad rulemaking authority to administer and carry out the provisions of the Dodd-Frank Act with respect to financial institutions that offer covered financial products and services to consumers.",
+      "year2_quote_or_null": "The CFPB has broad rulemaking authority to administer and carry out the provisions of the Dodd-Frank Act with respect to financial institutions that offer covered financial products and services to consumers.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risks: CFPB rulemaking and enforcement, supervisory/reporting burdens, and potentially material effects on consumer-product operations and profitability. The text is substantively identical, with only cosmetic formatting and the addition of quotation marks around “CFPB.”",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_002_cfpb_consumer_regulation",
+      "title": "CFPB Consumer Financial Regulation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United may elect or be compelled to seek additional capital in the future, but capital may not be available when it is needed.",
+      "year2_quote_or_null": "United may elect or be compelled to seek additional capital in the future, but capital may not be available when it is needed.",
+      "reasoning": "The Year-2020 disclosure reproduces the same economic risk: United may need additional capital, but market and other conditions could prevent it from obtaining capital when needed or on acceptable terms. The disclosure is materially unchanged aside from section labeling.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_003_additional_capital",
+      "title": "Availability of Additional Capital"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Since fully phased in on January 1, 2019, the Basel III Capital Rules require United and United Bank to maintain the following:",
+      "year2_quote_or_null": "In particular, the capital requirements applicable to United under the Basel III rules became fully effective on January 1, 2019. Under the Basel III rules, United is required to maintain a common equity Tier 1 capital ratio of 4.5%, a Tier 1 capital ratio of 6%, a total capital ratio of 8%, and a leverage ratio of 4%. In addition, United must maintain an additional capital conservation buffer of 2.5% of total risk weighted assets.",
+      "reasoning": "The same underlying economic risk remains: noncompliance with Basel III minimum capital ratios and the 2.5% conservation buffer can constrain distributions and discretionary executive compensation. Year-2020 presents the requirements more concisely, without materially changing the disclosed exposure or consequences.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_004_basel_capital_requirements",
+      "title": "Basel III Capital Requirements"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The Basel III Capital Rules and the Capital Simplification Rules also provide for a number of deductions from and adjustments to CET1.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the economic risk that specified deferred tax assets and significant investments in non-consolidated financial entities could require deduction from CET1 under applicable thresholds. Accordingly, the disclosure is classified as removed.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_005_cet1_deductions",
+      "title": "CET1 Deductions and Capital Simplification"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Both United and United Bank made this election in order to avoid significant variations in the level of capital depending upon the impact of interest rate fluctuations on the fair value of their available-for-sale securities portfolio.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the Year-2019 disclosure concerning the regulatory treatment of accumulated other comprehensive income, the election to exclude certain items, or the related interest-rate-driven capital volatility. The economic risk therefore appears absent from the Year-2020 disclosure set.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_006_aoci_capital_treatment",
+      "title": "Accumulated Other Comprehensive Income Treatment"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The Basel III Capital Rules prescribe a standardized approach for risk weightings that expanded the risk-weighting categories ... generally ranging from 0% for U.S. government and agency securities, to 600% for certain equity exposures ...",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate addresses the economic risk that Basel III’s expanded, risk-sensitive asset risk-weight categories—including potentially higher weights for specified exposures—could affect the company. The disclosure is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_007_risk_weighting_rules",
+      "title": "Risk-Weighted Asset Categories"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Basel III changes have resulted in generally higher minimum capital ratios that require United and its subsidiaries to maintain capital buffers above minimum requirements to avoid restrictions on capital distributions and executive bonus payments.",
+      "year2_quote_or_null": "The Basel III changes have resulted in generally higher minimum capital ratios than in the past that requires United and its subsidiaries to maintain capital buffers above minimum requirements to avoid restrictions on capital distributions and executive bonus payments.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks: higher Basel III capital requirements, required capital buffers, restrictions on distributions and bonuses, potentially lower returns, additional capital needs, regulatory actions, and business-strategy constraints. The minor grammatical and wording changes do not alter the substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_008_capital_requirement_impacts",
+      "title": "Capital Requirements and Distribution Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Failure to maintain effective internal controls over financial reporting in the future could impair United’s ability to accurately and timely report its financial results or prevent fraud, resulting in loss of investor confidence and adversely affecting United’s business and stock price.",
+      "year2_quote_or_null": "Failure to maintain effective internal controls over financial reporting in the future could impair United’s ability to accurately and timely report its financial results or prevent fraud, resulting in loss of investor confidence and adversely affecting United’s business and stock price",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: ineffective internal controls could impair accurate and timely reporting, allow fraud, and cause regulatory, investor-confidence, business, and stock-price harm. The language is substantively unchanged, aside from cosmetic punctuation.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_009_financial_reporting_controls",
+      "title": "Internal Controls Over Financial Reporting"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United could face unanticipated environmental liabilities or costs related to real property owned or acquired through foreclosure.",
+      "year2_quote_or_null": "United could face unanticipated environmental liabilities or costs related to real property owned or acquired through foreclosure.",
+      "reasoning": "The Year-2020 candidate addresses the same economic risk—environmental liabilities and remediation costs associated with foreclosed or acquired real property—and is substantively identical to the Year-2019 disclosure. No material weakening, removal, or bundling is evident.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_010_environmental_liabilities",
+      "title": "Environmental Liabilities on Foreclosed Property"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United’s earnings are significantly affected by the fiscal and monetary policies of the federal government and its agencies.",
+      "year2_quote_or_null": "United’s earnings are significantly affected by the fiscal and monetary policies of the federal government and its agencies",
+      "reasoning": "Candidate 1 repeats the same economic risk: federal fiscal and monetary policies, including Federal Reserve actions, can affect funding costs, financial instruments, borrowers’ repayment ability, and results. The disclosure is materially unchanged; Candidate 2 is not needed to classify the matching unit.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_011_federal_monetary_policy",
+      "title": "Federal Fiscal and Monetary Policy Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "New accounting or tax pronouncements or interpretations may be issued by the accounting profession, regulators or other government bodies which could change existing accounting methods. Changes in accounting methods could negatively impact United’s results of operations and financial condition.",
+      "year2_quote_or_null": "New accounting or tax pronouncements or interpretations may be issued by the accounting profession, regulators or other government bodies which could change existing accounting methods. Changes in accounting methods could negatively impact United’s results of operations and financial condition.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and retains the same economic risk: evolving accounting and tax standards or interpretations may change accounting methods and adversely affect results of operations and financial condition.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_012_accounting_tax_changes",
+      "title": "Changes in Accounting and Tax Standards"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "United’s vendors could fail to fulfill their contractual obligations, resulting in a material interruption in, or disruption to, its business and a negative impact on results of operations.",
+      "year2_quote_or_null": "United’s vendors could fail to fulfill their contractual obligations, resulting in a material interruption in, or disruption to, its business and a negative impact on results of operations.",
+      "reasoning": "The core third-party vendor dependency and contractual-performance risk remains expressly disclosed in Year-2020 Candidate 1. The additional Year-2019 vendor risks (including service discontinuation, capacity constraints, minimum spending obligations, quality, and vendor-related operational/security disruptions) are not shown as a single complete unit, but are partially covered by the broader retained vendor-dependency disclosure and separately surfaced in Candidates 2–5; therefore the overall disclosure is best classified as absorbed into the Year-2020 vendor-risk units rather than removed.",
+      "section": "1A",
+      "confidence": 0.86,
+      "id": "1A_1_013_vendor_dependencies",
+      "title": "Third-Party Vendor Dependencies and Disruptions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Severe weather, natural disasters, public health issues, acts of war or terrorism, and other external events could significantly impact United’s ability to conduct business.",
+      "year2_quote_or_null": "Severe weather, natural disasters, public health issues, acts of war or terrorism, and other external events could significantly impact United’s ability to conduct business.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk and the detailed consequences essentially verbatim, including impacts on deposits, borrowers, collateral, employees, revenue, expenses, and financial condition. Candidate 2 addresses a related but narrower systems-continuity risk and does not change the classification because the original disclosure was retained directly.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_014_external_events",
+      "title": "Severe Weather and Other External Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United’s stock price can fluctuate significantly in response to a variety of factors, including, among other things:",
+      "year2_quote_or_null": "United’s stock price can fluctuate significantly in response to a variety of factors, including, among other things:",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk—United’s stock price may be materially volatile due to operating, market, economic, regulatory, and geopolitical factors—and preserves the substantive factor list and concluding risk statement. The added heading and section label are cosmetic and do not change the risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_000_stock_price_volatility",
+      "title": "Stock Price Volatility Factors"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Dividend payments by United’s subsidiaries to United and by United to its shareholders can be restricted.",
+      "year2_quote_or_null": "Dividend payments by United’s subsidiaries to United and by United to its shareholders can be restricted.",
+      "reasoning": "The same economic risk—regulatory and other constraints on subsidiary-to-parent and parent-to-shareholder dividend payments—is disclosed with materially identical substance. The updated $121.5 million to $94.6 million amount is a factual year-end change, not a change in the underlying risk disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_001_dividend_restrictions",
+      "title": "Dividend Payment Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United common stock is not a bank deposit and, therefore, is not insured against loss by the Federal Deposit Insurance Corporation, any other deposit insurance fund or by any other public or private entity.",
+      "year2_quote_or_null": "United common stock is not a bank deposit and, therefore, is not insured against loss by the Federal Deposit Insurance Corporation, any other deposit insurance fund or by any other public or private entity.",
+      "reasoning": "The Year-2020 disclosure reproduces the same economic risk and substantive language: United common stock is not a deposit and is not protected by deposit insurance, so investors may lose some or all of their investment.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_002_common_stock_not_insured",
+      "title": "Common Stock Is Not Insured"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Provisions of federal banking laws, including regulatory approval requirements, could make it more difficult to be acquired by a third party, even if perceived to be beneficial to United’s shareholders.",
+      "year2_quote_or_null": "Provisions of federal banking laws, including regulatory approval requirements, could make it more difficult to be acquired by a third party, even if perceived to be beneficial to United’s shareholders.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and continues to disclose the same anti-takeover risk arising from federal banking laws and regulatory approval requirements.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_003_anti_takeover_banking_laws",
+      "title": "Banking Laws May Limit Takeovers"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The objective of United’s Asset/Liability Management function is to maintain consistent growth in net interest income within United’s policy guidelines. This objective is accomplished through the management of balance sheet liquidity and interest rate risk exposures due to changes in economic conditions, interest rate levels and customer preferences.",
+      "year2_quote_or_null": "The objective of United’s Asset/Liability Management function is to maintain consistent growth in net interest income within United’s policy guidelines. This objective is accomplished through the management of balance sheet liquidity and interest rate risk exposures due to changes in economic conditions, interest rate levels and customer preferences.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the Year-2019 disclosure verbatim, preserving the same economic risks: balance-sheet liquidity and interest-rate exposures driven by economic conditions, interest-rate levels, and customer preferences. Candidate 2 provides additional governance detail but does not alter the retained objective.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_000_asset_liability_management_objective",
+      "title": "Asset/Liability Management Objective"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management considers interest rate risk to be United’s most significant market risk. Interest rate risk is the exposure to adverse changes in United’s net interest income as a result of changes in interest rates. United’s earnings are largely dependent on the effective management of interest rate risk.",
+      "year2_quote_or_null": "Management considers interest rate risk to be United’s most significant market risk. Interest rate risk is the exposure to adverse changes in United’s net interest income as a result of changes in interest rates. United’s earnings are largely dependent on the effective management of interest rate risk.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk: adverse changes in interest rates can affect net interest income, on which earnings depend, and interest rate risk remains identified as the most significant market risk. The disclosure is therefore retained.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_001_interest_rate_risk_significance",
+      "title": "Interest Rate Risk Significance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management of interest rate risk focuses on maintaining consistent growth in net interest income within Board-approved policy limits. United’s Asset/Liability Management Committee (ALCO) ... monitors and manages interest rate risk.",
+      "year2_quote_or_null": "Management of interest rate risk focuses on maintaining consistent growth in net interest income within Board-approved policy limits. United’s Asset/Liability Management Committee (“ALCO”) ... monitors and manages interest rate risk.",
+      "reasoning": "Candidate 1 preserves the same economic risk and governance disclosure, including ALCO oversight, Board-approved limits, and sensitivity of net interest income to interest-rate changes. The differences are only cosmetic punctuation and quotation formatting.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_002_interest_rate_risk_governance",
+      "title": "Interest Rate Risk Governance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These assumptions are inherently uncertain and, as a result, the model cannot precisely measure net interest income or precisely predict the impact of fluctuations in interest rates on net interest income.",
+      "year2_quote_or_null": "These assumptions are inherently uncertain and, as a result, the model cannot precisely measure net interest income or precisely predict the impact of fluctuations in interest rates on net interest income.",
+      "reasoning": "The Year-2020 candidate is substantively identical to the Year-2019 disclosure and continues to describe the same earnings simulation model, interest-rate sensitivity, assumptions, and uncertainty regarding simulated net interest income. No economic risk was removed, weakened, or bundled elsewhere.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_003_earnings_simulation_model",
+      "title": "Earnings Simulation Model"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Interest sensitive assets and liabilities are defined as those assets or liabilities that mature or are repriced within a designated time frame.",
+      "year2_quote_or_null": "Interest sensitive assets and liabilities are defined as those assets or liabilities that mature or are repriced within a designated time frame.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk disclosure, including the definition of interest-sensitive assets and liabilities, GAP management, earnings-simulation analysis, and monitoring of net interest margin sensitivity. No material change in the underlying interest-rate risk is evident.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_004_gap_analysis",
+      "title": "Interest-Sensitive Assets And Liabilities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The following table shows United’s estimated earnings sensitivity profile as of December 31, 2019 and December 31, 2018:",
+      "year2_quote_or_null": "The following table shows United’s estimated earnings sensitivity profile as of December 31, 2020 and December 31, 2019:",
+      "reasoning": "The Year-2 disclosure presents the same estimated earnings sensitivity profile for changes in interest rates and percentage changes in net interest income, with the reporting dates rolled forward by one year. The underlying economic risk is unchanged.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_005_earnings_sensitivity_table",
+      "title": "Estimated Earnings Sensitivity Profile"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "At December 31, 2019, given an immediate, sustained 100 basis point upward shock to the yield curve used in the simulation model, net interest income for United is estimated to decrease by 1.09% over one year.",
+      "year2_quote_or_null": "At December 31, 2020, given an immediate, sustained 100 basis point upward shock to the yield curve used in the simulation model, net interest income for United is estimated to decrease by 2.61% over one year.",
+      "reasoning": "The Year-2020 Item 7A disclosure continues to present the same one-year net-interest-income sensitivity to immediate, sustained upward and downward yield-curve shocks, with updated estimates. The economic risk is therefore retained, not removed or absorbed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_006_one_year_earnings_sensitivity",
+      "title": "One-Year Earnings Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition to the one year earnings sensitivity analysis, a two-year analysis is also performed.",
+      "year2_quote_or_null": "In addition to the one year earnings sensitivity analysis, a two-year analysis is also performed.",
+      "reasoning": "The same two-year yield-curve shock analysis remains disclosed in Year-2020, including upward and downward rate scenarios and their impacts on net interest income. The numerical estimates changed, but those are updated period-specific measurements rather than a change in the underlying economic risk disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_007_two_year_earnings_sensitivity",
+      "title": "Two-Year Earnings Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "This analysis does not include the potential increased refinancing activities, which should lessen the negative impact on net income from falling rates.",
+      "year2_quote_or_null": "This analysis does not include the potential increased refinancing activities, which should lessen the negative impact on net income from falling rates.",
+      "reasoning": "The Year-2020 disclosure is verbatim identical to the Year-2019 disclosure and addresses the same interest-rate sensitivity caveats, including refinancing effects, rate-shock assumptions, and policy guidelines.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_008_sensitivity_analysis_caveats",
+      "title": "Sensitivity Analysis Caveats"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The use of FHLB advances provides United with a low risk means of matching maturities of earning assets and interest-bearing funds to achieve a desired interest rate spread over the life of the earning assets.",
+      "year2_quote_or_null": "The use of FHLB advances provides United with a low risk means of matching maturities of earning assets and interest-bearing funds to achieve a desired interest rate spread over the life of the earning assets.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks and funding practices: FHLB membership and advances for maturity matching and interest-rate spread management, plus regional-bank credit and trust preferred securities funding. The wording changes are cosmetic and do not alter the substance.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_009_funding_and_maturity_management",
+      "title": "Funding And Maturity Management"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As part of its interest rate risk management strategy, United may use derivative instruments to protect against adverse price or interest rate movements on the value of certain assets or liabilities and on future cash flows.",
+      "year2_quote_or_null": "As part of its interest rate risk management strategy, United may use derivative instruments to protect against adverse price or interest rate movements on the value of certain assets or liabilities and on future cash flows.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and preserves the same economic risk: adverse price or interest-rate movements affecting assets, liabilities, and future cash flows managed through derivatives.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_010_derivative_instruments",
+      "title": "Derivative Instruments And Accounting"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If interest rates rise, United’s holdings of mortgage-related securities may experience reduced returns if the borrowers of the underlying mortgages pay off their mortgages later than anticipated. This is generally referred to as extension risk.",
+      "year2_quote_or_null": "If interest rates rise, United’s holdings of mortgage-related securities may experience reduced returns if the borrowers of the underlying mortgages pay off their mortgages later than anticipated. This is generally referred to as extension risk.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and retains the same economic risk: rising rates can slow mortgage prepayments, extend effective maturities, and reduce returns on mortgage-related securities.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_011_extension_risk_overview",
+      "title": "Mortgage Prepayment And Extension Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These securities are expected to have very little extension risk in a rising rate environment. Current models show that an immediate, sustained upward shock of 300 basis points, the average life of these securities would only extend to 4.6 years.",
+      "year2_quote_or_null": "These securities are expected to have very little extension risk in a rising rate environment. Current models show that an immediate, sustained upward shock of 300 basis points, the average life of these securities would only extend to 4.2 years.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risks and stress analysis: limited extension risk for fixed-rate CMOs under a 300-basis-point rate increase, along with projected average-life extension and price-decline impacts. The numerical updates reflect portfolio changes and updated assumptions, not a material change in the disclosed risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_012_fixed_rate_cmo_portfolio",
+      "title": "Fixed-Rate CMO Portfolio"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "United had approximately $149 million in balloon and other securities with a projected yield of 2.55% and a projected average life of 4.1 years on December 31, 2019.",
+      "year2_quote_or_null": "United had approximately $593.5 million in fixed rate balloon and Commercial Mortgage Backed Securities with a projected yield of 2.23% and a projected average life of 5 years on December 31, 2020.",
+      "reasoning": "Candidate 1 continues to disclose the same underlying economic exposure: a portfolio of balloon-related mortgage securities with projected yield and average life metrics. The added commercial-MBS detail and changed portfolio composition are substantive descriptive updates, but the disclosure is not negated, materially weakened, or absent.",
+      "section": "7A",
+      "confidence": 0.93,
+      "id": "7A_0_013_balloon_securities",
+      "title": "Balloon And Other Securities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United had approximately $19 million in 15-year mortgage backed securities with a projected yield of 3.04% and a projected average life of 3.3 years as of December 31, 2019.",
+      "year2_quote_or_null": "United had approximately $22.5 million in 15-year mortgage backed securities with a projected yield of 1.99% and a projected average life of 2.4 years as of December 31, 2020.",
+      "reasoning": "The same underlying economic disclosure—a portfolio of 15-year mortgage-backed securities, including its size, yield, average life, and seasoning metrics—appears in Year-2. The numerical changes reflect updated portfolio data, not a change in the disclosed risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_014_fifteen_year_mbs",
+      "title": "15-Year Mortgage-Backed Securities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "United had approximately $42 million in 20-year mortgage backed securities with a projected yield of 2.61% and a projected average life of 4.7 years on December 31, 2019.",
+      "year2_quote_or_null": "United had approximately $150.1 million in 20-year mortgage backed securities with a projected yield of 1.32% and a projected average life of 3.4 years on December 31, 2020.",
+      "reasoning": "The Year-2 disclosure addresses the same underlying economic exposure—United’s holdings of 20-year mortgage-backed securities—and retains the same portfolio characteristics, despite changes in amount, yield, average life, and other metrics.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_015_twenty_year_mbs",
+      "title": "20-Year Mortgage-Backed Securities"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "United had approximately $44 million in 30-year mortgage backed securities with a projected yield of 2.86% and a projected average life of 5.1 years on December 31, 2019.",
+      "year2_quote_or_null": "United had approximately $120.5 million in 30-year mortgage backed securities with a projected yield of 2.28% and a projected average life of 3.4 years on December 31, 2020.",
+      "reasoning": "The Year-2020 disclosure continues to address the same underlying economic risk/exposure: United’s holdings of 30-year mortgage-backed securities and their associated yield and duration/prepayment characteristics. The numerical changes and omission of Home Equity Conversion Mortgages do not change the risk category; the disclosure is updated rather than materially weakened or removed.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_016_thirty_year_mbs",
+      "title": "30-Year Mortgage-Backed Securities"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The remaining 6% of the mortgage related securities portfolio at December 31, 2019, included adjustable rate securities (ARMs), 10-year mortgage backed pass-through securities and other fixed rate mortgage backed securities.",
+      "year2_quote_or_null": "The remaining 5% of the mortgage related securities portfolio on December 31, 2020, included 10-year mortgage backed pass-through securities and other fixed rate mortgage backed securities.",
+      "reasoning": "The disclosure continues to identify the remaining mortgage-related securities, but no longer mentions adjustable-rate securities (ARMs), indicating a narrower/less emphasized exposure rather than a mere wording change. The remaining portfolio percentage also decreased from 6% to 5%.",
+      "section": "7A",
+      "confidence": 0.96,
+      "id": "7A_0_017_remaining_mortgage_securities",
+      "title": "Remaining Mortgage-Related Securities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management of United Bankshares, Inc. (the Company) is responsible for establishing and maintaining effective internal control over financial reporting as defined in Rules 13a-15(f) under the Securities Exchange Act of 1934.",
+      "year2_quote_or_null": "Management of United Bankshares, Inc. (the “Company”) is responsible for establishing and maintaining effective internal control over financial reporting as defined in Rules 13a-15(f) under the Securities Exchange Act of 1934.",
+      "reasoning": "Candidate 1 retains the same economic disclosure: management is responsible for establishing and maintaining effective internal control over financial reporting. The added limitations, assessment, and auditor-attestation language supplements rather than changes or weakens that responsibility.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_018_management_internal_control_responsibility",
+      "title": "Management Internal Control Responsibility"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Therefore, even those systems determined to be effective can provide only reasonable assurance with respect to financial statement preparation and presentation.",
+      "year2_quote_or_null": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Therefore, even those systems determined to be effective can provide only reasonable assurance with respect to financial statement preparation and presentation.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure verbatim, preserving the same economic risk that internal controls may fail to prevent or detect misstatements and provide only reasonable assurance. Candidate 2 also addresses the risk, but Candidate 1 is the closest corresponding disclosure.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_019_internal_control_inherent_limitations",
+      "title": "Internal Control Inherent Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Based on our assessment, we believe that, as of December 31, 2019, the Company’s internal control over financial reporting is effective based on those criteria.",
+      "year2_quote_or_null": "Based on our assessment, we believe that, as of December 31, 2020, the Company’s internal control over financial reporting is effective based on those criteria.",
+      "reasoning": "The core economic disclosure—that management assessed internal control over financial reporting using the COSO 2013 framework and concluded it was effective—appears in Year-2 with the same substance. The date and surrounding explanatory language changed, but the risk/control assessment itself was retained.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_020_management_control_effectiveness_assessment",
+      "title": "Management Control Effectiveness Assessment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Ernst & Young LLP, the independent registered public accounting firm who audited the Company’s consolidated financial statements has also issued an attestation report on the effectiveness of the Company’s internal control over financial reporting as of December 31, 2019.",
+      "year2_quote_or_null": "Ernst & Young LLP (“Ernst & Young”), the independent registered public accounting firm who audited the Company’s consolidated financial statements, has also issued an attestation report on the effectiveness of the Company’s internal control over financial reporting as of December 31, 2020.",
+      "reasoning": "The Year-2 disclosure retains the same underlying risk/disclosure: the independent auditor issued an attestation report on the effectiveness of internal control over financial reporting. The only material change is the reporting date, from 2019 to 2020.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_021_auditor_attestation_report",
+      "title": "Auditor Attestation Report"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "/s/ Richard M. Adams\n\n/s/ W. Mark Tatterson\n\nRichard M. Adams, Chairman of the Board and Chief Executive Officer\n\nW. Mark Tatterson, Executive Vice President and Chief Financial Officer\n\nMarch 2, 2020",
+      "year2_quote_or_null": "/s/ Richard M. Adams\n\n/s/ W. Mark Tatterson\n\nRichard M. Adams, Chairman of the Board and Chief Executive Officer\n\nW. Mark Tatterson, Executive Vice President and Chief Financial Officer\n\nMarch 1, 2021",
+      "reasoning": "The management-report signatures and signatories are unchanged; only the filing date moved forward by one year. This disclosure contains no distinct economic risk, so its substance was retained.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_022_management_signatures",
+      "title": "Management Report Signatures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have audited United Bankshares, Inc. and subsidiaries’ internal control over financial reporting as of December 31, 2019... In our opinion... maintained, in all material respects, effective internal control over financial reporting as of December 31, 2019, based on the COSO criteria.",
+      "year2_quote_or_null": "We have audited United Bankshares, Inc. and subsidiaries’ internal control over financial reporting as of December 31, 2020... In our opinion... maintained, in all material respects, effective internal control over financial reporting as of December 31, 2020, based on the COSO criteria.",
+      "reasoning": "The Year-2020 auditor opinion addresses the same economic risk and conclusion—whether internal control over financial reporting was effective—with only the reporting date changing from 2019 to 2020. The disclosure was therefore retained.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_023_auditor_internal_control_opinion",
+      "title": "Auditor Opinion On Internal Control"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We also have audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the consolidated balance sheets of the Company as of December 31, 2019 and 2018, and the related consolidated statements...",
+      "year2_quote_or_null": "We also have audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the consolidated balance sheets of the Company as of December 31, 2020 and 2019, and the related consolidated statements...",
+      "reasoning": "The disclosure continues to report the same economic fact: the PCAOB audit and unqualified opinion on the Company's consolidated financial statements. Only the covered reporting years and report date roll forward; the underlying disclosure is retained.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_024_audited_financial_statements",
+      "title": "Audited Financial Statements Reference"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Our responsibility is to express an opinion on the effectiveness of internal control over financial reporting based on our audit.",
+      "year2_quote_or_null": "Our responsibility is to express an opinion on the effectiveness of the Company’s internal control over financial reporting based on our audit.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the same auditor basis-for-opinion disclosure, including the same responsibilities, audit standards, reasonable-assurance threshold, risk assessment, and testing procedures. The only material-looking change is the insertion of “the Company’s,” which does not alter the underlying economic risk or disclosure substance.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_025_basis_for_audit_opinion",
+      "title": "Basis For Audit Opinion"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.",
+      "year2_quote_or_null": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Therefore, even those systems determined to be effective can provide only reasonable assurance with respect to financial statement preparation and presentation.",
+      "reasoning": "The core economic risk—internal controls may fail to prevent or detect misstatements and provide only reasonable assurance—appears materially unchanged in Candidate 1 and is also reiterated in Candidate 2. The Year-2020 disclosure does not eliminate or materially downgrade that risk.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_026_internal_control_definition_limitations",
+      "title": "Internal Control Definition And Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "/s/ Ernst & Young LLP\n\nCharleston, West Virginia\n\nMarch 2, 2020",
+      "year2_quote_or_null": "/s/ Ernst & Young LLP\n\nCharleston, West Virginia\n\nMarch 1, 2021",
+      "reasoning": "The disclosure retains the same auditor signature and location; only the filing date changes by one day/year, which does not alter the underlying economic substance.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_027_auditor_signature",
+      "title": "Auditor Signature And Date"
+    },
+    {
+      "id": "1A_0_001_covid_business_impact",
+      "title": "COVID-19 Pandemic Business Impact",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "RISKS RELATED TO THE COVID-19\n\nPANDEMIC\n\nUnited’s business, financial condition, liquidity and results of operations have been, and will likely continue to be, adversely affected by the COVID-19\n\npandemic.\n\nThe ongoing COVID-19\n\npandemic has created economic and financial disruptions that have adver",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_002_covid_economic_effects",
+      "title": "COVID-19 Pandemic Economic Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The COVID-19\n\npandemic has contributed to:\n\n•\n\nIncreased unemployment and decreased consumer confidence and business generally, leading to an increased risk of delinquencies, defaults and foreclosures.\n\n•\n\nRatings downgrades, credit deterioration and defaults in many industries, including natural re",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_003_covid_government_response",
+      "title": "COVID-19 Government Response Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Governmental authorities have taken unprecedented measures to provide economic assistance to individual households and businesses, stabilize the markets and support economic growth. The success of these measures is unknown and they may not be sufficient to fully mitigate the negative impact of the C",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_004_covid_duration_recession",
+      "title": "COVID-19 Duration and Recession Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The length of the pandemic and the efficacy of the extraordinary measures being put in place to address it are unknown. Until the pandemic subsides, the Company expects continued draws on lines of credit, reduced revenues in our trust operations and other businesses and increased customer and client",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_005_ppp_program_risks",
+      "title": "PPP Participation and Funding Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "As a participating lender in the PPP, United and United Bank are subject to additional risks of litigation from United Bank’s customers or other parties regarding United Bank’s processing of loans for the PPP and risks that the SBA may not fund some or all PPP loan guarantees.\n\nUnder the PPP, small ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_006_ppp_litigation",
+      "title": "PPP Processing Litigation and Reputation Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Since the opening of the PPP, several other larger banks have been subject to litigation regarding the process and procedures that such banks used in processing applications for the PPP and claims related to agent fees. United and United Bank may be exposed to the risk of similar litigation, from bo",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_007_ppp_sba_credit_risk",
+      "title": "PPP SBA Guarantee and Forgiveness Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "United Bank also has credit risk on PPP loans if a determination is made by the SBA that there is a deficiency in the manner in which the loan was originated, funded, or serviced by United Bank, such as an issue with the eligibility of a borrower to receive a PPP loan, which may or may not be relate",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_010_covid_credit_mitigation",
+      "title": "COVID-19 Loan Modification and Credit Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Bank regulatory agencies and various governmental authorities are urging financial institutions to work prudently with borrowers who are or may be unable to meet their contractual payment obligations because of the effects of COVID-19.\n\nWe are actively working to support our borrowers to mitigate th",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_2_002_mortgage_servicing_obligations",
+      "title": "Mortgage Servicing Obligations",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "United may be terminated as a servicer of mortgage loans, be required to repurchase a mortgage loan or reimburse investors for credit losses on a mortgage loan, or incur costs, liabilities, fines and other sanctions if we fail to satisfy our servicing obligations, including our obligations with resp",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_2_003_mortgage_repurchase_indemnity",
+      "title": "Mortgage Repurchase and Indemnity Risk",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "United may be required to repurchase mortgage loans or indemnify buyers against losses in some circumstances, which could harm liquidity, results of operations and financial condition\n\nWhen mortgage loans are sold, whether as whole loans or pursuant to a securitization, United is required to make cu",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

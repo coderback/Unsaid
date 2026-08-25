@@ -1,0 +1,1299 @@
+{
+  "ticker": "JPM",
+  "company_name": "JPMORGAN CHASE & CO",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-23T00:37:52.064029+00:00",
+  "summary_counts": {
+    "RETAINED": 81,
+    "SOFTENED": 4,
+    "ABSORBED": 7,
+    "REWORDED": 14,
+    "NEW": 22
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The following discussion sets forth the material risk factors that could affect JPMorgan Chase’s financial condition and operations.",
+      "year2_quote_or_null": "The following discussion sets forth the material risk factors that could affect JPMorgan Chase’s financial condition and operations.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk framework and potential adverse impacts described in Year-2019. The added “Part I” heading is purely structural and does not change the underlying disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_overview",
+      "title": "Risk Factors Overview"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "These changes could result in JPMorgan Chase incurring additional costs for complying with laws and regulations and could reduce its profitability. For example, existing and new laws and regulations have in the past and could in the future require JPMorgan Chase to:",
+      "year2_quote_or_null": "These changes could result in JPMorgan Chase incurring additional costs for complying with laws, rules and regulations and could reduce its profitability. In response to new and existing laws, rules and regulations and expanded supervision, JPMorgan Chase has in the past been and could in the future be, required to:",
+      "reasoning": "The core regulatory-compliance risk is retained in Candidate 1, including potentially higher costs, reduced profitability, business restrictions, and reduced liquidity. However, the Year-2019 disclosure specifically included the risk of being required to recognize losses in the value of assets held, and that item is absent from both Year-2020 candidates; this is a material narrowing of the enumerated impacts, so the overall disclosure is SOFTENED rather than merely reworded.",
+      "section": "1A",
+      "confidence": 0.94,
+      "id": "1A_0_001_regulatory_overview",
+      "title": "Regulatory Environment and Business Impact"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These differences in the regulatory framework can result in a firm such as JPMorgan Chase losing market share to competitors that are less regulated or not subject to regulation, especially with respect to unregulated financial products.",
+      "year2_quote_or_null": "These differences in the regulatory framework can result in a firm such as JPMorgan Chase losing market share to competitors that are less regulated or not subject to regulation, especially with respect to unregulated financial products.",
+      "reasoning": "The core economic risk—JPMorgan Chase losing market share to less-regulated or unregulated competitors because of differing regulatory burdens—is carried forward materially unchanged. Year-2020 adds a separate example concerning divergent implementation of global regulatory standards, but does not weaken or alter the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_regulatory_differences",
+      "title": "Differences in Financial Services Regulation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There can also be significant differences in the ways that similar regulatory initiatives affecting the financial services industry are implemented in the U.S. and in other countries and regions in which JPMorgan Chase does business.",
+      "year2_quote_or_null": "There can also be significant differences in the ways that similar regulatory initiatives affecting the financial services industry are implemented in the U.S. and in other countries and regions in which JPMorgan Chase does business.",
+      "reasoning": "The core economic risk—cross-jurisdictional differences or inconsistencies in financial-services regulation creating enhanced compliance burdens and competitive disadvantages—is expressly retained. Candidate 1 preserves the related restructuring, cost, product, and profitability consequences, while Candidate 2 also retains the specific risk of more restrictive national implementation.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_003_cross_jurisdiction_regulation",
+      "title": "Cross-Jurisdiction Regulatory Inconsistencies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase could become subject to similar regulatory resolutions or other actions in the future, and addressing the requirements of any such resolutions or actions could result in JPMorgan Chase incurring higher operational and compliance costs or needing to comply with other restrictions.",
+      "year2_quote_or_null": "JPMorgan Chase could become subject to similar regulatory resolutions or other actions in the future, and addressing the requirements of any such resolutions or actions could result in JPMorgan Chase incurring higher operational and compliance costs or needing to comply with other restrictions.",
+      "reasoning": "The core economic risk—heightened regulatory scrutiny and future enforcement actions causing higher compliance/operational costs and restrictions on operations—is materially unchanged and is stated nearly verbatim in Year-2020. The added admissions-related consequences are supplemental, not a change to the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_004_regulatory_scrutiny",
+      "title": "Regulatory Scrutiny and Enforcement"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "In connection with resolving specific regulatory investigations or enforcement actions, certain regulators have required JPMorgan Chase and other financial institutions to admit wrongdoing with respect to the activities that gave rise to the resolution. These types of admissions can lead to:",
+      "year2_quote_or_null": "In connection with resolving specific regulatory investigations or enforcement actions, certain regulators have required JPMorgan Chase and other financial institutions to admit wrongdoing with respect to the activities that gave rise to the resolution. These types of admissions can lead to:",
+      "reasoning": "The admissions-related economic risk remains substantively present in Year-2020, but it is included within the broader “Heightened Regulatory Scrutiny and Compliance Costs” disclosure rather than standing as a separate unit. The criminal-resolutions portion is also retained in Candidate 1, but the quoted admissions risk is best classified as absorbed into Candidate 2’s broader disclosure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_005_regulatory_admissions",
+      "title": "Admissions and Collateral Regulatory Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase expects that it and other financial services firms will continue to be subject to heightened regulatory scrutiny and governmental investigations and enforcement actions.",
+      "year2_quote_or_null": "JPMorgan Chase expects that: •it and other financial services firms will continue to be subject to heightened regulatory scrutiny and governmental investigations and enforcement actions •regulators will continue to require that financial institutions be penalized for actual or deemed violations of law with formal and punitive enforcement actions, including the imposition of significant monetary and other sanctions; and",
+      "reasoning": "The core economic risk—continued heightened regulatory scrutiny, governmental investigations and enforcement actions, including significant punitive sanctions—is expressly carried forward in Candidate 2. The related consequences of failed remediation, including further resolutions, fines, restrictions, prosecution and civil litigation, are also retained in Candidate 1, so this is not merely absorbed or softened.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_regulatory_remediation",
+      "title": "Regulatory Remediation and Additional Sanctions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Complying with economic sanctions and anti-corruption and anti-money laundering laws and regulations can increase JPMorgan Chase’s operational and compliance costs and risks.",
+      "year2_quote_or_null": "Complying with economic sanctions and anti-corruption and anti-money laundering laws, rules and regulations can increase JPMorgan Chase’s operational and compliance costs and risks.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risks: compliance costs and risks, worldwide sanctions/AML/anti-corruption obligations, and potential enforcement and significant civil and criminal penalties. It also adds blocking-law conflict risk; the changes are substantive expansion rather than weakening or removal.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_007_sanctions_aml",
+      "title": "Sanctions, Anti-Corruption and AML Compliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s operations can be constrained in countries with less predictable legal and regulatory frameworks.",
+      "year2_quote_or_null": "JPMorgan Chase’s operations and financial results can be negatively impacted in countries with less predictable legal and regulatory frameworks.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: unpredictable or inconsistently applied legal and regulatory regimes can constrain operations and reduce earnings. The added reference to financial results is not a weakening or material change to the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_unpredictable_legal_regimes",
+      "title": "Unpredictable Legal and Regulatory Regimes"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "After two years, if the deficiencies are not cured, the agencies could also require that JPMorgan Chase restructure, reorganize or divest assets or businesses in ways that could materially and adversely affect JPMorgan Chase’s operations and strategy.",
+      "year2_quote_or_null": "The agencies could also require that JPMorgan Chase restructure, reorganize or divest assets or businesses in ways that could materially and adversely affect JPMorgan Chase’s operations and strategy.",
+      "reasoning": "The underlying resolution-planning and restructuring risk remains, but Year-2020 removes the two-year cure period before the agencies may require restructuring, reorganization, or divestitures. This materially changes the timing/trigger and broadens the potential immediacy of the risk, while the remaining economic consequences are retained.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_009_resolution_requirements",
+      "title": "Orderly Resolution Planning Requirements"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Holders of JPMorgan Chase & Co.’s debt and equity securities will absorb losses if it were to enter into a resolution.",
+      "year2_quote_or_null": "Holders of JPMorgan Chase & Co.’s debt and equity securities will absorb losses if it were to enter into a resolution.",
+      "reasoning": "The core economic risk—holders of the Parent Company’s debt and equity securities absorbing losses in a resolution—is stated verbatim in Year-2. Year-2 adds detail about the preferred resolution strategy and potential magnitude and priority of losses, but does not weaken, negate, or remove the Year-1 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_010_resolution_securityholder_losses",
+      "title": "Securityholder Losses in Resolution"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The preferred “single point of entry” strategy under JPMorgan Chase’s resolution plan contemplates that only the Parent Company would enter bankruptcy proceedings.",
+      "year2_quote_or_null": "The preferred “single point of entry” strategy under JPMorgan Chase’s resolution plan contemplates that only the Parent Company would enter bankruptcy proceedings.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: under the single-point-of-entry strategy, the Parent Company enters resolution while subsidiaries are recapitalized, and Parent Company debt and equity holders absorb losses and rank behind subsidiary and priority/secured creditors. The additional framing regarding required eligible LTD and Title II does not change the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_011_single_point_entry",
+      "title": "Single Point of Entry Resolution Strategy"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If the U.K. and the EU fail to reach an agreement on their future relationship before the end of the transition period ... JPMorgan Chase may have to sustain a more fragmented operating model across its U.K., EU and other operating entities.",
+      "year2_quote_or_null": "is now maintaining, and expects that it will be required to sustain, a more fragmented operating model across its U.K. and EU operating entities",
+      "reasoning": "The core economic risk was retained: Brexit-related limits and uncertainty over U.K.-EU financial-services access require a more fragmented European operating model that is more complex, less efficient and more costly. Year-2 states that this model is now being maintained, reflecting the risk becoming realized rather than removed or weakened.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_brexit_operating_model",
+      "title": "Brexit Operating Model Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A disorderly withdrawal of the U.K. from the EU, or unexpected consequences of the withdrawal, could have significant and immediate destabilizing effects on economic and market conditions in the region and globally.",
+      "year2_quote_or_null": "Regulatory uncertainties associated with the U.K.’s departure from the EU could negatively affect JPMorgan Chase’s business, results of operations and operating model.",
+      "reasoning": "The Year-2 disclosure continues to address the same underlying Brexit economic risk: disruption and adverse effects on cross-border financial services, market access, and liquidity. It also specifically retains the Year-1 risks of fragmented liquidity and inability of U.K.- and EU-based firms to conduct business, while describing resulting operating-model and cost impacts.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_0_013_brexit_market_disruption",
+      "title": "Brexit Market and Financial Services Disruption"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any or all of the above factors could have an adverse effect on the overall operation of the European financial services market as well as JPMorgan Chase’s business, operations and earnings in the U.K., the EU and globally.",
+      "year2_quote_or_null": "Any or all of the above factors could have an adverse effect on the overall operation of the financial services market across the U.K. and the EU as well as JPMorgan Chase’s business, operations and earnings in the U.K., the EU and globally.",
+      "reasoning": "The core economic risk—adverse effects on the U.K./EU financial services market and JPMorgan Chase’s business, operations and earnings from political, regulatory and related developments—remains expressly disclosed. The 2020 disclosure adds Brexit-specific regulatory uncertainty and operating-model consequences but does not materially reduce or eliminate the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_000_european_financial_services_risk",
+      "title": "European Financial Services Market Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The economic environment and market conditions in which JPMorgan Chase operates continue to be uncertain due to political developments in the U.S. and other countries.",
+      "year2_quote_or_null": "The economic environment and market conditions in which JPMorgan Chase operates continue to be uncertain due to political developments in the U.S. and other countries.",
+      "reasoning": "The core economic risk—political developments creating economic uncertainty, market volatility, weaker growth, and related impacts on JPMorgan Chase—remains substantively disclosed. The examples are updated (including COVID-19 responses, fiscal policy, and political/social pressures), but the overall risk is neither materially weakened nor removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_001_political_economic_uncertainty",
+      "title": "Political Developments and Economic Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s results of operations can be negatively affected by adverse changes in any of the following:",
+      "year2_quote_or_null": "JPMorgan Chase’s results of operations can be negatively affected by adverse changes in any of the following:",
+      "reasoning": "Candidate 1 retains the same underlying economic risks, including sentiment, confidence, inflation/deflation, labor-market conditions, capital/liquidity/credit, market rates and prices, geopolitical and other disruptive events, and U.S. and global economic health. The overnight repo-rate parenthetical is omitted, but this is a minor detail within an otherwise materially retained disclosure; Candidate 1 also adds separate investment-portfolio and market-making loss risks.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_002_market_events_conditions",
+      "title": "Market Events and Economic Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, JPMorgan Chase’s investment portfolio and market-making businesses can suffer losses due to unanticipated market events, including:",
+      "year2_quote_or_null": "In addition, JPMorgan Chase’s investment portfolio and market-making businesses can suffer losses due to unanticipated market events, including:",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: unanticipated market events can cause losses in the investment portfolio and market-making businesses, including asset declines, credit events, correlation changes, hedging failures, and unaccounted-for market risks. The only change is a minor clarification that market-making positions include investment portfolio positions.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_003_market_making_investment_losses",
+      "title": "Investment and Market-Making Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s consumer businesses can be negatively affected by adverse economic conditions.",
+      "year2_quote_or_null": "JPMorgan Chase’s consumer businesses can be negatively affected by adverse economic conditions.",
+      "reasoning": "The core economic risk—adverse U.S. and global economic conditions harming consumer businesses through weaker credit performance, demand, delinquencies and charge-offs—remains expressly disclosed in Year-2. The added COVID-19, income, and policy details expand the disclosure but do not materially remove or weaken the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_004_consumer_economic_conditions",
+      "title": "Consumer Businesses and Economic Conditions"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "JPMorgan Chase’s earnings from its consumer businesses could also be adversely affected by governmental policies and actions that affect consumers, including: policies and initiatives relating to medical insurance, education, immigration and employment status",
+      "year2_quote_or_null": "JPMorgan Chase’s earnings from its consumer businesses could also be adversely affected by governmental policies and actions that affect consumers, including: •policies and initiatives relating to medical insurance, education, immigration, employment status and housing, and •policies aimed at the economy more broadly, such as higher taxes and increased regulation which could result in reductions in consumer disposable income.",
+      "reasoning": "The governmental-policy risk remains expressly disclosed in Year-2, with the listed policy areas retained and expanded. The Year-2 discussion also adds broader economic-conditions risks, but the Year-1 policy risk itself is not materially weakened or removed; it is best treated as retained within the expanded consumer-business risk discussion.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_005_consumer_government_policies",
+      "title": "Consumer Impacts of Government Policies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Unfavorable market and economic conditions can have an adverse effect on JPMorgan Chase’s wholesale businesses.",
+      "year2_quote_or_null": "Unfavorable market and economic conditions can have an adverse effect on JPMorgan Chase’s wholesale businesses.",
+      "reasoning": "The Year-2020 disclosure addresses the same economic risk with materially identical substance: adverse market and economic conditions may reduce wholesale transaction volumes and fees and create losses or residual credit positions. The minor formatting difference does not change the risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_006_wholesale_market_conditions",
+      "title": "Wholesale Businesses and Market Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An adverse change in market conditions in particular segments of the economy, such as a sudden and severe downturn in oil and gas prices or an increase in commodity prices, could have a material adverse effect on clients of JPMorgan Chase whose operations or financial condition are directly or indirectly dependent on the health or stability of those market segments.",
+      "year2_quote_or_null": "An adverse change in market conditions in particular segments of the economy, such as a sudden and severe downturn in oil and gas prices or an increase in commodity prices, could have a material adverse effect on clients of JPMorgan Chase whose operations or financial condition are directly or indirectly dependent on the health or stability of those market segments.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure: it retains both the sector-stress scenario and JPMorgan Chase’s potential credit losses on loans and other commitments to affected clients.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_007_sector_concentration_wholesale_credit",
+      "title": "Sector Stress and Wholesale Credit Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The fees that JPMorgan Chase earns from managing client assets or holding assets under custody for clients could be diminished by declining asset values or other adverse macroeconomic conditions.",
+      "year2_quote_or_null": "The fees that JPMorgan Chase earns from managing client assets or holding assets under custody for clients could be diminished by declining asset values or other adverse macroeconomic conditions.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risks: declining client asset values, adverse macroeconomic or market conditions, fee revenue pressure, client outflows, lower-revenue product shifts, and potential fund-performance impacts from withdrawals. The language and risk scope are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_008_asset_management_custody_fees",
+      "title": "Asset Values and Client Asset Fees"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Severe and sustained adverse economic conditions could reduce the rental cash flows that owners or developers receive from those properties which, in turn, could depress the values of the properties and impair the ability of borrowers to service or refinance their commercial real estate loans.",
+      "year2_quote_or_null": "Severe and sustained adverse economic conditions, including higher unemployment caused by the COVID-19 pandemic and governmental actions taken in response to the pandemic, could result in reductions in the rental cash flows that owners or developers receive from their tenants which, in turn, could depress the values of the properties and impair the ability of borrowers to service or refinance their commercial real estate loans.",
+      "reasoning": "The Year-2020 disclosure preserves the same underlying risk: adverse economic conditions reduce commercial real estate rental cash flows and property values, impair borrowers’ ability to service or refinance loans, and increase delinquencies, defaults, and write-offs. The added COVID-19 and unemployment references provide context but do not materially change the disclosed economic exposure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_009_commercial_real_estate_wholesale",
+      "title": "Commercial Real Estate Wholesale Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in interest rates and credit spreads can adversely affect certain of JPMorgan Chase’s revenue and income streams.",
+      "year2_quote_or_null": "Changes in interest rates and credit spreads can adversely affect certain of JPMorgan Chase’s revenue and income streams related to the Firm’s traditional banking and funding activities.",
+      "reasoning": "The Year-2020 candidates retain the same underlying economic risks: adverse effects from rising or low interest rates, variable-rate loan performance, and widening credit spreads. The Year-2 language adds a scope qualifier about traditional banking and funding activities, but the detailed candidate disclosures continue to address the Year-1 risks rather than weakening or removing them.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_010_interest_rate_credit_spread_effects",
+      "title": "Interest Rates and Credit Spread Effects"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Under extreme market conditions, hedging and other risk management strategies may not be as effective at mitigating losses as they would be under more normal market conditions.",
+      "year2_quote_or_null": "However, JPMorgan Chase’s hedging and other risk management strategies may not be effective, and it could incur significant losses, if extreme market events were to occur.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risks: valuation uncertainty and potential losses from market fluctuations, illiquidity, extreme events, and ineffective hedging. The wording changes do not materially alter the risk; although the sentence is phrased more generally, it continues to disclose that hedging may fail and extreme events could cause significant losses.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_1_011_financial_instrument_valuation",
+      "title": "Financial Instrument Valuation and Market Fluctuations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Many of these transactions expose JPMorgan Chase to the credit risk of its clients and counterparties, and can involve JPMorgan Chase in disputes and litigation if a client or counterparty defaults.",
+      "year2_quote_or_null": "Many of these transactions expose JPMorgan Chase to the credit risk of its clients and counterparties, and can involve JPMorgan Chase in disputes and litigation if a client or counterparty defaults.",
+      "reasoning": "The Year-2020 disclosure preserves the same underlying economic risks: adverse client/counterparty financial condition, transaction-related credit exposure and default disputes, and custodial-institution insolvency losses or liability. The expanded examples of counterparties do not materially change the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_012_counterparty_financial_condition",
+      "title": "Counterparty and Client Credit Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A default by, or the financial or operational failure of, a CCP through which JPMorgan Chase executes contracts would require JPMorgan Chase to replace those contracts, thereby increasing its operational costs and potentially resulting in losses.",
+      "year2_quote_or_null": "A default by, or the financial or operational failure of, a CCP through which JPMorgan Chase executes contracts would require JPMorgan Chase to replace those contracts, thereby increasing its operational costs and potentially resulting in losses.",
+      "reasoning": "The Year-2020 candidate addresses the same CCP default, member-default, client nonperformance, collateral insufficiency, intraday credit, bankruptcy, non-default loss, and related operational/litigation exposures as the Year-2019 disclosure, with no material change to the underlying economic risks.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_013_ccp_clearing_exposures",
+      "title": "CCP Clearing and Settlement Exposures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Disputes may arise with counterparties to derivatives contracts with regard to the terms, the settlement procedures or the value of underlying collateral. The disposition of those disputes could cause JPMorgan Chase to incur unexpected transaction, operational and legal costs, or result in credit losses.",
+      "year2_quote_or_null": "Disputes may arise with counterparties to derivatives contracts with regard to the terms, the settlement procedures or the value of underlying collateral. The disposition of those disputes could cause JPMorgan Chase to incur unexpected transaction, operational and legal costs, or result in credit losses.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk essentially verbatim, including disputes over derivatives terms, settlement, collateral valuation, and resulting costs or credit losses. The added counterparty-default language is supplementary and does not alter the original risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_014_derivatives_counterparty_disputes",
+      "title": "Derivatives Disputes and Credit Exposure"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The financial or operational failure of a significant market participant, such as a major financial institution or a CCP, or concerns about the creditworthiness of such a market participant, can have a cascading effect within the financial markets.",
+      "year2_quote_or_null": "The financial or operational failure of a significant market participant, such as a major financial institution or a CCP, or concerns about the creditworthiness of such a market participant, can have a cascading effect within the financial markets.",
+      "reasoning": "The core economic risk is unchanged: failure or weakened creditworthiness of a significant market participant could cascade through markets and disrupt JPMorgan Chase through losses, liquidity issues, defaults, interrelationships, and credit exposure. The Year-2 disclosure omits only the operational detail about unwinding or hedging positions during volatility, which does not remove or materially weaken the underlying market-participant-failure risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_015_significant_market_participant_failure",
+      "title": "Significant Market Participant Failure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "During periods of market stress or illiquidity, JPMorgan Chase’s credit risk may be further increased when JPMorgan Chase cannot realize the fair value of the collateral held by it or when collateral is liquidated at prices that are not sufficient to recover the full amount of the loan, derivative or other exposure due to it.",
+      "year2_quote_or_null": "During periods of market stress or illiquidity, JPMorgan Chase’s credit risk may be further increased when: •JPMorgan Chase cannot realize the fair value of the collateral it holds •collateral is liquidated at prices that are not sufficient to recover the full amount owed to it, or •counterparties are unable to post collateral, whether for operational or other reasons.",
+      "reasoning": "The core economic risk—losses and increased credit exposure when collateral cannot be realized at fair value or liquidation proceeds do not fully cover the exposure during stressed or illiquid markets—is expressly retained in Candidate 1. The added risk concerning counterparties’ inability to post collateral does not weaken or remove the original disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_016_collateral_value_declines",
+      "title": "Collateral Value Declines in Stressed Markets"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase could incur significant losses arising from concentrations of credit and market risk.",
+      "year2_quote_or_null": "JPMorgan Chase could incur significant losses arising from concentrations of credit and market risk.",
+      "reasoning": "The Year-2 disclosure repeats the Year-1 economic risk verbatim and further explains concentration and contagion mechanisms, including correlated counterparties, industries, geographies, and potential losses. The risk is therefore retained, not merely absorbed into the summary candidate.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_017_credit_market_concentrations",
+      "title": "Concentrations of Credit and Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase is exposed to greater credit and market risk to the extent that groupings of its clients or counterparties: engage in similar or related businesses, or in businesses in related industries; do business in the same geographic region; or have business profiles, models or strategies that could cause their ability to meet their obligations to be similarly affected by changes in economic conditions.",
+      "year2_quote_or_null": "JPMorgan Chase is exposed to greater credit and market risk to the extent that groupings of its clients or counterparties: engage in similar or related businesses, or in businesses in related industries; do business in the same geographic region, or have business profiles, models or strategies that could cause their ability to meet their obligations to be similarly affected by changes in economic conditions.",
+      "reasoning": "The Year-2020 disclosure repeats the same underlying client and counterparty concentration risk: correlated exposures arising from similar businesses, geographies, or sensitivity to economic conditions. The added discussion of contagion and potential losses expands the disclosure but does not weaken or materially alter the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_000_concentration_risk",
+      "title": "Client and Counterparty Concentration Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "For example, a significant deterioration in the credit quality of one of JPMorgan Chase’s borrowers or counterparties could lead to concerns about the creditworthiness of other borrowers or counterparties in similar, related or dependent industries.",
+      "year2_quote_or_null": "For example, a significant deterioration in the credit quality of one of JPMorgan Chase’s borrowers or counterparties could lead to concerns about the creditworthiness of other borrowers or counterparties in similar, related or dependent industries.",
+      "reasoning": "The Year-2020 disclosure retains the same concentration/contagion economic risk: deterioration in one borrower or counterparty can raise concerns about similarly connected parties and exacerbate credit, liquidity, and market-risk losses. The risk is stated nearly verbatim and remains in the same Item 1A section.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_001_concentration_contagion",
+      "title": "Concentration and Contagion Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Similarly, challenging economic conditions that affect a particular industry or geographic area could lead to concerns about the credit quality of JPMorgan Chase’s borrowers or counterparties not only in that particular industry or geography but in related or dependent industries, wherever located.",
+      "year2_quote_or_null": "Similarly, challenging economic conditions that affect a particular industry or geographic area could lead to concerns about the credit quality of JPMorgan Chase’s borrowers or counterparties not only in that particular industry or geography but in related or dependent industries, wherever located.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk essentially verbatim and retains the related risks of geographic/industry concentration, contagion across related industries, consumer repayment stress, and potentially unsuccessful diversification or hedging. It is also placed within a broader concentration-of-credit-and-market-risk discussion, but the underlying Year-2019 risk remains explicitly stated rather than merely absorbed.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_002_geographic_industry_exposure",
+      "title": "Geographic and Industry Exposure Monitoring"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s consumer businesses can also be harmed by an excessive expansion of consumer credit by bank or non-bank competitors.",
+      "year2_quote_or_null": "JPMorgan Chase’s consumer businesses can also be harmed by an excessive expansion of consumer credit by bank or non-bank competitors.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk essentially verbatim, including excessive competitive credit expansion, weaker underwriting, consumer defaults, higher losses, and potential recessionary effects.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_003_consumer_credit_competition",
+      "title": "Consumer Credit Competition and Defaults"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If JPMorgan Chase is unable to reduce positions effectively during a market dislocation, this can increase both the market and credit risks associated with those positions and the level of risk-weighted assets (“RWA”) that JPMorgan Chase holds on its balance sheet.",
+      "year2_quote_or_null": "If JPMorgan Chase is unable to reduce positions effectively during a market dislocation, this can increase both the market and credit risks associated with those positions and the level of RWA that JPMorgan Chase holds on its balance sheet.",
+      "reasoning": "The Year-2020 disclosure presents the same economic risk: inability to reduce positions during market dislocations could increase market and credit risk and RWA, with resulting effects on capital, funding costs, and profitability. The only change is cosmetic abbreviation of “risk-weighted assets” to “RWA.”",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_004_market_dislocation_positions",
+      "title": "Position Reduction During Market Dislocations"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "unexpected loss of consumer deposits caused by changes in consumer behavior",
+      "year2_quote_or_null": "unexpected loss of consumer deposits",
+      "reasoning": "The core risk of losing consumer deposits is retained, but Year-2020 removes the specific causal risk tied to changes in consumer behavior. This narrows and weakens the disclosure of the underlying exposure rather than merely rewording it.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_005_liquidity_risk_factors",
+      "title": "Liquidity Risk Factors"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "For example, during periods of market stress, low investor confidence and significant market illiquidity could result in higher funding costs for JPMorgan Chase and could limit its access to some of its traditional sources of liquidity.",
+      "year2_quote_or_null": "A reduction in JPMorgan Chase’s liquidity may be caused by events over which it has little or no control. For example, during periods of market stress, low investor confidence and significant market illiquidity could result in higher funding costs for JPMorgan Chase and could limit its access to some of its traditional sources of liquidity.",
+      "reasoning": "The core economic risk—market stress and illiquidity reducing investor confidence, increasing funding costs, and limiting access to traditional liquidity sources—is repeated verbatim in Year-2. The additional bullets broaden the disclosure but do not weaken or alter the Year-1 risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_006_market_stress_liquidity",
+      "title": "Market Stress and Liquidity Constraints"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase may need to raise funding from alternative sources if its access to stable and lower-cost sources of funding, such as deposits and borrowings from Federal Home Loan Banks, is reduced.",
+      "year2_quote_or_null": "JPMorgan Chase may need to raise funding from alternative sources if its access to stable and lower-cost sources of funding, such as deposits and borrowings from Federal Home Loan Banks, is reduced.",
+      "reasoning": "The Year-2020 disclosure preserves the same underlying economic risks: reduced access to stable, low-cost funding, higher or limited-cost alternative funding, and funding costs associated with liquidity, resolution-plan, and regulatory requirements. The added liquidity-management sentence expands the disclosure but does not alter the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_007_alternative_funding_sources",
+      "title": "Alternative Funding Sources and Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "More generally, if JPMorgan Chase fails to effectively manage its liquidity, this could constrain its ability to fund or invest in its businesses and subsidiaries (including, in particular, its broker-dealer subsidiaries), and thereby adversely affect its results of operations.",
+      "year2_quote_or_null": "More generally, if JPMorgan Chase fails to effectively manage its liquidity, this could constrain its ability to fund or invest in its businesses and subsidiaries (including, in particular, its broker-dealer subsidiaries), and thereby adversely affect its results of operations.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk verbatim: ineffective liquidity management could constrain funding or investment in businesses and subsidiaries and harm results. The additional alternative-funding discussion does not change or weaken that retained risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_008_liquidity_management",
+      "title": "Liquidity Management and Business Funding"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase & Co. is a holding company and depends on the cash flows of its subsidiaries to make payments on its outstanding securities.",
+      "year2_quote_or_null": "As a result of these arrangements, the ability of the holding company to make various payments is dependent on its receiving dividends from JPMorgan Chase Bank, N.A. and dividends and extensions of credit from the IHC.",
+      "reasoning": "The core economic risk—JPMorgan Chase & Co.’s dependence on subsidiary cash flows to meet its payment obligations—remains directly disclosed in Year-2020. The later disclosure expands the risk by detailing regulatory restrictions and the specific payments that could be affected, but does not weaken or remove the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_009_holding_company_cash_flows",
+      "title": "Holding Company Subsidiary Cash Flow Dependence"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The ability of JPMorgan Chase Bank, N.A. and the IHC to make payments to the holding company is also limited. JPMorgan Chase Bank, N.A. is subject to restrictions on its dividend distributions, as well as capital adequacy and liquidity requirements and other regulatory restrictions on its ability to make payments to the holding company.",
+      "year2_quote_or_null": "The ability of JPMorgan Chase Bank, N.A. and the IHC to make payments to the holding company is also limited. JPMorgan Chase Bank, N.A. is subject to restrictions on its dividend distributions, as well as capital adequacy requirements, such as the Supplementary Leverage Ratio (“SLR”), and liquidity requirements and other regulatory restrictions on its ability to make payments to the holding company. The IHC is prohibited from paying dividends or extending credit to the holding company if certain capital or liquidity thresholds are breached or if limits are otherwise imposed by JPMorgan Chase’s management or Board of Directors.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risk: regulatory, capital, liquidity, and management-imposed constraints may limit subsidiary dividends, credit extensions, and other payments to the holding company. It adds detail about the SLR and expands the consequences of those restrictions, but does not weaken or eliminate the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_010_subsidiary_payment_restrictions",
+      "title": "Subsidiary Payment and Dividend Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As a result of these arrangements, the ability of the holding company to make various payments is dependent on its receiving dividends from JPMorgan Chase Bank, N.A. and dividends and extensions of credit from the IHC.",
+      "year2_quote_or_null": "As a result of these arrangements, the ability of the holding company to make various payments is dependent on its receiving dividends from JPMorgan Chase Bank, N.A. and dividends and extensions of credit from the IHC.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: the holding company depends on dividends and extensions of credit from its subsidiaries to meet payment obligations, including debt service, dividends, redemptions, and other obligations. It also retains the related risk of earlier bankruptcy resulting from subsidiary regulatory capital and liquidity restrictions.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_011_holding_company_obligations",
+      "title": "Holding Company Payment Obligations"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Rating agencies evaluate both general and firm-specific and industry-specific factors when determining credit ratings for a particular financial institution, including: expected future profitability, risk management practices, legal expenses, ratings differentials between bank holding companies and their bank and non-bank subsidiaries, regulatory developments, assumptions about government support, and economic and geopolitical trends.",
+      "year2_quote_or_null": "JPMorgan Chase closely monitors and manages, to the extent that it is able, factors that could influence its credit ratings. However, there is no assurance that JPMorgan Chase’s credit ratings will not be lowered in the future. Furthermore, any such downgrade could occur at times of broader market instability when JPMorgan Chase’s options for responding to events may be more limited and general investor confidence is low.",
+      "reasoning": "The core credit-rating downgrade and funding/liquidity risk was retained, while the listed rating determinants were split across Candidates 1 and 2. Candidate 2 absorbs the remaining factors into a broader disclosure about influences on ratings and the consequences and timing of a potential downgrade; the economic risk is therefore bundled rather than removed.",
+      "section": "1A",
+      "confidence": 0.95,
+      "id": "1A_2_012_credit_rating_downgrades",
+      "title": "Credit Rating Downgrades and Funding"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "However, there is no assurance that JPMorgan Chase’s credit ratings will not be lowered in the future. Furthermore, any such downgrade could occur at times of broader market instability when JPMorgan Chase’s options for responding to events may be more limited and general investor confidence is low.",
+      "year2_quote_or_null": "However, there is no assurance that JPMorgan Chase’s credit ratings will not be lowered in the future. Furthermore, any such downgrade could occur at times of broader market instability when JPMorgan Chase’s options for responding to events may be more limited and general investor confidence is low.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 economic risk essentially verbatim: JPMorgan Chase may be downgraded, including during market instability when response options and investor confidence are constrained. The added list of influencing factors does not alter or weaken that risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_013_rating_management_uncertainty",
+      "title": "Credit Rating Management and Downgrade Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A reduction in JPMorgan Chase’s credit ratings could curtail JPMorgan Chase’s business activities and reduce its profitability in a number of ways, including:",
+      "year2_quote_or_null": "A reduction in JPMorgan Chase’s credit ratings could curtail JPMorgan Chase’s business activities and reduce its profitability in a number of ways, including:",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: a credit-rating reduction could restrict business activity, increase costs and collateral/funding needs, reduce counterparties, and widen credit spreads. The language and substance are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_014_rating_downgrade_effects",
+      "title": "Credit Rating Downgrade Business Effects"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "These reforms may cause benchmarks to perform differently than in the past, or to disappear entirely, or have other consequences which cannot be fully anticipated.",
+      "year2_quote_or_null": "These reforms may cause certain benchmarks to perform differently than in the past, or to disappear entirely, or have other consequences which cannot be fully anticipated.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risks: benchmark performance changes, disappearance, and unforeseen consequences affecting funding, investments, financial products, and litigation exposure. The addition of “certain” and the cosmetic change from “long-standing” to “longstanding” do not materially alter the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_015_benchmark_reform",
+      "title": "Benchmark Rate Reform and Replacement"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any of the benchmark reforms which have been proposed or implemented, or the general increased regulatory scrutiny of benchmarks, could also increase the costs and risks of administering or otherwise participating in the setting of benchmarks and complying with regulations or requirements relating to benchmarks.",
+      "year2_quote_or_null": "Any of the benchmark reforms which have been proposed or implemented, or the general increased regulatory scrutiny of benchmarks, could also increase the costs and risks of administering or otherwise participating in the setting of benchmarks and complying with regulations or requirements relating to benchmarks.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and preserves the same economic risks: higher benchmark administration and compliance costs, discouragement of participation, methodology changes, and possible benchmark disappearance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_016_benchmark_administration",
+      "title": "Benchmark Administration and Participation Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any of these developments, and any future initiatives to regulate, reform or change the administration of benchmarks, could result in adverse consequences to the return on, value of and market for loans, mortgages, securities, derivatives and other financial instruments whose returns are linked to any such benchmark, including those issued, funded, serviced or held by JPMorgan Chase.",
+      "year2_quote_or_null": "Any of these developments, and any future initiatives to regulate, reform or change the administration of benchmarks, could result in adverse consequences to the return on, value of and market for loans, mortgages, securities, derivatives and other financial instruments whose returns are linked to any such benchmark, including those issued, funded, serviced or held by JPMorgan Chase.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the Year-2019 disclosure verbatim and preserves the same economic risk: benchmark regulation, reform, or administration changes may adversely affect benchmark-linked financial instruments. Candidate 2 adds a more specific LIBOR discontinuation risk but does not replace or weaken the broader benchmark-linked risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_017_benchmark_financial_instruments",
+      "title": "Benchmark-Linked Financial Instrument Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If a particular benchmark were to be discontinued and an alternative rate has not been successfully introduced to replace that benchmark, this could result in widespread dislocation in the financial markets, engender volatility in the pricing of securities, derivatives and other instruments, and suppress capital markets activities, all of which could have adverse effects on JPMorgan Chase’s results of operations.",
+      "year2_quote_or_null": "If a particular benchmark were to be discontinued and an alternative rate has not been successfully introduced to replace that benchmark, this could result in widespread dislocation in the financial markets, engender volatility in the pricing of securities, derivatives and other instruments, and suppress capital markets activities, all of which could have adverse effects on JPMorgan Chase’s results of operations.",
+      "reasoning": "The core economic risk—uncertain replacement of benchmarks, potential market dislocation and volatility, suppressed capital-markets activity, and adverse effects on results—appears materially unchanged in Year-2020 Candidate 1. The accounting-transition risks are also separately retained in Candidate 2, with only additional detail about inadequate or constrained guidance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_018_alternative_benchmark_rates",
+      "title": "Alternative Rates and Market Dislocation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These statements indicate that it is highly likely that LIBOR will be discontinued on or about the end of 2021. Vast amounts of loans, mortgages, securities, derivatives and other financial instruments are linked to the LIBOR benchmark, and any inability ... to successfully introduce benchmark rates to replace LIBOR ... could result in disruption in the financial markets",
+      "year2_quote_or_null": "These announcements indicate that it is highly likely that various tenors of the LIBOR benchmark will be discontinued on or about the timeframes mentioned above. Vast amounts of loans, mortgages, securities, derivatives and other financial instruments are linked to the LIBOR benchmark, and any inability ... to successfully introduce benchmark rates to replace LIBOR and implement effective transitional arrangements ... could result in disruption in the financial markets",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: likely LIBOR discontinuation, the extensive exposure of linked financial instruments, and the potential for unsuccessful replacement or transition to disrupt markets and adversely affect JPMorgan Chase. The timing and specific tenors are updated, but the risk is not materially weakened or removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_019_libor_discontinuation",
+      "title": "LIBOR Discontinuation and Transition Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase could also become involved in litigation and other types of disputes with clients, customers, counterparties and investors as a consequence of the transition from LIBOR and other benchmark rates to replacement rates, including claims that JPMorgan Chase has:",
+      "year2_quote_or_null": "JPMorgan Chase could also become involved in litigation and other types of disputes with clients, customers, counterparties and investors as a consequence of the transition from LIBOR and other benchmark rates to replacement rates, including claims that JPMorgan Chase has:",
+      "reasoning": "The Year-2020 candidate reproduces the same benchmark-transition litigation and dispute risk, including the same categories of alleged conduct and resulting legal, operational, financial, and reputational consequences. The disclosure is therefore retained rather than merely absorbed or materially changed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_020_benchmark_transition_litigation",
+      "title": "Benchmark Transition Litigation and Disputes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As a result, it is possible that these requirements could limit JPMorgan Chase’s ability to support its businesses and make capital distributions to its shareholders.",
+      "year2_quote_or_null": "It is possible that these changing requirements, including meeting or exceeding various capital ratio thresholds, could limit JPMorgan Chase’s ability to support its businesses and make capital distributions to its shareholders.",
+      "reasoning": "The underlying economic risk is retained: changing regulatory capital requirements may constrain JPMorgan Chase’s ability to support its businesses and distribute capital. Year-2020 adds specificity about leverage-, risk-based, and balance-sheet-driven requirements but does not materially weaken or remove the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_021_capital_requirements",
+      "title": "Capital Requirements and Distribution Constraints"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "The Federal Reserve may object to or require modifications to JPMorgan Chase’s capital plan, or JPMorgan Chase may otherwise modify its capital plan, and any such modification could have an adverse effect on JPMorgan Chase’s shareholders, including by:",
+      "year2_quote_or_null": "Any failure by or inability of JPMorgan Chase to maintain the required level and composition of capital, or unfavorable changes in the capital requirements imposed by banking regulators, could have an adverse impact on JPMorgan Chase’s shareholders, such as:",
+      "reasoning": "The core shareholder consequences of regulatory capital-plan or capital-requirement changes remain disclosed in Year-2, but are bundled into the broader “Capital Shortfall Consequences” unit. Candidate 1 retains the stress-testing and plan-modification mechanics, while Candidate 2 absorbs the adverse consequences; the reputational harm consequence is no longer stated.",
+      "section": "1A",
+      "confidence": 0.94,
+      "id": "1A_2_022_capital_plan_stress_testing",
+      "title": "Capital Plans and Stress Testing Outcomes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s businesses are highly dependent on the effectiveness of its operational systems and those of other market participants.",
+      "year2_quote_or_null": "JPMorgan Chase’s businesses are dependent on the effectiveness of its operational systems and those of other market participants.",
+      "reasoning": "The core economic risk—dependence on JPMorgan Chase’s operational systems and the systems of other market participants—remains expressly disclosed. Although “highly” is omitted, the detailed Year-2 disclosure retains the same systems, data integrity, maintenance, security, and continuity risks and adds vendor and market-infrastructure dependencies; the omission does not materially downgrade the underlying risk.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_2_023_operational_systems",
+      "title": "Operational Systems Dependence and Reliability"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase also depends on its ability to access and use the operational systems of its vendors, custodians and other market participants, including clearing and payment systems, CCPs, securities exchanges and data processing, security and technology companies.",
+      "year2_quote_or_null": "JPMorgan Chase also depends on its ability to access and use the operational systems of its vendors, custodians and other market participants, including clearing and payment systems, CCPs, securities exchanges and data processing, security and technology companies.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 third-party operational-system dependence risk verbatim, with no material change to the underlying economic exposure. Although it is presented within a broader operational-systems discussion, the specific third-party dependence remains explicitly stated rather than merely bundled or altered.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_024_third_party_systems",
+      "title": "Third-Party Operational System Dependence"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The ineffectiveness, failure or other disruption of operational systems upon which JPMorgan Chase depends, including due to a systems malfunction, cyberbreach or other systems failure, could result in unfavorable ripple effects in the financial markets and for JPMorgan Chase and its clients and customers, including:",
+      "year2_quote_or_null": "The ineffectiveness, failure or other disruption of operational systems upon which JPMorgan Chase depends, including due to a systems malfunction, cyberbreach or other systems failure, could result in unfavorable ripple effects in the financial markets and for JPMorgan Chase and its clients and customers, including:",
+      "reasoning": "The core economic risk—operational-system disruption causing financial-market, client/customer, settlement, financial-loss, cost, confidence, and reputational consequences—remains materially unchanged. Year-2 adds regulatory fines, penalties, or sanctions and makes a minor wording change to the description of erroneous transactions, but neither change weakens or removes the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_025_operational_disruptions",
+      "title": "Operational Disruption Consequences"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As the speed, frequency, volume, interconnectivity and complexity of transactions continue to increase, it becomes more challenging to effectively maintain and upgrade JPMorgan Chase’s operational systems and infrastructure, especially due to the heightened risks that:",
+      "year2_quote_or_null": "As the speed, frequency, volume, interconnectivity and complexity of transactions continue to increase, it can become more challenging to effectively maintain and upgrade JPMorgan Chase’s operational systems and infrastructure, especially due to the heightened risks that:",
+      "reasoning": "The core economic risk—complex, interconnected operational systems may fail or develop compounding errors, causing material disruption—was retained in Year-2020, with the same listed risks and a materially similar adverse-impact conclusion. The added fraud bullet and reference to bank regulatory standards do not weaken or remove the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_000_operational_system_complexity",
+      "title": "Operational Systems Complexity Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase can be negatively affected if it fails to identify and address operational risks associated with the introduction of or changes to products, services and delivery platforms.",
+      "year2_quote_or_null": "JPMorgan Chase can be negatively affected if it fails to identify and address operational risks associated with the introduction of or changes to products, services and delivery platforms.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk and substantially the same disclosure, including the operational-risk triggers and consequences. Candidate 2 also references the risk in a broader summary, but the direct disclosure remains present rather than merely being absorbed.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_3_001_product_service_change_risks",
+      "title": "Product And Platform Change Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "External operational systems with which JPMorgan is connected, whether directly or indirectly, can be sources of operational risk to JPMorgan Chase.",
+      "year2_quote_or_null": "External operational systems with which JPMorgan is connected, whether directly or indirectly, can be sources of operational risk to JPMorgan Chase.",
+      "reasoning": "The core economic risk—operational failures or disruptions at externally connected systems and parties, including indirect connections, increasing JPMorgan Chase’s operational risk—is expressly retained. Year-2020 adds cyberattack, data-breach, fraud, cost, customer-satisfaction, and industry-wide disruption consequences, but does not weaken or remove the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_002_external_system_interconnectivity",
+      "title": "External Operational System Interconnectivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If an external party obtains access to customer account data on JPMorgan Chase’s systems, and that party experiences a cyberbreach of its own systems or misappropriates that data, this could result in a variety of negative outcomes for JPMorgan Chase and its clients and customers, including:",
+      "year2_quote_or_null": "If an external party obtains access to customer account data on JPMorgan Chase’s systems, and that party experiences a cyberbreach of its own systems or misappropriates that data, this could result in a variety of negative outcomes for JPMorgan Chase and its clients and customers, including:",
+      "reasoning": "The Year-2019 disclosure is reproduced substantively and nearly verbatim in the Year-2020 candidate, including the same external-party customer-data breach scenario and the resulting fraud losses, remediation costs, and reputational harm. The additional broader operational-system discussion does not alter or weaken the specific risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_003_external_party_account_data",
+      "title": "External Party Account Data Breaches"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Furthermore, the widespread and expanding interconnectivity among financial institutions, central agents, CCPs, payment processors, securities exchanges, clearing houses and other financial market infrastructures increases the risk that an operational failure at one institution or entity may cause an industry-wide operational failure that could materially affect JPMorgan Chase’s ability to conduct business.",
+      "year2_quote_or_null": "Furthermore, the widespread and expanding interconnectivity among financial institutions, central agents, CCPs, payment processors, securities exchanges, clearing houses and other financial market infrastructures increases the risk that an operational failure or cyber attack involving one institution or entity may cause industry-wide operational disruptions that could materially affect JPMorgan Chase’s ability to conduct business.",
+      "reasoning": "The Year-2020 disclosure retains the Year-2019 economic risks: external-party operational failures, resulting protective actions and costs/customer impacts, and interconnected financial-market failures affecting JPMorgan Chase’s ability to conduct business. It adds cyber attacks and modestly broadens the disruption wording, but does not weaken or remove the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_004_industry_wide_operational_failure",
+      "title": "Interconnected Industry Operational Failures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s ability to operate its businesses efficiently and profitably... is highly dependent on the competence and integrity of its employees, as well as employees of other parties on which JPMorgan Chase’s operations rely, including vendors, custodians and financial markets infrastructures.",
+      "year2_quote_or_null": "JPMorgan Chase’s operations could be impaired if its employees, or those of external parties, are not competent and trustworthy, or if measures to protect their health and safety are ineffective.\n\nJPMorgan Chase’s ability to operate its businesses efficiently and profitably... is highly dependent on the competence and integrity of its employees, as well as employees of other parties on which JPMorgan Chase’s operations rely, including vendors, custodians and financial markets infrastructures.",
+      "reasoning": "The core economic risk—that incompetent, untrustworthy employees or external parties can impair JPMorgan Chase’s operations and risk management—remains materially present in Year-2020. The existing examples of operational failure, inadequate controls or training, fraud, and human error or misconduct are also retained; the added health-and-safety risk does not weaken or replace the original disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_005_employee_external_party_competence",
+      "title": "Employee And External Party Competence"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Ensuring that JPMorgan Chase’s collection, use, transfer and storage of personal information comply with all applicable laws and regulations in all relevant jurisdictions... can: increase JPMorgan Chase’s compliance and operating costs",
+      "year2_quote_or_null": "Ensuring that JPMorgan Chase’s collection, use, transfer and storage of personal information comply with all applicable laws, rules and regulations in all relevant jurisdictions... can: increase JPMorgan Chase’s compliance and operating costs",
+      "reasoning": "The core economic risk is unchanged: evolving privacy obligations create compliance and operating costs, constrain products and services, require significant oversight, and may force less efficient operations. Year-2020 retains the disclosure and its consequences, with only immaterial wording changes and additional detail expanding related safeguarding risks.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_006_personal_information_privacy",
+      "title": "Personal Information Privacy Obligations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase cannot ensure that all of its clients and customers, vendors, counterparties and other external parties have appropriate controls in place to protect the confidentiality of the information exchanged between them and JPMorgan Chase, particularly where information is transmitted by electronic means.",
+      "year2_quote_or_null": "Not all of JPMorgan Chase’s clients, customers, vendors, counterparties and other external parties may have appropriate controls in place to protect the confidentiality of the information exchanged between them and JPMorgan Chase, particularly where information is transmitted by electronic means.",
+      "reasoning": "The core economic risk—external parties may lack adequate controls, leading to mishandling or compromise of personal, confidential, or proprietary information and resulting legal, regulatory, reputational, and revenue consequences—is carried forward materially unchanged. Year-2020 also retains the associated privacy-compliance and sanctions risks, while adding broader regulatory and operational detail.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_007_personal_information_mishandling",
+      "title": "Personal Information Mishandling Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "That scrutiny has in some cases resulted in, and could in the future lead to, the adoption of stricter laws and regulations relating to the use and sharing of personal information.",
+      "year2_quote_or_null": "In recent years, well-publicized allegations involving the misuse or inappropriate sharing of personal information have led to expanded governmental scrutiny of practices relating to the safeguarding of personal information and the use or sharing of personal data by companies in the U.S. and other countries.",
+      "reasoning": "The Year-2020 disclosure expressly preserves the Year-2019 economic risk: governmental scrutiny and increasingly strict privacy/data-use regulations may restrict sharing personal information and personal-data use, raising compliance costs and limiting or increasing the cost of products and services. It is presented within a broader safeguarding disclosure, but the specific regulatory-scrutiny risk remains substantively intact rather than being merely absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_008_personal_data_regulatory_scrutiny",
+      "title": "Personal Data Regulatory Scrutiny"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "JPMorgan Chase experiences numerous cyberattacks on its computer systems, software, networks and other technology assets on a daily basis from various actors, including cyber-criminals and “hacktivists”",
+      "year2_quote_or_null": "JPMorgan Chase experiences numerous attempted cyber attacks on its computer systems, software, networks and other technology assets on a daily basis from various actors, including groups acting on behalf of hostile countries, cyber-criminals, “hacktivists” ... and others.",
+      "reasoning": "The underlying economic risk is retained: frequent cyberattacks could cause significant harm through unauthorized access, data manipulation or destruction, service disruption, and theft. Year-2020 adds attack sources and ransomware/extortion, but does not materially weaken or remove the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_009_cyberattack_threats",
+      "title": "Cyberattack Threats And Methods"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "A principal reason that JPMorgan Chase cannot provide absolute security against cyberattacks is that it may not always be possible to anticipate, detect or recognize threats to JPMorgan Chase’s systems, or to implement effective preventive measures against all breaches.",
+      "year2_quote_or_null": "A principal reason that JPMorgan Chase cannot provide absolute security against cyber attacks is that it may not always be possible to anticipate, detect or recognize threats to JPMorgan Chase’s systems, or to implement effective preventive measures against all breaches.",
+      "reasoning": "The core economic risk—JPMorgan Chase may fail to anticipate, detect, recognize, or prevent cyberattacks—remains materially unchanged in Candidate 1. The specific source examples are updated and one Year-1 point about attackers using others’ equipment or passwords is omitted, but the disclosure still covers third-party system exposure and undetected foothold/lateral access; Candidate 2 additionally updates the digital-expansion exposure rather than changing the core limitation.",
+      "section": "1A",
+      "confidence": 0.95,
+      "id": "1A_3_010_cybersecurity_detection_limits",
+      "title": "Cybersecurity Detection And Prevention Limits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A successful penetration or circumvention of the security of JPMorgan Chase’s systems or the systems of a vendor, governmental body or another market participant could cause serious negative consequences, including:",
+      "year2_quote_or_null": "A successful penetration or circumvention of the security of JPMorgan Chase’s systems or the systems of a vendor, governmental body or another market participant could cause serious negative consequences, including:",
+      "reasoning": "Candidate 1 retains the same underlying economic risk and nearly all of the same consequences, including operational disruption, data compromise, financial loss, regulatory exposure, and reputational harm. Candidate 2 additionally preserves the mobile-device interception risk, but does not alter the core classification.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_011_cyberattack_consequences",
+      "title": "Cyberattack Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The extent of a particular cyberattack and the steps that JPMorgan Chase may need to take to investigate the attack may not be immediately clear, and it may take a significant amount of time before such an investigation can be completed.",
+      "year2_quote_or_null": "The extent of a particular cyber attack and the steps that JPMorgan Chase may need to take to investigate the attack may not be immediately clear, and it may take a significant amount of time before such an investigation can be completed.",
+      "reasoning": "The Year-2020 candidate expressly repeats the Year-2019 economic risk that a cyberattack’s scope and required investigation may be unclear and time-consuming. The surrounding consequences list broadens context but does not materially weaken or remove the investigation/remediation risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_012_cyberattack_investigation",
+      "title": "Cyberattack Investigation And Remediation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s business and operational systems could be seriously disrupted, and its reputation could be harmed, by events or contributing factors that are wholly or partially beyond its control, including:",
+      "year2_quote_or_null": "JPMorgan Chase’s business and operational systems could be seriously disrupted, and its reputation could be harmed, by events or contributing factors that are wholly or partially beyond its control, including:",
+      "reasoning": "The Year-2020 disclosure retains the same underlying catastrophe and operational disruption risks, including the listed cyber, outage, system failure, property, climate, weather, health, and political-event exposures. The added resiliency discussion expands mitigation and consequences but does not materially change or weaken the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_013_catastrophe_operational_disruption",
+      "title": "Catastrophe And Operational Disruption Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There can be no assurance that JPMorgan Chase’s resiliency plans will fully mitigate all potential business continuity risks to JPMorgan Chase or its clients and customers.",
+      "year2_quote_or_null": "There can be no assurance that JPMorgan Chase’s resiliency plans will fully mitigate all potential business continuity risks to JPMorgan Chase or its clients and customers or that its resiliency plans will be adequate to address the effects of simultaneous occurrences of multiple catastrophes or other business interruption events.",
+      "reasoning": "The Year-2020 disclosure retains the core economic risk that JPMorgan Chase’s resiliency plans may not fully mitigate business-continuity and interruption risks. It also preserves the specific geographic concentration/dispersion risk and chronic severe-weather disruption risk, while adding simultaneous catastrophes and other disruption scenarios.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_014_business_resiliency_limits",
+      "title": "Business Resiliency Program Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any significant failure or disruption of JPMorgan Chase’s operations or operational systems, or any catastrophic event, could:",
+      "year2_quote_or_null": "Any significant failure or disruption of JPMorgan Chase’s operations or operational systems, or any catastrophic event, could:",
+      "reasoning": "Candidate 1 retains the same underlying catastrophe and operational-disruption risk and reproduces the Year-2019 consequences verbatim, while adding examples and resiliency context. The disclosure is therefore retained rather than merely absorbed or reworded.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_015_catastrophe_consequences",
+      "title": "Catastrophe And Disruption Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any inadequacy or lapse in JPMorgan Chase’s risk management framework, governance structure, practices, models or reporting systems could expose it to unexpected losses, and its financial condition or results of operations could be materially and adversely affected.",
+      "year2_quote_or_null": "Any inadequacy or lapse in JPMorgan Chase’s risk management framework, governance structure, practices, models or reporting systems could expose it to unexpected losses, and its financial condition or results of operations could be materially and adversely affected.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: failures in the risk management framework could cause unexpected losses and materially harm financial results. The added consequences and the minor addition of “and time” to remediation do not change the core risk; Candidate 2 addresses a narrower controls risk and is not the relevant successor.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_016_risk_management_framework",
+      "title": "Risk Management Framework Limitations"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Any deficiencies in the quality or effectiveness of JPMorgan Chase’s data gathering and validation processes could result in ineffective risk management practices.",
+      "year2_quote_or_null": "Any deficiencies in the quality or effectiveness of JPMorgan Chase’s data gathering, analysis and validation processes could result in ineffective risk management practices.",
+      "reasoning": "The underlying economic risk is unchanged: deficient data processes could impair risk management and produce inaccurate reporting. Year-2020 adds “analysis” to the process description without changing the risk, severity, or exposure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_017_risk_data_quality",
+      "title": "Risk Data Quality And Reporting"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Many of JPMorgan Chase’s risk management strategies and techniques consider historical market behavior. These strategies and techniques are based to some degree on management’s subjective judgment.",
+      "year2_quote_or_null": "Many of JPMorgan Chase’s risk management strategies and techniques consider historical market behavior. These strategies and techniques are based to some degree on management’s subjective judgment.",
+      "reasoning": "The Year-2020 disclosure addresses the same economic risk: risk models rely on historical behavior and correlations that may fail during market stress, potentially causing losses. The language and substantive warning are materially unchanged; the only apparent difference is cosmetic spacing.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_000_historical_market_risk_models",
+      "title": "Historical Market Behavior Risk Models"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "JPMorgan Chase could incur significant losses, its capital levels could be reduced and it could face greater regulatory scrutiny if its models or estimations prove to be inadequate.",
+      "year2_quote_or_null": "JPMorgan Chase could recognize unexpected losses, its capital levels could be reduced and it could face greater regulatory scrutiny if its models, estimations or judgments, including those used in its financial statements, prove to be inadequate or incorrect.",
+      "reasoning": "The Year-2020 disclosure preserves the same underlying economic risk: inadequate models or estimations could cause losses, reduce capital, and increase regulatory scrutiny. It adds judgments and financial-statement applications and changes wording, but does not materially weaken or eliminate the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_001_inadequate_models_capital_scrutiny",
+      "title": "Inadequate Models, Capital And Scrutiny"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The models and estimations that JPMorgan Chase uses may not be effective in all cases to identify, observe and mitigate risk due to a variety of factors, such as:",
+      "year2_quote_or_null": "The models and estimations that JPMorgan Chase uses may not be effective in all cases to identify, observe and mitigate risk due to a variety of factors, such as:",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: models and judgment-based estimations may fail to identify, measure, or mitigate risks because of modeling assumptions, data, technology, forecasting, or review limitations. It also adds an explicit consequence—unexpected losses, reduced capital, and greater regulatory scrutiny—without weakening or removing the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_002_risk_model_limitations",
+      "title": "Risk Model Limitations And Estimation Factors"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "If JPMorgan Chase’s models or estimations are not approved by its regulators, it may be subject to higher capital charges, which could adversely affect its financial results or limit the ability to expand its businesses.",
+      "year2_quote_or_null": "If JPMorgan Chase’s models or estimations are not approved by its regulators, it may be subject to higher capital charges, which could adversely affect its financial results or limit the ability to expand its businesses.",
+      "reasoning": "The core economic risk is retained: regulatory non-approval of risk models or estimations may lead to higher capital charges and constrain business expansion, while also potentially constraining capital actions. The added stress-testing language and revised CCAR wording do not materially change the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_003_regulatory_model_approval",
+      "title": "Regulatory Approval Of Risk Models"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Enhanced regulatory and other standards for the oversight of vendors and other service providers can result in higher costs and other potential exposures.",
+      "year2_quote_or_null": "Enhanced regulatory and other standards for the oversight of vendors and other service providers can result in higher costs and other potential exposures.",
+      "reasoning": "Candidate 1 reproduces the same economic risk and detailed consequences essentially verbatim, including enhanced oversight standards, compliance costs, failure to manage vendor relationships, and resulting liabilities, sanctions, lost revenues, operational costs, and reputational harm. Candidate 2 also references the risk in a summary, but the detailed disclosure is retained in Candidate 1 rather than merely absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_004_vendor_service_provider_oversight",
+      "title": "Vendor And Service Provider Oversight"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If estimates or judgments underlying JPMorgan Chase’s financial statements prove to have been incorrect, JPMorgan Chase may experience material losses.",
+      "year2_quote_or_null": "If estimates or judgments underlying JPMorgan Chase’s financial statements prove to have been incorrect, JPMorgan Chase may experience material losses.",
+      "reasoning": "The Year-2020 disclosures retain the same underlying economic risk: management estimates and judgments, including fair-value determinations and financial statement estimates, may be inaccurate and cause material losses. Candidate 1 reproduces the core valuation and loss language, while Candidate 2 retains the broader estimates and fair-value context; the added credit card rewards liability does not change the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_005_financial_statement_estimates",
+      "title": "Financial Statement Estimates And Judgments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These processes are critical to JPMorgan Chase’s results of operations and financial condition. They require difficult, subjective and complex judgments, including forecasts of how economic conditions might impair the ability of JPMorgan Chase’s borrowers and counterparties to repay their loans or other obligations.",
+      "year2_quote_or_null": "These processes are critical to JPMorgan Chase’s results of operations and financial condition. They require difficult, subjective and complex judgments, including forecasts of how economic conditions might impair the ability of JPMorgan Chase’s borrowers and counterparties to repay their loans or other obligations.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risks: expected credit-loss estimation, stress testing for adverse conditions, and the difficulty and potential inaccuracy of the related judgments. The differences are only formatting or line-break changes.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_006_credit_loss_stress_testing",
+      "title": "Credit Loss And Stress Testing Judgments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Lapses in controls over disclosure or financial reporting could materially affect JPMorgan Chase’s profitability or reputation.",
+      "year2_quote_or_null": "Lapses in controls over disclosure or financial reporting could materially affect JPMorgan Chase’s profitability or reputation.",
+      "reasoning": "Candidate 1 reproduces the same economic risk: ineffective disclosure and financial reporting controls, including material weaknesses or significant deficiencies and their consequences. Candidate 2 addresses a broader but distinct risk-management framework, so it does not alter the classification.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_007_disclosure_financial_reporting_controls",
+      "title": "Disclosure And Financial Reporting Controls"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "From time to time these accounting standards or accounting policies may change, and in some cases these changes could have a significant effect on JPMorgan Chase’s financial statements and may adversely affect its financial results or investor perceptions of those results.",
+      "year2_quote_or_null": "From time to time these accounting standards or accounting policies may change, and in some cases these changes could have a significant effect on JPMorgan Chase’s financial statements and may adversely affect its financial results or investor perceptions of those results.",
+      "reasoning": "The Year-2020 disclosure presents the same economic risk—changes in accounting standards or policies could materially affect financial statements, financial results, or investor perceptions—with materially identical language and no weakened or negated qualifier.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_008_accounting_standards_changes",
+      "title": "Changes In Accounting Standards And Policies"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The ongoing impact of the adoption of CECL could include the following, each of which could result in diminished investor confidence: ... unexpected increases in the allowance for credit losses.",
+      "year2_quote_or_null": "The ongoing impact of the adoption of CECL could include the following, each of which could result in diminished investor confidence: ... increases in the allowance for credit losses.",
+      "reasoning": "The CECL adoption, capital impact, earnings and capital volatility, distribution risk, and competitive effects are otherwise retained. However, Year-2 removes the qualifier “unexpected” from increases in the allowance for credit losses, weakening the stated risk qualifier materially.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_4_009_cecl_implementation_impact",
+      "title": "CECL Implementation And Capital Impact"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "If JPMorgan Chase’s management fails to develop and execute effective business strategies, and to anticipate changes affecting those strategies, JPMorgan Chase’s competitive standing and results could suffer.",
+      "year2_quote_or_null": "Strategic risks, including the damage to JPMorgan Chase’s competitive standing and results that could occur if management fails to develop and execute effective business strategies; risks associated with the significant and increasing competition that JPMorgan Chase faces; and the potential adverse impacts of climate change on JPMorgan Chase’s business operations, clients and customers.",
+      "reasoning": "The core strategic-management risk remains expressly disclosed in Year-2020, particularly in Candidate 2, while the broader strategic-risk summary in Candidate 3 also bundles it with competition and climate risks. Because the Year-2019 disclosure is substantially split across the more focused Year-2020 units rather than absent or materially downgraded, it is best classified as ABSORBED, principally by Candidate 2 (with broader summary treatment in Candidate 3).",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_4_010_business_strategy_execution",
+      "title": "Business Strategy Development And Execution"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "JPMorgan Chase operates in a highly competitive environment in which it must evolve and adapt to the significant changes as a result of financial regulatory reform, technological advances, increased public scrutiny and current economic conditions.",
+      "year2_quote_or_null": "JPMorgan Chase operates in a highly competitive environment in which it must evolve and adapt to the significant changes as a result of changes in financial regulation, technological advances, increased public scrutiny and changes in economic conditions.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: intense and increasing competition in the evolving financial services industry, including from banks, nonbanks, and technology companies, with potential adverse effects on results. The wording changes and separates technology companies from finance companies, but does not materially alter the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_011_financial_services_competition",
+      "title": "Financial Services Industry Competition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Furthermore, both financial institutions and their non-banking competitors face the risk that payments processing and other services could be significantly disrupted by technologies, such as cryptocurrencies, that require no intermediation.",
+      "year2_quote_or_null": "Furthermore, both financial institutions and their non-banking competitors face the risk that payments processing and other services could be significantly disrupted by technologies, such as cryptocurrencies, that require no intermediation.",
+      "reasoning": "The Year-2 disclosure preserves the same underlying economic risks: emerging competitors and technologies, disruption of payments and other services, required technology investment, unexpected technology use or breaches, compliance costs, and reduced income. The wording is materially unchanged, with only a minor expansion from “laws and regulations” to “laws, rules and regulations.”",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_012_financial_technology_disruption",
+      "title": "Financial Technology And Competitive Disruption"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Ongoing or increased competition may put pressure on the pricing for JPMorgan Chase’s products and services or may cause JPMorgan Chase to lose market share, particularly with respect to traditional banking products such as deposits and bank accounts.",
+      "year2_quote_or_null": "Ongoing or increased competition may put pressure on the pricing for JPMorgan Chase’s products and services or may cause JPMorgan Chase to lose market share, particularly with respect to traditional banking products such as deposits and bank accounts.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same competition-driven risks to pricing, market share, customer retention, revenues, and capital investment.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_013_competition_pricing_market_share",
+      "title": "Competition, Pricing And Market Share Pressure"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "These climate driven changes could have a material adverse impact on asset values and the financial performance of JPMorgan Chase’s businesses, and those of its clients and customers.",
+      "year2_quote_or_null": "These climate-related physical risks and transition risks could have a financial impact on JPMorgan Chase both directly on its business and operations and as a result of material adverse impacts to its clients and customers, including: •declines in asset values •reduced availability of insurance •significant interruptions to business operations, and •negative consequences to business models, and the need to make changes in response to those consequences.",
+      "reasoning": "The Year-2019 physical climate risk remains disclosed in Year-2020, but it is expanded and bundled with transition risks and a broader list of financial impacts. The specific asset-value and business-operation effects are absorbed into the Year-2020 combined physical-and-transition-risk disclosure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_4_014_climate_change_impacts",
+      "title": "Climate Change Business Impacts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Conduct failure by JPMorgan Chase employees can harm clients and customers, impact market integrity, damage JPMorgan Chase’s reputation and trigger litigation and regulatory action.",
+      "year2_quote_or_null": "Conduct failure by JPMorgan Chase employees can harm clients and customers, impact market integrity, damage JPMorgan Chase’s reputation and trigger litigation and regulatory action.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: employee misconduct can harm clients and customers, affect market integrity and reputation, and lead to litigation or regulatory action. The added reference to possible violations of resolution terms does not weaken or materially change the core risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_015_employee_conduct_risk",
+      "title": "Employee Conduct And Misconduct Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s reputation could be harmed, and collateral consequences could result, from a failure by one or more employees to act consistently with JPMorgan Chase’s expectations, policies and practices, including by acting in ways that harm clients, customers, other market participants or other employees.",
+      "year2_quote_or_null": "JPMorgan Chase’s reputation could be harmed, and collateral consequences could result, from a failure by one or more employees to act consistently with JPMorgan Chase’s expectations, policies and practices, including by acting in ways that harm clients, customers, other market participants or other employees.",
+      "reasoning": "The core economic risk—employee misconduct causing reputational harm and related litigation, regulatory, financial, operational, client, and other consequences—remains substantively disclosed in Year-2. Although examples were updated or expanded, no material weakening, removal, or absorption of the underlying risk occurred.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_016_conduct_failure_consequences",
+      "title": "Conduct Failure Examples And Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Maintaining trust in JPMorgan Chase is critical to its ability to attract and retain clients, customers, investors and employees. Damage to JPMorgan Chase’s reputation can therefore cause significant harm to JPMorgan Chase’s business and prospects.",
+      "year2_quote_or_null": "Maintaining trust in JPMorgan Chase is critical to its ability to attract and retain clients, customers, investors and employees. Damage to JPMorgan Chase’s reputation can therefore cause significant harm to JPMorgan Chase’s business and prospects, and can arise from numerous sources, including:",
+      "reasoning": "The core economic risk—that reputational damage can significantly harm JPMorgan Chase’s business and prospects, including its ability to attract and retain stakeholders—is expressly retained. The Year-2 disclosure also preserves the listed sources of reputational harm and adds further examples, without weakening or negating the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_017_reputational_damage",
+      "title": "Reputational Damage And Business Harm"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "failure to manage environmental, social and sustainability risk issues associated with its business activities or those of its clients",
+      "year2_quote_or_null": "failure to manage risk issues associated with its business activities or those of its clients, including failure to fully discharge publicly-announced commitments to support social and sustainability initiatives",
+      "reasoning": "The Year-2020 Reputation Damage Sources disclosure continues to identify failure to manage risks associated with JPMorgan Chase’s own activities or clients as a source of reputation damage. Although the environmental reference is less explicit and social/sustainability commitments are added, the underlying economic risk remains materially disclosed; the broader Candidate 1 also retains the other listed contributing events.",
+      "section": "1A",
+      "confidence": 0.94,
+      "id": "1A_5_000_reputation_damage_drivers",
+      "title": "Reputation Damage — Contributing Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase’s reputation may be significantly damaged by adverse publicity or negative information regarding JPMorgan Chase, whether or not true, that may be published or broadcast by the media or posted on social media, non-mainstream news services or other parts of the internet.",
+      "year2_quote_or_null": "JPMorgan Chase’s reputation may be significantly damaged by adverse publicity or negative information regarding JPMorgan Chase, whether or not true, that may be published or broadcast by the media or posted on social media, non-mainstream news services or other parts of the internet.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk essentially verbatim: false or true negative publicity disseminated through media and online channels may significantly damage JPMorgan Chase’s reputation. The added activist-criticism discussion is supplemental and does not alter the original risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_001_reputation_media_information",
+      "title": "Reputation Damage — Adverse Publicity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Activist criticism of JPMorgan Chase’s relationships with clients in sensitive industries could potentially engender dissatisfaction among clients, customers, investors and employees with how JPMorgan Chase addresses social and environmental concerns in its business activities.",
+      "year2_quote_or_null": "clients, customers, investors and employees with how JPMorgan Chase addresses social and sustainability concerns in its business activities. Alternatively, yielding to activism targeted at certain sensitive industries could damage JPMorgan Chase’s relationships with clients and customers, and with governmental or regulatory bodies in jurisdictions in which JPMorgan Chase does business, whose views are not aligned with those of social and environmental activists.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: activism over relationships with sensitive-industry clients can harm JPMorgan Chase’s reputation and adversely affect client, customer, investor, employee, and governmental relationships. The 2020 disclosure also preserves the specific consequences of lost business, impaired client growth, employee attrition, and discontinuing certain client relationships, while adding investor divestment and regulatory scrutiny; the wording changes do not weaken or remove the 2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_002_reputation_activism_sensitive_industries",
+      "title": "Reputation Risk — Activism and Sensitive Industries"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Actions by the financial services industry generally or individuals in the industry can also affect JPMorgan Chase’s reputation. For example, concerns that consumers have been treated unfairly by a financial institution, or that a financial institution has acted inappropriately with respect to the methods used to offer products to customers, can damage the reputation of the industry as a whole.",
+      "year2_quote_or_null": "Actions by the financial services industry generally or individuals in the industry can also affect JPMorgan Chase’s reputation. For example, the reputation of the industry as a whole can be damaged by concerns that: •consumers have been treated unfairly by a financial institution, a financial institution has acted inappropriately with respect to the methods used to offer products to customers",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: industry-wide or individual financial-institution misconduct may damage the industry’s reputation and, if JPMorgan Chase is perceived to have engaged in such conduct, weaken its reputation with clients or customers. The changes are formatting and wording only.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_003_industry_reputation_effects",
+      "title": "Reputation Risk — Industry-Wide Conduct"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Failure to effectively manage potential conflicts of interest can result in litigation and enforcement actions, as well as damage JPMorgan Chase’s reputation.",
+      "year2_quote_or_null": "A failure or perceived failure to appropriately address conflicts of interest or fiduciary obligations could result in customer dissatisfaction, litigation and regulatory fines, penalties or other sanctions, and heightened regulatory scrutiny and enforcement actions, all of which can lead to lost revenue and higher operating costs and cause serious harm to JPMorgan Chase’s reputation.",
+      "reasoning": "The Year-2020 candidates retain the same underlying economic risk: inadequate management of conflicts of interest and related fiduciary obligations may cause litigation, enforcement actions, financial consequences and reputational harm. Candidate 1 also preserves the detailed operational sources of that risk, with only immaterial wording changes and an added example regarding investments in the same transaction.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_004_conflicts_of_interest",
+      "title": "Conflicts of Interest — Legal and Reputational Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An outbreak of hostilities between countries or within a country or region could have a material adverse effect on the global economy and on JPMorgan Chase’s businesses within the affected region or globally.",
+      "year2_quote_or_null": "An outbreak of hostilities between countries or within a country or region could have a material adverse effect on the global economy and on JPMorgan Chase’s businesses within the affected region or globally.",
+      "reasoning": "Candidate 1 reproduces the same underlying geopolitical-conflict risk, including economic disruption, market volatility, asset-value declines, currency depreciation, trade disruption, reduced confidence, operational and earnings effects, and cyberattacks. The differences are cosmetic wording and formatting changes; Candidate 2 is only a summary and does not displace the detailed retained disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_005_country_geopolitical_conflict",
+      "title": "Country Risk — Geopolitical Conflict"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "These activities can expose JPMorgan Chase to enhanced sovereign, credit-related, operational and reputation risks, as governmental entities have in the past, and may in the future, taken actions such as: defaulting on or restructuring their obligations",
+      "year2_quote_or_null": "Transactions with government entities, including national, state, provincial, municipal and local authorities, can expose JPMorgan Chase to enhanced sovereign, credit, operational and reputation risks. Government entities may, among other things, claim that actions taken by government officials were beyond the legal authority of those officials or repudiate transactions authorized by a previous incumbent government.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying exposure to governmental entities and the same enhanced sovereign, credit, operational and reputation risks, including ultra vires claims and repudiation of prior-government transactions. Although the default/restructuring example and the potential reputation impact are not expressly repeated, the core economic risk is materially preserved rather than softened or removed.",
+      "section": "1A",
+      "confidence": 0.94,
+      "id": "1A_5_006_government_entity_exposure",
+      "title": "Country Risk — Governmental Entity Exposure"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "These economic, political, regulatory and social developments have in the past resulted in, and in the future could lead to, conditions that can adversely affect JPMorgan Chase’s operations in those countries and impair the revenues, growth and profitability of those operations.",
+      "year2_quote_or_null": "These economic, political, regulatory and social developments have in the past resulted in, and in the future could lead to, conditions that can adversely affect JPMorgan Chase’s operations in those countries and impair the revenues, growth and profitability of those operations.",
+      "reasoning": "The Year-2019 country-risk disclosure is substantively retained across two Year-2020 Item 1A units: Candidate 1 covers the local economic, political and regulatory risks, while Candidate 2 covers the social and political instability risks. Because the single prior disclosure was split into these corresponding narrower units rather than meaningfully changed or removed, it is classified as ABSORBED into Candidates 1 and 2.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_5_007_emerging_market_risk",
+      "title": "Country Risk — Emerging Market Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If JPMorgan Chase were unable to continue to attract or retain qualified employees, including successors to the Chief Executive Officer or members of the Operating Committee, JPMorgan Chase’s performance, including its competitive position, could be materially and adversely affected.",
+      "year2_quote_or_null": "If JPMorgan Chase were unable to continue to attract or retain qualified and diverse employees, including successors to the Chief Executive Officer or members of the Operating Committee, JPMorgan Chase’s performance, including its competitive position, could be materially and adversely affected.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: inability to attract or retain qualified employees could materially harm performance and competitive position, including leadership succession. Adding “diverse” and “develop” does not materially change the risk or weaken its severity.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_008_employee_attraction_retention",
+      "title": "People Risk — Employee Attraction and Retention"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Changes in immigration policies in the U.S. and other countries that unduly restrict or otherwise make it more difficult for employees or their family members to work in, or transfer among, jurisdictions in which JPMorgan Chase has operations or conducts its business could inhibit JPMorgan Chase’s ability to attract and retain qualified employees.",
+      "year2_quote_or_null": "Changes in immigration or travel policies in the U.S. and other countries that unduly restrict or otherwise make it more difficult for employees or their family members to work in, or travel to or transfer between, jurisdictions in which JPMorgan Chase has operations or conducts its business could inhibit JPMorgan Chase’s ability to attract and retain qualified employees.",
+      "reasoning": "The core economic risk—restrictive immigration policies impairing employee mobility, recruitment, retention, workforce quality, and operating efficiency/cost—remains materially unchanged. Year-2020 broadens the policy scope to include travel and adds travel-related mobility, but this is an expansion/rewording rather than a weakening or removal of the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_5_009_immigration_policy",
+      "title": "People Risk — Immigration Policy Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "JPMorgan Chase faces significant legal risks from private actions and formal and informal regulatory and government investigations.",
+      "year2_quote_or_null": "JPMorgan Chase faces significant legal risks from litigation and formal and informal regulatory and government investigations.",
+      "reasoning": "The core economic risk—material exposure to private litigation and formal or informal regulatory and government investigations—remains expressly disclosed in Year-2020 Candidate 2. The substitution of “litigation” for “private actions” does not change the underlying risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_5_010_legal_and_regulatory_proceedings",
+      "title": "Legal Risk — Litigation and Regulatory Investigations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Refer to the Market Risk Management section of Management’s discussion and analysis on pages 119–126 for a discussion of quantitative and qualitative disclosures about market risk.",
+      "year2_quote_or_null": "Refer to the Market Risk Management section of Management’s discussion and analysis on pages 135–142 for a discussion of quantitative and qualitative disclosures about market risk.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risk—quantitative and qualitative market risk disclosures—and the same cross-reference. Only the cited page range changed.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_000_market_risk_cross_reference",
+      "title": "Market Risk Discussion Cross-Reference"
+    },
+    {
+      "id": "1A_0_001_summary_covid",
+      "title": "Summary — COVID-19 Pandemic Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Risks related to the COVID-19 pandemic, including the significant harm that the pandemic has caused and is causing to the global economy and the further negative effects that it could have on certain of JPMorgan Chase’s businesses.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_002_summary_regulatory",
+      "title": "Summary — Regulatory Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Regulatory risks, including the impact that applicable laws, rules and regulations in the highly-regulated financial services industry, as well as changes to or in the interpretation of those laws, rules and regulations, can have on JPMorgan Chase’s business and operations; the ways in which differ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_003_summary_political",
+      "title": "Summary — Political Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Political risks, including the potential negative effects on JPMorgan Chase’s businesses due to economic uncertainty or instability caused by political developments.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_004_summary_market",
+      "title": "Summary — Market Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Market risks, including the effects that economic and market events and conditions, governmental policies concerning taxation, regulation and other matters, changes in interest rates and credit spreads, and market fluctuations can have on JPMorgan Chase’s consumer and wholesale businesses and its i",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_008_summary_operational",
+      "title": "Summary — Operational Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Operational risks, including risks associated with JPMorgan Chase’s dependence on its operational systems and the competence, integrity, health and safety of its employees, as well as the systems and employees of external parties; the potential negative effects of failing to identify and address op",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_009_summary_strategic",
+      "title": "Summary — Strategic Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Strategic risks, including the damage to JPMorgan Chase’s competitive standing and results that could occur if management fails to develop and execute effective business strategies; risks associated with the significant and increasing competition that JPMorgan Chase faces; and the potential adverse",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_010_summary_conduct",
+      "title": "Summary — Conduct Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Conduct risks, including the negative impact that can result from the failure of employees to conduct themselves in accordance with JPMorgan Chase’s expectations, policies and practices.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_011_summary_reputation",
+      "title": "Summary — Reputation Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Reputation risks, including the potential adverse effects on JPMorgan Chase’s relationships with its clients, customers, shareholders, regulators and other stakeholders that could arise from employee misconduct, security breaches, inadequate risk management, compliance or operational failures, liti",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_012_summary_country",
+      "title": "Summary — Country Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Country risks, including potential impacts on JPMorgan Chase’s businesses from an outbreak of hostilities between countries or within a country or region; and the potential adverse effects of local economic, political, regulatory and social factors on JPMorgan Chase’s business and revenues in certa",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_013_summary_people",
+      "title": "Summary — People Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•People risks, including the criticality of attracting and retaining qualified and diverse employees; and the potential adverse effects of unfavorable changes in immigration or travel policies on JPMorgan Chase’s workforce.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_014_summary_legal",
+      "title": "Summary — Legal Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Legal risks relating to litigation and regulatory and government investigations.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_015_summary_cross_reference",
+      "title": "Summary Cross-Reference to Detailed Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The above summary is subject in its entirety to the more complete inventory and discussion of the risks facing JPMorgan Chase set forth below.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_016_covid_economic_disruption",
+      "title": "COVID-19 Pandemic Economic Disruption",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "COVID-19 Pandemic\n\nThe COVID-19 pandemic has caused and is causing significant harm to the global economy and could further negatively affect certain of JPMorgan Chase’s businesses.\n\nOn March 11, 2020, the World Health Organization declared the outbreak of a strain of novel coronavirus disease, COVI",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_017_covid_business_impact",
+      "title": "COVID-19 Business and Operating Impacts",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The adverse economic conditions caused by the pandemic have had a negative impact on certain of JPMorgan Chase’s businesses and results of operations, including:\n\n•reduction in demand for certain products and services from JPMorgan Chase’s clients and customers, resulting in lower revenue, and\n\n•inc",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_018_covid_credit_loss_models",
+      "title": "COVID-19 Credit Loss Model Uncertainty",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Certain models used by JPMorgan Chase in connection with the determination of the allowance for credit losses have heightened performance risk in the economic environment precipitated by the effects of the COVID-19 pandemic and government stimulus. There can be no assurance that, even after adjustme",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_019_covid_adverse_effects",
+      "title": "COVID-19 Potential Adverse Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "A prolongation or worsening of the COVID-19 pandemic and the negative economic impacts of the pandemic could have other significant adverse effects on JPMorgan Chase’s businesses, results of operations and financial condition, including:\n\n•recognition of credit losses and further increases in the al",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_020_covid_uncertain_future_effects",
+      "title": "COVID-19 Future Developments and Delayed Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The extent to which the COVID-19 pandemic negatively affects JPMorgan Chase’s businesses, results of operations and financial condition, as well as its regulatory capital and liquidity ratios, will depend on future developments that are highly uncertain and cannot be predicted, including the ultimat",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_021_covid_government_programs",
+      "title": "COVID-19 Government Program Participation Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "In addition, JPMorgan Chase’s participation directly or indirectly, including on behalf of customers and clients or by affiliated entities, in U.S. government programs designed to support individuals, households and businesses impacted by the economic disruptions caused by the COVID-19 pandemic coul",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_023_regulatory_changes",
+      "title": "Regulatory Changes and Financial Services Activities",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "In particular, JPMorgan Chase’s businesses and results of operations could be adversely impacted by changes in laws, rules and regulations, or changes in the application, interpretation or enforcement of laws, rules and regulations, that:\n\n•proscribe or institute more stringent restrictions on certa",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_2_003_interest_rate_credit_spreads",
+      "title": "Interest Rates And Credit Spread Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Changes in interest rates and credit spreads can adversely affect certain of JPMorgan Chase’s revenue and income streams related to the Firm’s traditional banking and funding activities.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_010_covid_leverage_exposure",
+      "title": "COVID-19 Effects On Leverage Exposure",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Actions by the Federal Reserve and the U.S. government in response to the economic effects of the COVID-19 pandemic have led to an expansion of the Federal Reserve's balance sheet, growth in deposit balances held by JPMorgan Chase and other U.S. financial institutions and, consequently, an increase ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_5_002_credit_loss_model_uncertainty",
+      "title": "Credit Loss Model Uncertainty",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Certain models used by JPMorgan Chase in connection with the determination of the allowance for credit losses have heightened performance risk in the economic environment precipitated by the effects of the COVID-19 pandemic and government stimulus. For example, at times certain macroeconomic variabl",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

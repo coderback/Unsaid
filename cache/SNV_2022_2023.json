@@ -1,0 +1,710 @@
+{
+  "ticker": "SNV",
+  "company_name": "SYNOVUS FINANCIAL CORP",
+  "year1": 2022,
+  "year2": 2023,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T10:30:10.539631+00:00",
+  "summary_counts": {
+    "REMOVED": 6,
+    "RETAINED": 35,
+    "SOFTENED": 8,
+    "ABSORBED": 1,
+    "REWORDED": 15,
+    "NEW": 4
+  },
+  "changes": [
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Please be aware that these risks may change over time and other risks may prove to be important in the future.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2023 candidate meaningfully addresses the Year-2022 disclosure that material risks may change, new risks may emerge, or future impacts cannot be predicted. On the provided evidence, this disclosure is removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_overview",
+      "title": "Material Risks May Change Over Time"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Competition in the financial services industry may adversely affect our future earnings and growth.",
+      "year2_quote_or_null": "Competition in the financial services industry may adversely affect our future earnings and growth.",
+      "reasoning": "The core economic risk—intense competition from banks and non-bank providers adversely affecting earnings and growth—is substantively unchanged in Year-2023. The related regulatory, technology, and consolidation risks also remain present in the separately identified Year-2023 candidate disclosures, so the disclosure was retained rather than removed or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_001_financial_services_competition",
+      "title": "Competition in Financial Services Industry"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "There can be no assurance that we will ultimately realize the anticipated benefits of these strategic initiatives, or that these strategic initiatives will not negatively impact our organization.",
+      "year2_quote_or_null": "There can be no assurance that we will ultimately realize the anticipated benefits of these strategic initiatives, or that these strategic initiatives will positively impact our organization.",
+      "reasoning": "The core risk that strategic initiatives may fail to deliver expected benefits is retained. However, the Year-2 wording changes the potential organizational impact from “will not negatively impact” to “will positively impact,” eliminating the explicit negative-impact risk and thereby materially softening that aspect of the disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_strategic_initiatives_execution",
+      "title": "Strategic Initiatives May Not Deliver Benefits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The implementation of new lines of business, new products and services, and new technologies may subject us to additional risk.",
+      "year2_quote_or_null": "The implementation of new lines of business, new products and services, and new technologies may subject us to additional risk.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: implementing new businesses, products, services, and technologies can create additional risks and materially harm the company if not successfully managed. Changes to the examples and wording do not alter the substance of the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_003_new_business_products_technology",
+      "title": "New Businesses Products and Technologies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "However, even if we identify attractive acquisition opportunities, we may not be able to complete such acquisitions on favorable terms or realize the anticipated benefits from such acquisitions.",
+      "year2_quote_or_null": "However, even if we identify attractive acquisition opportunities, we may not be able to complete such acquisitions on favorable terms or realize the anticipated benefits from such acquisitions.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risks: difficulty completing acquisitions on favorable terms, competitive pricing pressure, regulatory approval constraints, failure to realize anticipated benefits, and potential dilution. The differences are immaterial wording and geographic-scope changes, with no meaningful weakening or removal of the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_004_acquisition_execution",
+      "title": "Acquisitions May Not Deliver Expected Benefits"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Failure to attract and retain employees and the impact of senior leadership transitions may adversely impact our ability to successfully execute our growth and efficiency strategies.",
+      "year2_quote_or_null": "Failure to attract and retain employees may adversely impact our ability to successfully execute our growth and efficiency strategies.",
+      "reasoning": "The employee attraction and retention risk is substantively retained, while the distinct risk concerning the impact of senior leadership transitions is no longer presented in the heading as a separate risk and is folded into the broader discussion of employee changes and leadership transitions. The transition-related economic risk remains addressed in the final paragraph, including possible disruption, difficulty retaining key employees, and impaired strategic execution.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_0_005_employee_retention_leadership",
+      "title": "Employee Retention and Leadership Transitions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The financial services market is undergoing rapid technological changes, and if we are unable to stay current with those changes, we will not be able to effectively compete.",
+      "year2_quote_or_null": "The financial services market is undergoing rapid technological changes, and if we are unable to stay current with those changes, we will not be able to effectively compete.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: rapid technology-driven change may cause the company to fall behind competitors and impair its ability to compete. The added references to artificial intelligence, machine learning, blockchain, and other technologies expand specificity but do not materially change or weaken the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_financial_technology_competition",
+      "title": "Rapid Technology Changes and Competition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may not be able to successfully implement current or future information technology system enhancements and operational initiatives, which could adversely affect our business operations and profitability.",
+      "year2_quote_or_null": "We may not be able to successfully implement current or future information technology system enhancements and operational initiatives, which could adversely affect our business operations and profitability.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risks as Year-2022, including unsuccessful implementation or integration, increased costs and inefficiencies, regulatory compliance consequences, remediation expenses, and failure to realize expected benefits. The wording and title are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_007_technology_system_enhancements",
+      "title": "Information Technology System Enhancements"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As a large financial institution, we rely extensively on our information technology systems to operate our business, including to process, record, and monitor a large number of client transactions on a continuous basis.",
+      "year2_quote_or_null": "As a complex financial institution, we rely extensively on our information technology systems to operate our business, including to process, record, and monitor a large number of client transactions on a continuous basis.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: information-system interruptions or security breaches could disrupt operations and cause reputational and operational harm. The only notable change is the descriptive wording from “large” to “complex,” with the examples, safeguards, and limitations otherwise materially unchanged.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_information_systems_disruption",
+      "title": "Information Systems Disruption and Security"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "We face significant cyber and data security risk that could result in the disclosure of confidential information, adversely affect our business or reputation, and expose us to significant liabilities.",
+      "year2_quote_or_null": "We face significant cyber and data security risk that could result in the disclosure of confidential information, adversely affect our business or reputation, and expose us to significant liabilities.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying cyber and data security risks, consequences, escalating threat environment, and potential response failures. The change from “large” to “complex” financial institution is cosmetic and does not alter the economic risk disclosed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_009_cyber_data_security",
+      "title": "Cyber and Data Security Threats"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Data privacy laws also continue to evolve, with states increasingly proposing or enacting legislation that relates to data privacy and data protection. We may be required to incur additional expense to comply with these evolving regulations and could face penalties for violating any of these regulations.",
+      "year2_quote_or_null": "Data privacy laws also continue to evolve, with states increasingly proposing or enacting legislation that relates to data privacy and data protection. We may be required to incur additional expense to comply with these evolving regulations and could face penalties for violating any of these regulations.",
+      "reasoning": "The Year-2 candidate is verbatim identical to the Year-1 disclosure and preserves the same economic risks: increased compliance costs and potential regulatory penalties arising from evolving data privacy laws.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_000_data_privacy_regulation",
+      "title": "Evolving Data Privacy Regulation Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Two of the most significant cyber-attack risks that we face are e-fraud and loss of sensitive client data.",
+      "year2_quote_or_null": "Two of the most significant cyber-attack risks that we face are e-fraud and loss of sensitive client data.",
+      "reasoning": "The Year-2023 disclosure is substantively identical to Year-2022, addressing the same e-fraud and sensitive client data-loss risks with no material change in scope, qualifiers, or stated exposure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_cyber_attack_risks",
+      "title": "Cyber-Attack and Sensitive Data Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The occurrence of any cyber-attack or information security breach could result in material adverse consequences to us including damage to our reputation, the loss of clients, and violations of applicable data privacy laws.",
+      "year2_quote_or_null": "The occurrence of any cyber-attack or information security breach could result in material adverse consequences to us including damage to our reputation, disclosure obligations, the loss of clients, and violations of applicable data privacy laws.",
+      "reasoning": "The underlying economic risks are materially the same: breaches may cause reputational harm, client loss, privacy-law violations, litigation, regulatory action, and significant liability or sanctions. Year-2023 adds disclosure obligations but does not weaken, negate, or remove the Year-2022 risks.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_002_cyber_breach_consequences",
+      "title": "Consequences of Cybersecurity Breaches"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Fraud is an increasing risk for us and for all banks, and as such, we may experience increased losses due to fraud.",
+      "year2_quote_or_null": "Fraud remains an elevated risk for us and for all banks, and as such, we may experience increased losses due to fraud.",
+      "reasoning": "The Year-2023 disclosure addresses the same underlying economic risk—fraud exposure for the company and banks generally, with potential increased fraud-related losses. The wording changes from “increasing” to “elevated” without a material change in the risk disclosed.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_003_increasing_fraud_risk",
+      "title": "Increasing Fraud Risk and Losses"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "In 2022, fraud risk increased significantly for us and for all banks. Deposit fraud (check kiting, wire fraud, etc.) and card fraud continue to be significant sources of fraud attempts and loss in our consumer banking business.",
+      "year2_quote_or_null": "In recent years, fraud risk continued to be a significant risk for us and for all banks. Card fraud and deposit fraud (check kiting, wire fraud, etc.) continue to be significant sources of fraud attempts and losses in our consumer banking business.",
+      "reasoning": "The same underlying economic risks—fraud generally, including card and deposit fraud, commercial-client fraud, evolving fraud techniques, impersonation, and PII theft—remain expressly disclosed in Year-2. The wording changes do not materially weaken, negate, or broaden the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_004_fraud_methods_exposure",
+      "title": "Fraud Schemes and Evolving Techniques"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There are inherent limitations, however, to our risk management strategies, systems, and controls as they may exist, or develop in the future.",
+      "year2_quote_or_null": "There are inherent limitations, however, to our risk management strategies, systems, and controls as they may exist, or develop in the future.",
+      "reasoning": "Candidate 1 reproduces the Year-2022 anti-fraud controls and risk-management limitations disclosure verbatim, including the risk of ineffective controls, unexpected losses, third-party or governmental claims, and reputational damage. The underlying economic risk is therefore retained, not merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_fraud_risk_management",
+      "title": "Fraud Prevention Controls and Limitations"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Our regulators require us to report fraud promptly, and regulators often advise banks of new schemes so that the entire industry can adapt as quickly as possible. However, some level of fraud loss is unavoidable, and the risk of loss cannot be eliminated.",
+      "year2_quote_or_null": "Our regulators require us to report fraud promptly, and regulators often advise banks of new schemes to enable the entire industry to adapt as quickly as possible. However, some level of fraud loss is unavoidable, and the risk of loss cannot be eliminated.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks: prompt fraud reporting, industry exposure to evolving schemes, unavoidable fraud losses, and the inability to eliminate loss risk. The change from “so that” to “to enable” is purely stylistic.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_006_fraud_reporting_limits",
+      "title": "Fraud Reporting and Unavoidable Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If our enterprise risk management framework is not effective at mitigating risk and loss to us, we could suffer unexpected losses and our results of operations could be materially adversely affected.",
+      "year2_quote_or_null": "If our enterprise risk management framework is not effective at mitigating risk and loss to us, we could suffer unexpected losses and our results of operations could be materially adversely affected.",
+      "reasoning": "The core economic risk—an ineffective enterprise risk management framework causing unexpected losses and materially adverse operating results—is stated verbatim in Year-2023 Candidate 2 and also remains embedded in the broader limitations disclosure in Candidate 1. The added cybersecurity category does not change the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_007_enterprise_risk_management",
+      "title": "Enterprise Risk Management Effectiveness"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "If our reputation is negatively affected by the actions of our employees or otherwise, including as a result of operational errors, clerical or record-keeping errors, or those resulting from faulty or disabled computer or telecommunications systems or a successful cyberattack against us or other unauthorized release or loss of client information, our reputation, business, and our operating results may be materially adversely affected.",
+      "year2_quote_or_null": "If our reputation is negatively affected by the actions of our employees or otherwise, including as a result of operational, clerical, or record-keeping errors, or those resulting from faulty or disabled computer or telecommunications systems or a successful cyber-attack against us or other unauthorized release or loss of client information, our reputation, business, and our operating results may be materially adversely affected.",
+      "reasoning": "The Year-2023 disclosure retains the same economic risk: reputational damage arising from employee actions, operational or record-keeping errors, system failures, cyberattacks, or unauthorized client-information release, with materially adverse effects on the business and results. The changes are grammatical and stylistic, including punctuation and hyphenation, without a substantive change in risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_008_reputation_maintenance",
+      "title": "Reputation and Business Performance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Accordingly, use of such third parties creates an unavoidable inherent risk to our business operations.",
+      "year2_quote_or_null": "Accordingly, use of such third parties creates an unavoidable inherent risk to our business operations.",
+      "reasoning": "The Year-2023 disclosure is substantively identical to the Year-2022 disclosure and retains the same economic risks, including dependence on vendors, service disruption, vendor cyber and operational failures, replacement costs, and increased risk from digital initiatives.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_009_third_party_vendors",
+      "title": "Third-Party Vendor Operational Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As an issuer of credit and debit cards we are exposed to losses in the event that holders of our cards experience fraud on their card accounts.",
+      "year2_quote_or_null": "As an issuer of credit and debit cards we are exposed to losses in the event that holders of our cards experience fraud on their card accounts.",
+      "reasoning": "The Year-2023 candidate addresses the same economic risks as Year-2022: card-account fraud losses, retailer data breaches, reimbursement and replacement-card costs, and merchant-client breach losses and penalties. The disclosure is materially unchanged, so it is retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_010_card_fraud_losses",
+      "title": "Card Fraud and Data Breach Losses"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "We face risks related to our oversight and supervision of the ISO program (including compliance, risk, and reputational monitoring), as well as to the reputation and financial viability of the ISOs with which we do business.",
+      "year2_quote_or_null": "We face risks related to our oversight and supervision of the ISO program (including compliance and reputational monitoring) as well as to the reputation and financial viability of the ISOs with which we do business.",
+      "reasoning": "The underlying ISO oversight, counterparty reputation, and financial-viability risks remain disclosed. However, Year-2023 omits the explicit reference to “risk” monitoring within the oversight program, modestly weakening the stated scope of oversight risk; the other changes are cosmetic.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_1_011_iso_relationships",
+      "title": "Independent Sales Organization Risks"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The industry's transition away from LIBOR may also increase our litigation risk.",
+      "year2_quote_or_null": "Furthermore, litigation against banks tend to increase during economic downturns and periods of credit deterioration which may occur or worsen as a result of the current economic uncertainty.",
+      "reasoning": "The general litigation and investigation exposure is retained, but the Year-2022 disclosure specifically identified the industry's transition away from LIBOR as a factor that may increase litigation risk, and that risk is absent from the Year-2023 candidate. Because the LIBOR-specific risk is no longer disclosed while the broader litigation risk remains, the disclosure is softened rather than fully removed.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_1_012_litigation_investigations",
+      "title": "Litigation and Investigation Exposure"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As of December 31, 2022, Synovus' management currently estimates the aggregate range of reasonably possible losses resulting from our outstanding litigation... is from zero to $5 million in excess of the amounts accrued, if any, related to those matters.",
+      "year2_quote_or_null": "As of December 31, 2023, Synovus' management currently estimates the aggregate range of reasonably possible losses resulting from our outstanding litigation... is from zero to $10 million in excess of the amounts accrued, if any, related to those matters.",
+      "reasoning": "The underlying risk—litigation may result in losses exceeding recorded reserves, with an uncertain aggregate range of reasonably possible losses—remains disclosed in substantially the same unit. The increase in the estimated upper bound from $5 million to $10 million is a quantitative update, not a change in the nature of the disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_013_legal_claim_reserves",
+      "title": "Legal Claims Reserves and Loss Estimates"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our insurance may not cover all claims that may be asserted against it and indemnification rights to which we are entitled may not be honored, and any claims asserted against us, regardless of merit or eventual outcome, may harm our reputation.",
+      "year2_quote_or_null": "Our insurance may not cover all claims that may be asserted against us and indemnification rights to which we are entitled may not be honored, and any claims asserted against us, regardless of merit or eventual outcome, may harm our reputation.",
+      "reasoning": "The Year-2023 disclosure addresses the same insurance coverage, indemnification, litigation-reputation, excess judgment, and rising premium risks with materially unchanged substance. The only apparent change is a grammatical wording correction from “against it” to “against us.”",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_014_litigation_insurance",
+      "title": "Litigation Insurance Coverage Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in interest rates may have an adverse effect on our net interest income.",
+      "year2_quote_or_null": "Changes in interest rates may have an adverse effect on our net interest income.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: changes in market interest rates may adversely affect net interest income, earnings, liquidity, and financial condition. The updated discussion changes the timing and outlook for Federal Reserve rate actions but does not weaken, remove, or materially alter the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_015_interest_rate_net_interest_income",
+      "title": "Interest Rate Changes and Net Interest Income"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "A number of factors could make funding more difficult, more expensive, or unavailable on any terms, including, but not limited to, a downgrade in our credit ratings, financial results, changes within our organization, specific events that adversely impact our reputation, disruptions in the capital markets, specific events that adversely impact the financial services industry, counterparty availability, changes affecting our assets, the corporate and regulatory structure, interest rate fluctuations, general economic conditions, and the legal, regulatory, accounting and tax environments governing our funding transactions.",
+      "year2_quote_or_null": "A number of factors could make funding more difficult, more expensive, or unavailable on any terms, including, but not limited to, a downgrade in our credit ratings, financial results, changes within our organization, specific events that adversely impact our reputation, disruptions in the capital markets, specific events that adversely impact the financial services industry, counterparty availability, recently proposed changes to the FHLB system, changes affecting our assets, the corporate and regulatory structure, interest rate fluctuations, general economic conditions, and the legal, regulatory, accounting, and tax environments governing our funding transactions.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: funding may become more difficult, costly, or unavailable, adversely affecting liquidity, capital resources, and financial results. It adds recently proposed changes to the FHLB system and makes minor punctuation and wording changes, but does not materially weaken or eliminate the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_016_funding_liquidity",
+      "title": "Funding Costs and Liquidity Availability"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The primary source of liquidity for us consists of dividends from Synovus Bank which are governed by certain rules and regulations of our supervising agencies.",
+      "year2_quote_or_null": "The primary source of liquidity for us consists of dividends from Synovus Bank which are governed by certain rules and regulations of our supervising agencies.",
+      "reasoning": "The Year-2023 disclosure reproduces the Year-2022 economic risk essentially verbatim, including dependence on Synovus Bank dividends, regulatory restrictions and approval requirements, and the adverse liquidity impact if dividends or alternative funding are unavailable or unfavorable.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_000_parent_company_liquidity",
+      "title": "Parent Company Liquidity Sources and Constraints"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As a result of monetary policy and the broader market for interest rates and funding, we expect that we may be required to raise rates on our deposits to keep pace with our competition.",
+      "year2_quote_or_null": "As a result of monetary policy and the broader market for interest rates and funding, we were required to raise rates on many of our deposits in 2023 to keep pace with our competition.",
+      "reasoning": "The disclosure retains the same underlying economic risks: deposit loss or inability to retain deposits, liquidity pressure, higher funding costs, and reduced net interest margin and income. The main changes update the period and convert an expectation about raising deposit rates into a reported 2023 event, without weakening or removing the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_001_deposit_loss_funding_costs",
+      "title": "Deposit Loss and Higher Funding Costs"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Our allowance for credit losses may not cover actual losses, and we may be required to materially increase our allowance, which may adversely affect our capital, financial condition and results of operations.",
+      "year2_quote_or_null": "Our allowance for credit losses may not cover actual losses, and we may be required to materially increase our allowance, which may adversely affect our capital, financial condition, and results of operations.",
+      "reasoning": "The core economic risk is unchanged: the allowance may be inadequate, requiring increases that adversely affect capital, financial condition, and results. The Year-2 edits are cosmetic or terminology updates (including provision for credit losses and non-accrual loans) and do not materially change the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_002_allowance_credit_losses",
+      "title": "Allowance for Credit Losses Adequacy"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our asset quality generally remains strong, but further economic disruption could negatively impact asset quality in future periods, particularly as to those borrowers in certain adversely and disproportionately impacted industries.",
+      "year2_quote_or_null": "Our asset quality generally remains strong, but further economic disruption could negatively impact asset quality in future periods, particularly as to those borrowers in certain adversely and disproportionately impacted industries.",
+      "reasoning": "The Year-2023 candidate presents the same underlying risk of asset quality deterioration adversely affecting results and financial condition, including the same potential economic-disruption and industry-concentration concerns. The disclosure is substantively unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_003_asset_quality_deterioration",
+      "title": "Asset Quality Deterioration Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We could realize losses if we determine to sell non-performing assets and the proceeds we receive are lower than the carrying value of such assets.",
+      "year2_quote_or_null": "We could realize losses if we determine to sell non-performing assets and the proceeds we receive are lower than the carrying value of such assets.",
+      "reasoning": "The Year-2023 disclosure is substantively identical to the Year-2022 disclosure, including the risks of losses from selling non-performing assets below carrying value, increased credit costs, adverse effects on results of operations, and higher losses if market conditions deteriorate.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_004_nonperforming_asset_sales",
+      "title": "Losses on Non-Performing Asset Sales"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may not be able to generate sufficient cash to service all of our debt and repay maturing debt obligations.",
+      "year2_quote_or_null": "We may not be able to generate sufficient cash to service all of our debt and repay maturing debt obligations.",
+      "reasoning": "The Year-2023 disclosure preserves the same economic risks: insufficient cash flow to service and repay debt, refinancing risk, and potential adverse actions if liquidity is inadequate. The reduction in reported debt and minor wording edits do not change the underlying risk disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_005_debt_service_liquidity",
+      "title": "Debt Service and Refinancing Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may be unable to pay dividends on our common stock and preferred stock.",
+      "year2_quote_or_null": "We may be unable to pay dividends on our common stock and preferred stock.",
+      "reasoning": "Candidate 1 retains the same economic risk and substantive details: dividends are discretionary, may be restricted by the Federal Reserve, could be reduced or eliminated, and preferred-stock governance rights may arise after missed dividends. Candidate 2 is a related regulatory disclosure but does not alter or replace the directly retained dividend-payment risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_006_dividend_payment_risk",
+      "title": "Common and Preferred Dividend Payment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The fiscal and monetary policies of the federal government and its agencies could have a material adverse effect on our earnings.",
+      "year2_quote_or_null": "The fiscal and monetary policies of the federal government and its agencies could have a material adverse effect on our earnings.",
+      "reasoning": "The Year-2023 candidate addresses the same fiscal and monetary policy risks, including effects on funding costs, net interest margin, asset values, borrowers, collateral values, market volatility, and taxes. The disclosure is substantively unchanged, so it is retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_007_fiscal_monetary_policy",
+      "title": "Fiscal and Monetary Policy Effects"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "In particular, we expect that the Biden administration will continue to seek to implement a reform agenda.",
+      "year2_quote_or_null": "We expect regulatory bodies such as the CFPB and FDIC to continue to take a more aggressive enforcement stance and increase their focus and scrutiny on all consumer facing financial institutions.",
+      "reasoning": "The core banking-regulation and legislative-change risk is otherwise retained, but the Year-2023 disclosure removes the specific expectation that the Biden administration will continue pursuing a reform agenda. This narrows and weakens the identified future legislative-change exposure, while retaining the regulatory enforcement risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_008_banking_regulation_changes",
+      "title": "Banking Regulation and Legislative Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may become subject to supervisory actions and enhanced regulation that could have a material adverse effect on our business, reputation, operating flexibility, financial condition, and the value of our common stock and preferred stock.",
+      "year2_quote_or_null": "We may become subject to supervisory actions and enhanced regulation that could have a material adverse effect on our business, reputation, operating flexibility, financial condition, and the value of our common stock and preferred stock.",
+      "reasoning": "Candidate 1 reproduces the Year-2022 disclosure and preserves the same underlying economic risk, including regulatory intervention, corrective actions, restrictions, and potential adverse effects. Candidate 2 separately discusses dividend risk but does not alter or replace the retained supervisory-actions disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_009_supervisory_actions",
+      "title": "Supervisory Actions and Enhanced Regulation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may be required to conserve capital or undertake additional strategic initiatives to improve our capital position due to changes in economic conditions or changes in regulatory capital rules.",
+      "year2_quote_or_null": "We may be required to conserve capital or undertake additional strategic initiatives to improve our capital position due to changes in economic conditions or changes in regulatory capital rules.",
+      "reasoning": "The Year-2 disclosure is substantively identical to the Year-1 disclosure: it presents the same potential need to conserve capital or pursue strategic initiatives in response to economic or regulatory-capital changes, with no meaningful change in the economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_010_capital_conservation",
+      "title": "Capital Conservation and Strategic Initiatives"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We and Synovus Bank are required under federal law to maintain certain minimum capital levels based on ratios of capital to total assets and capital to risk-weighted assets.",
+      "year2_quote_or_null": "We and Synovus Bank are required under federal law to maintain certain minimum capital levels based on ratios of capital to total assets and capital to risk-weighted assets.",
+      "reasoning": "The Year-2023 candidate reproduces the Year-2022 disclosure in full, preserving the same economic risks regarding minimum regulatory capital, potentially higher requirements, changing standards, and future capital needs.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_000_regulatory_capital_requirements",
+      "title": "Regulatory Capital Requirements and Future Needs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The need to maintain more capital and greater liquidity than may have previously been warranted or intended could limit our business activities, including lending, and our ability to expand...",
+      "year2_quote_or_null": "The need to maintain more capital and greater liquidity than may have previously been warranted or intended could limit our business activities, including lending, and our ability to expand...",
+      "reasoning": "The Year-2 candidate reproduces the same disclosure, including the economic risk that higher capital and liquidity requirements could constrain lending, expansion, investment, and shareholder returns. The title change does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_001_capital_management_constraints",
+      "title": "Capital Management and Shareholder Returns"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Inflation rose significantly during 2022 to levels not seen for over 40 years. Inflationary pressures are currently expected to continue into 2023.",
+      "year2_quote_or_null": "Although inflation moderated in the first half of 2023 and significantly declined in the second half of 2023, the economic impact of inflation continues to persist. Prolonged periods of inflation may impact our profitability...",
+      "reasoning": "The underlying inflation-related risks remain, including higher costs, weaker demand, reduced purchasing power, credit losses, and potential stock-price impacts. However, the disclosure softens the forward risk by stating that inflation moderated and significantly declined, and it removes the Year-2 expectation that inflationary pressures would continue at the prior elevated level.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_002_inflationary_pressures",
+      "title": "Inflationary Pressures and Rising Prices"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The U.S. government's decisions regarding its debt ceiling and the possibility that the U.S. could default on its debt obligations may cause further interest rate increases, disrupt access to capital markets, and deepen recessionary conditions.",
+      "year2_quote_or_null": "We are operating in an uncertain economic environment. The global credit and financial markets have experienced extreme volatility and disruptions, including diminished liquidity and credit availability, declines in consumer confidence, declines in economic growth, increases in unemployment rates, high rates of inflation, and uncertainty about economic stability and a potential recession.",
+      "reasoning": "The core global economic instability/recession risk was retained, including volatility, reduced liquidity and credit availability, inflation, recession uncertainty, and potential effects on charge-offs, credit losses, and demand. However, the Year-2023 disclosure removes the specific U.S. debt-ceiling/default risk and its associated interest-rate and capital-market disruption consequences, so the disclosure is softened rather than merely reworded.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_3_003_global_economic_instability",
+      "title": "Global Economic Instability and Recession"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "In addition, the financial markets and the global economy may also be adversely affected by the current or anticipated impact of military conflict, including the current conflict between Russia and Ukraine, which is increasing volatility in commodity and energy prices, creating supply chain issues and causing instability in financial markets.",
+      "year2_quote_or_null": "In addition, the financial markets and the global economy may also be adversely affected by the current or anticipated impact of military conflict, including the current conflict between Russia and Ukraine, which is increasing volatility in commodity and energy prices, creating supply chain issues and causing instability in financial markets.",
+      "reasoning": "The underlying economic risk is retained: military conflict may cause commodity and energy-price volatility, supply-chain disruption, financial-market instability, inflationary pressure, and increased cyberattacks. Year-2023 adds Israel/Hamas and U.S.-China tensions, but does not weaken or remove the Year-2022 risk; it is substantively reworded/expanded.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_004_military_conflict_market_effects",
+      "title": "Military Conflict and Financial Market Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There can be no assurance that further deterioration in markets and confidence in economic conditions will not occur. Our general business strategy may be adversely affected by any such economic downturn or recession, volatile business environment, hostile third-party action, or continued unpredictable and unstable market conditions.",
+      "year2_quote_or_null": "There can be no assurance that further deterioration in markets and confidence in economic conditions will not occur. Our general business strategy may be adversely affected by any such economic downturn or recession, volatile business environment, hostile third-party action, or continued unpredictable and unstable market conditions.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and retains the same economic risks: deterioration in markets, recession or downturn, volatility, hostile third-party action, and prolonged effects after a downturn.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_005_economic_downturn_business_strategy",
+      "title": "Economic Downturn and Unpredictable Markets"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "While the level of disruption caused by, and the economic impact of, the COVID-19 pandemic lessened in 2022, there is no assurance that the pandemic will not worsen again, included as a result of the emergence of new strains of the virus, or another health related emergency will not emerge.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2023 candidate meaningfully addresses the economic risk of a renewed COVID-19 or other health emergency affecting the business, credit losses, asset values, or critical counterparties. The disclosure is therefore genuinely absent rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_006_covid19_pandemic_impact",
+      "title": "COVID-19 Pandemic and Health Emergencies"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "We risk damage to our brand and reputation if we fail to act responsibly in a number of areas, such as DEI, environmental stewardship, including with respect to climate change, human capital management, support for our local communities, corporate governance, and transparency, or fail to consider ESG factors in our business operations.",
+      "year2_quote_or_null": "We risk damage to our brand and reputation if we fail to act responsibly or are perceived to act too aggressively in a number of areas, such as DEI, environmental stewardship, including with respect to climate change, human capital management, support for our local communities, corporate governance, and transparency, or fail to consider ESG factors in our business operations.",
+      "reasoning": "The underlying ESG-related reputation risk is retained, but Year-2023 adds protection against being perceived to act “too aggressively,” thereby qualifying and softening the disclosure of the consequences of ESG conduct. The change from “investors and shareholder advocates” to “some investors and shareholder advocates” also weakens the breadth of that pressure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_007_esg_reputation_relationships",
+      "title": "ESG Risks, Reputation, and Relationships"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Concerns over the long-term impacts of climate change have led and will to lead to governmental efforts around the world to mitigate those impacts.",
+      "year2_quote_or_null": "Concerns over the long-term impacts of climate change have led and will continue to lead to governmental efforts around the world to mitigate those impacts.",
+      "reasoning": "The Year-2023 candidates collectively preserve the Year-2022 climate-change disclosure, including transition/regulatory risks, physical risks to clients and collateral, and uncertainty regarding climate-risk management. The minor wording correction in the opening sentence does not change the underlying economic risks.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_008_climate_change_risks",
+      "title": "Climate Change Regulatory and Physical Risks"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "It is unclear as to the degree to which the market will adopt such non-LIBOR indices or how the industry may transition various products to an accepted alternative to LIBOR.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2023 disclosure meaningfully addresses the LIBOR transition, benchmark replacement, or the associated uncertainty for financial products. The Year-2022 economic risk therefore appears genuinely absent rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_009_libor_transition_risk",
+      "title": "LIBOR Transition and Benchmark Rates"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The transition from LIBOR to another benchmark rate or rates is complex and could have a range of adverse effects on our business, financial condition, and results of operations.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2023 candidate meaningfully addresses the economic risks associated with the LIBOR transition, including effects on LIBOR-linked instruments, fallback disputes, regulatory inquiries, client uncertainty, or transition-related systems costs. The disclosure is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_010_libor_transition_adverse_effects",
+      "title": "LIBOR Transition Adverse Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our operations are concentrated in the Southeastern U.S. in the states of Alabama, Florida, Georgia, South Carolina, and Tennessee. As a result, local economic conditions significantly affect the demand for loans and other products we offer to our clients (including real estate, commercial, and construction loans), the ability of borrowers to repay these loans, and the value of the collateral securing these loans. Economic downturns in these regions could adversely affect our currently performing loans, leading to future delinquencies or defaults and increases in our provision for credit losses.",
+      "year2_quote_or_null": "Our operations are concentrated in the Southeastern U.S. in the states of Alabama, Florida, Georgia, South Carolina, and Tennessee. As a result, local economic conditions significantly affect the demand for loans and other products we offer to our clients (including real estate, commercial, and construction loans), the ability of borrowers to repay these loans, and the value of the collateral securing these loans. Economic downturns in these regions could adversely affect our currently performing loans, leading to future delinquencies or defaults and increases in our provision for credit losses.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and retains the same Southeastern U.S. geographic concentration risk, including effects on loan demand, borrower repayment, collateral values, delinquencies, defaults, and credit-loss provisions.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_011_southeastern_geographic_concentration",
+      "title": "Southeastern U.S. Geographic Concentration"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, the occurrence of events such as hurricanes, tropical storms, tornados, winter storms, flooding, and other large-scale weather catastrophes in and along the Gulf and the Atlantic coasts, as well as other parts of the Southeastern U.S., and further public health issues, such as pandemics or other widespread health emergencies, could adversely affect the condition of collateral associated with our loan portfolio, our general financial condition, or the results of our operations.",
+      "year2_quote_or_null": "In addition, the occurrence of events such as hurricanes, tropical storms, tornados, winter storms, flooding, and other large-scale weather catastrophes in and along the Gulf and the Atlantic coasts, as well as other parts of the Southeastern U.S., and further public health issues, such as pandemics or other widespread health emergencies, could adversely affect the condition of collateral associated with our loan portfolio, our general financial condition, or the results of our operations.",
+      "reasoning": "The Year-2023 disclosure is substantively identical to the Year-2022 disclosure and retains the same weather, public-health, climate-change, operational-disruption, collateral, earnings, and financial-condition risks without any meaningful change in qualifiers or negation.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_012_southeastern_external_events",
+      "title": "Southeastern Weather and External Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Market risk reflects the risk of economic loss resulting from adverse changes in market prices and interest rates. This risk of loss can be reflected in either diminished market values within the balance sheet or reduced current and potential net income. Synovus’ most significant market risk is interest rate risk. This risk arises primarily from Synovus’ core banking activities of extending loans and accepting deposits.",
+      "year2_quote_or_null": "Market risk reflects the risk of economic loss resulting from adverse changes in market prices and interest rates. This risk of loss can be reflected in either diminished market values within the balance sheet or reduced current and potential net income. Synovus’ most significant market risk is interest rate risk. This risk arises primarily from Synovus’ core banking activities of extending loans and accepting deposits.",
+      "reasoning": "The Year-2023 candidate is substantively identical to the Year-2022 disclosure and preserves the same economic risks, risk significance, and sources of exposure.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_000_market_risk_overview",
+      "title": "Market Risk and Interest Rate Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Managing interest rate risk is a primary goal of the asset liability management function. Synovus attempts to achieve consistency in net interest income while limiting volatility arising from changes in interest rates.",
+      "year2_quote_or_null": "Managing interest rate risk is a primary goal of the asset liability management function. Synovus attempts to achieve consistency in net interest income while limiting volatility arising from changes in interest rates.",
+      "reasoning": "The Year-2023 candidate reproduces the Year-2022 disclosure verbatim, including the same economic risk: interest-rate-driven volatility in net interest income and the framework for managing that exposure. No substantive change is present.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_001_interest_rate_management",
+      "title": "Interest Rate Risk Management Framework"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Synovus measures the sensitivity of net interest income to changes in market interest rates through the use of simulation modeling.",
+      "year2_quote_or_null": "Synovus measures the sensitivity of net interest income to changes in market interest rates through the use of simulation modeling, which incorporates all of Synovus' earnings assets and liabilities.",
+      "reasoning": "Year-2023 retains the same underlying economic risk: sensitivity of net interest income to market interest-rate changes measured through simulation modeling. It adds detail on modeled assets, liabilities, balance-sheet factors, client behavior, and deposit-cost beta, but does not materially downgrade or eliminate the risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_002_simulation_modeling",
+      "title": "Net Interest Income Simulation Modeling"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "These results indicate that the Company has an asset sensitive position over the next year, benefiting net interest income if rates rise and decreasing net interest income if rates fall.",
+      "year2_quote_or_null": "As illustrated in the table below, the net interest income sensitivity derived from this simulation suggests that net interest income is projected to increase by 3.7% and 1.9% if interest rates increased by 200 and 100 bps, respectively. Net interest income is projected to decrease by 2.0% and 4.1% if interest rates decreased by 100 and 200 bps, respectively.",
+      "reasoning": "The same twelve-month net interest income exposure to rising and falling rates remains disclosed, so it was not removed or absorbed. However, the projected benefits from rate increases and costs from rate decreases are materially smaller in 2023 than in 2022 (for example, +200 bps falls from 6.4% to 3.7% and -200 bps from -7.5% to -4.1%), indicating a softened sensitivity.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_003_nii_sensitivity_forecast",
+      "title": "Twelve-Month Net Interest Income Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Change in Interest Rates (in bps) Estimated Change in Net Interest Income As of December 31, +200 6.4% 14.5%; +100 3.1% 6.5%; -100 (3.5)% N/A; -200 (7.5)% N/A",
+      "year2_quote_or_null": "The following table represents the estimated sensitivity of net interest income at December 31, 2023, with comparable information for December 31, 2022. ... +200 3.7% 6.4%; +100 1.9% 3.1%",
+      "reasoning": "The same economic risk—net interest income sensitivity to 100- and 200-basis-point increases and decreases in interest rates—remains disclosed in Year-2. The numerical estimates changed, but that reflects updated sensitivity estimates rather than a change in the underlying risk disclosure.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_004_nii_sensitivity_table",
+      "title": "Net Interest Income Sensitivity Table"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "While all of the above estimates are reflective of the general interest rate sensitivity of Synovus, local market conditions, the realized growth and remixing of the balance sheet, as well as the broader macroeconomic environment could all have a significant impact on the both the sensitivity and realized level of net interest income.",
+      "year2_quote_or_null": "While all of the above estimates are reflective of the general interest rate sensitivity of Synovus, local market conditions, the realized growth and remixing of the balance sheet, as well as the broader macroeconomic environment could all have a significant impact on the both the sensitivity and realized level of net interest income. Additionally, should there be differences between realized deposit betas for a given level of rates as compared to the Company's estimates for through-the-cycle betas, this may also have a significant impact on our reported sensitivity and the realized level of net interest income.",
+      "reasoning": "The Year-2023 disclosure reproduces the Year-2022 economic risk essentially verbatim: estimates of interest-rate sensitivity and net interest income may be materially affected by market conditions, balance-sheet changes, and the macroeconomic environment. The added deposit-beta risk expands the disclosure but does not change the status of the original risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_005_nii_sensitivity_limitations",
+      "title": "Net Interest Income Sensitivity Limitations"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "EVE is measured based on the discounted present values of assets, liabilities, and derivatives cash flows. Management uses EVE sensitivity as an additional means of measuring interest rate and incorporates this form of analysis within its governance and limits framework.",
+      "year2_quote_or_null": "The EVE measurement process estimates the net fair value of assets, liabilities, and off-balance sheet financial instruments under various interest rate scenarios. Management uses EVE sensitivity analyses as an additional means of measuring interest rate and incorporates this form of analysis within its governance and limits framework.",
+      "reasoning": "The Year-2023 disclosure retains the same underlying economic risk: sensitivity of EVE to changing interest rates, measured using the values of assets, liabilities, and related instruments and incorporated into governance and limits. The wording and inclusion of off-balance-sheet instruments are updated, but there is no material change in the risk conveyed.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_006_eve_sensitivity",
+      "title": "Economic Value of Equity Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Synovus is also subject to market risk in certain of its fee income business lines. Financial management services revenue, which include trust, brokerage, and asset management fees, can be affected by risk in the securities markets, primarily the equity securities market.",
+      "year2_quote_or_null": "Synovus is also subject to market risk in certain of its fee income business lines. Financial management services revenue, which include trust, brokerage, and asset management fees, can be affected by risk in the securities markets, primarily the equity securities market.",
+      "reasoning": "The Year-2023 candidate reproduces the Year-2022 disclosure and addresses the same economic risks: securities-market exposure affecting fee income, asset-value-based fees, and trading-account price risk. No material change in risk scope or qualification is evident.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_007_fee_income_market_risk",
+      "title": "Fee Income and Securities Market Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Mortgage loan originations are sensitive to levels of mortgage interest rates and therefore, mortgage banking income can be negatively impacted during a period of rising interest rates.",
+      "year2_quote_or_null": "Mortgage loan originations are sensitive to levels of mortgage interest rates and therefore, mortgage banking income can be negatively impacted during a period of rising interest rates as we have been experiencing through-the-cycle.",
+      "reasoning": "The same economic risks are disclosed in Year-2: rising mortgage rates can reduce mortgage banking income, and the timing gap around loan commitments, closing, and delivery creates market risk managed with hedges. The added reference to rates experienced through-the-cycle and the substitution of “other economic hedges” do not materially change the risk disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_008_mortgage_banking_market_risk",
+      "title": "Mortgage Banking Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Synovus utilizes derivative instruments to manage its exposure to various types of structural interest rate risks by executing end-user derivative transactions designated as hedges.",
+      "year2_quote_or_null": "Synovus utilizes derivative instruments to manage its exposure to various types of structural interest rate risks by executing end-user derivative transactions designated as hedges.",
+      "reasoning": "The Year-2 Candidate 1 reproduces the same economic disclosure: Synovus uses derivatives designated as hedges to manage structural interest-rate risk, including the same cash-flow and fair-value hedge distinctions. Candidate 2 is a narrower supporting disclosure and does not alter the retained broader risk statement.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_009_derivative_hedge_types",
+      "title": "Derivative Instruments and Hedge Types"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As of December 31, 2022 and 2021, Synovus had $5.25 billion and $3.60 billion, respectively, in notional amounts outstanding of interest rate swaps designated as cash flow hedging instruments to hedge its exposure to contractually specified interest rate risk associated with floating rate loans.",
+      "year2_quote_or_null": "As of December 31, 2023 and 2022, Synovus had $5.60 billion and $5.25 billion, respectively, in notional amounts outstanding of both effective and forward-starting interest rate swaps designated as cash flow hedging instruments to hedge its exposure to contractually specified interest rate risk associated with floating rate loans.",
+      "reasoning": "Candidate 1 directly retains the same economic risk: cash flow hedging interest rate swaps used to hedge contractually specified interest-rate risk on floating-rate loans. The added reference to effective and forward-starting swaps and updated notional amounts does not change the underlying disclosure; Candidate 2 addresses a distinct fair value hedging risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_010_cash_flow_hedges",
+      "title": "Cash Flow Hedge Notional Amounts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As of December 31, 2022, Synovus had $2.23 billion in notional amounts outstanding of receive-fixed, pay-variable interest rate swaps designated as fair value hedging instruments to hedge its exposure to the change in the fair value due to fluctuations in market interest rates for outstanding fixed-rate long-term debt and interest-bearing deposits.",
+      "year2_quote_or_null": "As of December 31, 2023 and 2022, Synovus had $2.56 billion and $2.23 billion, respectively, in notional amounts outstanding of receive-fixed, pay-variable interest rate swaps designated as fair value hedging instruments to hedge its exposure to the change in the fair value due to fluctuations in market interest rates for outstanding fixed-rate long-term debt and interest-bearing deposits.",
+      "reasoning": "The same fair-value hedge risk, instruments, hedging designation, and hedged exposures are explicitly disclosed in Year-2. The addition of the 2023 amount does not change the underlying economic risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_011_fair_value_hedges",
+      "title": "Fair Value Hedge Notional Amounts"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "On March 5, 2021, the FCA confirmed that all LIBOR settings would either cease to be provided by any administrator or no longer be representative immediately after June 30, 2023 for all remaining US dollar settings.",
+      "year2_quote_or_null": null,
+      "reasoning": "The Year-2023 candidates contain no disclosure addressing the LIBOR cessation timeline or the associated transition risk. Because the economic risk is not meaningfully disclosed in Year-2, it is classified as REMOVED.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_012_libor_cessation",
+      "title": "LIBOR Cessation Timeline"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The Company discontinued the use of LIBOR as of December 31, 2021, with limited exceptions as permitted by regulatory guidance or internal policies.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2023 candidate meaningfully addresses the LIBOR transition risk, remediation activities, or remaining LIBOR-linked exposures described in Year-2022. Accordingly, the disclosure is classified as removed rather than reworded or absorbed.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_013_libor_transition_program",
+      "title": "LIBOR Transition Planning and Remediation"
+    },
+    {
+      "id": "1A_3_000_bank_failures_deposit_confidence",
+      "title": "Bank Failures and Deposit Confidence",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Further, bank failures, such as the ones occurring in 2023, have and may in the future diminish public confidence in small and regional banks' abilities to safeguard deposits in excess of federally insured limits, which could prompt clients to maintain their deposits with larger financial institutio",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_008_banking_industry_confidence",
+      "title": "Banking Industry Confidence Erosion",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The closures of Silicon Valley Bank and Signature Bank in March 2023 and First Republic Bank in May 2023, negative media attention surrounding these events, and concerns about future events have generated significant market volatility among publicly traded bank holding companies and, in particular, ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_009_banking_regulatory_scrutiny",
+      "title": "Banking Regulatory Scrutiny",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We also anticipate increased regulatory scrutiny – in the course of routine examinations and otherwise – and new regulations directed towards banks of similar size to Synovus Bank, designed to address the recent negative developments in the banking industry, all of which may increase our costs of do",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_010_model_risk",
+      "title": "Risks from Extensive Model Use",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Synovus relies on quantitative models to measure risks, estimate certain financial values, and inform certain business decisions. Models may be used in such processes as determining the pricing of various products, grading and underwriting loans, measuring interest rate and other market risks, predi",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

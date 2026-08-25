@@ -1,0 +1,660 @@
+{
+  "ticker": "BOKF",
+  "company_name": "BOK FINANCIAL CORP",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T13:32:06.182400+00:00",
+  "summary_counts": {
+    "RETAINED": 36,
+    "ABSORBED": 3,
+    "REMOVED": 4,
+    "REWORDED": 4,
+    "SOFTENED": 2,
+    "NEW": 15
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Although BOK Financial has developed an operating strategy, which it expects to result in continuing improved financial performance, BOK Financial cannot ensure that it will be successful in fulfilling this strategy or that this operating strategy will be successful.",
+      "year2_quote_or_null": "Although BOK Financial has developed an operating strategy, which it expects to result in continuing improved financial performance, BOK Financial cannot ensure that it will be successful in fulfilling this strategy or that this operating strategy will be successful.",
+      "reasoning": "The Year-2020 disclosure retains the same operating-strategy execution risk and the same underlying adverse factors, including asset quality, economic conditions, expenses, income, capital access, margins, competition, cybersecurity, and regulation. The only apparent change is formatting of the bullet list, which does not alter economic substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_000_operating_strategy",
+      "title": "Operating Strategy Execution Risks"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "The increasingly competitive environment is in part a result of changes in regulation, changes in technology and product delivery systems and the accelerating pace of consolidation among financial service providers.",
+      "year2_quote_or_null": "The increasingly competitive environment is in part a result of changes in regulation, changes in technology and product delivery systems and the accelerating pace of consolidation among financial service providers.",
+      "reasoning": "The Year-2019 competitive-industry risk is substantively present in Year-2020, with the general competition and fintech/technology portions appearing as separate candidate units. The broader competitive risk is therefore retained across the two disclosures, while the technology-driven component is effectively separated rather than removed; among the available classifications, ABSORBED best captures its inclusion within the broader competition disclosure.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_0_001_competition",
+      "title": "Competitive Industry Pressures"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "The last several years have seen an increase in regulatory costs borne by the banking industry. Laws, regulations or policies currently affecting BOK Financial and its subsidiaries may change.",
+      "year2_quote_or_null": "Government regulations and political environment could adversely affect BOK Financial.\n\nBOK Financial and BOKF, NA are subject to banking laws and regulations that limit the type of acquisitions and investments that we may make. In addition, certain permitted acquisitions and investments are subject to prior review and approval by banking regulators, including the Federal Reserve, OCC and FDIC. Banking regulators have broad discretion on whether to approve proposed acquisitions and investments.",
+      "reasoning": "The core risk that banking regulation and regulatory decisions can adversely affect BOK Financial remains in Year-2020, but the specific regulatory-cost and Dodd-Frank implementation discussion is not separately carried forward in the provided candidates. It is best treated as absorbed into the broader Government Regulation and Political Environment disclosure (Candidate 1), rather than removed entirely.",
+      "section": "1A",
+      "confidence": 0.83,
+      "id": "1A_0_002_government_regulation",
+      "title": "Banking Regulation and Compliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The energy industry is facing increased pressure from investors and the government to mitigate greenhouse emissions, which could significantly increase costs, hinder financial results and shrink the industry.",
+      "year2_quote_or_null": "The energy industry is facing increased pressure from investors and the government to mitigate greenhouse emissions, which could significantly increase costs, hinder financial results and shrink the industry.",
+      "reasoning": "The Year-2020 disclosure repeats the same underlying economic risk and the same material language: pressure to mitigate greenhouse-gas emissions may increase costs, impair financial results, and shrink the energy industry. The surrounding regulatory discussion does not change the treatment of this energy-industry risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_003_energy_regulatory_pressure",
+      "title": "Energy Industry Regulatory Pressures"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Political environment could negatively impact BOK Financial’s business.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure meaningfully addresses the Year-2019 economic risk that political environment, post-crisis regulation, or negative sentiment toward financial institutions could impair operations, increase litigation risk, or create uncertain legislative outcomes. The risk is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_004_political_environment",
+      "title": "Political Environment and Sentiment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These geographic concentrations subject the loan portfolio to the general economic conditions within these areas. Poor economic conditions in Texas, Oklahoma, Colorado or other markets in the southwest region may cause BOK Financial to incur losses associated with higher default rates and decreased collateral values in BOK Financial's loan portfolio.",
+      "year2_quote_or_null": "These geographic concentrations subject the loan portfolio to the general economic conditions within these areas. Poor economic conditions in Texas, Oklahoma, Colorado or other markets in the southwest region may cause BOK Financial to incur losses associated with higher default rates and decreased collateral values in BOK Financial's loan portfolio.",
+      "reasoning": "The regional concentration risk and its potential effects on credit losses, collateral values, and fee-based revenue are substantively unchanged. The Texas, Oklahoma, and Colorado portfolio percentages shifted slightly, but this does not alter the underlying economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_regional_economy",
+      "title": "Regional Economic Concentration"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The energy industry is historically cyclical and prolonged periods of low oil and gas commodity prices could negatively impact borrowers' ability to pay.",
+      "year2_quote_or_null": "The energy industry is historically cyclical and prolonged periods of low oil and gas commodity prices could negatively impact borrowers' ability to pay.",
+      "reasoning": "The same economic risk—prolonged low oil and gas prices impairing energy borrowers and regional-economy credit quality—remains disclosed with materially unchanged language. The reduction in energy-loan concentration from 18% to 15% is an exposure update, not a removal or weakening of the underlying risk disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_energy_credit_risk",
+      "title": "Energy Borrower Credit Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Other adverse economic factors affecting particular industries could have a negative effect on BOK Financial customers and their ability to make payments to BOK Financial.",
+      "year2_quote_or_null": "Other adverse economic factors affecting particular industries could have a negative effect on BOK Financial customers and their ability to make payments to BOK Financial.",
+      "reasoning": "The Year-2020 disclosure addresses the same industry-specific customer credit risks, including commercial real estate downturns and healthcare reimbursement and managed-care changes, with materially identical economic substance and wording.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_007_industry_specific_credit",
+      "title": "Industry-Specific Customer Credit Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "BOK Financial, its customers and counterparties may also be negatively affected by global events, such as natural disasters, and other external events beyond our control, including public health issues, terrorist attacks and acts of war.",
+      "year2_quote_or_null": "BOK Financial, its customers and counterparties may also be negatively affected by global events, such as natural disasters, and other external events beyond our control, including public health issues, terrorist attacks and acts of war.",
+      "reasoning": "The underlying economic risk—global events adversely affecting customers, counterparties, markets, and the Company—remains materially unchanged. Year-2020 adds the ongoing COVID-19 pandemic and updates geopolitical examples, but retains the same exposure and stated potential effects, without weakening or removing the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_global_economy",
+      "title": "Global Economic and External Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Fluctuations in interest rates could adversely affect BOK Financial's business.",
+      "year2_quote_or_null": "Fluctuations in interest rates could adversely affect BOK Financial's business.",
+      "reasoning": "The Year-2020 disclosure reproduces the same underlying interest-rate risks, including monetary policy, prevailing rates, depositor behavior, loan origination and growth, net interest revenue, deposit repricing, and borrower credit performance. The differences are only formatting and heading presentation, so the disclosure is retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_009_interest_rate_sensitivity",
+      "title": "Interest Rate Sensitivity"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Given these uncertainties, it is not possible at this time to determine the impact of the transition away from LIBOR on the valuations, pricing and operation of our financial instruments.",
+      "year2_quote_or_null": "However, the proposed extension of our primary LIBOR tenors to June of 2023 reduces our exposure to the LIBOR transition significantly, as a large portion of our legacy financial instruments that matured after 2021 will mature before June of 2023.",
+      "reasoning": "Year-2020 retains the underlying LIBOR-transition risk and the uncertainty about effects on financial instruments, but materially tempers it by stating that the extension of key LIBOR tenors reduces exposure significantly and that many legacy instruments will mature before the extended cessation date.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_010_libor_transition",
+      "title": "LIBOR Transition Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Its responsibilities include, but are not limited to, monitoring industry developments; tracking direct and indirect exposures; developing and implementing remediation plans; and communication with internal and external stakeholders.",
+      "year2_quote_or_null": "Its responsibilities include, but are not limited to, monitoring industry developments; tracking direct and indirect exposures; developing and implementing remediation plans; and communication with internal and external stakeholders.",
+      "reasoning": "The Year-2 disclosure reproduces the same LIBOR transition governance risk and responsibilities, while adding detail on fallback language, contract inventory, and remediation progress. The underlying economic risk is therefore retained, not changed in severity or scope.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_011_libor_governance",
+      "title": "LIBOR Transition Governance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Key loan provisions have been modified so that new and renewed loans include LIBOR fallback language designed to ensure the smoothest possible transition from LIBOR to the new benchmark when such transition occurs. All existing financial contracts with direct exposure to LIBOR have been inventoried and are being tracked. Indirect exposures in the form of LIBOR-related systems, models, and processes are being inventoried, evaluated, and prioritized and remediation plans either underway or are being developed.",
+      "year2_quote_or_null": "Key loan provisions have been modified so that new and renewed loans include LIBOR fallback language designed to ensure the smoothest possible transition from LIBOR to the new benchmark when such transition occurs. All existing financial contracts with direct exposure to LIBOR have been inventoried and are being tracked. Indirect exposures in the form of LIBOR-related systems, models, and processes have been inventoried, evaluated, and prioritized and remediation is underway.",
+      "reasoning": "The core economic risks and mitigation activities—LIBOR fallback provisions, direct-contract exposure tracking, and indirect systems/models/processes remediation—remain materially unchanged. Year-2 adds formal governance and slightly updates remediation wording, but does not alter or weaken the underlying disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_libor_contract_remediation",
+      "title": "LIBOR Contract and Systems Remediation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in mortgage interest rates could adversely affect mortgage banking operations along with mortgage servicing rights as well as BOK Financial's substantial holdings of residential mortgage-backed securities, and brokerage and trading revenue.",
+      "year2_quote_or_null": "Changes in mortgage interest rates could adversely affect mortgage banking operations along with mortgage servicing rights as well as BOK Financial's substantial holdings of residential mortgage-backed securities, and brokerage and trading revenue.",
+      "reasoning": "The core economic risk—adverse effects of mortgage-rate changes on mortgage banking, mortgage servicing rights, mortgage-backed securities, and trading-related activities—is substantively present in Year-2020. The candidates separately reproduce the relevant mortgage banking, servicing-rights, mortgage-backed securities, and trading disclosures without weakening or negating the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_013_mortgage_banking",
+      "title": "Mortgage Banking Interest Rate Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Market disruptions could impact BOK Financial’s funding sources.\n\nBOK Financial’s subsidiary bank may rely on other financial institutions and the Federal Home Loan Bank of Topeka as a significant source of funds. Our ability to fund loans, manage our interest rate risk and meet other obligations depends on funds borrowed from these sources. The inability to borrow funds at market interest rates could have a material adverse effect on our operations.",
+      "year2_quote_or_null": "Market disruptions could impact BOK Financial’s funding sources.\n\nBOK Financial’s subsidiary bank may rely on other financial institutions and the Federal Home Loan Bank of Topeka as a significant source of funds. Our ability to fund loans, manage our interest rate risk and meet other obligations depends on funds borrowed from these sources. The inability to borrow funds at market interest rates could have a material adverse effect on our operations.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and retains the same funding-source, borrowing-cost, and liquidity risks without any meaningful change in qualifiers or economic substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_014_funding_liquidity",
+      "title": "Funding Source and Liquidity Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The Company is dependent on its technological ability to process, record and monitor a large number of customer transactions and store and protect a significant amount of sensitive customer information.",
+      "year2_quote_or_null": "The Company is dependent on its technological ability to process, record and monitor a large number of customer transactions and store and protect a significant amount of sensitive customer information.",
+      "reasoning": "The core economic risks—technology dependence, cybersecurity/data privacy exposure, technology failure, sensitive-information protection, and increasing privacy compliance costs—remain materially present. Year-2020 adds an explicit sentence about compliance risks and costs, but does not weaken or remove the Year-2019 disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_000_technology_dependence",
+      "title": "Technology Dependence and Security Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Cybersecurity risks for financial institutions have increased significantly in recent years in part because of the proliferation of new technologies, the increased use of the internet and mobile technologies to conduct financial transactions, and the increased sophistication and ever changing cyberattack techniques used by organized crime, hackers, terrorists, hostile foreign governments and other external parties to obtain confidential customer information and misappropriate customer funds.",
+      "year2_quote_or_null": "Cybersecurity risks for financial institutions have increased significantly in recent years in part because of the proliferation of new technologies, the increased use of the internet and mobile technologies to conduct financial transactions, and the increased sophistication and ever changing cyberattack techniques used by organized crime, hackers, terrorists, hostile foreign governments and other external parties to obtain confidential customer information and misappropriate customer funds.",
+      "reasoning": "The Year-2020 disclosure reproduces the same underlying economic risk—escalating cyberattacks that may compromise systems, confidential customer information, and customer funds—and retains the same safeguards and monitoring requirement. The only apparent difference is line formatting, which does not alter substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_cybersecurity_threats",
+      "title": "Increasing Cybersecurity Threats"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business, financial, accounting, data processing systems and other operating systems and facilities may stop operating properly or become disabled as a result of a number of factors that may be wholly or partially beyond our control.",
+      "year2_quote_or_null": "Our business, financial, accounting, data processing systems and other operating systems and facilities may stop operating properly or become disabled as a result of a number of factors that may be wholly or partially beyond our control.",
+      "reasoning": "The Year-2020 disclosure presents the same economic risk as Year-2019, including internal system failures, external disruptions, cyber attacks, and third-party operational or information-security failures. The language and substance are materially unchanged.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_002_operational_system_failures",
+      "title": "Operational and System Failure Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Cybersecurity risk management programs are expensive to maintain and will not protect the Company from all risks associated with maintaining the security of customer data from external and internal intrusions, disaster recovery and failures in controls used by our vendors.",
+      "year2_quote_or_null": "Cybersecurity risk management programs are expensive to maintain and will not protect the Company from all risks associated with maintaining the security of customer data from external and internal intrusions, disaster recovery and failures in controls used by our vendors.",
+      "reasoning": "The Year-2020 candidate reproduces the Year-2019 disclosure verbatim, including the costs, limitations, breach consequences, and material adverse impact described. The underlying economic risk is therefore retained without any substantive change.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_003_cybersecurity_program_costs",
+      "title": "Cybersecurity Program Costs and Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Although to date we have not experienced any material losses relating to cyber attacks or other information security breaches or operational failures, there can be no assurance that we will not suffer such losses in the future.",
+      "year2_quote_or_null": "Although to date we have not experienced any material losses relating to cyber attacks or other information security breaches or operational failures, there can be no assurance that we will not suffer such losses in the future.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, preserving the same cybersecurity exposure, controls priority, and insurance-coverage limitations without weakening or changing the economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_004_cybersecurity_insurance",
+      "title": "Cybersecurity Exposure and Insurance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We outsource a significant portion of our information systems, communications, data management and transaction processing to third parties. These third parties are sources of risk associated with operational errors, system interruptions or breaches, unauthorized disclosure of confidential information and misuse of intellectual property.",
+      "year2_quote_or_null": "We outsource a significant portion of our information systems, communications, data management and transaction processing to third parties. These third parties are sources of risk associated with operational errors, system interruptions or breaches, unauthorized disclosure of confidential information and misuse of intellectual property.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure: it retains the same dependence on third parties, the same significant outsourcing, and the same categories of resulting operational, security, confidentiality, intellectual-property, disruption, reputation, and litigation risks.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_third_party_infrastructure",
+      "title": "Third-Party Infrastructure Dependence"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A relatively small fraction of BOK Financial's outstanding common stock is actively traded. The risks of low liquidity include increased volatility of the price of BOK Financial's common stock.",
+      "year2_quote_or_null": "A relatively small fraction of BOK Financial's outstanding common stock is actively traded. The risks of low liquidity include increased volatility of the price of BOK Financial's common stock.",
+      "reasoning": "Candidate 1 directly repeats the same economic risk: limited trading liquidity in the common stock, associated price volatility, and difficulty selling or transferring shares at the desired price, time, and quantity. Candidate 2 addresses a distinct risk concerning potential sales by the principal shareholder and does not change the retained liquidity disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_006_stock_liquidity",
+      "title": "Common Stock Liquidity Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Mr. George B. Kaiser owns approximately 54% of the outstanding shares of BOK Financial's common stock at December 31, 2019. Mr. Kaiser is able to elect all of BOK Financial's directors and effectively control the vote on all matters submitted to a vote of BOK Financial's common shareholders.",
+      "year2_quote_or_null": "Mr. George B. Kaiser owns approximately 55% of the outstanding shares of BOK Financial's common stock at December 31, 2020. Mr. Kaiser is able to elect all of BOK Financial's directors and effectively control the vote on all matters submitted to a vote of BOK Financial's common shareholders.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: Mr. Kaiser’s majority ownership gives him effective control over director elections, shareholder votes, and potential changes in control that could affect the stock price. The change from approximately 54% to 55% ownership is immaterial to the disclosure’s substance; Candidate 2 addresses a separate potential-sales risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_007_controlling_shareholder",
+      "title": "Principal Shareholder Control"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Possible future sales of shares by BOK Financial's principal shareholder could adversely affect the market price of BOK Financial's common stock.",
+      "year2_quote_or_null": "Possible future sales of shares by BOK Financial's principal shareholder could adversely affect the market price of BOK Financial's common stock.",
+      "reasoning": "Candidate 1 reproduces the same economic risk and the detailed mechanisms: the principal shareholder's ability to sell substantial holdings, potential adverse market-price effects, and possible change in control. The disclosure is therefore retained rather than merely reworded.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_008_shareholder_sales",
+      "title": "Potential Shareholder Share Sales"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Statutory restrictions on subsidiary dividends and other distributions and debts of BOK Financial's subsidiaries could limit amounts BOK Financial's subsidiaries may pay to BOK Financial.",
+      "year2_quote_or_null": "Statutory restrictions on subsidiary dividends and other distributions and debts of BOK Financial's subsidiaries could limit amounts BOK Financial's subsidiaries may pay to BOK Financial.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same economic risks: limits on subsidiary distributions, internal capital constraints, and subsidiary creditors' priority in liquidation.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_009_subsidiary_distributions",
+      "title": "Restrictions on Subsidiary Distributions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Market risk is a broad term for the risk of economic loss due to adverse changes in the fair value of a financial instrument. These changes may be the result of various factors, including interest rates, foreign exchange rates, commodity prices or equity prices.",
+      "year2_quote_or_null": "Market risk is a broad term for the risk of economic loss due to adverse changes in the fair value of a financial instrument. These changes may be the result of various factors, including interest rates, foreign exchange rates, commodity prices or equity prices.",
+      "reasoning": "Candidate 1 reproduces the same market-risk definition and scope, including the same underlying economic exposures and exclusions. Candidate 2 adds exposure-specific detail but does not alter or replace the retained definition.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_000_market_risk_definition",
+      "title": "Market Risk Definition and Scope"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "BOK Financial is subject to market risk primarily through the effect of changes in interest rates on both its assets held for purposes other than trading and trading assets.",
+      "year2_quote_or_null": "BOK Financial is subject to market risk primarily through the effect of changes in interest rates on both its assets held for purposes other than trading and trading assets.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure, including the same primary interest-rate exposure and the same treatment of foreign exchange, commodity, and equity-price risks. The underlying economic risks are unchanged.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_001_market_risk_exposure",
+      "title": "Primary Sources of Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Asset/Liability Committee is responsible for managing market risk in accordance with policy limits established by the Board of Directors.",
+      "year2_quote_or_null": "The Asset/Liability Committee is responsible for managing market risk in accordance with policy limits established by the Board of Directors.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, preserving the same governance, limits, monitored exposures, measurement frequency, and escalation process. No economic risk or qualifier has changed.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_002_market_risk_governance",
+      "title": "Market Risk Governance and Limits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The simulations used to manage market risk are based on numerous assumptions regarding the effects of changes in interest rates on the timing and extent of repricing characteristics, future cash flows and customer behavior.",
+      "year2_quote_or_null": "The simulations used to manage market risk are based on numerous assumptions regarding the effects of changes in interest rates on the timing and extent of repricing characteristics, future cash flows and customer behavior.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure: it retains the same economic risk that market-risk simulations may be inaccurate because of uncertain assumptions, and that actual results may differ from simulated results.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_003_market_risk_simulation_limits",
+      "title": "Market Risk Simulation Limitations"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Our current internal policy limit for net interest revenue variation due to a 200 basis point parallel change in market interest rates over twelve months is a maximum decline of 5%.",
+      "year2_quote_or_null": "The results of a decrease in interest rates in the current low-rate environment are not meaningful.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying interest-rate sensitivity methodology and low-rate limitation, but omits the Year-2019-specific 100-basis-point reporting workaround and no longer states the 5% policy limit. This weakens the explicit qualification and quantified risk disclosure rather than removing the economic risk entirely.",
+      "section": "7A",
+      "confidence": 0.93,
+      "id": "7A_0_004_interest_rate_risk_methodology",
+      "title": "Interest Rate Risk Sensitivity Methodology"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s primary interest rate exposures include the Federal Funds rate, which affects short-term borrowings, and the prime lending rate and LIBOR, which are the basis for much of the variable rate loan pricing.",
+      "year2_quote_or_null": "The Company’s primary interest rate exposures include the Federal Funds rate, which affects short-term borrowings, and the prime lending rate and LIBOR, which are the basis for much of the variable rate loan pricing.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same interest-rate exposures, modeling inclusions, deposit-balance assumptions, and planned-growth assumptions. The change in the heading does not alter the underlying economic risk.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_005_interest_rate_exposures_assumptions",
+      "title": "Interest Rate Exposures and Modeling Assumptions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The results of a 200 basis point decrease in interest rates in the low-rate environment are not meaningful, therefore we will instead report the effect of a 100 basis point decrease in interest rates.",
+      "year2_quote_or_null": "The results of a decrease in the current low-rate environment in 2020 are not meaningful. The results of a 200 basis point decrease in interest rates in the low-rate environment in 2019 were not meaningful, therefore we reported the effect of a 100 basis point decrease in interest rates.",
+      "reasoning": "The same economic risk and limitation is disclosed: a rate-decrease sensitivity is not meaningful in the low-rate environment, so the 100 bp decrease is reported instead. Year-2020 also states that the current low-rate decrease is not meaningful, without eliminating or weakening the underlying disclosure.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_006_interest_rate_sensitivity_table",
+      "title": "Interest Rate Sensitivity Table"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in the fair value of mortgage servicing rights are highly dependent on changes in primary mortgage rates offered to borrowers, intermediate-term interest rates that affect the value of custodial funds, and assumptions about servicing revenues, servicing costs and discount rates.",
+      "year2_quote_or_null": "Changes in the fair value of mortgage servicing rights are highly dependent on changes in primary mortgage rates offered to borrowers, intermediate-term interest rates that affect the value of custodial funds, and assumptions about servicing revenues, servicing costs and discount rates.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure and economic risk essentially verbatim, including the dependence of mortgage servicing rights fair value on mortgage rates, custodial-fund interest rates, servicing assumptions, and prepayment speeds. The risk was therefore retained.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_007_msr_fair_value_risk",
+      "title": "Mortgage Servicing Rights Fair Value Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in the forward-looking spread between the primary and secondary rates can cause significant earnings volatility.",
+      "year2_quote_or_null": "Changes in the forward-looking spread between the primary and secondary rates can cause significant earnings volatility.",
+      "reasoning": "Candidate 1 reproduces the same economic risk disclosure, including the hedge instruments, the differing sensitivity to primary and secondary mortgage rates, and the resulting forward-looking spread risk and significant earnings volatility. The risk is therefore retained, not merely absorbed or reworded.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_008_msr_hedging_portfolio",
+      "title": "Mortgage Servicing Rights Hedging Portfolio"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management performs a stress test to measure market risk due to changes in interest rates inherent in its MSR portfolio and hedges.",
+      "year2_quote_or_null": "Management performs a stress test to measure market risk due to changes in interest rates inherent in its MSR portfolio and hedges.",
+      "reasoning": "Candidate 1 reproduces the same MSR interest-rate stress-testing risk, including the 50-basis-point shocks, net hedging impact, and $20 million market-risk limit. Candidate 4 appears to provide the related sensitivity table, but the substantive disclosure is retained rather than merely absorbed or removed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_009_msr_stress_sensitivity",
+      "title": "Mortgage Servicing Rights Stress Testing"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company bears market risk by originating residential mortgages held for sale (\"RMHFS\").",
+      "year2_quote_or_null": "The Company bears market risk by originating residential mortgages held for sale (\"RMHFS\").",
+      "reasoning": "The Year-2020 disclosure is substantively identical to Year-2019, retaining the same mortgage pipeline market risk, exposure period, interest-rate sensitivity, and forward-sale hedging strategy.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_010_mortgage_pipeline_risk",
+      "title": "Mortgage Pipeline Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A variety of methods are used to monitor market risk of mortgage origination activities. These methods include daily marking of all positions to market value, independent verification of inventory pricing, and revenue sensitivity limits.",
+      "year2_quote_or_null": "A variety of methods are used to monitor market risk of mortgage origination activities. These methods include daily marking of all positions to market value, independent verification of inventory pricing, and revenue sensitivity limits.",
+      "reasoning": "Candidate 1 reproduces the same underlying mortgage-origination market risk and the same monitoring controls, including daily marking, independent pricing verification, and revenue sensitivity limits. Candidate 2 addresses trading-activity interest-rate risk and does not displace the exact retained disclosure.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_011_mortgage_pipeline_monitoring",
+      "title": "Mortgage Origination Risk Monitoring"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management performs a stress test to measure market risk due to changes in interest rates inherent in the mortgage production pipeline.",
+      "year2_quote_or_null": "Management performs a stress test to measure market risk due to changes in interest rates inherent in the mortgage production pipeline. The stress test shocks applicable interest rates up and down 50 basis points and calculates an estimated change in fair value, net of economic hedging activity that may result. The Board has approved a $7 million market risk limit for the mortgage production pipeline, net of forward sale contracts.",
+      "reasoning": "The Year-2020 candidate repeats the same mortgage production pipeline interest-rate stress-testing disclosure, including the same shocks, hedging treatment, and $7 million risk limit. The sensitivity table is also retained, with only updated reporting-period values and table numbering.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_012_mortgage_pipeline_stress_sensitivity",
+      "title": "Mortgage Pipeline Stress Testing"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "BOK Financial enters into trading activities both as an intermediary for customers and for its own account. As an intermediary, we take positions in securities, generally residential mortgage-backed securities, government agency securities and municipal bonds.",
+      "year2_quote_or_null": "BOK Financial enters into trading activities both as an intermediary for customers and for its own account. As an intermediary, we take positions in securities, generally residential mortgage-backed securities, government agency securities and municipal bonds.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to Year-2019, retaining the same trading activities and associated interest rate, liquidity, price, foreign exchange, and commodity-derivatives risks without any material change in qualifiers.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_013_trading_activities_risk",
+      "title": "Trading Activities and Market Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A variety of methods are used to monitor the interest rate risk of trading activities. These methods include daily marking of all positions to market value, independent verification of inventory pricing, and position limits for each trading activity.",
+      "year2_quote_or_null": "A variety of methods are used to monitor the interest rate risk of trading activities. These methods include daily marking of all positions to market value, independent verification of inventory pricing, and position limits for each trading activity.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure and preserves the same economic risk, monitoring methods, position limits, and economic-hedging statement. Candidate 2 concerns mortgage origination activities and does not replace or alter the trading-activities disclosure.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_014_trading_risk_monitoring",
+      "title": "Trading Activities Risk Monitoring"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management performs a stress test to measure market risk from changes in interest rates on its trading portfolio.",
+      "year2_quote_or_null": "Management performs a stress test to measure market risk from changes in interest rates on its trading portfolio. The stress test shocks applicable interest rates up and down 50 basis points and calculates an estimated change in fair value, net of economic hedging activity that may result. The Board has approved an $8 million market risk limit for the trading portfolio, net of economic hedges.",
+      "reasoning": "Candidate 3 repeats the same trading-portfolio interest-rate stress-testing risk, including the 50-basis-point shocks, net economic hedging, and the $8 million market-risk limit. Candidate 1 is the related sensitivity table, but the underlying disclosure is most directly retained in Candidate 3.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_015_trading_stress_sensitivity",
+      "title": "Trading Portfolio Stress Testing"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The critical audit matter communicated below is a matter arising from the current period audit of the financial statements that was communicated or required to be communicated to the audit committee and that: (1) relates to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective or complex judgments.",
+      "year2_quote_or_null": "The critical audit matter communicated below is a matter arising from the current period audit of the financial statements that was communicated or required to be communicated to the audit committee and that: (1) relates to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective or complex judgments.",
+      "reasoning": "The Year-2020 candidate preserves the same critical audit matter definition and scope, including materiality, audit-committee communication, and especially challenging, subjective, or complex judgments. The remaining explanatory language is also materially unchanged, so the disclosure was retained.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_1_000_critical_audit_matter_definition",
+      "title": "Critical Audit Matter Definition and Scope"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Nonspecific allowances are maintained for risks beyond factors specific to a particular portfolio segment or loan class. These factors include trends in the economy in primary lending areas, concentration in large-balance loans and other relevant factors.",
+      "year2_quote_or_null": "The allowance for credit losses consists of specific allowances attributed to certain individual loans, generally nonaccruing loans, with dissimilar risk characteristics that have not yet been charged down to amounts they expect to recover, general allowances for estimated credit losses on pools of loans that share similar risk characteristics, and qualitative reserves with the estimated impact of factors that are not captured in the modeled results or historical experience.",
+      "reasoning": "The underlying risk—estimated losses inherent in the loan portfolio, including risks not captured by historical loss experience or portfolio-specific modeling—remains disclosed in Year-2. The disclosure is updated for the expected-credit-loss framework and relabeled as qualitative reserves, but it does not materially downgrade or eliminate the economic risk.",
+      "section": "7A",
+      "confidence": 0.93,
+      "id": "7A_1_001_allowance_loan_losses_description",
+      "title": "Allowance for Loan Losses Description"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Auditing management’s estimate of the ALL involves a high degree of subjectivity in evaluating the determination of inherent risk adjustments to loss rates by loan class and the non-specific allowances.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure candidate meaningfully addresses the specific economic risk that management’s subjective judgment in determining inherent risk adjustments and nonspecific allowances could materially affect the ALL. Accordingly, the disclosure is classified as removed.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_1_002_allowance_loan_losses_judgment",
+      "title": "Allowance Estimate Subjectivity and Judgment"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "We evaluated the design and tested the operating effectiveness of related controls over the calculation and recording of the ALL. Specifically, we tested the design and operating effectiveness of controls around inherent risk adjustments to loss rates by loan class...",
+      "year2_quote_or_null": "We obtained an understanding, evaluated the design and tested the operating effectiveness of internal controls over the ACL process, including, among others, controls over the development, operation, and monitoring of economic scenarios, probability weighting of economic scenarios and qualitative reserves used in the allowance results.",
+      "reasoning": "The Year-2 disclosure continues to address controls over allowance calculation and qualitative adjustments, but bundles the Year-1 controls over inherent risk factors, loss-rate adjustments, and nonspecific allowances into the broader ACL process and related economic-scenario and qualitative-reserve controls. The underlying allowance-estimation risk remains present rather than disappearing.",
+      "section": "7A",
+      "confidence": 0.86,
+      "id": "7A_1_003_audit_controls_all",
+      "title": "Audit Controls Over Allowance Calculation"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "We tested inputs and assumptions used in the buildup of inherent risk adjustments to loss rates by loan class and the nonspecific allowance, and we evaluated the basis for adjustments considered.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the Year-2019 disclosure concerning testing management’s assumptions, inputs, and adjustments used to estimate inherent credit losses and nonspecific allowances. The underlying economic risk disclosure is therefore absent rather than merely reworded or absorbed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_1_004_audit_testing_all_adjustments",
+      "title": "Testing Allowance Adjustments and Assumptions"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "We compared the overall ALL amount to those established by similar banking institutions as a consideration around potentially contradictory information. We also reviewed subsequent events and transactions and considered whether they corroborate or contradict the Company’s conclusion.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the Year-2019 economic risk of benchmarking the ALL against similar banking institutions or using subsequent events and transactions to corroborate or contradict the conclusion. The disclosure is therefore classified as removed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_1_005_audit_comparisons_subsequent_events",
+      "title": "Comparative Analysis and Subsequent Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have served as the Company’s auditor since 1990.",
+      "year2_quote_or_null": "We have served as the Company’s auditor since 1990.",
+      "reasoning": "The Year-2020 disclosure preserves the same auditor identity, signature, and service-tenure statement with no change to the underlying economic substance.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_1_006_auditor_signature_tenure",
+      "title": "Auditor Signature and Service Tenure"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Tulsa, Oklahoma\n\nFebruary 27, 2020",
+      "year2_quote_or_null": "Tulsa, Oklahoma\n\nFebruary 24, 2021",
+      "reasoning": "The disclosure remains the audit report’s location and date; only the date changed to reflect the subsequent filing year. There is no change in the underlying economic risk or risk disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_1_007_audit_report_location_date",
+      "title": "Audit Report Location and Date"
+    },
+    {
+      "id": "1A_0_000_overall_risk_factors",
+      "title": "Overall Risk Factors and Material Impacts",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "BOK Financial Corporation and its subsidiaries could be adversely affected by risks and uncertainties that could have a material impact on its financial condition and results of operations, as well as on its common stock and other financial instruments. Risk factors which are significant to the Comp",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_006_covid19_pandemic_overall",
+      "title": "COVID-19 Pandemic Business Disruption",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Our business, financial condition, liquidity and results of operations have been, and will likely continue to be, adversely affected by the COVID-19 pandemic.\n\nThe Coronavirus Disease 2019 (“COVID-19”) pandemic has created economic and financial disruptions that have adversely affected, and are like",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_007_covid19_economic_disruption",
+      "title": "COVID-19 Economic and Operational Disruption",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The spread of the COVID-19 virus and the resulting \"Stay at Home\" orders, travel restrictions, and closed schools and work places caused severe disruptions in the U.S. economy, which has in turn disrupted the business activities and operations of our customers, as well as our business and operations",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_008_covid19_market_credit_demand",
+      "title": "COVID-19 Market Credit and Demand Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Specific to our operations, we face the following risks:\n\n•The pandemic, combined with pre-existing factors, including, but not limited to, international trade disputes, inflation risks, and oil price volatility, could further destabilize the financial markets and markets in which the Company operat",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_009_covid19_rates_mortgage_servicing",
+      "title": "COVID-19 Interest Rates and Mortgage Servicing",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•The Federal Reserve reduced the target federal funds rate to 0.00% to 0.25% on March 15, 2020 and announced a significant quantitative easing program in response to the economic downturn caused by COVID-19. These reductions, especially if prolonged, could adversely affect our net interest income an",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_010_covid19_workforce_controls",
+      "title": "COVID-19 Workforce and Internal Controls",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Widespread outbreaks of the COVID-19 virus in our primary geographies could adversely affect our workforce resulting in serious health issues and absenteeism. Social distancing measures enacted for working employees such as working from home, working in different locations, and working different sh",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_011_covid19_credit_loss_estimates",
+      "title": "COVID-19 Credit Loss Estimation Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•The determination of the appropriate level of allowance for credit losses involves a high degree of subjectivity and requires management to make significant estimates of current expected credit losses. The COVID-19 pandemic and the unprecedented governmental response could make these subjective jud",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_0_010_msr_sensitivity_table",
+      "title": "Mortgage Servicing Rights Sensitivity",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Table 36 - MSR Asset and Hedge Sensitivity Analysis\n\n(In thousands)\n\nDecember 31,\n\nUp 50 bpDown 50 bpUp 50 bpDown 50 bp\n\nMSR Asset$29,065 $(14,585)$30,369 $(41,779)\n\nMSR Hedge(19,873)18,354 (40,727)33,454\n\nNet Exposure9,192 3,769 (10,358)(8,325)",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_000_audit_basis_and_scope",
+      "title": "Audit Standards, Procedures, and Basis",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. Our audits included performing pro",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_002_acl_matter_description",
+      "title": "Allowance for Credit Losses Matter Description",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The Company’s loan portfolio totaled $23.0 billion as of December 31, 2020, and the associated allowance for credit losses (ACL) was $425.6 million. The provision for credit losses was $234.2 million for the year ended December 31, 2020. As discussed above and in Notes 1 and 4, the Company adopted n",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_003_acl_audit_complexity",
+      "title": "ACL Estimate Audit Complexity",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Auditing management’s estimate of the ACL and related provision for credit losses was complex due to the allowance models used, high degree of subjectivity in evaluating management’s development of forecasts of future economic conditions (“economic scenarios”), probability weighting of economic scen",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_004_acl_controls_testing",
+      "title": "ACL Process Controls Testing",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We obtained an understanding, evaluated the design and tested the operating effectiveness of internal controls over the ACL process, including, among others, controls over the development, operation, and monitoring of economic scenarios, probability weighting of economic scenarios and qualitative re",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_005_acl_scenario_model_testing",
+      "title": "ACL Models and Economic Scenarios Testing",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We involved EY specialists in testing management’s models including evaluating model methodology, model performance and testing key modeling assumptions as well as controls covering the economic scenarios used by the ACL models. Additionally, with the support of EY specialists, we assessed the econo",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_006_general_acl_model_testing",
+      "title": "General ACL Model Inputs Testing",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "With respect to general ACL models, with the support of EY specialists, we evaluated model design and re-performed the calculation for a sample of models. We also tested the appropriateness of key inputs and assumptions used in these models by agreeing a sample of inputs to internal sources.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_1_007_acl_overall_evaluation",
+      "title": "Overall ACL Evaluation and Substantive Procedures",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We evaluated the overall ACL amount, including model estimates, qualitative reserves, and whether the recorded ACL appropriately reflects expected credit losses. We performed analytical procedures on the ACL, charge-off and delinquency rates, and coverage ratios of the allowance. Our audit response ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    }
+  ]
+}
