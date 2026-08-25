@@ -92,6 +92,53 @@ def _extract_via_regex(full_text: str, section: str) -> Optional[str]:
     return None
 
 
+def _extract_via_html_slice(raw_html: str, section: str) -> Optional[str]:
+    """
+    Direct HTML boundary slicing: finds section headers in raw HTML and converts
+    only the target section slice to prose. Highly resilient to non-standard TOC anchors.
+    """
+    if not raw_html or len(raw_html) < 500:
+        return None
+
+    if section == "1A":
+        matches_1a = list(re.finditer(
+            r'(?:<[^>]+>\s*(?:Item\s*1A[\.:\s\-—–]*|1A\.[\s&#;0-9a-z]*Risk\s+Factors|RISK\s+FACTORS)\s*<)',
+            raw_html, re.I
+        ))
+        if not matches_1a:
+            return None
+        start_idx = matches_1a[-1].start()
+        matches_end = list(re.finditer(
+            r'(?:<[^>]+>\s*(?:Item\s*(?:1B|2|7A)[\.:\s\-—–]*|UNRESOLVED\s+STAFF\s+COMMENTS|PROPERTIES|MANAGING\s+GLOBAL\s+RISK)\s*<)',
+            raw_html[start_idx + 1000 : start_idx + 1500000], re.I
+        ))
+        end_idx = start_idx + 1000 + matches_end[0].start() if matches_end else start_idx + 350000
+        chunk = raw_html[start_idx:end_idx]
+        prose = _html_to_prose(chunk)
+        if len(prose) > 200:
+            return prose
+
+    elif section == "7A":
+        matches_7a = list(re.finditer(
+            r'(?:<[^>]+>\s*(?:Item\s*7A[\.:\s\-—–]*|7A\.[\s&#;0-9a-z]*Quantitative|MANAGING\s+GLOBAL\s+RISK|MARKET\s+RISK)\s*<)',
+            raw_html, re.I
+        ))
+        if not matches_7a:
+            return None
+        start_idx = matches_7a[-1].start()
+        matches_end = list(re.finditer(
+            r'(?:<[^>]+>\s*(?:Item\s*8[\.:\s\-—–]*|FINANCIAL\s+STATEMENTS|CONSOLIDATED\s+FINANCIAL\s+STATEMENTS)\s*<)',
+            raw_html[start_idx + 1000 : start_idx + 1500000], re.I
+        ))
+        end_idx = start_idx + 1000 + matches_end[0].start() if matches_end else start_idx + 350000
+        chunk = raw_html[start_idx:end_idx]
+        prose = _html_to_prose(chunk)
+        if len(prose) > 200:
+            return prose
+
+    return None
+
+
 def extract_section(filing, section: str) -> Optional[str]:
     """
     Extract Item 1A or Item 7A from an edgartools Filing object.
@@ -133,7 +180,19 @@ def extract_section(filing, section: str) -> Optional[str]:
     except Exception as e:
         logger.debug("edgartools native extraction failed for Item %s: %s", section, e)
 
-    # --- Attempt 2: regex scan over full filing document (markdown / text / html) ---
+    # --- Attempt 2: direct HTML boundary slice fallback ---
+    try:
+        if hasattr(filing, "html"):
+            raw_html = filing.html()
+            if raw_html:
+                res = _extract_via_html_slice(raw_html, section)
+                if res and len(res) > 200:
+                    logger.info("Extracted Item %s via HTML boundary slice fallback (len=%d)", section, len(res))
+                    return res
+    except Exception as e:
+        logger.debug("HTML slice fallback failed for Item %s: %s", section, e)
+
+    # --- Attempt 3: regex scan over full text document ---
     try:
         full_text = getattr(filing, "_cached_full_text", None)
         if not full_text:
@@ -145,11 +204,6 @@ def extract_section(filing, section: str) -> Optional[str]:
             if not full_text and hasattr(filing, "markdown"):
                 try:
                     full_text = filing.markdown()
-                except Exception:
-                    pass
-            if not full_text and hasattr(filing, "html"):
-                try:
-                    full_text = _html_to_prose(filing.html())
                 except Exception:
                     pass
             if full_text:
