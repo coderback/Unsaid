@@ -129,10 +129,17 @@ def call_structured_tool(
     azure_api_version: Optional[str] = None,
     max_tokens: int = 4096,
     retries: int = 2,
+    temperature: float = 0.0,
 ) -> Dict[str, Any]:
     """
     Unified caller for executing structured tool calls across Anthropic, Azure AI Foundry, and OpenAI.
     Returns the parsed dictionary produced by the tool call.
+
+    temperature is requested but NOT honoured everywhere. Anthropic and standard
+    OpenAI accept it; some reasoning-model deployments (including Azure AI
+    Foundry gpt-5.6-luna) reject an explicit temperature, in which case the call
+    is retried at the model fixed default and a warning is logged. Do not assume
+    a run is reproducible without checking for that warning.
     """
     prov = (provider or "anthropic").lower()
 
@@ -158,6 +165,7 @@ def call_structured_tool(
                     tools=[anthropic_tool],
                     tool_choice={"type": "tool", "name": tool_name},
                     messages=[{"role": "user", "content": user_prompt}],
+                    temperature=temperature,
                 )
 
                 for block in response.content:
@@ -215,6 +223,10 @@ def call_structured_tool(
                     "tools": [openai_tool],
                     "tool_choice": {"type": "function", "function": {"name": tool_name}},
                 }
+                # Some reasoning models reject an explicit temperature; only send it
+                # when it differs from their fixed default.
+                if temperature is not None:
+                    kwargs["temperature"] = temperature
 
                 # Newer models (GPT-5.6 Luna, o1, o3, latest Azure Foundry) require max_completion_tokens
                 try:
@@ -224,7 +236,16 @@ def call_structured_tool(
                     )
                 except openai.BadRequestError as b_err:
                     err_msg = str(b_err).lower()
-                    if "max_completion_tokens" in err_msg or "unsupported_parameter" in err_msg:
+                    if "temperature" in err_msg and "unsupported" in err_msg:
+                        logger.warning(
+                            "%s rejects an explicit temperature; retrying at its fixed "
+                            "default. Output will NOT be deterministic.", prov,
+                        )
+                        kwargs.pop("temperature", None)
+                        response = client.chat.completions.create(
+                            **kwargs, max_completion_tokens=max_tokens
+                        )
+                    elif "max_completion_tokens" in err_msg or "unsupported_parameter" in err_msg:
                         # Fallback for legacy OpenAI endpoints that only accept max_tokens
                         response = client.chat.completions.create(
                             **kwargs,
