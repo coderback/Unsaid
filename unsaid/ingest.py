@@ -154,6 +154,10 @@ def run_pipeline(
     report("aligning", 60, "Computing dense sentence embeddings and cosine candidate matrix…")
 
     candidates_per_y1, new_candidates = align_units(units1, units2)
+    from unsaid.aligner import get_active_backend
+    embed_backend = get_active_backend()
+    if embed_backend == "tfidf":
+        report("aligning", 62, "WARNING: dense embeddings unavailable — using TF-IDF bag-of-words alignment")
     logger.info("New Year-2 candidates (orphans): %d", len(new_candidates))
     report("aligning", 65, f"Aligned units — {len(new_candidates)} Year-2 candidate NEW disclosures")
 
@@ -206,6 +210,7 @@ def run_pipeline(
         model_provider=provider,
         model_judge=effective_judge,
         model_segmenter=effective_segmenter,
+        embed_backend=embed_backend,
     )
     logger.info("Done! Cache written to: %s", path)
     report("completed", 100, f"Analysis complete for {effective_ticker} (FY{year1} → FY{year2})", path)

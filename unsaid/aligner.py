@@ -11,7 +11,32 @@ import numpy as np
 logger = logging.getLogger(__name__)
 
 _EMBED_MODEL = None
-_MODEL_NAME = "all-mpnet-base-v2"
+_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2"
+_FALLBACK_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+
+# Which backend actually produced the last alignment. The pipeline previously
+# degraded from dense embeddings to bag-of-words TF-IDF without recording it
+# anywhere, so cached analyses claimed mpnet regardless of what really ran.
+_ACTIVE_BACKEND: str = "uninitialised"
+
+# TF-IDF cosine and mpnet cosine are not on the same scale, so the recall
+# thresholds have to differ per backend. TF-IDF over long, highly repetitive
+# disclosure prose runs high on near-duplicates and low on true paraphrases.
+_THRESHOLDS = {
+    "mpnet": {"new": 0.30, "candidate": 0.20},
+    "minilm": {"new": 0.30, "candidate": 0.20},
+    "tfidf": {"new": 0.12, "candidate": 0.08},
+}
+
+
+def get_active_backend() -> str:
+    """Backend used by the most recent alignment: 'mpnet', 'minilm' or 'tfidf'."""
+    return _ACTIVE_BACKEND
+
+
+def get_thresholds() -> dict:
+    """Recall thresholds calibrated for the active backend."""
+    return _THRESHOLDS.get(_ACTIVE_BACKEND, _THRESHOLDS["mpnet"])
 
 # Top-K candidates sent to the judge per Year-1 unit
 K = 5
@@ -21,28 +46,54 @@ NEW_THRESHOLD = 0.30
 WEAK_MATCH_THRESHOLD = 0.30
 
 
+def _load_sentence_transformer(name: str):
+    """
+    Load a sentence-transformers model, working around a stale HuggingFace token.
+
+    When a token is present but not valid for a repo, the hub answers 401 rather
+    than 404 for optional files such as adapter_config.json, and transformers
+    surfaces that as the misleading "is not a valid model identifier". Disabling
+    the implicit token makes public models resolve anonymously.
+    """
+    import os
+
+    os.environ.setdefault("HF_HUB_DISABLE_IMPLICIT_TOKEN", "1")
+    from sentence_transformers import SentenceTransformer
+
+    try:
+        return SentenceTransformer(name, token=False)
+    except TypeError:
+        # Older sentence-transformers versions do not accept `token`.
+        return SentenceTransformer(name)
+
+
 def _get_model():
-    global _EMBED_MODEL
+    global _EMBED_MODEL, _ACTIVE_BACKEND
     if _EMBED_MODEL is not None:
         return _EMBED_MODEL
 
-    try:
-        from sentence_transformers import SentenceTransformer
-        logger.info("Attempting to load sentence-transformers model %s …", _MODEL_NAME)
-        _EMBED_MODEL = SentenceTransformer(_MODEL_NAME)
-        logger.info("SentenceTransformer model loaded.")
-        return _EMBED_MODEL
-    except Exception as e:
-        logger.warning("Could not load %s from HuggingFace (%s). Trying all-MiniLM-L6-v2…", _MODEL_NAME, e)
+    for name, backend in ((_MODEL_NAME, "mpnet"), (_FALLBACK_MODEL_NAME, "minilm")):
         try:
-            from sentence_transformers import SentenceTransformer
-            _EMBED_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
-            logger.info("SentenceTransformer (all-MiniLM-L6-v2) loaded successfully.")
+            logger.info("Loading sentence-transformers model %s …", name)
+            _EMBED_MODEL = _load_sentence_transformer(name)
+            _ACTIVE_BACKEND = backend
+            logger.info("Dense embedding backend active: %s (%s)", backend, name)
             return _EMBED_MODEL
-        except Exception as e2:
-            logger.warning("SentenceTransformers unavailable (%s). Falling back to high-performance local TF-IDF alignment.", e2)
-            _EMBED_MODEL = "TFIDF_FALLBACK"
-            return _EMBED_MODEL
+        except Exception as e:
+            logger.warning("Could not load %s: %s: %s", name, type(e).__name__, e)
+
+    # Degrading to bag-of-words changes what the pipeline measures. It is a
+    # legitimate fallback but must never pass unnoticed, because every downstream
+    # artifact otherwise claims dense semantic alignment.
+    logger.error(
+        "DENSE EMBEDDINGS UNAVAILABLE — falling back to TF-IDF bag-of-words alignment. "
+        "This is NOT the documented all-mpnet-base-v2 path: recall quality and the "
+        "meaning of similarity scores both change. Results will be tagged "
+        "embed_backend='tfidf'. Install the model to restore dense alignment."
+    )
+    _EMBED_MODEL = "TFIDF_FALLBACK"
+    _ACTIVE_BACKEND = "tfidf"
+    return _EMBED_MODEL
 
 
 def embed_units(units: List[Dict]) -> np.ndarray:
@@ -103,13 +154,18 @@ def align_units(
     model = _get_model()
     sim_matrix = None
 
+    global _ACTIVE_BACKEND
     if model != "TFIDF_FALLBACK" and hasattr(model, "encode"):
         try:
             y1_embs = model.encode(y1_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
             y2_embs = model.encode(y2_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
             sim_matrix = y1_embs @ y2_embs.T  # shape (n1, n2)
         except Exception as e:
-            logger.warning("SentenceTransformer encoding failed (%s), falling back to joint TF-IDF.", e)
+            logger.error(
+                "Dense encoding failed mid-run (%s); this alignment falls back to TF-IDF "
+                "and will be tagged embed_backend='tfidf'.", e,
+            )
+            _ACTIVE_BACKEND = "tfidf"
 
     if sim_matrix is None:
         from sklearn.feature_extraction.text import TfidfVectorizer
@@ -147,14 +203,15 @@ def align_units(
 
     # Identify Year-2 orphans (no strong match from any Year-1 unit)
     max_sim_per_y2 = sim_matrix.max(axis=0)  # shape (n2,)
+    new_threshold = get_thresholds()["new"]
     new_candidates = [
         y2_units[j]
         for j in range(len(y2_units))
-        if max_sim_per_y2[j] < NEW_THRESHOLD
+        if max_sim_per_y2[j] < new_threshold
     ]
     logger.info(
-        "Alignment complete. %d Year-2 units flagged as potential NEW.",
-        len(new_candidates)
+        "Alignment complete via %s (NEW threshold %.2f). %d Year-2 units flagged as potential NEW.",
+        _ACTIVE_BACKEND, new_threshold, len(new_candidates),
     )
 
     return candidates_per_y1, new_candidates

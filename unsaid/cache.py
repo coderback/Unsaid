@@ -28,6 +28,7 @@ def write_cache(
     model_provider: str = "anthropic",
     model_judge: Optional[str] = None,
     model_segmenter: Optional[str] = None,
+    embed_backend: Optional[str] = None,
 ) -> str:
     """Write results to cache. Returns the cache file path."""
     os.makedirs(_CACHE_DIR, exist_ok=True)
@@ -46,6 +47,7 @@ def write_cache(
         "model_provider": model_provider,
         "model_judge": model_judge,
         "model_segmenter": model_segmenter,
+        "embed_backend": embed_backend,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary_counts": counts,
         "changes": changes,
@@ -55,7 +57,10 @@ def write_cache(
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    logger.info("Cache written to %s (provider=%s, judge=%s)", path, model_provider, model_judge)
+    logger.info(
+        "Cache written to %s (provider=%s, judge=%s, embed=%s)",
+        path, model_provider, model_judge, embed_backend,
+    )
     return path
 
 
@@ -107,6 +112,7 @@ def list_cached_analyses() -> List[Dict]:
                 "model_provider": data.get("model_provider", "anthropic"),
                 "model_judge": data.get("model_judge"),
                 "model_segmenter": data.get("model_segmenter"),
+                "embed_backend": data.get("embed_backend"),
                 "generated_at": data.get("generated_at"),
                 "summary_counts": counts,
                 "total_changes": total_changes,
