@@ -41,6 +41,9 @@ UNIVERSE_FILE = SCRIPT_DIR / "universe.json"
 DATA_DIR = SCRIPT_DIR / "data"
 RETURNS_JSON = DATA_DIR / "market_returns.json"
 RETURNS_CSV = DATA_DIR / "market_returns.csv"
+# EDGAR filing dates are immutable once filed; cache them so re-runs skip the
+# ~30 minutes of lookups and an interrupted run can resume where it stopped.
+FILING_DATES_CACHE = DATA_DIR / "filing_dates.json"
 
 # Known receivership/terminal events for failed institutions during the 2023 crisis
 FAILED_BANK_TERMINAL_EVENTS: Dict[str, Dict[str, Any]] = {
@@ -57,17 +60,44 @@ HORIZON_DAYS = {
     "12M": 252,
 }
 
+# HORIZON_DAYS is in trading days; failure gaps are measured in calendar days.
+# ~252 trading days per 365 calendar days.
+TRADING_TO_CALENDAR = 1.45
+
+# A price series trailing the benchmark by more than this many calendar days is
+# treated as dead rather than merely incomplete.
+STALE_SERIES_DAYS = 10
+
 
 def load_universe() -> Dict[str, Any]:
     with open(UNIVERSE_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
+def load_filing_date_cache() -> Dict[str, Dict[str, str]]:
+    if FILING_DATES_CACHE.exists():
+        try:
+            with open(FILING_DATES_CACHE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            logger.warning(f"Could not read filing-date cache ({e}); rebuilding.")
+    return {}
+
+
+def save_filing_date_cache(cache: Dict[str, Dict[str, str]]):
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with open(FILING_DATES_CACHE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, indent=2, sort_keys=True)
+
+
 def get_sec_filing_dates(ticker: str, cik: Optional[str]) -> Dict[int, str]:
     """Retrieve mapping of fiscal_year -> filing_date string from SEC EDGAR."""
     try:
         _, _, filings = list_available_10ks(ticker=ticker, cik=cik)
-        return {f["fiscal_year"]: f["filing_date"] for f in filings if "fiscal_year" in f and "filing_date" in f}
+        dates = {f["year"]: f["filing_date"] for f in filings if f.get("year") and f.get("filing_date")}
+        if not dates:
+            logger.warning(f"[{ticker}] SEC returned no usable filing dates; approximate fallback will be used.")
+        return dates
     except Exception as e:
         logger.warning(f"[{ticker}] Could not query SEC filing dates: {e}")
         return {}
@@ -120,17 +150,37 @@ def calculate_forward_returns(
     sub_prices = price_series.loc[price_series.index >= ts_date].dropna()
     sub_bench = benchmark_series.loc[benchmark_series.index >= ts_date].dropna()
 
-    if sub_prices.empty or sub_bench.empty:
-        # If delisted failed bank with no direct yfinance data, check if failure occurred after filing date
+    if sub_bench.empty:
+        return res
+
+    # A usable series must exist AND actually begin at the trade start. A delisted
+    # ticker later reassigned to a different instrument returns prices from years
+    # after the window; reading iloc[0] there would fabricate a return from an
+    # unrelated stock.
+    series_covers_window = (
+        not sub_prices.empty
+        and (sub_prices.index[0] - ts_date).days <= STALE_SERIES_DAYS
+    )
+
+    if not series_covers_window:
+        # No usable price data. A known failure still tells us the answer, but only
+        # for horizons the failure actually spans -- a failure years beyond the
+        # horizon says nothing about that horizon's return, so it stays missing.
         if terminal_event:
             fail_date = pd.to_datetime(terminal_event["failure_date"])
-            if fail_date >= ts_date:
+            days_to_fail = (fail_date - ts_date).days
+            b0 = sub_bench.iloc[0]
+            for h_name, h_days in HORIZON_DAYS.items():
+                if 0 <= days_to_fail <= (h_days * TRADING_TO_CALENDAR):
+                    bench_sub = sub_bench.loc[sub_bench.index <= fail_date]
+                    b_ret = (bench_sub.iloc[-1] / b0) - 1.0 if not bench_sub.empty else 0.0
+                    res["nominal"][h_name] = -1.00
+                    res["excess_kre"][h_name] = round(float(-1.00 - b_ret), 4)
+            if res["nominal"]:
                 res["valid"] = True
-                for h in HORIZON_DAYS:
-                    res["nominal"][h] = -1.00
-                    res["excess_kre"][h] = -1.00
                 res["note"] = terminal_event["note"]
                 return res
+        res["note"] = "price series does not cover the trade window (delisted or reassigned ticker)"
         return res
 
     p0 = sub_prices.iloc[0]
@@ -143,7 +193,7 @@ def calculate_forward_returns(
         if terminal_event:
             fail_date = pd.to_datetime(terminal_event["failure_date"])
             days_to_fail = (fail_date - ts_date).days
-            if 0 <= days_to_fail <= (h_days * 1.5):
+            if 0 <= days_to_fail <= (h_days * TRADING_TO_CALENDAR):
                 res["nominal"][h_name] = -1.00
                 # Benchmark return up to failure
                 bench_sub = sub_bench.loc[sub_bench.index <= fail_date]
@@ -161,7 +211,12 @@ def calculate_forward_returns(
             res["nominal"][h_name] = round(float(stock_ret), 4)
             res["excess_kre"][h_name] = round(float(excess_ret), 4)
         elif len(sub_prices) > 0 and len(sub_bench) > 0:
-            # Partial horizon if latest data is shorter than 12M
+            # Partial horizon: legitimate only when the series is still live and
+            # simply has not reached the full horizon yet. A delisted series that
+            # stopped long before the benchmark must not have its final price read
+            # as a current one -- that fabricates a return for a stock that is gone.
+            if (sub_bench.index[-1] - sub_prices.index[-1]).days > STALE_SERIES_DAYS:
+                continue
             p_end = sub_prices.iloc[-1]
             b_end = sub_bench.iloc[-1]
             stock_ret = (p_end / p0) - 1.0
@@ -197,14 +252,27 @@ def main():
 
     logger.info(f"Computing filing date-aligned returns for {len(universe)} institutions...")
 
+    date_cache = load_filing_date_cache()
+    cached_hits = sum(1 for u in universe if u["ticker"].upper() in date_cache)
+    logger.info(
+        f"Filing-date cache: {cached_hits}/{len(universe)} institutions already resolved; "
+        f"{len(universe) - cached_hits} require EDGAR lookups."
+    )
+
     for idx, inst in enumerate(universe, 1):
         ticker = inst["ticker"].upper()
         cik = inst.get("cik")
         name = inst["name"]
         cohort = inst["cohort"]
 
-        logger.info(f"[{idx}/{len(universe)}] Fetching SEC filing dates for {ticker} ({name})...")
-        filing_dates = get_sec_filing_dates(ticker, cik)
+        if ticker in date_cache:
+            filing_dates = {int(y): d for y, d in date_cache[ticker].items()}
+        else:
+            logger.info(f"[{idx}/{len(universe)}] Fetching SEC filing dates for {ticker} ({name})...")
+            filing_dates = get_sec_filing_dates(ticker, cik)
+            # Persist after each institution so an interrupted run resumes here.
+            date_cache[ticker] = {str(y): d for y, d in filing_dates.items()}
+            save_filing_date_cache(date_cache)
 
         p_series = prices_df[ticker] if ticker in prices_df else pd.Series(dtype=float)
 
@@ -251,8 +319,9 @@ def main():
             all_returns[pair_key] = record
             rows_for_csv.append(record)
 
-        # Brief delay to respect SEC rate limits
-        time.sleep(0.15)
+        # Brief delay to respect SEC rate limits (only when we queried EDGAR)
+        if ticker not in date_cache or not date_cache.get(ticker):
+            time.sleep(0.15)
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 

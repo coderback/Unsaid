@@ -66,16 +66,60 @@ def save_manifest(manifest: Dict[str, Any]):
         json.dump(manifest, f, indent=2)
 
 
-def compute_removal_score(counts: Dict[str, int]) -> float:
+# A pair needs at least this many Year-1 disclosure units for a per-unit ratio to
+# mean anything; below it the denominator is too small and the score is noise.
+MIN_Y1_UNITS = 10
+
+
+def compute_removal_score_raw(counts: Dict[str, int]) -> float:
     """
-    Weighted Removal Severity Score:
-    Score = 2.0 * REMOVED + 1.0 * SOFTENED + 1.0 * ABSORBED - 0.5 * NEW
+    Unnormalised weighted severity:
+    2.0 * REMOVED + 1.0 * SOFTENED + 1.0 * ABSORBED - 0.5 * NEW
+
+    Retained for reference only. This scales with how much text the extractor
+    happened to pull, so it is NOT comparable across institutions -- use
+    compute_removal_score() for anything cross-sectional.
     """
     removed = counts.get("REMOVED", 0)
     softened = counts.get("SOFTENED", 0)
     absorbed = counts.get("ABSORBED", 0)
     new_disc = counts.get("NEW", 0)
     return round((2.0 * removed) + (1.0 * softened) + (1.0 * absorbed) - (0.5 * new_disc), 2)
+
+
+def compute_removal_score(counts: Dict[str, int], total_disclosures: int):
+    """
+    Removal severity per Year-1 disclosure unit.
+
+    The raw weighted count scales with document length and extraction yield -- a
+    filing segmented into 1,499 units will outscore one segmented into 114 on
+    volume alone, which measures the extractor rather than the issuer. Dividing by
+    the Year-1 unit count makes the score comparable across institutions.
+
+    Returns None when the pair is too thin or too asymmetric to score honestly:
+      - fewer than MIN_Y1_UNITS Year-1 units: denominator too small to be stable
+      - more NEW units than Year-1 units: Year-1 extraction substantially failed,
+        so the year-over-year comparison is not meaningful
+      - no Year-1 unit matched anything in Year-2: every unit judged REMOVED with
+        nothing retained, reworded, softened or absorbed means Year-2 extraction
+        returned nothing, not that the issuer deleted its entire risk section
+    """
+    new_disc = counts.get("NEW", 0)
+    y1_units = max(int(total_disclosures) - new_disc, 0)
+
+    if y1_units < MIN_Y1_UNITS or new_disc > y1_units:
+        return None
+
+    matched = (
+        counts.get("RETAINED", 0)
+        + counts.get("REWORDED", 0)
+        + counts.get("SOFTENED", 0)
+        + counts.get("ABSORBED", 0)
+    )
+    if matched == 0:
+        return None
+
+    return round(compute_removal_score_raw(counts) / y1_units, 4)
 
 
 def process_pair(
@@ -113,6 +157,7 @@ def process_pair(
                 model_segmenter=model_segmenter,
                 azure_endpoint=azure_endpoint,
                 api_key=api_key,
+                force=force,
             )
             analysis = read_cache(ticker, year1, year2) or {}
         except Exception as e:
@@ -139,7 +184,9 @@ def process_pair(
     item7a_removed = sum(1 for c in item7a_changes if c.get("classification") == "REMOVED")
     item7a_softened = sum(1 for c in item7a_changes if c.get("classification") == "SOFTENED")
 
-    score = compute_removal_score(counts)
+    total_disclosures = len(changes)
+    score = compute_removal_score(counts, total_disclosures)
+    score_raw = compute_removal_score_raw(counts)
 
     return {
         "ticker": ticker,
@@ -151,11 +198,12 @@ def process_pair(
         "status": "completed",
         "model_provider": analysis.get("model_provider", provider),
         "model_judge": analysis.get("model_judge"),
-        "total_disclosures": len(changes),
+        "total_disclosures": total_disclosures,
         "counts": counts,
         "item7a_removed": item7a_removed,
         "item7a_softened": item7a_softened,
         "removal_score": score,
+        "removal_score_raw": score_raw,
         "processed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
 
@@ -255,7 +303,9 @@ def main():
 
             if res.get("status") == "completed":
                 completed_count += 1
-                logger.info(f"  [OK] FY{y1}->FY{y2} completed | Score: {res.get('removal_score')} | Removed: {res.get('counts', {}).get('REMOVED', 0)}")
+                score_disp = res.get("removal_score")
+                score_disp = f"{score_disp:.3f}" if score_disp is not None else "n/a (unreliable)"
+                logger.info(f"  [OK] FY{y1}->FY{y2} completed | Score/unit: {score_disp} | Removed: {res.get('counts', {}).get('REMOVED', 0)}")
             else:
                 failed_count += 1
                 logger.warning(f"  [FAIL] FY{y1}->FY{y2} failed: {res.get('error')}")
