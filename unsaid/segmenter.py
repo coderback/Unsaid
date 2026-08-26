@@ -102,6 +102,15 @@ def _segment_chunk(
         )
         return units
     except Exception as e:
+        # An auth/config error fails identically on every chunk and yields an empty
+        # analysis that still caches and reports success. Surface those instead of
+        # returning [] -- only tolerate errors that are plausibly chunk-specific.
+        if isinstance(e, (EnvironmentError, ValueError)):
+            logger.error(
+                "Segmentation failed fatally on chunk %d (%s/%s): %s",
+                chunk_idx, provider, target_model, e,
+            )
+            raise
         logger.error("Segmentation failed on chunk %d (%s/%s): %s", chunk_idx, provider, target_model, e)
         return []
 
@@ -172,6 +181,13 @@ def segment_section(
         for u in units:
             u["section"] = section_label  # attach source section
         all_units.extend(units)
+
+    if chunks and not all_units:
+        raise RuntimeError(
+            f"Section {section_label}: segmentation produced 0 units from "
+            f"{len(chunks)} non-empty chunk(s) via {provider}. This indicates a "
+            f"provider/model failure rather than an empty section."
+        )
 
     logger.info(
         "Section %s: %d total units from %d chunk(s)",

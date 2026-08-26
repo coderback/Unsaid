@@ -11,7 +11,16 @@ import anthropic
 
 logger = logging.getLogger(__name__)
 
-_client: anthropic.Anthropic | None = None
+
+class JudgeFailureRateExceeded(RuntimeError):
+    """Raised when too many judge calls fall back, meaning the run is not trustworthy."""
+
+
+# A run in which many judge calls fail produces a complete, plausible-looking
+# analysis in which everything is RETAINED. That is indistinguishable from a real
+# null result downstream, so the run must abort rather than be cached.
+MAX_FALLBACK_RATE = 0.10
+MIN_UNITS_BEFORE_RATE_CHECK = 5
 
 CLASSIFY_TOOL = {
     "name": "classify_change",
@@ -26,11 +35,13 @@ CLASSIFY_TOOL = {
                 "type": "string",
                 "enum": ["RETAINED", "REWORDED", "SOFTENED", "REMOVED", "ABSORBED"],
                 "description": (
-                    "RETAINED: same risk, materially same language. "
-                    "REWORDED: same risk, different wording (not a signal). "
-                    "SOFTENED: risk downgraded, hedged, or qualifiers weakened (a signal). "
-                    "REMOVED: genuinely absent from Year-2 (strong signal). "
-                    "ABSORBED: folded into a broader Year-2 disclosure."
+                    "RETAINED: same risk, materially same substance and specificity. "
+                    "REWORDED: same risk and same specifics, different wording (not a signal). "
+                    "SOFTENED: risk downgraded, hedged, qualifiers weakened, OR specific "
+                    "quantitative disclosure dropped while the topic survives (a signal). "
+                    "REMOVED: the specific risk disclosure is absent from Year-2 (strong signal). "
+                    "ABSORBED: the SAME substance, including its specifics, is fully present "
+                    "inside a broader Year-2 disclosure, not merely the same topic."
                 ),
             },
             "year1_quote": {
@@ -81,8 +92,24 @@ _SYSTEM_PROMPT = (
     "   SOFTENED.\n"
     "4. If none of the Year-2 candidates meaningfully addresses the Year-1 risk, "
     "   classify as REMOVED.\n"
-    "5. ABSORBED means the same risk exists but is now bundled into a broader disclosure "
-    "   — note which Year-2 unit absorbed it.\n"
+    "5. ABSORBED is a HIGH bar: the same substance, including any quantitative "
+    "   specifics, must genuinely appear inside a broader Year-2 disclosure. Note which "
+    "   Year-2 unit absorbed it. A Year-2 unit that merely discusses the same TOPIC is "
+    "   NOT absorption.\n"
+    "5a. CRITICAL - do not let a topically-similar candidate mask a real loss. The "
+    "   candidates below are retrieved by semantic similarity, so a related Year-2 unit "
+    "   almost always exists. Similarity of topic is not continuity of disclosure. Ask "
+    "   what a reader LOSES going from Year-1 to Year-2, not whether the subject is "
+    "   still mentioned.\n"
+    "5b. Dropping quantified disclosure is material even when the topic persists. If "
+    "   Year-1 gave a figure, table, sensitivity metric or named exposure and Year-2 "
+    "   gives only qualitative discussion, that is SOFTENED at minimum, never RETAINED, "
+    "   REWORDED or ABSORBED. If a table column or scenario is dropped, classify on the "
+    "   dropped component.\n"
+    "5c. CONSISTENCY CHECK - if your own reasoning would say the Year-1 content is no "
+    "   longer presented, no longer disclosed, omitted, not repeated or absent, then the "
+    "   correct classification is SOFTENED or REMOVED, never RETAINED or ABSORBED. Your "
+    "   label must match your reasoning.\n"
     "6. Provide a verbatim year1_quote (the most salient sentence or clause, ≤300 chars).\n"
     "7. Confidence: 0.9+ only if you are certain; use 0.7–0.9 for reasonable inference."
 )
@@ -201,6 +228,9 @@ def judge_unit(
             "reasoning": f"Classification failed ({provider}/{target_model}); defaulted to RETAINED.",
             "section": y1_unit.get("section", "?"),
             "confidence": 0.0,
+            # Explicit marker so judge_all can count these and abort a degraded run.
+            "judge_failed": True,
+            "judge_error": f"{type(e).__name__}: {e}"[:300],
         }
 
 
@@ -244,8 +274,13 @@ def judge_all(
         if progress_callback:
             progress_callback(i + 1, total, unit_title)
 
-        # Filter candidates to those with at least minimal similarity
-        strong_candidates = [(u, s) for u, s in candidates if s >= 0.20]
+        # Filter candidates to those with at least minimal similarity. The cut has
+        # to track the embedding backend -- TF-IDF and mpnet cosines are not on the
+        # same scale, and a mpnet-calibrated cut starves the judge of candidates on
+        # the TF-IDF path, steering it toward REMOVED.
+        from unsaid.aligner import get_thresholds
+        candidate_cut = get_thresholds()["candidate"]
+        strong_candidates = [(u, s) for u, s in candidates if s >= candidate_cut]
         result = judge_unit(
             y1_unit,
             strong_candidates,
@@ -259,8 +294,27 @@ def judge_all(
         )
         results.append(result)
 
+        # Abort early rather than cache a run where the judge is mostly failing.
+        failed = sum(1 for r in results if r.get("judge_failed"))
+        if len(results) >= MIN_UNITS_BEFORE_RATE_CHECK:
+            rate = failed / len(results)
+            if rate > MAX_FALLBACK_RATE:
+                raise JudgeFailureRateExceeded(
+                    f"{failed}/{len(results)} judge calls failed ({rate:.0%}, limit "
+                    f"{MAX_FALLBACK_RATE:.0%}) via {provider}/{model or 'default'}. "
+                    f"Last error: {results[-1].get('judge_error', 'n/a')}. "
+                    f"Refusing to write a result that would look like a valid analysis."
+                )
+
     for y2_unit in new_candidates:
         results.append(judge_new_unit(y2_unit, year2))
+
+    total_failed = sum(1 for r in results if r.get("judge_failed"))
+    if total_failed:
+        logger.warning(
+            "%d/%d judge calls fell back to RETAINED; these carry confidence=0.0.",
+            total_failed, len(results),
+        )
 
     return results
 
