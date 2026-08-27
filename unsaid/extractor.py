@@ -7,6 +7,8 @@ import logging
 from typing import Optional, Dict
 from bs4 import BeautifulSoup
 
+from unsaid.fetcher import edgar_call
+
 logger = logging.getLogger(__name__)
 
 # Lines that are pure table garbage (mostly numbers / symbols, no real prose)
@@ -92,48 +94,106 @@ def _extract_via_regex(full_text: str, section: str) -> Optional[str]:
     return None
 
 
+# Item 1A in a bank 10-K typically runs tens of thousands of characters. A
+# table-of-contents entry slices to a few hundred, so a floor here separates the
+# body from the index without needing to parse the TOC.
+_MIN_SECTION_PROSE = 2_000
+# Absolute floor, used only when nothing better is available.
+_MIN_FALLBACK_PROSE = 200
+# Hard cap on how far a section may extend when no end marker is found.
+_MAX_SECTION_CHARS = 350_000
+# How far to SEARCH for the end marker. Deliberately much larger than the cap:
+# Citigroup's Item 7A body runs past 350k, and limiting the search to the cap
+# makes a genuinely bounded section look unbounded and silently truncates it.
+_END_SEARCH_WINDOW = 1_500_000
+# Skip this much past the heading before looking for the end marker, so the
+# heading's own neighbours do not terminate it immediately.
+_END_SEARCH_OFFSET = 1_000
+
+_SECTION_HTML_PATTERNS = {
+    "1A": {
+        "start": r'(?:<[^>]+>\s*(?:Item\s*1A[\.:\s\-\u2014\u2013]*|1A\.[\s&#;0-9a-z]*Risk\s+Factors|RISK\s+FACTORS)\s*<)',
+        "end": r'(?:<[^>]+>\s*(?:Item\s*(?:1B|2|7A)[\.:\s\-\u2014\u2013]*|UNRESOLVED\s+STAFF\s+COMMENTS|PROPERTIES|MANAGING\s+GLOBAL\s+RISK)\s*<)',
+    },
+    "7A": {
+        "start": r'(?:<[^>]+>\s*(?:Item\s*7A[\.:\s\-\u2014\u2013]*|7A\.[\s&#;0-9a-z]*Quantitative|MANAGING\s+GLOBAL\s+RISK|MARKET\s+RISK)\s*<)',
+        "end": r'(?:<[^>]+>\s*(?:Item\s*8[\.:\s\-\u2014\u2013]*|FINANCIAL\s+STATEMENTS|CONSOLIDATED\s+FINANCIAL\s+STATEMENTS)\s*<)',
+    },
+}
+
+
+def _slice_candidate(raw_html: str, start_idx: int, end_pattern: str):
+    """
+    Return (prose, bounded) for the section beginning at start_idx.
+
+    bounded is True when a genuine end marker was found. An unbounded slice is
+    almost always a cross-reference rather than the section itself, so callers
+    should prefer a bounded candidate even if it appears earlier in the document.
+    """
+    window = raw_html[start_idx + _END_SEARCH_OFFSET : start_idx + _END_SEARCH_WINDOW]
+    m_end = re.search(end_pattern, window, re.I)
+    if m_end:
+        end_idx = start_idx + _END_SEARCH_OFFSET + m_end.start()
+        bounded = True
+    else:
+        end_idx = start_idx + _MAX_SECTION_CHARS
+        bounded = False
+    return _html_to_prose(raw_html[start_idx:end_idx]), bounded
+
+
 def _extract_via_html_slice(raw_html: str, section: str) -> Optional[str]:
     """
-    Direct HTML boundary slicing: finds section headers in raw HTML and converts
-    only the target section slice to prose. Highly resilient to non-standard TOC anchors.
+    Locate a section by slicing raw HTML between heading boundaries.
+
+    Resilient to filings whose table of contents lacks anchor tags (Citigroup
+    styles Item 1A as a bare bold div and files Item 7A under MANAGING GLOBAL
+    RISK), which is why the patterns admit heading text as well as item numbers.
     """
     if not raw_html or len(raw_html) < 500:
         return None
 
-    if section == "1A":
-        matches_1a = list(re.finditer(
-            r'(?:<[^>]+>\s*(?:Item\s*1A[\.:\s\-—–]*|1A\.[\s&#;0-9a-z]*Risk\s+Factors|RISK\s+FACTORS)\s*<)',
-            raw_html, re.I
-        ))
-        if not matches_1a:
-            return None
-        start_idx = matches_1a[-1].start()
-        matches_end = list(re.finditer(
-            r'(?:<[^>]+>\s*(?:Item\s*(?:1B|2|7A)[\.:\s\-—–]*|UNRESOLVED\s+STAFF\s+COMMENTS|PROPERTIES|MANAGING\s+GLOBAL\s+RISK)\s*<)',
-            raw_html[start_idx + 1000 : start_idx + 1500000], re.I
-        ))
-        end_idx = start_idx + 1000 + matches_end[0].start() if matches_end else start_idx + 350000
-        chunk = raw_html[start_idx:end_idx]
-        prose = _html_to_prose(chunk)
-        if len(prose) > 200:
-            return prose
+    pattern = _SECTION_HTML_PATTERNS.get(section)
+    if not pattern:
+        return None
 
-    elif section == "7A":
-        matches_7a = list(re.finditer(
-            r'(?:<[^>]+>\s*(?:Item\s*7A[\.:\s\-—–]*|7A\.[\s&#;0-9a-z]*Quantitative|MANAGING\s+GLOBAL\s+RISK|MARKET\s+RISK)\s*<)',
-            raw_html, re.I
-        ))
-        if not matches_7a:
-            return None
-        start_idx = matches_7a[-1].start()
-        matches_end = list(re.finditer(
-            r'(?:<[^>]+>\s*(?:Item\s*8[\.:\s\-—–]*|FINANCIAL\s+STATEMENTS|CONSOLIDATED\s+FINANCIAL\s+STATEMENTS)\s*<)',
-            raw_html[start_idx + 1000 : start_idx + 1500000], re.I
-        ))
-        end_idx = start_idx + 1000 + matches_end[0].start() if matches_end else start_idx + 350000
-        chunk = raw_html[start_idx:end_idx]
-        prose = _html_to_prose(chunk)
-        if len(prose) > 200:
+    starts = list(re.finditer(pattern["start"], raw_html, re.I))
+    if not starts:
+        return None
+
+    # Later headings are more likely to be the body than the table of contents,
+    # so search backwards -- but require the slice to be bounded and substantial
+    # rather than trusting position alone.
+    best_unbounded = None
+    for m in reversed(starts):
+        prose, bounded = _slice_candidate(raw_html, m.start(), pattern["end"])
+        if bounded and len(prose) >= _MIN_SECTION_PROSE:
+            logger.info(
+                "Extracted Item %s via HTML slice (bounded, len=%d, candidate %d/%d)",
+                section, len(prose), starts.index(m) + 1, len(starts),
+            )
+            return prose
+        if not bounded and best_unbounded is None and len(prose) >= _MIN_SECTION_PROSE:
+            best_unbounded = prose
+
+    # Nothing bounded. An unbounded slice is capped at _MAX_SECTION_CHARS and may
+    # carry unrelated trailing content, so accept it only as a last resort and
+    # say so, rather than letting it pass as a clean extraction.
+    if best_unbounded:
+        logger.warning(
+            "Item %s HTML slice found no end marker; using a capped unbounded slice "
+            "(len=%d). Content may extend beyond the section.",
+            section, len(best_unbounded),
+        )
+        return best_unbounded
+
+    for m in reversed(starts):
+        prose, _ = _slice_candidate(raw_html, m.start(), pattern["end"])
+        if len(prose) >= _MIN_FALLBACK_PROSE:
+            logger.warning(
+                "Item %s HTML slice produced only a short section (len=%d); "
+                "this may be a table-of-contents entry rather than the body.",
+                section, len(prose),
+            )
             return prose
 
     return None
@@ -148,7 +208,7 @@ def extract_section(filing, section: str) -> Optional[str]:
 
     # --- Attempt 1: edgartools TenK object native item access ---
     try:
-        tenk = filing.obj()
+        tenk = edgar_call(filing.obj)
 
         # Try multiple access patterns that edgartools supports
         keys_to_try = {
@@ -183,7 +243,7 @@ def extract_section(filing, section: str) -> Optional[str]:
     # --- Attempt 2: direct HTML boundary slice fallback ---
     try:
         if hasattr(filing, "html"):
-            raw_html = filing.html()
+            raw_html = edgar_call(filing.html)
             if raw_html:
                 res = _extract_via_html_slice(raw_html, section)
                 if res and len(res) > 200:
@@ -198,12 +258,12 @@ def extract_section(filing, section: str) -> Optional[str]:
         if not full_text:
             if hasattr(filing, "text"):
                 try:
-                    full_text = filing.text()
+                    full_text = edgar_call(filing.text)
                 except Exception:
                     pass
             if not full_text and hasattr(filing, "markdown"):
                 try:
-                    full_text = filing.markdown()
+                    full_text = edgar_call(filing.markdown)
                 except Exception:
                     pass
             if full_text:

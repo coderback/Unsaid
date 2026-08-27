@@ -30,6 +30,17 @@ def _throttle():
         _last_request_time = time.time()
 
 
+def edgar_call(fn, *args, **kwargs):
+    """
+    Invoke an EDGAR-touching callable behind the shared rate limiter.
+
+    Every request must go through here. The limit is global to the process, not
+    per worker, so concurrent ingestion shares one budget.
+    """
+    _throttle()
+    return fn(*args, **kwargs)
+
+
 def setup_edgar():
     edgar.set_identity(EDGAR_USER_AGENT)
 
@@ -52,21 +63,21 @@ def get_10k_filing(
     if cik:
         try:
             cik_int = int(cik.lstrip("0") or "0")
-            e = edgar.Company(cik_int)
-            test_filings = e.get_filings(form="10-K")
+            e = edgar_call(edgar.Company, cik_int)
+            test_filings = edgar_call(e.get_filings, form="10-K")
             if test_filings and len(test_filings) > 0:
                 entity = e
             else:
-                entity = edgar.get_entity(cik_int)
+                entity = edgar_call(edgar.get_entity, cik_int)
         except Exception:
             cik_int = int(cik.lstrip("0") or "0")
-            entity = edgar.get_entity(cik_int)
+            entity = edgar_call(edgar.get_entity, cik_int)
 
     # Fall back to ticker lookup if no CIK or CIK lookup produced no entity
     if entity is None and ticker:
         try:
-            e = edgar.Company(ticker)
-            test_filings = e.get_filings(form="10-K")
+            e = edgar_call(edgar.Company, ticker)
+            test_filings = edgar_call(e.get_filings, form="10-K")
             if test_filings and len(test_filings) > 0:
                 entity = e
         except Exception:
@@ -75,17 +86,16 @@ def get_10k_filing(
     if entity is None:
         if cik:
             cik_int = int(cik.lstrip("0") or "0")
-            entity = edgar.Company(cik_int)
+            entity = edgar_call(edgar.Company, cik_int)
         elif ticker:
-            entity = edgar.Company(ticker)
+            entity = edgar_call(edgar.Company, ticker)
         else:
             raise ValueError("Must supply ticker or cik")
 
     company_name: str = getattr(entity, "name", str(ticker or cik))
     logger.info("Resolved entity: %s", company_name)
 
-    _throttle()
-    filings = entity.get_filings(form="10-K")
+    filings = edgar_call(entity.get_filings, form="10-K")
     if not filings or len(filings) == 0:
         raise ValueError(f"No 10-K filings found for {ticker or cik}")
 
@@ -154,20 +164,20 @@ def list_available_10ks(
     if cik:
         try:
             cik_int = int(cik.lstrip("0") or "0")
-            e = edgar.Company(cik_int)
-            test_filings = e.get_filings(form="10-K")
+            e = edgar_call(edgar.Company, cik_int)
+            test_filings = edgar_call(e.get_filings, form="10-K")
             if test_filings and len(test_filings) > 0:
                 entity = e
             else:
-                entity = edgar.get_entity(cik_int)
+                entity = edgar_call(edgar.get_entity, cik_int)
         except Exception:
             cik_int = int(cik.lstrip("0") or "0")
-            entity = edgar.get_entity(cik_int)
+            entity = edgar_call(edgar.get_entity, cik_int)
 
     if entity is None and ticker:
         try:
-            e = edgar.Company(ticker.upper())
-            test_filings = e.get_filings(form="10-K")
+            e = edgar_call(edgar.Company, ticker.upper())
+            test_filings = edgar_call(e.get_filings, form="10-K")
             if test_filings and len(test_filings) > 0:
                 entity = e
         except Exception:
@@ -176,9 +186,9 @@ def list_available_10ks(
     if entity is None:
         if cik:
             cik_int = int(cik.lstrip("0") or "0")
-            entity = edgar.Company(cik_int)
+            entity = edgar_call(edgar.Company, cik_int)
         elif ticker:
-            entity = edgar.Company(ticker.upper())
+            entity = edgar_call(edgar.Company, ticker.upper())
         else:
             raise ValueError("Must supply ticker or cik")
 
@@ -186,8 +196,7 @@ def list_available_10ks(
     resolved_cik: str = str(getattr(entity, "cik", cik or ""))
     logger.info("Resolved entity for listing: %s (CIK: %s)", company_name, resolved_cik)
 
-    _throttle()
-    filings = entity.get_filings(form="10-K")
+    filings = edgar_call(entity.get_filings, form="10-K")
     if not filings or len(filings) == 0:
         return company_name, resolved_cik, []
 
