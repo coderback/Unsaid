@@ -4,6 +4,7 @@ Embeddings are used ONLY for candidate recall — Claude judges every classifica
 Model: all-mpnet-base-v2 (local, no API key).
 """
 import logging
+import threading
 from typing import List, Dict, Tuple
 
 import numpy as np
@@ -18,6 +19,13 @@ _FALLBACK_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 # degraded from dense embeddings to bag-of-words TF-IDF without recording it
 # anywhere, so cached analyses claimed mpnet regardless of what really ran.
 _ACTIVE_BACKEND: str = "uninitialised"
+
+# Serialises model loading (so concurrent workers do not each download and
+# instantiate mpnet) and encoding (a single torch module shared across threads).
+# Encoding is seconds against minutes of LLM latency, so serialising it costs
+# almost nothing at the pair level.
+_MODEL_LOCK = threading.Lock()
+_ENCODE_LOCK = threading.Lock()
 
 # TF-IDF cosine and mpnet cosine are not on the same scale, so the recall
 # thresholds have to differ per backend. TF-IDF over long, highly repetitive
@@ -72,6 +80,15 @@ def _get_model():
     if _EMBED_MODEL is not None:
         return _EMBED_MODEL
 
+    with _MODEL_LOCK:
+        if _EMBED_MODEL is not None:  # another thread won the race
+            return _EMBED_MODEL
+        return _load_model_locked()
+
+
+def _load_model_locked():
+    global _EMBED_MODEL, _ACTIVE_BACKEND
+
     for name, backend in ((_MODEL_NAME, "mpnet"), (_FALLBACK_MODEL_NAME, "minilm")):
         try:
             logger.info("Loading sentence-transformers model %s …", name)
@@ -103,12 +120,13 @@ def embed_units(units: List[Dict]) -> np.ndarray:
 
     if model != "TFIDF_FALLBACK" and hasattr(model, "encode"):
         try:
-            embeddings = model.encode(
-                texts,
-                normalize_embeddings=True,
-                show_progress_bar=len(texts) > 20,
-                batch_size=32,
-            )
+            with _ENCODE_LOCK:
+                embeddings = model.encode(
+                    texts,
+                    normalize_embeddings=True,
+                    show_progress_bar=len(texts) > 20,
+                    batch_size=32,
+                )
             return embeddings.astype(np.float32)
         except Exception as e:
             logger.warning("SentenceTransformer encode failed (%s). Using local TF-IDF fallback.", e)
@@ -157,8 +175,9 @@ def align_units(
     global _ACTIVE_BACKEND
     if model != "TFIDF_FALLBACK" and hasattr(model, "encode"):
         try:
-            y1_embs = model.encode(y1_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
-            y2_embs = model.encode(y2_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
+            with _ENCODE_LOCK:
+                y1_embs = model.encode(y1_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
+                y2_embs = model.encode(y2_texts, normalize_embeddings=True, batch_size=32).astype(np.float32)
             sim_matrix = y1_embs @ y2_embs.T  # shape (n1, n2)
         except Exception as e:
             logger.error(

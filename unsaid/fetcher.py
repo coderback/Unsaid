@@ -2,6 +2,7 @@
 import time
 import logging
 import os
+import threading
 from typing import Optional, Tuple
 
 import edgar
@@ -15,14 +16,18 @@ EDGAR_USER_AGENT = os.environ.get(
 
 _last_request_time: float = 0.0
 _MIN_INTERVAL = 0.12  # 10 req/s max; 120ms gives a safe margin
+# Guards _last_request_time. Without it, concurrent workers each read a stale
+# timestamp, all conclude no wait is needed, and burst past SEC's 10 req/s limit.
+_THROTTLE_LOCK = threading.Lock()
 
 
 def _throttle():
     global _last_request_time
-    elapsed = time.time() - _last_request_time
-    if elapsed < _MIN_INTERVAL:
-        time.sleep(_MIN_INTERVAL - elapsed)
-    _last_request_time = time.time()
+    with _THROTTLE_LOCK:
+        elapsed = time.time() - _last_request_time
+        if elapsed < _MIN_INTERVAL:
+            time.sleep(_MIN_INTERVAL - elapsed)
+        _last_request_time = time.time()
 
 
 def setup_edgar():

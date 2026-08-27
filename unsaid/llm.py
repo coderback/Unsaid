@@ -13,6 +13,10 @@ from typing import Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
 
+
+class _TemperatureUnsupported(Exception):
+    """Internal signal: skip the temperature attempt for a model known to reject it."""
+
 # Default model definitions
 DEFAULT_MODELS = {
     "anthropic": {
@@ -31,6 +35,15 @@ DEFAULT_MODELS = {
 
 _anthropic_client = None
 _openai_clients: Dict[str, Any] = {}
+
+# Set once a model has rejected an explicit temperature, so the retry path is
+# taken directly instead of paying a failed request per call.
+_ANTHROPIC_TEMPERATURE_UNSUPPORTED = False
+
+
+def _set_anthropic_temperature_unsupported():
+    global _ANTHROPIC_TEMPERATURE_UNSUPPORTED
+    _ANTHROPIC_TEMPERATURE_UNSUPPORTED = True
 
 
 def get_default_model(provider: str, role: str = "judge") -> str:
@@ -156,17 +169,36 @@ def call_structured_tool(
             "input_schema": parameters_schema,
         }
 
+        base_kwargs: Dict[str, Any] = {
+            "model": model or DEFAULT_MODELS["anthropic"]["judge"],
+            "max_tokens": max_tokens,
+            "system": system_prompt,
+            "tools": [anthropic_tool],
+            "tool_choice": {"type": "tool", "name": tool_name},
+            "messages": [{"role": "user", "content": user_prompt}],
+        }
+
         for attempt in range(retries + 1):
             try:
-                response = client.messages.create(
-                    model=model or DEFAULT_MODELS["anthropic"]["judge"],
-                    max_tokens=max_tokens,
-                    system=system_prompt,
-                    tools=[anthropic_tool],
-                    tool_choice={"type": "tool", "name": tool_name},
-                    messages=[{"role": "user", "content": user_prompt}],
-                    temperature=temperature,
-                )
+                try:
+                    if _ANTHROPIC_TEMPERATURE_UNSUPPORTED:
+                        raise _TemperatureUnsupported()
+                    response = client.messages.create(**base_kwargs, temperature=temperature)
+                except _TemperatureUnsupported:
+                    response = client.messages.create(**base_kwargs)
+                except anthropic.BadRequestError as b_err:
+                    if "temperature" not in str(b_err).lower():
+                        raise
+                    # Newer reasoning models reject an explicit temperature. Drop it
+                    # for the rest of the process rather than re-failing every call.
+                    if not _ANTHROPIC_TEMPERATURE_UNSUPPORTED:
+                        logger.warning(
+                            "Anthropic model %s rejects an explicit temperature; "
+                            "continuing at its fixed default. Output will NOT be "
+                            "deterministic.", base_kwargs["model"],
+                        )
+                    _set_anthropic_temperature_unsupported()
+                    response = client.messages.create(**base_kwargs)
 
                 for block in response.content:
                     if block.type == "tool_use" and block.name == tool_name:

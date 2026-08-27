@@ -29,6 +29,7 @@ def write_cache(
     model_judge: Optional[str] = None,
     model_segmenter: Optional[str] = None,
     embed_backend: Optional[str] = None,
+    pipeline_version: Optional[str] = None,
 ) -> str:
     """Write results to cache. Returns the cache file path."""
     os.makedirs(_CACHE_DIR, exist_ok=True)
@@ -48,6 +49,7 @@ def write_cache(
         "model_judge": model_judge,
         "model_segmenter": model_segmenter,
         "embed_backend": embed_backend,
+        "pipeline_version": pipeline_version,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary_counts": counts,
         "changes": changes,
@@ -113,6 +115,7 @@ def list_cached_analyses() -> List[Dict]:
                 "model_judge": data.get("model_judge"),
                 "model_segmenter": data.get("model_segmenter"),
                 "embed_backend": data.get("embed_backend"),
+                "pipeline_version": data.get("pipeline_version"),
                 "generated_at": data.get("generated_at"),
                 "summary_counts": counts,
                 "total_changes": total_changes,

@@ -714,19 +714,20 @@
       "status": "completed",
       "model_provider": "azure_foundry",
       "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 68,
+      "total_disclosures": 44,
       "counts": {
-        "REWORDED": 16,
-        "RETAINED": 26,
-        "SOFTENED": 2,
-        "ABSORBED": 3,
-        "REMOVED": 2,
-        "NEW": 19
+        "RETAINED": 36,
+        "SOFTENED": 6,
+        "REWORDED": 1,
+        "REMOVED": 1
       },
       "item7a_removed": 0,
       "item7a_softened": 0,
-      "removal_score": -0.5,
-      "processed_at": "2026-08-22T17:00:28Z"
+      "removal_score": 0.1818,
+      "removal_score_raw": 8.0,
+      "embed_backend": "mpnet",
+      "pipeline_version": "18270fd2b481",
+      "processed_at": "2026-08-27T01:18:48Z"
     },
     "ZION_2020_2021": {
       "ticker": "ZION",
@@ -738,19 +739,21 @@
       "status": "completed",
       "model_provider": "azure_foundry",
       "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 53,
+      "total_disclosures": 48,
       "counts": {
-        "REWORDED": 13,
-        "RETAINED": 14,
-        "SOFTENED": 6,
-        "ABSORBED": 2,
-        "REMOVED": 12,
-        "NEW": 6
+        "RETAINED": 18,
+        "SOFTENED": 21,
+        "REWORDED": 4,
+        "REMOVED": 4,
+        "ABSORBED": 1
       },
       "item7a_removed": 0,
       "item7a_softened": 0,
-      "removal_score": 29.0,
-      "processed_at": "2026-08-22T17:06:31Z"
+      "removal_score": 0.625,
+      "removal_score_raw": 30.0,
+      "embed_backend": "mpnet",
+      "pipeline_version": "18270fd2b481",
+      "processed_at": "2026-08-27T01:19:42Z"
     },
     "ZION_2021_2022": {
       "ticker": "ZION",
@@ -759,21 +762,9 @@
       "cohort": "crisis_distressed",
       "year1": 2021,
       "year2": 2022,
-      "status": "completed",
-      "model_provider": "azure_foundry",
-      "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 46,
-      "counts": {
-        "SOFTENED": 3,
-        "REWORDED": 13,
-        "RETAINED": 22,
-        "ABSORBED": 3,
-        "NEW": 5
-      },
-      "item7a_removed": 0,
-      "item7a_softened": 0,
-      "removal_score": 3.5,
-      "processed_at": "2026-08-22T17:12:16Z"
+      "status": "failed",
+      "error": "5/5 judge calls failed (100%, limit 10%) via anthropic/claude-opus-4-8. Last error: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` is deprecated for this model.'}, 'request_id': 'req_011CeSHA9KRHNHn1vUz5nGT5'}. Refusing to write a result that would look like a valid analysis.",
+      "pipeline_version": "85e68dd51837"
     },
     "ZION_2022_2023": {
       "ticker": "ZION",
@@ -782,22 +773,9 @@
       "cohort": "crisis_distressed",
       "year1": 2022,
       "year2": 2023,
-      "status": "completed",
-      "model_provider": "azure_foundry",
-      "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 47,
-      "counts": {
-        "RETAINED": 27,
-        "ABSORBED": 3,
-        "REWORDED": 9,
-        "REMOVED": 2,
-        "SOFTENED": 2,
-        "NEW": 4
-      },
-      "item7a_removed": 0,
-      "item7a_softened": 0,
-      "removal_score": 7.0,
-      "processed_at": "2026-08-22T17:18:25Z"
+      "status": "failed",
+      "error": "5/5 judge calls failed (100%, limit 10%) via anthropic/claude-opus-4-8. Last error: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` is deprecated for this model.'}, 'request_id': 'req_011CeSHLxdnjYvPMAaFZMZ98'}. Refusing to write a result that would look like a valid analysis.",
+      "pipeline_version": "85e68dd51837"
     },
     "KEY_2019_2020": {
       "ticker": "KEY",
@@ -5273,5 +5251,6 @@
       "removal_score": 24.5,
       "processed_at": "2026-08-25T03:22:45Z"
     }
-  }
+  },
+  "pipeline_version": "f29246ed7625"
 }

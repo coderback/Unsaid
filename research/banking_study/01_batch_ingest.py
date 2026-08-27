@@ -12,6 +12,8 @@ import json
 import time
 import argparse
 import logging
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 
@@ -31,6 +33,7 @@ if env_path.exists():
 
 from unsaid.ingest import run_pipeline
 from unsaid.cache import read_cache
+from unsaid.version import pipeline_fingerprint
 
 logging.basicConfig(
     level=logging.INFO,
@@ -60,10 +63,17 @@ def load_manifest() -> Dict[str, Any]:
     return {"created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"), "results": {}}
 
 
+# Serialises manifest mutation and the write itself, so a checkpoint from one
+# worker cannot interleave with another and truncate the file.
+_MANIFEST_LOCK = threading.Lock()
+
+
 def save_manifest(manifest: Dict[str, Any]):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
+    tmp = MANIFEST_FILE.with_suffix(".json.tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
+    os.replace(tmp, MANIFEST_FILE)  # atomic: a kill mid-write cannot corrupt it
 
 
 # A pair needs at least this many Year-1 disclosure units for a per-unit ratio to
@@ -204,6 +214,8 @@ def process_pair(
         "item7a_softened": item7a_softened,
         "removal_score": score,
         "removal_score_raw": score_raw,
+        "embed_backend": analysis.get("embed_backend"),
+        "pipeline_version": analysis.get("pipeline_version"),
         "processed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
 
@@ -228,6 +240,17 @@ def main():
     parser.add_argument("--azure-endpoint", type=str, help="Azure AI Foundry endpoint URL")
     parser.add_argument("--api-key", type=str, help="Optional direct API key")
     parser.add_argument("--force", action="store_true", help="Force re-run even if cached")
+    parser.add_argument(
+        "--workers", type=int, default=1,
+        help="Pairs to process concurrently. The bottleneck is API latency, not CPU; "
+             "4-8 is typically safe. SEC fetches stay rate-limited regardless.",
+    )
+    parser.add_argument(
+        "--freeze", action="store_true",
+        help="Re-ingest under the CURRENT pipeline version, skipping pairs already "
+             "ingested under it. Unlike --force this is resumable: a killed run "
+             "resumes instead of restarting. Use this to rebuild a homogeneous corpus.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print plan without running LLM pipeline")
     args = parser.parse_args()
 
@@ -261,57 +284,111 @@ def main():
     manifest = load_manifest()
     results = manifest.setdefault("results", {})
 
+    # Resolve the embedding backend up front. It is part of the fingerprint, and
+    # eager loading means a silent degrade to TF-IDF surfaces now rather than
+    # after hours of ingestion.
+    from unsaid.aligner import _get_model, get_active_backend
+    _get_model()
+    backend = get_active_backend()
+    # Resolve model defaults BEFORE fingerprinting. run_pipeline stamps the cache
+    # using resolved names, so hashing the literal None here would produce a
+    # version that can never match what was recorded -- and --freeze would then
+    # re-ingest the whole corpus on every restart instead of resuming.
+    from unsaid.llm import get_default_model
+    eff_judge = args.model_judge or get_default_model(args.provider, "judge")
+    eff_segmenter = args.model_segmenter or get_default_model(args.provider, "segmenter")
+    current_version = pipeline_fingerprint(
+        args.provider, eff_judge, eff_segmenter, backend,
+    )
+    manifest["pipeline_version"] = current_version
+    logger.info("Pipeline version: %s (embed backend: %s)", current_version, backend)
+    if backend == "tfidf":
+        logger.warning("Running on TF-IDF bag-of-words, NOT dense embeddings.")
+
+    if args.freeze:
+        stale = [
+            k for k, v in results.items()
+            if v.get("status") == "completed" and v.get("pipeline_version") != current_version
+        ]
+        logger.info(
+            "Freeze mode: %d pair(s) already at this version, %d to (re)ingest.",
+            sum(1 for v in results.values() if v.get("pipeline_version") == current_version),
+            len(stale) + sum(1 for v in results.values() if v.get("status") != "completed"),
+        )
+
     completed_count = 0
     failed_count = 0
 
-    for idx, inst in enumerate(targets, 1):
-        ticker = inst["ticker"]
-        cik = inst.get("cik")
-        name = inst["name"]
-        cohort = inst["cohort"]
-
-        logger.info("========================================================")
-        logger.info(f"[{idx}/{len(targets)}] Processing {ticker} - {name} ({cohort})")
-        logger.info("========================================================")
-
+    # Flatten to a task list so the pool can saturate regardless of pair sizes,
+    # which vary by more than an order of magnitude.
+    tasks = []
+    for inst in targets:
         for p in pairs:
-            y1 = p["year1"]
-            y2 = p["year2"]
-            pair_key = f"{ticker}_{y1}_{y2}"
+            pk = f"{inst['ticker']}_{p['year1']}_{p['year2']}"
+            prior = results.get(pk)
+            done = prior and prior.get("status") == "completed"
 
-            if not args.force and pair_key in results and results[pair_key].get("status") == "completed":
-                logger.info(f"  |-- FY{y1}->FY{y2}: Already recorded in manifest. Skipping.")
+            if args.freeze:
+                # Resumable: skip only what this exact pipeline version produced.
+                if done and prior.get("pipeline_version") == current_version:
+                    continue
+            elif not args.force and done:
                 continue
 
-            res = process_pair(
-                ticker=ticker,
-                cik=cik,
-                name=name,
-                cohort=cohort,
-                year1=y1,
-                year2=y2,
-                provider=args.provider,
-                model_judge=args.model_judge,
-                model_segmenter=args.model_segmenter,
-                azure_endpoint=args.azure_endpoint,
-                api_key=args.api_key,
-                force=args.force,
-            )
+            tasks.append((inst, p, pk))
 
-            results[pair_key] = res
-            save_manifest(manifest)
+    logger.info("Dispatching %d pair(s) across %d worker(s).", len(tasks), args.workers)
 
+    def run_task(task):
+        inst, p, pk = task
+        # In freeze mode every dispatched pair must actually re-run, so bypass the
+        # cache short-circuit even though --force was not passed.
+        return pk, process_pair(
+            ticker=inst["ticker"],
+            cik=inst.get("cik"),
+            name=inst["name"],
+            cohort=inst["cohort"],
+            year1=p["year1"],
+            year2=p["year2"],
+            provider=args.provider,
+            model_judge=args.model_judge,
+            model_segmenter=args.model_segmenter,
+            azure_endpoint=args.azure_endpoint,
+            api_key=args.api_key,
+            force=args.force or args.freeze,
+        )
+
+    done_n = 0
+    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+        futures = {pool.submit(run_task, t): t for t in tasks}
+        for fut in as_completed(futures):
+            inst, p, pk = futures[fut]
+            try:
+                _, res = fut.result()
+            except Exception as e:
+                res = {
+                    "ticker": inst["ticker"], "cik": inst.get("cik"), "name": inst["name"],
+                    "cohort": inst["cohort"], "year1": p["year1"], "year2": p["year2"],
+                    "status": "failed", "error": f"{type(e).__name__}: {e}",
+                }
+
+            with _MANIFEST_LOCK:
+                res.setdefault("pipeline_version", current_version)
+                results[pk] = res
+                save_manifest(manifest)
+
+            done_n += 1
             if res.get("status") == "completed":
                 completed_count += 1
-                score_disp = res.get("removal_score")
-                score_disp = f"{score_disp:.3f}" if score_disp is not None else "n/a (unreliable)"
-                logger.info(f"  [OK] FY{y1}->FY{y2} completed | Score/unit: {score_disp} | Removed: {res.get('counts', {}).get('REMOVED', 0)}")
+                sd = res.get("removal_score")
+                sd = f"{sd:.3f}" if sd is not None else "n/a (unreliable)"
+                logger.info(
+                    "[%d/%d] OK   %-18s score/unit=%-8s removed=%d",
+                    done_n, len(tasks), pk, sd, res.get("counts", {}).get("REMOVED", 0),
+                )
             else:
                 failed_count += 1
-                logger.warning(f"  [FAIL] FY{y1}->FY{y2} failed: {res.get('error')}")
-
-            # Politeness delay for SEC EDGAR
-            time.sleep(0.5)
+                logger.warning("[%d/%d] FAIL %-18s %s", done_n, len(tasks), pk, res.get("error"))
 
     logger.info("\n========================================================")
     logger.info(f"Batch Ingestion Complete: {completed_count} succeeded, {failed_count} failed.")

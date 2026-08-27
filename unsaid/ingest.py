@@ -57,6 +57,7 @@ def run_pipeline(
     from unsaid.judge import judge_all
     from unsaid.cache import write_cache, cache_exists
     from unsaid.llm import get_default_model
+    from unsaid.version import pipeline_fingerprint
 
     effective_ticker = (ticker or cik or "UNKNOWN").upper()
     effective_judge = model_judge or get_default_model(provider, "judge")
@@ -211,6 +212,9 @@ def run_pipeline(
         model_judge=effective_judge,
         model_segmenter=effective_segmenter,
         embed_backend=embed_backend,
+        pipeline_version=pipeline_fingerprint(
+            provider, effective_judge, effective_segmenter, embed_backend
+        ),
     )
     logger.info("Done! Cache written to: %s", path)
     report("completed", 100, f"Analysis complete for {effective_ticker} (FY{year1} → FY{year2})", path)
