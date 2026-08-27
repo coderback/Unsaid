@@ -8,8 +8,11 @@ from typing import Optional, Dict
 from bs4 import BeautifulSoup
 
 from unsaid.fetcher import edgar_call
+from unsaid import textcache
 
 logger = logging.getLogger(__name__)
+
+_EXTRACTOR_FP = None
 
 # Lines that are pure table garbage (mostly numbers / symbols, no real prose)
 _GARBAGE_LINE = re.compile(r"^[\s\d\$\%\.\,\(\)\-\|\—\–\*\/\\n]+$")
@@ -284,9 +287,54 @@ def extract_section(filing, section: str) -> Optional[str]:
     return None
 
 
-def extract_both_sections(filing) -> Dict[str, Optional[str]]:
-    """Extract both Item 1A and Item 7A from a filing."""
-    return {
+def _extractor_fingerprint() -> str:
+    """
+    Identity of the extraction logic, used to key the text cache.
+
+    Derived from this module's own source so that editing any extraction rule
+    invalidates cached text automatically. Without it a corpus could silently mix
+    output from two different extractors -- the exact defect that made the
+    banking study's cohorts incomparable.
+    """
+    global _EXTRACTOR_FP
+    if _EXTRACTOR_FP is None:
+        import hashlib
+        from pathlib import Path
+        src = Path(__file__).resolve().read_bytes()
+        _EXTRACTOR_FP = hashlib.sha256(src).hexdigest()[:10]
+    return _EXTRACTOR_FP
+
+
+def extract_both_sections(filing, use_cache: bool = True) -> Dict[str, Optional[str]]:
+    """
+    Extract Item 1A and Item 7A, reusing cached text where available.
+
+    Every filing appears twice in a corpus of consecutive year-pairs (as Year-2
+    of one and Year-1 of the next), so caching by accession removes half the
+    extraction work outright.
+    """
+    accession = str(getattr(filing, "accession_no", "") or "")
+
+    if use_cache and accession:
+        fp = _extractor_fingerprint()
+        cached = textcache.load(accession, fp)
+        if cached is not None:
+            logger.info(
+                "Text cache hit for %s (1A=%d chars, 7A=%d chars)",
+                accession,
+                len(cached.get("1A") or ""),
+                len(cached.get("7A") or ""),
+            )
+            return {"1A": cached.get("1A"), "7A": cached.get("7A")}
+
+    sections = {
         "1A": extract_section(filing, "1A"),
         "7A": extract_section(filing, "7A"),
     }
+
+    # Only cache a filing where something was actually recovered; caching a total
+    # failure would make a transient fetch error permanent.
+    if use_cache and accession and any(sections.values()):
+        textcache.store(accession, _extractor_fingerprint(), sections)
+
+    return sections
