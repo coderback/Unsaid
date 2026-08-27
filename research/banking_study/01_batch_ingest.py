@@ -246,6 +246,11 @@ def main():
              "4-8 is typically safe. SEC fetches stay rate-limited regardless.",
     )
     parser.add_argument(
+        "--allow-tfidf", action="store_true",
+        help="Proceed even if dense embeddings failed to load. Off by default so a "
+             "long ingest cannot silently run on bag-of-words.",
+    )
+    parser.add_argument(
         "--freeze", action="store_true",
         help="Re-ingest under the CURRENT pipeline version, skipping pairs already "
              "ingested under it. Unlike --force this is resumable: a killed run "
@@ -303,7 +308,17 @@ def main():
     manifest["pipeline_version"] = current_version
     logger.info("Pipeline version: %s (embed backend: %s)", current_version, backend)
     if backend == "tfidf":
-        logger.warning("Running on TF-IDF bag-of-words, NOT dense embeddings.")
+        msg = (
+            "Dense embeddings unavailable - this run would use TF-IDF bag-of-words. "
+            "That is not a cosmetic difference: on ZION the same filings yielded 28% "
+            "and 11% spurious NEW units under TF-IDF versus 0% under mpnet, because "
+            "the recall thresholds are calibrated for dense cosines. Refusing to spend "
+            "a long ingest on it. Pass --allow-tfidf to override deliberately."
+        )
+        if not args.allow_tfidf:
+            logger.error(msg)
+            raise SystemExit(2)
+        logger.warning("OVERRIDDEN: %s", msg)
 
     if args.freeze:
         stale = [
