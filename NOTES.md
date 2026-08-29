@@ -149,10 +149,20 @@ cache by design.
 
 ## Decisions and why
 
-- **Kept the v1 judge prompt.** A narrowed rule 5b (v2) scored worse against
-  labels — kappa 0.363 → 0.239, replicated at 0.198 — by collapsing ABSORBED
-  from 7 correct to 1 and dropping RETAINED precision 94% → 73%. Noise floor is
-  93.3% agreement, so that degradation is a real prompt effect.
+- **Judge prompt is v3.** Three versions scored on the same 60 units and the same
+  persisted evidence, so the prompt was the only variable:
+
+  | | kappa | agreement | SOFTENED | REMOVED |
+  |---|---|---|---|---|
+  | v1 | 0.363 | 52.7% | 7% | 50% |
+  | v2 | 0.239 | 49.1% | 12% | 50% |
+  | **v3** | **0.397** | **60.0%** | **20%** | **67%** |
+
+  Noise floor is 93.3% self-agreement (kappa 0.901) across two runs on identical
+  evidence, so these differences are real prompt effects, not sampling noise.
+  v2 was reverted. v3 is adopted — but its gain comes from the net-disclosure
+  rule, which fixed a verified error, **not** from the NARROWED split, which
+  fired once in 60 units and failed on its own terms.
 - **Item 1A + 7A, not full documents,** for the similarity baseline. Departs from
   the paper but isolates the variable under test rather than confounding it with
   section selection.
