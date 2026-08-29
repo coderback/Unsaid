@@ -4,75 +4,75 @@ Long the quiet filers, short the changers. Both signals are reported in the
 same direction, so the numbers are directly comparable.
 
 
-**Pairs with similarity scores**: 222  
-**Pairs with both signals**: 202
+**Pairs with similarity scores**: 224  
+**Pairs with both signals**: 205
 
 
 ## Quintile long/short spread, excess vs KRE
 
 | Signal | Horizon | Spread | Welch t | n | corr |
 |---|---|---|---|---|---|
-| Sim_Cosine (1A+7A) | 1M | `-0.35%` | `-0.20` | 195 | `+0.014` |
-| Sim_Cosine (1A+7A) | 3M | `+0.28%` | `+0.08` | 195 | `+0.017` |
-| Sim_Cosine (1A+7A) | 6M | `-1.09%` | `-0.28` | 195 | `-0.010` |
-| Sim_Cosine (1A+7A) | 12M | `+4.27%` | `+0.91` | 195 | `+0.016` |
-| Sim_Jaccard (1A+7A) | 1M | `+0.97%` | `+0.52` | 195 | `+0.018` |
-| Sim_Jaccard (1A+7A) | 3M | `+0.25%` | `+0.07` | 195 | `+0.016` |
-| Sim_Jaccard (1A+7A) | 6M | `+1.49%` | `+0.37` | 195 | `+0.033` |
-| Sim_Jaccard (1A+7A) | 12M | `+2.88%` | `+0.60` | 195 | `+0.074` |
-| Sim_Simple (1A+7A) | 1M | `+0.36%` | `+0.20` | 195 | `+0.024` |
-| Sim_Simple (1A+7A) | 3M | `-0.03%` | `-0.01` | 195 | `+0.020` |
-| Sim_Simple (1A+7A) | 6M | `-1.69%` | `-0.44` | 195 | `+0.014` |
-| Sim_Simple (1A+7A) | 12M | `+2.45%` | `+0.52` | 195 | `+0.094` |
-| Sim_Cosine (Item 1A) | 1M | `+0.38%` | `+0.30` | 195 | `+0.065` |
-| Sim_Cosine (Item 1A) | 3M | `+3.07%` | `+1.67` | 195 | `+0.071` |
-| Sim_Cosine (Item 1A) | 6M | `+2.04%` | `+0.82` | 195 | `+0.040` |
-| Sim_Cosine (Item 1A) | 12M | `+7.49%` | `+2.32` | 195 | `+0.019` |
-| Sim_Cosine (Item 7A) | 1M | `+5.03%` | `+1.71` | 194 | `-0.051` |
-| Sim_Cosine (Item 7A) | 3M | `+4.56%` | `+1.10` | 194 | `-0.129` |
-| Sim_Cosine (Item 7A) | 6M | `+3.62%` | `+0.77` | 194 | `-0.154` |
-| Sim_Cosine (Item 7A) | 12M | `+7.28%` | `+1.40` | 194 | `-0.074` |
-| LLM removal score | 1M | `+0.29%` | `+0.09` | 179 | `-0.060` |
-| LLM removal score | 3M | `-0.23%` | `-0.05` | 179 | `-0.022` |
-| LLM removal score | 6M | `+1.35%` | `+0.27` | 179 | `-0.054` |
-| LLM removal score | 12M | `-3.46%` | `-0.61` | 179 | `+0.002` |
+| Sim_Cosine (1A+7A) | 1M | `-0.15%` | `-0.08` | 197 | `+0.012` |
+| Sim_Cosine (1A+7A) | 3M | `+0.22%` | `+0.07` | 197 | `+0.015` |
+| Sim_Cosine (1A+7A) | 6M | `-1.37%` | `-0.36` | 197 | `-0.011` |
+| Sim_Cosine (1A+7A) | 12M | `+3.33%` | `+0.72` | 197 | `+0.016` |
+| Sim_Jaccard (1A+7A) | 1M | `+0.78%` | `+0.43` | 197 | `+0.017` |
+| Sim_Jaccard (1A+7A) | 3M | `+0.44%` | `+0.13` | 197 | `+0.015` |
+| Sim_Jaccard (1A+7A) | 6M | `+1.23%` | `+0.30` | 197 | `+0.033` |
+| Sim_Jaccard (1A+7A) | 12M | `+2.71%` | `+0.56` | 197 | `+0.076` |
+| Sim_Simple (1A+7A) | 1M | `+0.63%` | `+0.35` | 197 | `+0.020` |
+| Sim_Simple (1A+7A) | 3M | `+0.19%` | `+0.06` | 197 | `+0.015` |
+| Sim_Simple (1A+7A) | 6M | `-1.14%` | `-0.29` | 197 | `+0.011` |
+| Sim_Simple (1A+7A) | 12M | `+3.14%` | `+0.66` | 197 | `+0.093` |
+| Sim_Cosine (Item 1A) | 1M | `+0.53%` | `+0.41` | 197 | `+0.066` |
+| Sim_Cosine (Item 1A) | 3M | `+3.46%` | `+1.84` | 197 | `+0.072` |
+| Sim_Cosine (Item 1A) | 6M | `+2.32%` | `+0.93` | 197 | `+0.041` |
+| Sim_Cosine (Item 1A) | 12M | `+7.98%` | `+2.48` | 197 | `+0.019` |
+| Sim_Cosine (Item 7A) | 1M | `+5.20%` | `+1.81` | 196 | `-0.051` |
+| Sim_Cosine (Item 7A) | 3M | `+4.72%` | `+1.16` | 196 | `-0.128` |
+| Sim_Cosine (Item 7A) | 6M | `+3.27%` | `+0.72` | 196 | `-0.153` |
+| Sim_Cosine (Item 7A) | 12M | `+6.64%` | `+1.32` | 196 | `-0.073` |
+| LLM removal score | 1M | `+0.36%` | `+0.12` | 182 | `-0.060` |
+| LLM removal score | 3M | `-0.57%` | `-0.13` | 182 | `-0.020` |
+| LLM removal score | 6M | `+1.08%` | `+0.22` | 182 | `-0.053` |
+| LLM removal score | 12M | `-3.50%` | `-0.63` | 182 | `+0.002` |
 
 ## Extraction-stable subset only
 
 
-Pairs where extracted length is within 2x between years (n=214 of 222). A length collapse depresses similarity for reasons unrelated to the issuer, so this removes the clearest extraction artifacts from both signals.
+Pairs where extracted length is within 2x between years (n=215 of 224). A length collapse depresses similarity for reasons unrelated to the issuer, so this removes the clearest extraction artifacts from both signals.
 
 | Signal | Horizon | Spread | Welch t | n |
 |---|---|---|---|---|
-| Sim_Cosine (1A+7A) | 1M | `-0.40%` | `-0.22` | 187 |
-| Sim_Cosine (1A+7A) | 3M | `+0.56%` | `+0.16` | 187 |
-| Sim_Cosine (1A+7A) | 6M | `-1.37%` | `-0.35` | 187 |
-| Sim_Cosine (1A+7A) | 12M | `+2.41%` | `+0.50` | 187 |
-| Sim_Jaccard (1A+7A) | 1M | `+1.04%` | `+0.54` | 187 |
-| Sim_Jaccard (1A+7A) | 3M | `+0.79%` | `+0.22` | 187 |
-| Sim_Jaccard (1A+7A) | 6M | `+2.81%` | `+0.68` | 187 |
-| Sim_Jaccard (1A+7A) | 12M | `+2.82%` | `+0.56` | 187 |
-| Sim_Simple (1A+7A) | 1M | `+0.66%` | `+0.35` | 187 |
-| Sim_Simple (1A+7A) | 3M | `+0.31%` | `+0.09` | 187 |
-| Sim_Simple (1A+7A) | 6M | `-1.04%` | `-0.26` | 187 |
-| Sim_Simple (1A+7A) | 12M | `+1.97%` | `+0.40` | 187 |
-| Sim_Cosine (Item 1A) | 1M | `-0.18%` | `-0.14` | 187 |
-| Sim_Cosine (Item 1A) | 3M | `+2.42%` | `+1.27` | 187 |
-| Sim_Cosine (Item 1A) | 6M | `+1.35%` | `+0.53` | 187 |
-| Sim_Cosine (Item 1A) | 12M | `+7.48%` | `+2.22` | 187 |
-| Sim_Cosine (Item 7A) | 1M | `+4.69%` | `+1.52` | 187 |
-| Sim_Cosine (Item 7A) | 3M | `+4.28%` | `+1.00` | 187 |
-| Sim_Cosine (Item 7A) | 6M | `+3.06%` | `+0.64` | 187 |
-| Sim_Cosine (Item 7A) | 12M | `+4.77%` | `+0.87` | 187 |
-| LLM removal score | 1M | `-0.38%` | `-0.11` | 174 |
-| LLM removal score | 3M | `-1.57%` | `-0.34` | 174 |
-| LLM removal score | 6M | `-0.95%` | `-0.19` | 174 |
-| LLM removal score | 12M | `-4.70%` | `-0.79` | 174 |
+| Sim_Cosine (1A+7A) | 1M | `-0.24%` | `-0.13` | 188 |
+| Sim_Cosine (1A+7A) | 3M | `+0.97%` | `+0.28` | 188 |
+| Sim_Cosine (1A+7A) | 6M | `-1.08%` | `-0.27` | 188 |
+| Sim_Cosine (1A+7A) | 12M | `+2.93%` | `+0.60` | 188 |
+| Sim_Jaccard (1A+7A) | 1M | `+1.20%` | `+0.62` | 188 |
+| Sim_Jaccard (1A+7A) | 3M | `+1.41%` | `+0.40` | 188 |
+| Sim_Jaccard (1A+7A) | 6M | `+3.18%` | `+0.77` | 188 |
+| Sim_Jaccard (1A+7A) | 12M | `+2.90%` | `+0.58` | 188 |
+| Sim_Simple (1A+7A) | 1M | `+0.81%` | `+0.43` | 188 |
+| Sim_Simple (1A+7A) | 3M | `+0.93%` | `+0.27` | 188 |
+| Sim_Simple (1A+7A) | 6M | `-0.67%` | `-0.17` | 188 |
+| Sim_Simple (1A+7A) | 12M | `+2.05%` | `+0.41` | 188 |
+| Sim_Cosine (Item 1A) | 1M | `+0.26%` | `+0.20` | 188 |
+| Sim_Cosine (Item 1A) | 3M | `+2.99%` | `+1.55` | 188 |
+| Sim_Cosine (Item 1A) | 6M | `+1.85%` | `+0.72` | 188 |
+| Sim_Cosine (Item 1A) | 12M | `+7.66%` | `+2.27` | 188 |
+| Sim_Cosine (Item 7A) | 1M | `+4.75%` | `+1.54` | 188 |
+| Sim_Cosine (Item 7A) | 3M | `+4.65%` | `+1.08` | 188 |
+| Sim_Cosine (Item 7A) | 6M | `+3.06%` | `+0.64` | 188 |
+| Sim_Cosine (Item 7A) | 12M | `+5.20%` | `+0.95` | 188 |
+| LLM removal score | 1M | `-0.40%` | `-0.12` | 177 |
+| LLM removal score | 3M | `-1.70%` | `-0.38` | 177 |
+| LLM removal score | 6M | `-0.86%` | `-0.18` | 177 |
+| LLM removal score | 12M | `-3.91%` | `-0.67` | 177 |
 
 ## Do the signals agree?
 
 
-Correlation between Sim_Cosine and the LLM removal score: `-0.424` (n=202).
+Correlation between Sim_Cosine and the LLM removal score: `-0.419` (n=205).
 
 
 Similarity is high when a filing barely changed; the removal score is high when much was deleted. A strongly NEGATIVE correlation means the two are measuring the same underlying thing. A correlation near zero means the LLM is measuring something bag-of-words does not capture -- which is either the value it adds, or noise.

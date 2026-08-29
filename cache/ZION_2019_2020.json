@@ -7,252 +7,272 @@
   "model_judge": "gpt-5.6-luna",
   "model_segmenter": "gpt-5.6-luna",
   "embed_backend": "mpnet",
-  "pipeline_version": "18270fd2b481",
-  "generated_at": "2026-08-27T00:18:48.313966+00:00",
+  "pipeline_version": "f0bd0681fca5",
+  "generated_at": "2026-08-29T21:53:58.567943+00:00",
   "summary_counts": {
-    "RETAINED": 36,
-    "SOFTENED": 6,
-    "REWORDED": 1,
+    "REWORDED": 5,
+    "RETAINED": 40,
+    "SOFTENED": 3,
     "REMOVED": 1
   },
   "changes": [
     {
-      "classification": "RETAINED",
-      "year1_quote": "The Bank’s most significant risk exposure has traditionally come from the acceptance of credit risk inherent in prudent extension of credit to relationship customers.",
-      "year2_quote_or_null": "Our most material risk exposure has traditionally come from the acceptance of credit risk inherent in extensions of credit to relationship customers.",
-      "reasoning": "The Year-2 disclosure preserves the same principal economic exposure—credit risk from extending credit to relationship customers—with no material loss of substance or specificity. The surrounding governance and risk-category language is also substantively continued, despite terminology and committee-list changes.",
+      "classification": "REWORDED",
+      "year1_quote": "The Bank generates revenue by taking prudent and appropriately priced risks. These factors are outlined in the Bank’s Risk Appetite Framework.",
+      "year2_quote_or_null": "We generate revenue by taking prudent and appropriately priced risks. These factors are outlined in our Risk Management Framework.",
+      "reasoning": "Candidate 1 preserves the same economic substance: growth within defined risk parameters, a prudent risk-taking philosophy, and revenue from appropriately priced risks. The change from “Risk Appetite Framework” to “Risk Management Framework” is a framework label change, not a material change in the disclosed risk.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_0_000_risk_governance_framework",
-      "title": "Risk Governance and Principal Exposures"
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_strategy_framework",
+      "title": "Risk Strategy and Appetite Framework"
     },
     {
       "classification": "RETAINED",
+      "year1_quote": "The Bank’s most significant risk exposure has traditionally come from the acceptance of credit risk inherent in prudent extension of credit to relationship customers.",
+      "year2_quote_or_null": "Our most material risk exposure has traditionally come from the acceptance of credit risk inherent in extensions of credit to relationship customers.",
+      "reasoning": "Candidate 1 retains the same enterprise risk governance structure and the same stated principal economic exposure to relationship-credit risk. The risk taxonomy is materially preserved; the minor category wording changes do not alter the underlying disclosure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_001_enterprise_risk_governance",
+      "title": "Enterprise Risk Governance and Oversight"
+    },
+    {
+      "classification": "REWORDED",
       "year1_quote": "Credit risk is one of our most significant risks. A decline in the strength of the U.S. economy in general or the local economies in which we conduct operations could result in, among other things, deterioration in credit quality and/or reduced demand for credit, including a resultant adverse effect on the income from our loan portfolio, an increase in charge-offs, and an increase in the allowance for loan and lease losses (“ALLL”).",
       "year2_quote_or_null": "Credit risk is one of our most significant risks. A decline in the strength of the U.S. economy in general or the local economies in which we conduct operations could result in, among other things, deterioration in credit quality and/or reduced demand for credit, including a resultant adverse effect on the income from our loan portfolio, an increase in charge-offs, and an increase in the ACL.",
-      "reasoning": "The Year-2 Credit Risk disclosure preserves the same economic risk, causal chain, and level of specificity: economic weakness may deteriorate credit quality, reduce credit demand, hurt loan income, and increase charge-offs and loss reserves. The change from ALLL to ACL is terminology, not a change in the underlying risk.",
+      "reasoning": "The Year-2020 Candidate 1 retains the same economic risk, causal chain, and specificity as Year-2019; the only change is the accounting terminology from ALLL to ACL. The other candidates address related but distinct risks and do not alter this retained disclosure.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_001_credit_quality_deterioration",
-      "title": "Credit Quality Deterioration and Economic Weakness"
+      "id": "1A_0_002_credit_quality",
+      "title": "Credit Quality and Economic Conditions"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "We have concentrations of risk in our loan portfolio, including loans secured by real estate, leveraged and enterprise value lending, and oil and gas-related lending, which may have unique risk characteristics that may adversely affect our results.",
       "year2_quote_or_null": "We have concentrations of risk in our loan portfolio, including loans secured by real estate, oil and gas-related lending, and leveraged and enterprise value lending, which may have unique risk characteristics that may adversely affect our results.",
-      "reasoning": "The Year-2020 disclosure retains the same economic risks, including real estate, leveraged and enterprise value, oil and gas lending, concentration/counterparty risk, correlated exposures, Western-state geographic concentration, and potential collateral-value declines. The wording and ordering changed, but no material risk or quantitative specificity was lost.",
+      "reasoning": "Year-2 retains the same underlying loan-portfolio concentration and counterparty risks, including the same three named lending exposures and the stated potential for adverse results. The surrounding disclosure also preserves the significant additional credit-risk consequence of correlated exposures; only non-economic wording such as “the Bank” versus “us” changes.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_002_loan_portfolio_concentrations",
-      "title": "Loan Portfolio Concentration and Correlation Risks"
+      "id": "1A_0_003_loan_concentrations",
+      "title": "Loan Portfolio Concentration and Counterparty Risk"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "At December 31, 2019, loan balances associated with our banking operations in Utah, Texas, and California comprised 79% of the Bank’s commercial lending portfolio, 72% of the CRE lending portfolio, and 72% of the consumer lending portfolio.",
-      "year2_quote_or_null": "At December 31, 2020, loan balances associated with our banking operations in Utah/Idaho, Texas, and California comprised 76% of our commercial lending portfolio, 73% of the CRE lending portfolio, and 70% of the consumer lending portfolio.",
-      "reasoning": "The Year-2 disclosure retains the same geographic concentration risk, the dependence on local economic conditions, the related credit-risk mechanism, and quantitative portfolio concentration metrics. Although the state grouping and percentages changed, those are updated year-end facts rather than a loss or weakening of the underlying disclosure.",
+      "year1_quote": "Both commercial real estate (“CRE”) and oil and gas-related lending are subject to specific risks, including volatility and potential significant and prolonged declines in collateral-values and activity levels.",
+      "year2_quote_or_null": "We also have a concentration in oil and gas-related lending, primarily in Texas. Both commercial real estate (“CRE”) and oil and gas-related lending are subject to specific risks, including volatility and potential significant and prolonged declines in collateral values and activity levels.",
+      "reasoning": "Candidate 1 retains the same CRE and oil-and-gas concentration risks, the Western/Texas geographic specifics, and the potential for significant and prolonged collateral-value and activity-level declines. It also preserves the unidentified concentrated or correlated portfolio-risk disclosure, so the economic substance is unchanged.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_0_003_geographic_concentration",
-      "title": "Geographic Concentration in Key States"
+      "confidence": 0.99,
+      "id": "1A_0_004_cre_oil_gas_lending",
+      "title": "Commercial Real Estate and Oil Lending"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Approximately 76% and 75% of the Bank’s total net interest income relates to our banking operations in Utah, Texas, and California for the years ended December 31, 2019 and December 31, 2018, respectively.",
+      "year2_quote_or_null": "Approximately 74% of our total net interest income relates to our banking operations in Utah/Idaho, Texas, and California for both of the years ended December 31, 2020 and December 31, 2019, respectively.",
+      "reasoning": "The Year-2 disclosure retains the same geographic-concentration risk, its dependence on adverse local economic conditions, the resulting credit risk, and quantitative portfolio concentration figures. Although the footprint changes Utah to Utah/Idaho and the percentages change, these are updated facts rather than a loss or weakening of the underlying disclosure.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_0_005_geographic_concentration",
+      "title": "Geographic Concentration in Western States"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "Adverse economic conditions negatively affect the Bank’s assets, including its loan and securities portfolios, capital levels, results of operations, and financial condition.",
       "year2_quote_or_null": "Adverse economic conditions negatively affect our business, including our loan and securities portfolios, capital levels, results of operations, and financial condition.",
-      "reasoning": "The core economic risk is retained with materially the same affected portfolios, capital, results, and financial condition. Year-2 adds COVID-19-specific impacts and omits the prior reference to continuing regulatory changes, but those changes do not eliminate or materially weaken the underlying adverse-economic-conditions risk.",
+      "reasoning": "The core economic risk is retained with materially the same affected assets, capital, results, and financial condition. Year-2 adds pandemic-specific consequences and removes some Year-1 detail about regulatory changes and international conditions, but the central adverse-economic-conditions disclosure remains substantively intact.",
       "section": "1A",
-      "confidence": 0.97,
-      "id": "1A_0_004_adverse_economic_conditions",
-      "title": "Adverse Economic and Fiscal Conditions"
+      "confidence": 0.98,
+      "id": "1A_0_006_adverse_economic_conditions",
+      "title": "Adverse Economic Conditions"
     },
     {
       "classification": "SOFTENED",
-      "year1_quote": "A prolonged period of low interest rates can have a materially adverse impact on the Bank's net interest income and result in declining net interest margins.",
-      "year2_quote_or_null": "A prolonged period of low interest rates, such as the one that exists today, has a materially adverse impact on our net interest income and results in declining net interest margins.",
-      "reasoning": "The core low-rate and interest-rate risk disclosure remains, including the material adverse effect on net interest income and margins. However, Year-2 removes the Year-1 governance-specific detail that ALCO is established by the Board and that failure to manage risk could adversely affect the Bank, and it omits the quantified/position-specific statement that the Bank expected to remain moderately asset-sensitive in 2020; the surviving disclosure is therefore materially less specific rather than retained or absorbed.",
+      "year1_quote": "We anticipate maintaining a moderately asset-sensitive position in 2020, but the Asset/Liability Committee (“ALCO”) continues to monitor market developments and may adjust strategies accordingly.",
+      "year2_quote_or_null": "Some components of our balance sheet are very sensitive to rising and falling rates. On an ongoing basis, we use various strategies to manage our interest rate risk, such as entering into interest rate swaps, caps and floors.",
+      "reasoning": "Year-2 retains the general interest-rate and low-rate risk, but drops the specific disclosure that the Bank had actively reduced asset sensitivity and expected to maintain a moderately asset-sensitive position in 2020. The broader strategy statement is therefore not full continuity or absorption of the quantified/specific exposure.",
       "section": "1A",
-      "confidence": 0.96,
-      "id": "1A_0_005_interest_rate_risk",
+      "confidence": 0.97,
+      "id": "1A_0_007_interest_rate_risk",
       "title": "Interest Rate Risk and Low Rates"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "The market transition away from LIBOR to an alternative reference rate, such as SOFR, is complex and could have a range of adverse effects on our business, financial condition and results of operations.",
       "year2_quote_or_null": "The market transition away from LIBOR to an alternative reference rate, such as SOFR, is complex and could have a range of adverse effects on our business, financial condition, and results of operations.",
-      "reasoning": "Year-2020 retains the core economic risks and specificity of the Year-2019 disclosure: adverse effects on LIBOR-linked instruments, uncertainty about replacement rates, regulatory scrutiny, disputes over fallback language, and systems/analytics transition requirements. The added replacement-rate risks do not weaken or remove the prior disclosure.",
+      "reasoning": "Candidate 1 preserves the same economic risk, including LIBOR exposure in loans, securities and derivatives, uncertainty over SOFR, adverse financial impacts, regulatory inquiries, fallback disputes, and systems-transition requirements. The Year-2 disclosure also retains the timing and portfolio-specific uncertainties; its added replacement-rate risk does not diminish the Year-1 disclosure.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_006_libor_transition_exposure",
-      "title": "LIBOR Transition and Financial Instruments"
+      "id": "1A_0_008_libor_transition",
+      "title": "LIBOR Transition and Reference Rates"
     },
     {
-      "classification": "SOFTENED",
+      "classification": "RETAINED",
       "year1_quote": "Recently, competition for deposits has increased and interest rates paid on deposits have generally risen.",
       "year2_quote_or_null": "Our primary source of liquidity is our supply of deposits from our customers. The continued availability of this supply depends on customers maintaining those deposits with us. While we make significant efforts to consider and plan for changes in our deposit funding, market-related forces and a wide variety of other events could impact the liquidity value we derive from our deposits.",
-      "reasoning": "Candidate 1 retains the general deposit-funding and liquidity-availability risk, but omits the Year-2019's specific disclosure that deposit competition had increased and deposit rates had generally risen. Because a material market-pressure detail is dropped while the broader topic remains, the change is SOFTENED rather than retained or absorbed.",
+      "reasoning": "The core deposit-funding and liquidity risk is retained in Candidate 1 with materially the same economic substance and specificity. However, the explicit Year-1 disclosure that deposit competition increased and deposit rates generally rose is omitted; this weakens that particular detail, but the broader disclosure remains substantially present.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_0_007_deposit_liquidity",
-      "title": "Deposit Funding and Liquidity Availability"
+      "confidence": 0.95,
+      "id": "1A_0_009_deposit_liquidity",
+      "title": "Deposit Funding and Liquidity Sources"
     },
     {
       "classification": "SOFTENED",
       "year1_quote": "Capital needs may rise above normal levels when we experience deteriorating earnings and credit quality, and our banking regulators may increase our capital requirements based on general economic conditions and our particular condition, risk profile and growth plans.",
       "year2_quote_or_null": "We must maintain certain risk-based and leverage capital ratios, as required by our banking regulators, which can change depending upon general economic conditions, as well as the particular conditions, risk profiles and growth plans of the Bank.",
-      "reasoning": "Year-2 retains the general regulatory capital-ratio risk and the possibility that requirements change with economic and bank-specific conditions. However, it omits the Year-1 disclosure that deteriorating earnings and credit quality may cause capital needs to rise above normal levels, so the economic risk is less specifically and comprehensively disclosed rather than fully retained or absorbed.",
+      "reasoning": "Year-2020 retains the general regulatory capital and liquidity requirements, but drops the specific Year-2019 disclosure that capital needs may rise above normal levels during deteriorating earnings and credit quality. The surviving discussion is more general and does not preserve that explicit stress-related capital-needs risk; the liquidity portion is retained in Candidate 1, but the dropped earnings/credit-quality qualifier makes the overall disclosure softened.",
       "section": "1A",
-      "confidence": 0.93,
-      "id": "1A_0_008_capital_liquidity_requirements",
-      "title": "Capital and Regulatory Liquidity Requirements"
-    },
-    {
-      "classification": "REWORDED",
-      "year1_quote": "Our ability to access the capital markets is important to our overall funding profile. This access is affected by the ratings assigned by rating agencies to us and particular classes of securities that we issue.",
-      "year2_quote_or_null": "Our ability to access the capital markets is important to our overall funding profile. This access is affected by the ratings assigned to us by rating agencies and particular classes of securities that we issue.",
-      "reasoning": "Candidate 1 preserves the same economic risk and all material specifics: unfavorable rating actions can impair capital-market access, raise funding costs, and harm liquidity, financial condition, or security prices. The wording changes are cosmetic and do not weaken or remove the disclosure.",
-      "section": "1A",
-      "confidence": 0.99,
-      "id": "1A_0_009_credit_ratings",
-      "title": "Credit Ratings and Capital Market Access"
+      "confidence": 0.94,
+      "id": "1A_0_010_capital_liquidity_requirements",
+      "title": "Capital and Liquidity Requirements"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "Problems encountered by other financial institutions could adversely affect financial markets generally and have indirect adverse effects on us.",
-      "year2_quote_or_null": "Problems encountered by other financial institutions could adversely affect financial markets generally and have indirect adverse effects on us.",
-      "reasoning": "Year-2020 Candidate 1 preserves the same systemic-risk disclosure, including the interrelationships among financial institutions, the potential for market-wide liquidity and credit problems, named affected intermediaries, and the company’s potential adverse impact. The wording change from “commercial soundness” to “soundness and stability” does not alter the underlying economic risk.",
+      "year1_quote": "Ratings downgrades to us or our securities could increase our costs or otherwise have a negative effect on our liquidity position, financial condition or the market prices of our securities.",
+      "year2_quote_or_null": "Ratings downgrades to us or our securities could increase our costs or otherwise have a negative effect on our liquidity position, financial condition or the market prices of our securities.",
+      "reasoning": "Candidate 1 preserves the same economic risk: capital-markets access and funding costs are affected by ratings, and downgrades can impair liquidity, financial condition, or security prices. The added introductory sentence does not alter or weaken the Year-2019 disclosure.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_010_financial_systemic_risk",
-      "title": "Financial Institution Systemic Risk"
+      "id": "1A_0_011_rating_actions",
+      "title": "Credit Ratings and Capital Markets Access"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "The regulation of incentive compensation under the Dodd-Frank Act may adversely affect our ability to retain our highest performing employees.",
-      "year2_quote_or_null": "The regulation of incentive compensation under the Dodd-Frank Act may adversely affect our ability to retain our highest performing employees.",
-      "reasoning": "Candidate 1 preserves the same specific economic risk: Dodd-Frank incentive-compensation limits may impair retention of high-performing and key employees, with the same potential adverse business impact. The minor wording change from “published guidance and proposed regulations” to “published regulations and guidance” does not change the disclosed risk substance.",
+      "year1_quote": "The soundness and stability of many financial institutions may be closely interrelated as a result of credit, trading, clearing or other relationships between the institutions.",
+      "year2_quote_or_null": "The soundness and stability of many financial institutions may be closely interrelated as a result of credit, trading, clearing or other relationships between the institutions.",
+      "reasoning": "Candidate 1 reproduces the same systemic-risk mechanism, consequences, affected financial intermediaries, and information-security/vendor-management monitoring language. The added introductory sentence does not weaken or materially alter the underlying economic risk.",
       "section": "1A",
-      "confidence": 1.0,
-      "id": "1A_0_011_incentive_compensation_regulation",
+      "confidence": 0.99,
+      "id": "1A_0_012_systemic_risk",
+      "title": "Systemic Risk and Financial Institution Interconnections"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These regulations and guidance may adversely affect our ability to attract and retain key personnel.",
+      "year2_quote_or_null": "These regulations and guidance may adversely affect our ability to attract and retain key personnel. If we were to suffer such adverse effects with respect to our employees, our business, financial condition and results of operations could be adversely affected, perhaps materially.",
+      "reasoning": "Candidate 1 retains the same economic risk—compensation regulations and guidance limiting pay may impair attraction and retention of key personnel—and preserves the material adverse-consequence language. The added reference to Dodd-Frank does not change the substance or weaken the disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_013_incentive_compensation",
       "title": "Incentive Compensation Regulation and Retention"
     },
     {
-      "classification": "SOFTENED",
+      "classification": "RETAINED",
       "year1_quote": "We may encounter significant adverse developments in the completion and implementation of these changes. These may include significant time delays, cost overruns, loss of key people, technological problems, processing failures, vendor reliance issues and other adverse developments.",
-      "year2_quote_or_null": "We have made, and are continuing to make, significant changes that include, among other things, organizational restructurings, efficiency initiatives, and replacement or upgrades of certain core technology systems to improve our control environment and operating efficiency.",
-      "reasoning": "Year-2020 retains the broad transformation initiatives and their potential adverse impact, but omits the specific implementation failure risks (delays, cost overruns, loss of key people, processing failures, vendor reliance), the variability of projected costs/savings, and the assurance/remediation and regulatory or litigation consequences. Because the topic persists but material risk detail is dropped, this is SOFTENED rather than ABSORBED or RETAINED.",
+      "year2_quote_or_null": "We may encounter significant adverse developments in the completion and implementation of these projects. These may include significant time delays, cost overruns, loss of key people, technological problems, processing failures, and other adverse developments. We may also experience operational disruptions, failure, or capacity constraints due to the performance, level of concentration, replacement costs, and our dependence on third-party vendors.",
+      "reasoning": "Candidate 1 retains the same economic risk: strategic transformation projects may fail or generate delays, cost overruns, personnel and technology problems, processing failures, vendor dependence, and operational disruption. The vendor-reliance risk is not lost; it is expanded and stated more specifically in Year-2.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_0_012_transformation_initiatives",
-      "title": "Organizational and Technology Transformation Initiatives"
+      "confidence": 0.99,
+      "id": "1A_0_014_strategic_initiatives",
+      "title": "Strategic Initiatives and Transformation Projects"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "Although we have business continuity and disaster recovery programs in place, a significant catastrophic event could materially adversely affect the Bank’s operating results.",
       "year2_quote_or_null": "Although we have business continuity and disaster recovery programs in place, a significant catastrophic event could materially and adversely affect our operating results.",
-      "reasoning": "Year-2 Candidate 1 preserves the same catastrophic-event economic risk, the same geographic exposure, the same examples, and the same material adverse impact despite only cosmetic wording changes. The disclosure is therefore retained, not merely topically similar or absorbed.",
+      "reasoning": "Candidate 1 retains the same economic risk, geographic exposure, listed disaster types, disruption to the business and customers, physical property risk, and the material adverse impact despite adding pandemics and minor wording changes. The business continuity/disaster recovery qualifier and materiality remain substantively unchanged.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_013_catastrophic_events",
-      "title": "Catastrophic Events and Business Disruption"
+      "id": "1A_0_015_catastrophic_events",
+      "title": "Catastrophic Events and Business Continuity"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "A failure in our internal controls could have a significant negative impact not only on our earnings, but also on the perception that customers, regulators and investors may have of the Bank.",
-      "year2_quote_or_null": "A failure in our internal controls could have a significant negative impact not only on our earnings, but also on the perception that customers, regulators, and investors may have of us.",
-      "reasoning": "The Year-2020 disclosure preserves the same internal-control failure risk, including the significant potential impact on earnings and stakeholder perception, and retains the substantive discussion of control limitations and remediation efforts. The wording changes are cosmetic and do not alter the economic risk.",
+      "year2_quote_or_null": "We have established internal controls over financial reporting and other operations. Because of their inherent limitations, internal controls over financial reporting may not prevent or detect misstatements. A failure in our internal controls could have a significant negative impact not only on our earnings, but also on the perception that customers, regulators, and investors may have of us. We continue to devote a significant amount of effort, time, and resources to improving our controls and ensuring operational soundness and compliance with complex accounting standards and regulations. These efforts also include the management of controls to mitigate operational risks for programs and processes across the Bank.",
+      "reasoning": "Candidate 1 preserves the same economic risk and the same material specifics: inherent control limitations, potential misstatements, significant effects on earnings and stakeholder perceptions, substantial remediation efforts, regulatory compliance, and operational-risk controls. The wording changes are cosmetic and do not weaken or remove the disclosure.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_014_internal_controls",
-      "title": "Internal Control Failures and Misstatements"
+      "id": "1A_0_016_internal_controls",
+      "title": "Internal Controls and Financial Reporting"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "As a result, our ability to remain competitive is increasingly dependent upon our ability to maintain critical technological capabilities, and to identify and develop new, value-added products for existing and future customers.",
-      "year2_quote_or_null": "Our ability to remain competitive is increasingly dependent upon our ability to maintain critical technological capabilities, and to identify and develop new, value-added products for existing and future customers. These technological competitive pressures arise from both traditional banking and non-traditional sources.",
-      "reasoning": "The core economic risk is retained: FinTechs and other nontraditional sources create competitive pressure, and maintaining technology capabilities and developing value-added products remain necessary to avoid weakened competitiveness. Year-2 also preserves the related consequences, including time-to-market and customer-service impacts, without dropping a material quantified or named exposure.",
+      "year1_quote": "Consumers have demonstrated a growing willingness to obtain banking services from FinTechs. As a result, our ability to remain competitive is increasingly dependent upon our ability to maintain critical technological capabilities, and to identify and develop new, value-added products.",
+      "year2_quote_or_null": "Our ability to remain competitive is increasingly dependent upon our ability to maintain critical technological capabilities, and to identify and develop new, value-added products for existing and future customers. These technological competitive pressures arise from both traditional banking and non-traditional sources... financial technology companies... continue to emerge and compete with traditional financial institutions.",
+      "reasoning": "The Year-2 technology competitiveness disclosure preserves the underlying FinTech/technology-platform competition risk and the dependence on technological capabilities and new products. It also retains the adverse consequences, while adding traditional-bank competition and changing some wording without losing the Year-1 economic substance.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_0_015_fintech_competition",
-      "title": "FinTech Competition and Technology Capabilities"
+      "confidence": 0.99,
+      "id": "1A_0_017_fintech_competition",
+      "title": "FinTech Competition and Banking Innovation"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "We use models in the management of the Bank. There is risk that these models are incorrect or inaccurate in various ways, which can cause us to make nonoptimal decisions.",
-      "year2_quote_or_null": "We use models in the management of the Bank. There is risk that these models are inaccurate in various ways, which can cause us to make suboptimal decisions.",
-      "reasoning": "Year-2020 retains the same economic risk: model inaccuracies may lead to nonoptimal management decisions. The added discussion of model development and validation provides further context, while the minor wording changes do not alter the substance or specificity of the disclosed risk.",
+      "year1_quote": "There is risk that these models are incorrect or inaccurate in various ways, which can cause us to make nonoptimal decisions.",
+      "year2_quote_or_null": "There is risk that these models are inaccurate in various ways, which can cause us to make suboptimal decisions.",
+      "reasoning": "Candidate 1 retains the same economic risk—model inaccuracies causing suboptimal management decisions—with no material change in the risk or its specificity. The added discussion of model development, validation, and examples expands the disclosure but does not alter the underlying risk.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_0_016_model_risk",
-      "title": "Model Risk and Inaccurate Decisions"
+      "id": "1A_0_018_model_risk",
+      "title": "Model Risk and Decision-Making Accuracy"
     },
     {
-      "classification": "SOFTENED",
-      "year1_quote": "In addition, when determining the Bank’s capital needs under stress testing, we attempt to specifically quantify the amounts by which model results could be incorrect.",
-      "year2_quote_or_null": "We use models in the management of the Bank. There is risk that these models are inaccurate in various ways, which can cause us to make suboptimal decisions.",
-      "reasoning": "The core model-imperfection and suboptimal-decision risk remains, but Year-2020 drops the specific disclosure that the Bank attempts to quantify model error in determining capital needs under stress testing. Because a quantified/specific component is no longer presented, the disclosure is softened rather than retained or reworded.",
+      "classification": "RETAINED",
+      "year1_quote": "Models are inherently imperfect for a number of reasons and cannot perfectly predict outcomes. Management decisions based in part on such models, therefore, can be suboptimal.",
+      "year2_quote_or_null": "Models are inherently imperfect for a number of reasons and cannot perfectly predict outcomes. Management decisions based in part on such models, therefore, may be suboptimal.",
+      "reasoning": "Candidate 1 retains the same economic risk that model imperfections can produce inaccurate outcomes and lead to suboptimal management decisions. It also preserves the examples of model use, while adding allowance-for-credit-loss models; the change from “can” to “may” does not materially alter the disclosure.",
       "section": "1A",
-      "confidence": 0.98,
+      "confidence": 0.99,
       "id": "1A_1_000_model_risk",
-      "title": "Model Risk in Management Decisions"
+      "title": "Model Imperfection and Decision Risk"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "We are subject to a variety of system failure and cyber security risks that could adversely affect our business and financial performance.",
-      "year2_quote_or_null": "We could be adversely impacted by system vulnerabilities, failures or outages impacting operations and customer services such as online and mobile banking.",
-      "reasoning": "Candidate 1 retains the core economic risk: system failures and cybersecurity-related vulnerabilities or outages could adversely affect operations, customer services, and financial performance. Year-2 adds specificity about affected systems and services but does not weaken or omit the underlying risk.",
+      "year2_quote_or_null": "We are subject to a variety of system failure and cyber security risks that could adversely affect our business and financial performance.",
+      "reasoning": "Candidate 2 reproduces the Year-2019 disclosure verbatim and further elaborates both system-failure and cybersecurity threats, including their potential operational, reputational, regulatory, litigation, and financial consequences. The underlying economic risk and its stated adverse business and financial impact are therefore retained, not merely reworded.",
       "section": "1A",
-      "confidence": 0.97,
+      "confidence": 0.99,
       "id": "1A_1_001_cyber_risk_overview",
-      "title": "Cyber Risk and System Failure"
+      "title": "Cybersecurity and System Failure Risk"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "The Board and the Risk Committee of the Board have invested significant time on overseeing management's efforts to continue to strengthen our infrastructure, staffing and enhance our controls while improving the client and customer experience.",
-      "year2_quote_or_null": "The Board and the Risk Committee of the Board have invested significant time on overseeing management's efforts to continue to strengthen our infrastructure and staffing, and to enhance our controls while improving the client and customer experience.",
-      "reasoning": "The Year-2 disclosure preserves the same economic risk and governance response: cybersecurity defense and resiliency remain key focuses, with continued investment in infrastructure, staffing, and controls. The minor wording change does not alter the substance or specificity of the disclosure.",
+      "year1_quote": "The Board and the Risk Committee of the Board have invested significant time on overseeing management's efforts to continue to strengthen our infrastructure, staffing and enhance our controls while improving the client and customer experience. Cyber defense and improving our resiliency against cybersecurity threats remains a key focus at all levels of management within the Bank, and of our Board.",
+      "year2_quote_or_null": "The Board and the Risk Committee of the Board have invested significant time on overseeing management's efforts to continue to strengthen our infrastructure and staffing, and to enhance our controls while improving the client and customer experience. Cyber defense and improving our resiliency against cybersecurity threats remain a key focus at all levels of management, and of our Board.",
+      "reasoning": "Candidate 1 preserves the same economic disclosure: significant Board and Risk Committee oversight of infrastructure, staffing, and controls, together with continued focus on cyber defense and cybersecurity resiliency. The wording changes are cosmetic, and no material qualifier or substantive element is lost.",
       "section": "1A",
       "confidence": 0.99,
       "id": "1A_1_002_cyber_governance",
-      "title": "Cybersecurity Oversight and Resiliency"
+      "title": "Cybersecurity Governance and Resiliency"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "We, our customers, and other financial institutions with which we interact, are subject to ongoing, continuous attempts to penetrate key systems by individual hackers, organized criminals, and in some cases, state-sponsored organizations.",
       "year2_quote_or_null": "We, our customers, and other financial institutions with which we interact, are subject to ongoing, continuous attempts to penetrate key systems by individual hackers, organized criminals, and in some cases, state-sponsored organizations.",
-      "reasoning": "Candidate 1 preserves the same underlying cyber-intrusion risk, the same affected parties, the same threat actors, and the material disclosure that information-security risks have increased significantly. The added or altered technology examples and minor wording changes do not change the economic substance.",
+      "reasoning": "Candidate 1 retains the same underlying external and internal cyber-threat exposure, including continuous penetration attempts, third-party system breaches, and employee error or malfeasance. The Year-2020 disclosure preserves the Year-2019 substance and specificity, while adding related cyber-risk detail.",
       "section": "1A",
       "confidence": 0.99,
       "id": "1A_1_003_cyber_threats",
-      "title": "Cyber Threats and Information Security"
+      "title": "External and Internal Cyber Threats"
     },
     {
       "classification": "SOFTENED",
-      "year1_quote": "the Bank has experienced security breaches due to cyberattacks in the past and there can be no assurance that any such failure, interruption or security breach will not occur in the future",
+      "year1_quote": "It is impossible to determine the potential effects of these events with any certainty but any such breach could result in material adverse consequences for the Bank and its customers.",
       "year2_quote_or_null": "The occurrence of any failure, interruption or security breach of our information systems could damage our reputation, result in a loss of customer business, subject us to additional regulatory scrutiny, or expose us to civil litigation and possible financial liability.",
-      "reasoning": "Year-2020 continues to disclose the possibility and consequences of information-system breaches, but it no longer states that the Bank previously experienced cyberattacks and omits several Year-2019-specific impacts, including disruption of general ledger/deposit/loan systems, misappropriation of funds, and theft or misuse of Bank or customer data. Because the core cyber-breach risk remains but the disclosure is less concrete and less historically substantiated, it is softened rather than removed.",
+      "reasoning": "The core cybersecurity and system-breach risk remains in Candidate 1, but the Year-2020 disclosure no longer expressly preserves the Year-2019 history of prior cyberattacks or the broad possibility of material adverse consequences, including the specifically identified disruptions to customer relationship management, general ledger, deposit and loan systems, misappropriation of funds, and theft, disclosure or misuse of data. Because the topic persists but important consequence specificity and the prior-breach disclosure are lost, this is softened rather than retained or absorbed.",
       "section": "1A",
-      "confidence": 0.93,
-      "id": "1A_1_004_cyber_breach_impacts",
-      "title": "Cyber Breach Impacts and History"
+      "confidence": 0.96,
+      "id": "1A_1_004_cyber_breach_impact",
+      "title": "Cyber Breach Consequences and Controls"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "As cyber threats continue to evolve, we will be required to expend significant additional resources to continue to modify or enhance our layers of defense or to investigate or remediate any information security vulnerabilities.",
       "year2_quote_or_null": "As cyber threats continue to evolve, we will be required to expend significant additional resources to continue to modify or enhance our layers of defense or to investigate or remediate any information security vulnerabilities.",
-      "reasoning": "The Year-2020 candidates preserve both the quantified resource-cost risk and the detailed implementation, systems-disruption, vulnerability-performance, patch-timeliness, and breach-consequence risks from Year-2019. The wording is materially unchanged, with no meaningful loss of economic substance or specificity.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 economic risk and the quantitative qualifier “significant additional resources,” while also retaining the associated risks from system enhancements, disruptions, hardware vulnerabilities, patch timing, and resulting liabilities. The added wording does not change the substance.",
       "section": "1A",
-      "confidence": 0.99,
+      "confidence": 1.0,
       "id": "1A_1_005_cyber_defense_costs",
-      "title": "Cyber Defense Costs and Vulnerabilities"
+      "title": "Cyber Defense Costs and Vulnerability Risks"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "We outsource various operations to third party vendors which could adversely impact our business and operational performance.",
-      "year2_quote_or_null": "We outsource various operations to third party vendors which could adversely impact our business and operational performance.",
-      "reasoning": "The core economic risk—outsourcing operations to third-party vendors may adversely affect business and operational performance—is repeated verbatim in Year-2020 Candidate 1. Candidate 2 also retains the underlying risk and adds vendor replacement and cost consequences, so this is not a loss of disclosure.",
+      "year2_quote_or_null": "We rely on various vendors to perform operational activities to conduct our business. ... Replacing or finding alternatives for vendors who do not perform adequately, however, can be difficult and costly and may adversely impact our customers and other operations.",
+      "reasoning": "The core economic risk—dependence on third-party vendors for operational activities and the possibility of adverse business or operational effects—is disclosed in Year-2 with materially comparable substance. Year-2 also adds specificity about the difficulty and cost of replacing poorly performing vendors, while the controls and monitoring remain disclosed.",
       "section": "1A",
-      "confidence": 0.99,
+      "confidence": 0.98,
       "id": "1A_1_006_vendor_risk",
       "title": "Third-Party Vendor Operational Risk"
     },
@@ -260,97 +280,97 @@
       "classification": "RETAINED",
       "year1_quote": "Although we are no longer subject to the CCAR regime, we are required to submit stress tests to the OCC because the Bank has assets in excess of $10 billion, and we continue to utilize stress testing as an important mechanism to inform our decisions on the appropriate level of capital, based upon actual and hypothetically-stressed economic conditions.",
       "year2_quote_or_null": "We are required to submit stress tests to the OCC because we have assets in excess of the OCC $10 billion threshold, and we continue to utilize stress testing as an important mechanism to inform our decisions on the appropriate level of capital, based upon actual and hypothetically stressed economic conditions. The stress testing and other applicable regulatory requirements may, among other things, require us to increase our capital levels, limit our dividends or other capital distributions to shareholders, modify our business strategies, or decrease our exposure to various asset classes.",
-      "reasoning": "The core economic risk is retained with the same regulatory stress-testing obligation, $10 billion threshold, capital-planning purpose, and consequences for capital, distributions, strategy, and asset exposure. The omission of the statement that the company is no longer subject to CCAR is not a loss of the disclosed stress-testing risk; it is contextual wording rather than a change to the underlying risk.",
+      "reasoning": "The core economic risk is retained with materially the same specificity: OCC stress-testing obligations, capital impacts, limits on dividends/distributions, strategy changes, and asset-class exposure reductions remain disclosed. The 2020 disclosure also retains the limits on share repurchases and capital-market access and adds OCC approval requirements for certain capital transactions; omission of the statement that the company was no longer subject to CCAR does not remove or weaken the disclosed stress-testing and distribution constraints.",
       "section": "1A",
       "confidence": 0.98,
       "id": "1A_1_007_capital_stress_testing",
-      "title": "Stress Testing and Capital Management Limits"
+      "title": "Stress Testing and Capital Distribution Limits"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "Under the National Bank Act and OCC regulations, certain capital transaction may be subject to the approval of the OCC. These requirements may limit our ability to respond to and take advantage of market developments.",
       "year2_quote_or_null": "Under the National Bank Act and OCC regulations, certain capital transactions, including share repurchases, may be subject to the approval of the OCC. These requirements may limit our ability to respond to and take advantage of market developments.",
-      "reasoning": "The Year-2 disclosure retains the same economic risk and limitation—OCC approval may be required for capital transactions, potentially impairing the company’s ability to respond to market developments. It adds share repurchases as an example but does not weaken or remove the Year-1 substance.",
+      "reasoning": "The Year-2020 disclosure expressly repeats the same OCC-approval risk and the same limitation on responding to market developments, while adding share repurchases as an example. The risk is therefore retained, not merely topically related or absorbed elsewhere.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_1_008_capital_transactions",
-      "title": "Capital Transaction Approval Requirements"
+      "id": "1A_1_008_capital_transaction_approval",
+      "title": "OCC Approval of Capital Transactions"
     },
     {
-      "classification": "RETAINED",
+      "classification": "REWORDED",
       "year1_quote": "Economic and other circumstances may require us to raise capital at times or in amounts that are unfavorable to the Bank.",
       "year2_quote_or_null": "Economic and other circumstances may require us to raise capital at times or in amounts that are unfavorable to us.",
-      "reasoning": "Candidate 1 preserves the same economic risk: adverse economic circumstances may force capital raising at unfavorable times or in unfavorable amounts. The added capital-ratio discussion is supplementary, while the core disclosure is unchanged; replacing “the Bank” with “us” is cosmetic.",
+      "reasoning": "Candidate 1 preserves the same capital-raising risk, regulatory capital-ratio requirements, potential restrictions on expansion, need for additional capital, and increased capital and financing costs. The changes are entity-pronoun and wording changes rather than changes to the underlying economic substance.",
       "section": "1A",
       "confidence": 0.99,
       "id": "1A_1_009_capital_raising",
-      "title": "Unfavorable Capital Raising Conditions"
+      "title": "Capital Raising and Financing Cost Risk"
     },
     {
-      "classification": "RETAINED",
-      "year1_quote": "The Bank must maintain certain risk-based and leverage capital ratios, as required by its banking regulators, which can change depending upon general economic conditions, as well as the particular conditions, risk profiles and growth plans of the Bank.",
-      "year2_quote_or_null": "We must maintain certain risk-based and leverage capital ratios, as required by our banking regulators, which can change depending upon general economic conditions, as well as the particular conditions, risk profiles and growth plans of the Bank.",
-      "reasoning": "Candidate 1 retains the full underlying economic risk: regulatory capital-ratio requirements may change with conditions, constrain expansion, require additional capital, and increase capital and financing costs. The added fundraising sentence reinforces rather than weakens the disclosure, and the substantive specifics are preserved.",
+      "classification": "REWORDED",
+      "year1_quote": "The Bank is exposed to accounting, financial reporting, and regulatory/compliance risk.",
+      "year2_quote_or_null": "We are exposed to accounting, financial reporting, and regulatory compliance risk.",
+      "reasoning": "The Year-2 disclosure preserves the same accounting, financial reporting, and regulatory/compliance risks with the same substantive examples, consequences, and quantitative specificity (none). The changes are grammatical and stylistic, including removal of the slash in “regulatory/compliance,” so the economic substance is unchanged.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_1_010_capital_requirements",
-      "title": "Capital Requirements and Financing Costs"
-    },
-    {
-      "classification": "RETAINED",
-      "year1_quote": "Therefore, identification, interpretation and implementation of complex and changing accounting standards as well as compliance with regulatory requirements pose an ongoing risk.",
-      "year2_quote_or_null": "Therefore, identification, interpretation, and implementation of complex and changing accounting standards, as well as compliance with regulatory requirements, pose an ongoing risk.",
-      "reasoning": "Candidate 1 retains the same economic risks, including complex financial products, accounting judgments, potentially material reporting impacts, heightened regulatory oversight, pre-formal-adoption compliance, and ongoing accounting and regulatory compliance risk. The wording changes are cosmetic and do not weaken or omit the substance.",
-      "section": "1A",
-      "confidence": 0.99,
-      "id": "1A_1_011_accounting_regulatory_risk",
-      "title": "Accounting Reporting and Compliance Risk"
+      "id": "1A_1_010_accounting_reporting",
+      "title": "Accounting Financial Reporting and Compliance Risk"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "As of December 31, 2019, the Bank had $1 billion of goodwill that was allocated to Amegy Bank (“Amegy”), California Bank & Trust (“CB&T”) and Zions Bank.",
       "year2_quote_or_null": "As of December 31, 2020, we had $1 billion of goodwill that was allocated to Amegy Bank (“Amegy”), California Bank & Trust (“CB&T”) and Zions Bank.",
-      "reasoning": "Candidate 1 retains the same goodwill impairment risk, the $1 billion amount, the same allocated reporting units, the impairment trigger, causal factors, and potential material adverse effect. The changes are fiscal year and wording only; the added capital-management reference does not alter the retained disclosure.",
+      "reasoning": "Candidate 1 preserves the same goodwill impairment risk, the $1 billion amount, the named reporting units, impairment trigger, causal factors, and potential material adverse effect. The changes are only the reporting date and immaterial wording substitutions.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_1_012_goodwill_impairment",
+      "id": "1A_1_011_goodwill_impairment",
       "title": "Goodwill Impairment Risk"
     },
     {
       "classification": "REMOVED",
-      "year1_quote": "We had net DTAs of $37 million at December 31, 2019, compared with $130 million at December 31, 2018. The largest component of this asset results from additions to our ALLL for purposes of GAAP in excess of loan losses actually taken for tax purposes.",
+      "year1_quote": "The Bank’s balance sheet includes a DTA. We had net DTAs of $37 million at December 31, 2019, compared with $130 million at December 31, 2018.",
       "year2_quote_or_null": null,
-      "reasoning": "None of the Year-2020 candidates discloses the Bank’s deferred tax asset balance, its ALLL-related composition, realization through carrybacks or future earnings, or the potential impact on tangible and regulatory capital. The capital and regulatory discussions are only topically related and do not preserve the specific DTA realization risk or its quantified disclosure.",
+      "reasoning": "None of the Year-2020 candidates meaningfully discloses deferred tax asset utilization, realization through carrybacks or future earnings, the quantified DTA balance, or the resulting tangible-capital and regulatory-capital risk. The related accounting/compliance discussion is only topical and does not preserve the specific economic risk.",
       "section": "1A",
-      "confidence": 0.98,
-      "id": "1A_1_013_deferred_tax_assets",
-      "title": "Deferred Tax Asset Realization Risk"
+      "confidence": 0.99,
+      "id": "1A_1_012_deferred_tax_assets",
+      "title": "Deferred Tax Asset Utilization Risk"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "There can be no assurance that any or all of these regulatory changes or actions will ultimately be adopted. However, if adopted, some of these proposals could adversely affect the Bank by, among other things: impacting after-tax returns earned by financial services firms in general; limiting the Bank’s ability to grow; increasing taxes or fees on some of the Bank’s funding or activities; limiting the range of products and services that the Bank could offer; and requiring the Bank to raise capital at inopportune times.",
-      "year2_quote_or_null": "There can be no assurance that any or all of these regulatory changes or actions will ultimately be enacted. However, if enacted, some of these proposals could adversely affect us by, among other things: impacting after-tax returns earned by financial services firms in general; limiting our ability to grow; increasing taxes or fees on some of our funding or activities; limiting the range of products and services that we could offer; and requiring us to raise capital at inopportune times.",
-      "reasoning": "Candidate 1 preserves the same regulatory-cost, regulatory-change, FDIC assessment, political-policy, and business-constraint risks, including the full list of adverse effects and the uncertainty over adoption. The wording changes from the Bank to “us” and from adopted to enacted are cosmetic and do not change the underlying economic disclosure.",
+      "year1_quote": "Laws and regulations applicable to the Bank and the financial services industry impose significant limitations on our business activities and subjects us to increased regulation and additional costs.",
+      "year2_quote_or_null": "Laws and regulations applicable to us and the financial services industry impose significant limitations on our business activities and subject us to increased regulation and additional costs.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk and the same material qualifiers: significant business limitations, increased regulation, and additional costs. The change from “the Bank” to “us,” grammatical correction, and page-number update are cosmetic; the additional regulatory discussion expands rather than weakens or removes the original disclosure.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_1_014_regulatory_costs",
-      "title": "Regulatory Burden and Business Limitations"
+      "id": "1A_1_013_regulatory_limits",
+      "title": "Regulatory Limits and Compliance Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Bank regulatory agencies and international regulatory consultative bodies have proposed or are considering new regulations and requirements, some of which may be imposed without formal promulgation.",
+      "year2_quote_or_null": "Bank regulatory agencies and international regulatory consultative bodies have proposed or are considering new regulations and requirements, some of which may be imposed without formal promulgation.",
+      "reasoning": "Candidate 1 retains the same regulatory-change risk with the same specific proposed-regulation scenarios and political-policy risks, including impacts on returns, growth, costs, products, and capital. The added compliance-cost discussion and minor wording changes do not alter the underlying economic disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_014_regulatory_change",
+      "title": "Regulatory Change and Political Policy Risk"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "We are subject to risks associated with legal claims, litigation, and regulatory and other government proceedings.",
       "year2_quote_or_null": "We are subject to risks associated with legal claims, litigation, and regulatory and other government proceedings.",
-      "reasoning": "The Year-2020 disclosure preserves the same legal and governmental proceedings risk, including the increased exposure, potential material consequences, reputational and management effects, settlement amounts, and impacts on supervisory and CRA ratings. The wording changes are cosmetic and do not alter the underlying economic substance or specificity.",
+      "reasoning": "Candidate 1 preserves the same legal-claims and government-proceedings risk, including the material consequences, reputational harm, increasing settlements, and potential supervisory and CRA-rating impacts. The differences are cosmetic wording changes rather than changes in economic substance.",
       "section": "1A",
       "confidence": 0.99,
       "id": "1A_1_015_legal_proceedings",
-      "title": "Legal and Governmental Proceedings Risk"
+      "title": "Legal Claims and Government Proceedings"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "These OCC statutory and regulatory regimes have been used by publicly-traded banking organizations relatively rarely and are not as well-developed as the corporate and securities law regimes applicable to corporations.",
       "year2_quote_or_null": "These OCC statutory and regulatory frameworks have been used by publicly traded banking organizations relatively rarely and are not as well-developed as the corporate and securities law frameworks applicable to corporations.",
-      "reasoning": "Candidate 1 retains the same economic risk and all material specifics: the shift from Utah/SEC regimes to OCC regimes, the OCC’s less-developed and rarely used framework, and uncertainty that may impede efficient transactions. The wording changes are cosmetic and do not weaken or omit the disclosure.",
+      "reasoning": "Candidate 1 preserves the same economic risk and all material specifics: the National Bank Act/OCC framework is relatively rarely used and less developed than the prior corporate and securities regimes, creating uncertainty that may impede transactions or prevent them altogether. The changes are only stylistic and grammatical, so this is retained rather than merely a topical continuation.",
       "section": "1A",
       "confidence": 0.99,
       "id": "1A_1_016_national_bank_law",
@@ -358,99 +378,129 @@
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "Unlike state corporate law, the National Bank Act requires shareholder approval of all mergers between a national bank and another national or state bank and does not allow for exceptions in the case of various “minor” mergers",
-      "year2_quote_or_null": "Unlike state corporate law, the National Bank Act requires shareholder approval of all mergers between a national bank and another national or state bank and does not allow for exceptions in the case of various “minor” mergers",
-      "reasoning": "Candidate 1 preserves the same National Bank Act shareholder-approval requirement, the absence of minor-merger exceptions, complications for nonbank acquisition structuring, and the resulting competitive and execution disadvantages. The only changes are cosmetic wording changes such as “the Bank” to “us.”",
+      "year1_quote": "Differences between the National Bank Act and state law requirements in respect of mergers could result in the Bank not being able to execute acquisitions as efficiently and advantageously as bank holding companies or other financial institutions.",
+      "year2_quote_or_null": "Differences between the National Bank Act and state law requirements regarding mergers could hinder our ability to execute acquisitions as efficiently and advantageously as bank holding companies or other financial institutions.",
+      "reasoning": "Candidate 1 retains the same economic risk: National Bank Act merger requirements, including shareholder approval and lack of minor-merger exceptions, may impede efficient acquisitions and reduce competitiveness versus other acquirers. The changes are cosmetic and do not weaken or omit any substantive or quantified disclosure.",
       "section": "1A",
-      "confidence": 1.0,
-      "id": "1A_1_017_merger_execution",
-      "title": "National Bank Merger Execution Constraints"
+      "confidence": 0.99,
+      "id": "1A_1_017_merger_requirements",
+      "title": "National Bank Merger Approval Requirements"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "While the Bank does not believe this change in legal restrictions resulting from the restructuring will constrain the Bank from executing any capital plans that are currently contemplated or otherwise reasonably foreseeable in the near term, there can be no assurance that the change in legal restrictions will not have an adverse effect on the Bank’s ability to pay dividends and repurchase or redeem stock in the future.",
-      "year2_quote_or_null": "While we do not believe this change in legal restrictions resulting from the restructuring will constrain us from executing any capital plans that are currently contemplated or otherwise reasonably foreseeable in the near term, there can be no assurance that the change in legal restrictions will not have an adverse effect on our ability to pay dividends and repurchase or redeem stock in the future.",
-      "reasoning": "Candidate 1 preserves the same economic risk and all material specifics: post-restructuring legal restrictions differ from those applicable to the former holding company and could adversely affect future dividends, repurchases, or redemptions, despite no expected near-term constraint. The changes are only entity/pronoun wording.",
+      "year1_quote": "Differences between the National Bank Act and state law could result in the Bank’s capacity to pay dividends and repurchase shares at any given time being different from the capacity that existed for Zions Bancorporation prior to the restructuring.",
+      "year2_quote_or_null": "Differences between the National Bank Act and state law could reduce our ability to pay dividends or repurchase shares when compared with those capacities that existed for Zions Bancorporation prior to the restructuring.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: differing National Bank Act and state-law restrictions may affect dividend payments and share repurchases relative to the pre-restructuring holding company. It also retains the specific discussion of differing regulations, near-term capital plans, and possible future adverse effects; the wording change does not materially alter the substance.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_1_018_capital_plan_restrictions",
+      "id": "1A_1_018_dividend_repurchase_limits",
       "title": "Dividend and Share Repurchase Restrictions"
     },
     {
       "classification": "RETAINED",
-      "year1_quote": "The National Bank Act provides that under certain circumstances the common stock of a national bank is assessable, i.e., holders may be subject to a levy for more funds if so determined by the OCC.",
-      "year2_quote_or_null": "The National Bank Act provides that under certain circumstances the common stock of a national bank is assessable, i.e., holders may be subject to a levy for more funds if so determined by the OCC.",
-      "reasoning": "Candidate 1 retains the same assessability risk and all material specifics, including the $0.001 par-value limit, the OCC's lack of assessments since 1933, and the potential adverse investor perception. The minor pronoun and punctuation changes do not alter the economic substance.",
+      "year1_quote": "Shares of common stock of a national bank are assessable, which may cause investors to view the Bank’s common stock less favorably than that of Zions Bancorporation prior to the restructuring.",
+      "year2_quote_or_null": "Shares of common stock of a national bank are assessable, which may cause investors to view our common stock less favorably than that of Zions Bancorporation prior to the restructuring.",
+      "reasoning": "Candidate 1 retains the same assessability risk, including the OCC levy possibility, the $0.001 par-value limit, the lack of assessments since 1933, and the potential adverse investor perception. The changes are only entity-name and punctuation updates.",
       "section": "1A",
       "confidence": 1.0,
       "id": "1A_1_019_assessable_stock",
-      "title": "Assessability of National Bank Stock"
+      "title": "Assessability of National Bank Common Stock"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "The ability of investors to access financial and other reports filed by the Bank readily could be adversely affected if such reports were not able to be made available publicly through the SEC or a system operated by the OCC comparable to that of the SEC.",
-      "year2_quote_or_null": "We have been permitted to and currently make our Exchange Act filings as a voluntary filer with the SEC. However, there can be no assurance that the OCC or SEC will continue to allow us to make filings as a voluntary filer or that the OCC will develop a comparable system for making Exchange Act filings publicly available. If our Exchange Act filings ceased to be as readily available as those of bank holding companies, investors could view us less favorably.",
-      "reasoning": "Candidate 1 preserves the same economic risk: investors may lose ready public access to the Bank’s filings if voluntary SEC filing access ends or the OCC lacks a comparable public-availability system. The Year-2 disclosure adds specificity about voluntary filing status but does not materially weaken or remove the underlying risk.",
+      "year2_quote_or_null": "The ability of investors to access financial and other reports filed by us readily could be adversely affected if such reports were not able to be made available publicly through the SEC or a system operated by the OCC comparable to that of the SEC.",
+      "reasoning": "Candidate 1 directly repeats the same economic risk and the same SEC/OCC public-access specificity. The additional discussion of voluntary SEC filing status and potential loss of comparable accessibility reinforces rather than changes the disclosure.",
       "section": "1A",
-      "confidence": 0.99,
-      "id": "1A_1_020_public_filing_access",
-      "title": "Access to Public Financial Reports"
+      "confidence": 1.0,
+      "id": "1A_1_020_public_report_access",
+      "title": "Public Access to Bank Reports"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "However, there can be no assurance that the OCC or SEC will continue to allow the Bank to make filings as a voluntary filer or that the OCC will develop a comparable system for making Exchange Act filings publicly available.",
-      "year2_quote_or_null": "However, there can be no assurance that the OCC or SEC will continue to allow us to make filings as a voluntary filer or that the OCC will develop a comparable system for making Exchange Act filings publicly available.",
-      "reasoning": "Candidate 1 preserves the same economic risk and the same specific contingencies: loss of voluntary-filer permission or lack of a comparable OCC public-access system could reduce filing availability and cause investors to view the Bank less favorably. The changes are only grammatical and entity-name substitutions.",
+      "year2_quote_or_null": "We have been permitted to and currently make our Exchange Act filings as a voluntary filer with the SEC. However, there can be no assurance that the OCC or SEC will continue to allow us to make filings as a voluntary filer or that the OCC will develop a comparable system for making Exchange Act filings publicly available.",
+      "reasoning": "The Year-2020 disclosure repeats the same economic risk: loss of voluntary-filer status or failure of the OCC to provide a comparable public-access system could reduce the availability of Exchange Act filings and cause investors to view the Bank less favorably. The changes are only entity-name/pronoun edits, with no material loss of specificity.",
       "section": "1A",
-      "confidence": 0.99,
+      "confidence": 1.0,
       "id": "1A_2_000_voluntary_filer_availability",
-      "title": "Voluntary Filer Status and Filing Availability"
+      "title": "Voluntary Filer Status And Availability"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "The Bank’s ability to issue securities in an optimal manner may be adversely affected by the fact that the OCC’s securities offering regulations and organizational structure are less well developed than those of the SEC, which applied to the Bank’s holding company prior to the restructuring.",
       "year2_quote_or_null": "Our ability to issue securities in an optimal manner may be adversely affected by the fact that the OCC’s securities offering regulations and organizational structure are less well-developed than those of the SEC, which applied to our holding company prior to the restructuring.",
-      "reasoning": "Candidate 1 preserves the same economic risk and the same specific disclosure: the OCC regime is less developed than the SEC’s, its review and automatic-shelf mechanics are uncertain, and it could impair timing or pricing of securities offerings. The changes are limited to wording and pronouns.",
+      "reasoning": "Candidate 1 restates the same economic risk with materially identical specificity: the less-developed OCC securities-offering regime may impair the Bank’s ability to issue securities optimally. The expanded discussion adds detail but does not weaken, remove, or merely relocate the Year-2019 risk.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_2_001_occ_securities_offering_capabilities",
-      "title": "OCC Securities Offering Regime and Capital Access"
+      "id": "1A_2_001_occ_securities_offering_constraints",
+      "title": "OCC Securities Offering Regulatory Constraints"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "It is possible that operating under the OCC’s securities offering regime could impede the Bank’s ability to sell securities at the most advantageous times or to achieve optimum pricing in offerings.",
+      "year2_quote_or_null": "Our ability to issue securities in an optimal manner may be adversely affected by the fact that the OCC’s securities offering regulations and organizational structure are less well-developed than those of the SEC, which applied to our holding company prior to the restructuring.",
+      "reasoning": "Candidate 1 carries forward the same economic risk: uncertainty and relative underdevelopment of the OCC securities-offering regime could impair the Bank’s ability to access capital markets at optimal times or pricing. The broader supporting discussion, including uncertainty about OCC review and automatic shelf registration, is also substantially preserved.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_002_occ_offering_regime_uncertainty",
+      "title": "Uncertainty Under OCC Offering Regime"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "The Bank is subject to restrictions on permissible activities that would limit the types of business it may conduct and that may make acquisitions of other financial companies more challenging.",
       "year2_quote_or_null": "We are subject to restrictions on permissible activities that would limit the types of business we may conduct and that may make acquisitions of other financial companies more challenging.",
-      "reasoning": "Candidate 1 preserves the same economic risk, including both limits on permissible business activities and the resulting challenge to acquisitions of financial companies. The statutory distinctions and the restructuring-related acquisition consequence are also retained; only wording and capitalization change.",
+      "reasoning": "Candidate 1 repeats the same economic risk with the same specificity: restrictions on permissible business activities and the resulting challenge to acquisitions of other financial companies. The additional explanation is consistent with, and elaborates on, the Year-2019 disclosure rather than weakening or omitting it.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_2_002_permissible_activities_acquisitions",
-      "title": "Permissible Activities and Acquisition Restrictions"
+      "id": "1A_2_003_permissible_activity_restrictions",
+      "title": "Restrictions On Permissible Business Activities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Loss of the bank holding company status, as a result of the restructuring, could make future acquisitions of financial institutions with such operations more challenging.",
+      "year2_quote_or_null": "Loss of the bank holding company status, because of the restructuring, could make future acquisitions of financial institutions with such operations more challenging.",
+      "reasoning": "Candidate 1 reproduces the same economic risk and retains the specific limitations under the Gramm-Leach-Bliley Act, the bank-versus-bank-holding-company distinction, and the acquisition consequence. The wording change from “as a result” to “because of” is cosmetic and does not alter the disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_004_financial_activity_acquisition_limits",
+      "title": "Financial Activity And Acquisition Limitations"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "Shares of the Bank’s common stock are not a bank deposit and, therefore, losses in value are not insured by the FDIC, any other deposit insurance fund, or by any other public or private entity.",
       "year2_quote_or_null": "Shares of our common stock are not a bank deposit and, therefore, losses in value are not insured by the FDIC, any other deposit insurance fund, or by any other public or private entity.",
-      "reasoning": "Candidate 1 preserves the same economic risk and the same specificity: common-stock losses are not protected by FDIC, other deposit insurance funds, or public/private entities. The wording change from “the Bank’s” to “our” is purely cosmetic.",
+      "reasoning": "Candidate 1 preserves the same economic risk and all material specifics: the stock is not a deposit, losses are not covered by FDIC or other insurance, and the investment can lose principal. The changes are only issuer-reference and wording conventions.",
       "section": "1A",
       "confidence": 1.0,
-      "id": "1A_2_003_common_stock_uninsured",
-      "title": "Common Stock Is Not Deposit Insured"
+      "id": "1A_2_005_common_stock_uninsured",
+      "title": "Common Stock Is Not An Insured Deposit"
     },
     {
       "classification": "RETAINED",
       "year1_quote": "The Bank is presented with various reputational risk issues that could stem from operational, regulatory/compliance and legal risks.",
       "year2_quote_or_null": "We are presented with various reputational risk issues that could stem from operational, regulatory, compliance, and legal risks.",
-      "reasoning": "Candidate 1 retains the same underlying reputational-risk sources and also preserves the Reputational Risk Council’s monitoring and management role. The added adverse-publicity language does not weaken or remove the Year-2019 disclosure.",
+      "reasoning": "Candidate 1 retains the same underlying disclosure: reputational risk can arise from operational, regulatory/compliance, and legal risks. The added discussion of adverse publicity and the Reputational Risk Council supplements rather than changes or weakens the Year-2019 risk.",
       "section": "1A",
       "confidence": 0.99,
-      "id": "1A_2_004_reputational_risk_overview",
-      "title": "Reputational Risk Sources and Oversight"
+      "id": "1A_2_006_reputational_risk_issues",
+      "title": "Sources Of Reputational Risk"
     },
     {
       "classification": "RETAINED",
+      "year1_quote": "A Reputational Risk Council was established to monitor, manage and develop strategies to effectively manage reputational risk which includes, but is not limited to, addressing communication logistics, legal and regulatory issues.",
+      "year2_quote_or_null": "A Reputational Risk Council was established to monitor, manage, and develop strategies to effectively manage reputational risk which includes, but is not limited to, addressing communication logistics, legal, and regulatory issues.",
+      "reasoning": "The Year-2020 Reputational Risk disclosure preserves the same council, oversight responsibilities, reputational-risk subject matter, and listed communication, legal, and regulatory issues. The added discussion of underlying operational, regulatory, compliance, and legal risks does not change or weaken the Year-2019 disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_007_reputational_risk_council",
+      "title": "Reputational Risk Council Oversight"
+    },
+    {
+      "classification": "REWORDED",
       "year1_quote": "Information required by this Item is included in “Interest Rate and Market Risk Management” in MD&A beginning on page 64 and is hereby incorporated by reference.",
       "year2_quote_or_null": "Information required by this Item is included in “Interest Rate and Market Risk Management” in MD&A beginning on page 67 and is hereby incorporated by reference.",
-      "reasoning": "The Year-2 disclosure preserves the same economic substance and the same incorporation-by-reference mechanism for the market-risk information; only the MD&A page number changed. The underlying referenced disclosure is not shown, so no material loss or weakening can be established from these excerpts.",
+      "reasoning": "The Year-2 disclosure retains the same Item 7A market-risk incorporation-by-reference statement and the same referenced MD&A section; only the page number changes from 64 to 67, which is not an economic change in the disclosed risk.",
       "section": "7A",
       "confidence": 0.99,
       "id": "7A_0_000_market_risk_incorporation",

@@ -714,20 +714,20 @@
       "status": "completed",
       "model_provider": "azure_foundry",
       "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 44,
+      "total_disclosures": 49,
       "counts": {
-        "RETAINED": 36,
-        "SOFTENED": 6,
-        "REWORDED": 1,
+        "REWORDED": 5,
+        "RETAINED": 40,
+        "SOFTENED": 3,
         "REMOVED": 1
       },
       "item7a_removed": 0,
       "item7a_softened": 0,
-      "removal_score": 0.1818,
-      "removal_score_raw": 8.0,
+      "removal_score": 0.102,
+      "removal_score_raw": 5.0,
       "embed_backend": "mpnet",
-      "pipeline_version": "18270fd2b481",
-      "processed_at": "2026-08-27T01:18:48Z"
+      "pipeline_version": "f0bd0681fca5",
+      "processed_at": "2026-08-29T22:53:58Z"
     },
     "ZION_2020_2021": {
       "ticker": "ZION",
@@ -739,21 +739,20 @@
       "status": "completed",
       "model_provider": "azure_foundry",
       "model_judge": "gpt-5.6-luna",
-      "total_disclosures": 48,
+      "total_disclosures": 46,
       "counts": {
-        "RETAINED": 18,
-        "SOFTENED": 21,
-        "REWORDED": 4,
-        "REMOVED": 4,
-        "ABSORBED": 1
+        "RETAINED": 22,
+        "SOFTENED": 18,
+        "REWORDED": 2,
+        "REMOVED": 4
       },
       "item7a_removed": 0,
       "item7a_softened": 0,
-      "removal_score": 0.625,
-      "removal_score_raw": 30.0,
+      "removal_score": 0.5652,
+      "removal_score_raw": 26.0,
       "embed_backend": "mpnet",
-      "pipeline_version": "18270fd2b481",
-      "processed_at": "2026-08-27T01:19:42Z"
+      "pipeline_version": "f0bd0681fca5",
+      "processed_at": "2026-08-29T22:53:28Z"
     },
     "ZION_2021_2022": {
       "ticker": "ZION",
@@ -762,9 +761,22 @@
       "cohort": "crisis_distressed",
       "year1": 2021,
       "year2": 2022,
-      "status": "failed",
-      "error": "5/5 judge calls failed (100%, limit 10%) via anthropic/claude-opus-4-8. Last error: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` is deprecated for this model.'}, 'request_id': 'req_011CeSHA9KRHNHn1vUz5nGT5'}. Refusing to write a result that would look like a valid analysis.",
-      "pipeline_version": "85e68dd51837"
+      "status": "completed",
+      "model_provider": "azure_foundry",
+      "model_judge": "gpt-5.6-luna",
+      "total_disclosures": 41,
+      "counts": {
+        "SOFTENED": 10,
+        "RETAINED": 28,
+        "REWORDED": 3
+      },
+      "item7a_removed": 0,
+      "item7a_softened": 0,
+      "removal_score": 0.2439,
+      "removal_score_raw": 10.0,
+      "embed_backend": "mpnet",
+      "pipeline_version": "f0bd0681fca5",
+      "processed_at": "2026-08-29T22:58:22Z"
     },
     "ZION_2022_2023": {
       "ticker": "ZION",
@@ -773,9 +785,24 @@
       "cohort": "crisis_distressed",
       "year1": 2022,
       "year2": 2023,
-      "status": "failed",
-      "error": "5/5 judge calls failed (100%, limit 10%) via anthropic/claude-opus-4-8. Last error: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` is deprecated for this model.'}, 'request_id': 'req_011CeSHLxdnjYvPMAaFZMZ98'}. Refusing to write a result that would look like a valid analysis.",
-      "pipeline_version": "85e68dd51837"
+      "status": "completed",
+      "model_provider": "azure_foundry",
+      "model_judge": "gpt-5.6-luna",
+      "total_disclosures": 43,
+      "counts": {
+        "RETAINED": 33,
+        "REWORDED": 3,
+        "REMOVED": 1,
+        "SOFTENED": 5,
+        "ABSORBED": 1
+      },
+      "item7a_removed": 0,
+      "item7a_softened": 0,
+      "removal_score": 0.186,
+      "removal_score_raw": 8.0,
+      "embed_backend": "mpnet",
+      "pipeline_version": "f0bd0681fca5",
+      "processed_at": "2026-08-29T23:00:07Z"
     },
     "KEY_2019_2020": {
       "ticker": "KEY",
@@ -5252,5 +5279,5 @@
       "processed_at": "2026-08-25T03:22:45Z"
     }
   },
-  "pipeline_version": "f29246ed7625"
+  "pipeline_version": "f0bd0681fca5"
 }
