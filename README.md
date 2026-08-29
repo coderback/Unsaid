@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.136-009688?logo=fastapi&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-Opus%204%20%7C%20Sonnet%204-D97706?logo=anthropic&logoColor=white)
+![Models](https://img.shields.io/badge/Judge-Claude%20%7C%20GPT--5.6%20%7C%20OpenAI-D97706?logo=anthropic&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 
 > Companies announce good news loudly, while they bury bad news quietly by removing or softening language in their annual SEC filings. Unsaid surfaces what they stopped saying.
@@ -67,6 +67,8 @@ Running Unsaid on the real EDGAR filings reveals what was quietly removed from I
 
 This is not hand-coded. It is the raw output of the pipeline run against the actual SEC filings.
 
+> **Provenance.** This cached analysis predates the pipeline's provenance tracking. It covers **Item 7A only** — Item 1A extraction failed on this filing at the time — and was aligned with TF-IDF rather than dense embeddings. The findings are real and checkable against the filings themselves; the run that produced them is not reproducible under the current pipeline. See [`NOTES.md`](NOTES.md).
+
 ---
 
 ## What Unsaid does
@@ -80,6 +82,30 @@ Given a company ticker and two fiscal years, Unsaid:
 5. **LLM Judgment**: Claude Opus evaluates economic risk shifts: **REMOVED**, **SOFTENED**, **NEW**, **ABSORBED**, **REWORDED**, or **RETAINED**.
 6. **Caches & Streams Progress**: Live progress with multi-stage progress tracking and execution console logs; caches results to disk for zero-latency review.
 7. **Exports & Shares**: One-click export to CSV spreadsheet, Markdown executive memo, or raw JSON.
+
+---
+
+## Research: does it actually predict returns?
+
+Unsaid was tested against its own premise. [`research/banking_study/`](research/banking_study/)
+runs the pipeline across **57 US banks and 224 consecutive 10-K pairs** (FY2019–2023),
+scores each pair by removal severity, and measures forward returns against the KRE
+regional-banking index.
+
+**It found nothing.** No signal survives correction for the 24 specifications examined
+(family-wise `p = 0.131`), and the design is underpowered by roughly 3× against the effect
+it targets — ~725 observations would be needed, and US banks nearly all file in February,
+so 224 observations cluster into about four independent time periods.
+
+A **bag-of-words baseline** — the term-frequency similarity Cohen et al. actually use —
+outperformed the LLM classifier on every cut. The semantic score was insignificant at every
+horizon and wrong-signed at twelve months.
+
+📉 **[Full write-up with the numbers and the instrument defects →](research/banking_study/results/null_writeup.html)**
+
+The tool's value does not depend on the anomaly replicating in 57 banks over four years.
+*Show me what this company stopped saying* stands on its own. But the study is the honest
+test of the stronger claim, so it ships with the repo rather than being left out.
 
 ---
 
