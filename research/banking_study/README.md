@@ -10,9 +10,9 @@ This study tests the **Lazy Prices anomaly** (Cohen, Malloy, Nguyen 2020) specif
 
 ## 2. Universe Definition (`universe.json`)
 
-- **Universe Size**: **60 Institutions**
+- **Universe Size**: **57 Institutions** (three duplicate ticker entries removed; they collided on the result key)
 - **Temporal Horizon**: **5 Fiscal Years (FY2019 – FY2023)**
-- **Comparison Pairs**: **240 consecutive year-over-year filing pairs** (`19→20`, `20→21`, `21→22`, `22→23`)
+- **Comparison Pairs**: **228 consecutive year-over-year filing pairs** (224 completed; 4 filings do not exist) (`19→20`, `20→21`, `21→22`, `22→23`)
 - **Stratification**:
   1. **Crisis & Stress Cohort (12 banks)**: Failed/delisted banks (`SIVB`, `FRC`, `SBNY`, `SI`), merged banks (`PACW`), and pressured regional institutions (`NYCB`, `WAL`, `CMA`, `ZION`, `KEY`, `FHN`, `OZK`).
   2. **Regional & Mid-Cap Banks (38 banks)**: Core constituents of the SPDR S&P Regional Banking ETF (`KRE`).
@@ -35,6 +35,13 @@ research/banking_study/
 ---
 
 ## 4. Bias Mitigation & Quant Safeguards
+
+> **Status note (27 Aug 2026).** This section described intent, not what the code
+> did. Filing-date alignment never engaged until it was fixed — a key-name
+> mismatch meant every observation used a hardcoded date. Item 7A extraction is
+> unusable (20 to 52,602 words per filing). M&A windows are still not excluded.
+> See `NOTES.md` for current state and `results/null_writeup.html` for the result.
+
 
 1. **Look-Ahead Bias Elimination**:
    - Trading start dates are anchored to the SEC EDGAR **Filing Acceptance Date + 1 Trading Day** (not period end dates).
