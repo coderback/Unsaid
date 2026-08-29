@@ -84,25 +84,50 @@ Study
    thesis depends on. Many banks have no standalone 7A at all — they
    cross-reference into MD&A, so Item 7 would have to be extracted instead. That
    is a design decision, not a bug fix.
-3. **SOFTENED is a definitional dispute, not a judge error.** The crux set
-   established the judge is *factually correct* in all ten disputed cases -- Year-2
-   really does omit the specifics it names, verified against the text, with the
-   surviving passage at cosine 0.74-0.90. The labeller called these RETAINED
-   because the loss was immaterial; the judge called them SOFTENED because content
-   was dropped. Both readings are internally consistent and model labels cannot
-   adjudicate between them.
+3. **SOFTENED is a definitional dispute, and the labeller is probably on the
+   weaker side of it.** The crux set established the judge is *factually correct*
+   in all ten disputed cases — Year-2 really does omit the specifics it names,
+   verified against the text, with the surviving passage at cosine 0.74–0.90.
+   The labeller called these RETAINED because the loss was illustrative; the
+   judge called them SOFTENED because content was dropped.
 
-   Three prompt interventions have targeted this. v2 (narrowing rule 5b) made
-   things worse. v3 added a NARROWED class for same-risk-less-detail: it fired
-   **once in 60 units**, and eight of the ten crux cases stayed SOFTENED. The
-   judge understood the distinction and declined to apply it. v3 is nonetheless
-   the best version (kappa 0.397 vs 0.363) because of its net-disclosure rule,
-   which fixed a verified error -- not because of the split.
+   On reflection, three things favour the judge:
 
-   Two ways to settle it: **human adjudication of `gold/tasks.crux.json`**
-   (15 units, objective textual overlap already computed per case), or evidence
-   that SOFTENED and NARROWED units behave differently in the cross-section,
-   which requires the corpus re-judged under v3.
+   - **Cohen et al. apply no materiality filter.** Their signal is change
+     *magnitude* — cosine, Jaccard, edit distance — and they never ask whether a
+     change was substantive. It reaches t=3.59 anyway. The labeller's reading
+     imposes a judgement the literature does not use.
+   - **This study's own data agrees.** Bag-of-words beat the LLM classifier on
+     every cut, and bag-of-words has no concept of materiality — it counts
+     changed words. If raw change predicts better than semantic classification,
+     that supports "content dropped = signal" over "only material losses count".
+   - **Risk-factor prose is lawyered.** Dropping a named standard the firm had
+     been warning about is a decision, not an accident, and may be informative
+     whether or not the abstract risk changed.
+
+   **Therefore SOFTENED at 7–20% precision probably understates the judge**, since
+   it was scored against a labeller applying a filter the literature rejects.
+   Treat those figures as a lower bound.
+
+   The counter-argument, which is why this is not settled: if SOFTENED means only
+   "the text got shorter", it is a worse version of what bag-of-words computes for
+   free, which undercuts the premise that semantic classification adds anything.
+
+   Three prompt interventions targeted this. v2 (narrowing rule 5b) made things
+   worse. v3 added a NARROWED class for same-risk-less-detail: it fired **once in
+   60 units** and eight of the ten crux cases stayed SOFTENED — the judge
+   understood the distinction and declined to apply it. v3 still wins on kappa,
+   but because of its net-disclosure rule, not the split.
+
+   **Do not resolve this by re-labelling.** Revising the labels to agree with the
+   judge fits the labels to the model — the same circularity pointed the other
+   way. Two legitimate routes remain: human adjudication of
+   `gold/tasks.crux.json` (15 units, textual overlap precomputed per case), or
+   the empirical one — re-judge the corpus under v3 and test whether SOFTENED and
+   RETAINED units behave differently in the cross-section. The second needs no
+   one's opinion and is the better argument for the re-ingest than "refine the
+   score".
+
 4. **No M&A control.** The paper excludes merger windows explicitly. Mergers
    dominate the top removal scores here (CFG, TFC, FCNCA) and were never
    controlled for.
