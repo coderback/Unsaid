@@ -88,6 +88,11 @@ def load() -> List[Dict[str, Any]]:
             "sim_simple": comb["sim_simple"],
             "sim_1a": (s.get("item1a") or {}).get("sim_cosine"),
             "sim_7a": (s.get("item7a") or {}).get("sim_cosine"),
+            # Item 7A length, used to tell a real section from a cross-reference
+            # stub. Most banks route market risk into MD&A and leave a ~22-word
+            # pointer behind; comparing two such stubs is not a measurement.
+            "w7a_y1": (s.get("item7a") or {}).get("words_y1"),
+            "w7a_y2": (s.get("item7a") or {}).get("words_y2"),
             "llm_score": llm,
             # Extraction-stability check. A collapse in extracted length between
             # years drives similarity down for reasons that have nothing to do
@@ -103,18 +108,32 @@ def load() -> List[Dict[str, Any]]:
     return rows
 
 
+# A genuine Item 7A in a bank 10-K runs a few thousand words. Below this is a
+# cross-reference stub; above it the extractor has swallowed adjacent sections.
+_REAL_7A_MIN_WORDS = 1_000
+_REAL_7A_MAX_WORDS = 15_000
+
+
+def has_real_7a(r: Dict[str, Any]) -> bool:
+    """True when BOTH years carry a plausible standalone Item 7A."""
+    w1, w2 = r.get("w7a_y1"), r.get("w7a_y2")
+    if not w1 or not w2:
+        return False
+    return all(_REAL_7A_MIN_WORDS <= w <= _REAL_7A_MAX_WORDS for w in (w1, w2))
+
+
 def quintile_spread(rows: List[Dict[str, Any]], field: str, horizon: str,
-                    high_is_quiet: bool) -> Optional[Dict[str, Any]]:
+                    high_is_quiet: bool, frac: int = 5) -> Optional[Dict[str, Any]]:
     """
     Sort on `field`, then compare the quiet-filer quintile against the changer
     quintile. high_is_quiet is True for similarity (high = unchanged) and False
     for the removal score (high = heavy change).
     """
     sub = [r for r in rows if r.get(field) is not None and r.get(f"ex_{horizon}") is not None]
-    if len(sub) < 15:
+    if len(sub) < 3 * frac:
         return None
     sub.sort(key=lambda r: r[field])
-    q = max(len(sub) // 5, 2)
+    q = max(len(sub) // frac, 2)
     low, high = sub[:q], sub[-q:]
     quiet, changer = (high, low) if high_is_quiet else (low, high)
     qr = [r[f"ex_{horizon}"] for r in quiet]
@@ -185,6 +204,36 @@ def main():
                 )
             )
 
+
+    # ---- Item 7A restricted to pairs that actually have an Item 7A -----------
+    real7 = [r for r in rows if has_real_7a(r)]
+    logger.info("  %d of %d pairs have a real Item 7A in BOTH years", len(real7), len(rows))
+
+    md.append("\n## Item 7A, restricted to pairs that have one\n")
+    md.append(
+        "\nOnly **{}** of {} pairs compare two genuine Item 7A sections (both years "
+        "between {:,} and {:,} words). The rest are cross-reference stubs -- most banks "
+        "route market risk into MD&A and leave a ~22-word pointer -- and two stubs are "
+        "near-identical by construction, so the unrestricted 7A figures elsewhere in this "
+        "report are largely measuring boilerplate against boilerplate.\n".format(
+            len(real7), len(rows), _REAL_7A_MIN_WORDS, _REAL_7A_MAX_WORDS)
+    )
+    md.append(
+        "\n**This subset is severely underpowered.** At n={} a quintile is ~{} per side, "
+        "so the median split is the more honest read. Neither is a basis for a claim.\n".format(
+            len(real7), max(len(real7) // 5, 2))
+    )
+    md.append("| Cut | Horizon | Spread | Welch t | n |")
+    md.append("|---|---|---|---|---|")
+    for cut_label, frac in (("Quintile", 5), ("Median split", 2)):
+        for h in HORIZONS:
+            r = quintile_spread(real7, "sim_7a", h, True, frac=frac)
+            if not r:
+                md.append("| {} | {} | insufficient n | | {} |".format(
+                    cut_label, h.upper(), len(real7)))
+                continue
+            md.append("| {} | {} | `{:+.2f}%` | `{:+.2f}` | {} |".format(
+                cut_label, h.upper(), r["spread"], r["t"], r["n"]))
 
     # Do the two signals even agree with each other?
     both = [(r["sim_cosine"], r["llm_score"]) for r in withllm]

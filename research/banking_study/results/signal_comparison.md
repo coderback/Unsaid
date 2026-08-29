@@ -69,6 +69,25 @@ Pairs where extracted length is within 2x between years (n=215 of 224). A length
 | LLM removal score | 6M | `-0.86%` | `-0.18` | 177 |
 | LLM removal score | 12M | `-3.91%` | `-0.67` | 177 |
 
+## Item 7A, restricted to pairs that have one
+
+
+Only **44** of 224 pairs compare two genuine Item 7A sections (both years between 1,000 and 15,000 words). The rest are cross-reference stubs -- most banks route market risk into MD&A and leave a ~22-word pointer -- and two stubs are near-identical by construction, so the unrestricted 7A figures elsewhere in this report are largely measuring boilerplate against boilerplate.
+
+
+**This subset is severely underpowered.** At n=44 a quintile is ~8 per side, so the median split is the more honest read. Neither is a basis for a claim.
+
+| Cut | Horizon | Spread | Welch t | n |
+|---|---|---|---|---|
+| Quintile | 1M | `+5.09%` | `+1.46` | 36 |
+| Quintile | 3M | `+5.40%` | `+1.08` | 36 |
+| Quintile | 6M | `+0.42%` | `+0.06` | 36 |
+| Quintile | 12M | `+1.94%` | `+0.22` | 36 |
+| Median split | 1M | `+1.71%` | `+0.94` | 36 |
+| Median split | 3M | `+3.99%` | `+1.78` | 36 |
+| Median split | 6M | `+2.18%` | `+0.65` | 36 |
+| Median split | 12M | `+3.17%` | `+0.72` | 36 |
+
 ## Do the signals agree?
 
 
