@@ -1,0 +1,557 @@
+<title>Lazy Prices, Retested</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  /* ---- tokens: complete light palette on bare :root ---------------------- */
+  :root{
+    --ground:      #FBFAF7;   /* laser-printed paper, faintly warm */
+    --panel:       #F3F1EB;   /* evidence blocks sit a shade down */
+    --ink:         #16181C;
+    --ink-soft:    #4A4B50;
+    --muted:       #75746D;
+    --rule:        #E0DDD4;
+    --rule-strong: #C6C2B6;
+    --deletion:    #9E2B25;   /* redline red — the mark for removed text */
+    --retained:    #2C5B5A;   /* the counterpart: what stayed */
+    --flag:        #8A6A16;   /* caution, used for caveats only */
+    --measure: 66ch;
+  }
+
+  /* system-dark: redefine tokens only, and let an explicit light choice win */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:      #131418;
+      --panel:       #1B1D22;
+      --ink:         #E9E6DF;
+      --ink-soft:    #B6B3AB;
+      --muted:       #8A8880;
+      --rule:        #2C2E34;
+      --rule-strong: #3E4147;
+      --deletion:    #D96A62;
+      --retained:    #6FA8A2;
+      --flag:        #C9A34A;
+    }
+  }
+  /* explicit dark choice wins over a light OS */
+  :root[data-theme="dark"]{
+    --ground:      #131418;
+    --panel:       #1B1D22;
+    --ink:         #E9E6DF;
+    --ink-soft:    #B6B3AB;
+    --muted:       #8A8880;
+    --rule:        #2C2E34;
+    --rule-strong: #3E4147;
+    --deletion:    #D96A62;
+    --retained:    #6FA8A2;
+    --flag:        #C9A34A;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Spectral", Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet{
+    max-width: 78ch;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem) 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  /* ---- masthead ---------------------------------------------------------- */
+  .masthead{ display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .stamp{
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.25rem;
+  }
+
+  h1{
+    font-weight: 300;
+    font-size: clamp(2.3rem, 6vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 em{ font-style: italic; color: var(--ink-soft); }
+
+  .standfirst{
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ---- abstract: the verdict stated immediately --------------------------- */
+  .abstract{
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule-strong);
+    padding: 1.5rem 0 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .abstract p{ margin: 0; max-width: var(--measure); }
+
+  .figures{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .fig{
+    background: var(--ground);
+    padding: .9rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .fig dt{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .62rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .fig dd{
+    margin: 0;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 1.42rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em;
+  }
+  .fig dd small{ font-size: .72rem; color: var(--muted); font-weight: 400; }
+  .fig--null dd{ color: var(--deletion); }
+
+  /* ---- sections ---------------------------------------------------------- */
+  section{ display: flex; flex-direction: column; gap: 1.05rem; }
+  section > p, section > ul, section > ol{ max-width: var(--measure); margin: 0; }
+
+  h2{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+    padding-bottom: .55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3{
+    font-weight: 600;
+    font-size: 1.06rem;
+    margin: .5rem 0 0;
+    letter-spacing: -.01em;
+  }
+
+  ul, ol{ padding-left: 1.15rem; display: flex; flex-direction: column; gap: .55rem; }
+  li::marker{ color: var(--muted); }
+
+  strong{ font-weight: 600; }
+  em.term{ font-style: normal; font-family: "IBM Plex Mono", monospace; font-size: .92em; }
+
+  /* the struck result — used exactly once */
+  .struck{
+    position: relative;
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--deletion);
+    text-decoration-thickness: 2px;
+  }
+
+  /* ---- evidence tables ---------------------------------------------------- */
+  .evidence{
+    border: 1px solid var(--rule-strong);
+    background: var(--panel);
+    overflow-x: auto;
+  }
+  .evidence caption{
+    caption-side: top;
+    text-align: left;
+    padding: .8rem 1rem .3rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .66rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .82rem;
+    font-variant-numeric: tabular-nums;
+  }
+  th, td{
+    text-align: right;
+    padding: .5rem 1rem;
+    border-top: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  th:first-child, td:first-child{ text-align: left; white-space: normal; }
+  thead th{
+    border-top: none;
+    font-weight: 500;
+    font-size: .66rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  tbody tr.is-key td{ font-weight: 600; }
+  tbody tr.is-key td:first-child{ box-shadow: inset 3px 0 0 var(--deletion); }
+  .neg{ color: var(--deletion); }
+  .pos{ color: var(--retained); }
+
+  /* ---- pull quote / verdict ---------------------------------------------- */
+  .verdict{
+    border-left: 3px solid var(--deletion);
+    padding: .2rem 0 .2rem 1.25rem;
+    margin: 0;
+    max-width: var(--measure);
+    font-size: 1.14rem;
+    color: var(--ink);
+  }
+  .verdict span{
+    display: block;
+    margin-top: .5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .78rem;
+    color: var(--muted);
+    letter-spacing: .02em;
+  }
+
+  .note{
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--flag);
+    padding: 1rem 1.15rem;
+    max-width: var(--measure);
+    font-size: .95rem;
+    color: var(--ink-soft);
+  }
+  .note b{ color: var(--ink); }
+
+  /* ---- defect ledger ------------------------------------------------------ */
+  .ledger{ display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .defect{
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: .95rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .defect dt{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .66rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--deletion);
+    padding-top: .25rem;
+  }
+  .defect dd{ margin: 0; font-size: .97rem; color: var(--ink-soft); }
+  .defect dd b{ color: var(--ink); font-weight: 600; }
+  @media (max-width: 34rem){
+    .defect{ grid-template-columns: 1fr; gap: .3rem; }
+  }
+
+  footer{
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .7rem;
+    line-height: 1.75;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  a{ color: inherit; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+  a:focus-visible, [tabindex]:focus-visible{
+    outline: 2px solid var(--retained);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="stamp">
+      <span>Banking Disclosure Study</span>
+      <span>57 institutions · FY2019–2023</span>
+      <span>27 Aug 2026</span>
+    </div>
+    <h1>Lazy Prices,<br><em>retested</em></h1>
+    <p class="standfirst">
+      We built an instrument to detect risk disclosures that companies quietly delete
+      from their 10-K filings, ran it across 224 bank filing-pairs, and asked whether
+      those deletions predict returns. They do not — and establishing that took longer
+      than building the thing.
+    </p>
+  </header>
+
+  <div class="abstract">
+    <dl class="figures">
+      <div class="fig"><dt>Filing pairs</dt><dd>224<small> / 228</small></dd></div>
+      <div class="fig"><dt>Disclosure units judged</dt><dd>28,731</dd></div>
+      <div class="fig fig--null"><dt>Best spread, 12M</dt><dd>+7.98%</dd></div>
+      <div class="fig fig--null"><dt>Family-wise p</dt><dd>0.131</dd></div>
+    </dl>
+    <p>
+      Nothing survives correction for the 24 specifications examined. The headline
+      result is indistinguishable from chance, and the study is underpowered by a
+      factor of roughly three against the effect it set out to detect.
+    </p>
+  </div>
+
+  <section>
+    <h2>The question</h2>
+    <p>
+      Cohen, Malloy &amp; Nguyen (<em class="term">Journal of Finance</em>, 2020) show that
+      when firms change the language of their annual filings, the market underprices it:
+      a portfolio long the non-changers and short the changers earns 34–58 basis points a
+      month. They measure <em>how much</em> text changed, using term-frequency similarity
+      across the whole document.
+    </p>
+    <p>
+      This study asked a narrower question. If <strong>86% of textual changes are negative
+      in sentiment</strong> — their figure, which we verified in the paper — then the
+      informative subset should be deletions specifically. Does an LLM that classifies each
+      risk disclosure as retained, reworded, softened, removed or absorbed extract a cleaner
+      signal than counting changed words?
+    </p>
+    <p>
+      US regional banks, FY2019 through FY2023, spanning the 2023 crisis. Item 1A (Risk
+      Factors) and Item 7A (Market Risk) pulled from EDGAR, split into disclosure units,
+      aligned with dense embeddings, and classified by a language model. Forward returns
+      measured against KRE from the day after each filing.
+    </p>
+  </section>
+
+  <section>
+    <h2>The result</h2>
+    <table class="evidence">
+      <caption>Long the quiet filers, short the changers · excess return vs KRE</caption>
+      <thead>
+        <tr><th>Signal</th><th>1M</th><th>3M</th><th>6M</th><th>12M</th><th>best t</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bag-of-words, Item 1A</td>
+          <td>+0.53%</td><td>+3.46%</td><td>+2.32%</td><td class="pos">+7.98%</td><td>2.48</td>
+        </tr>
+        <tr>
+          <td>Bag-of-words, Item 7A</td>
+          <td>+5.20%</td><td>+4.72%</td><td>+3.27%</td><td>+6.64%</td><td>1.81</td>
+        </tr>
+        <tr>
+          <td>Bag-of-words, combined</td>
+          <td>−0.35%</td><td>+0.28%</td><td>−1.09%</td><td>+4.27%</td><td>0.91</td>
+        </tr>
+        <tr class="is-key">
+          <td>LLM removal score</td>
+          <td>+0.36%</td><td class="neg">−0.57%</td><td>+1.08%</td><td class="neg">−3.50%</td><td>0.63</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      The semantic classifier — the thing the project exists to do — is insignificant at
+      every horizon and points the <strong>wrong way</strong> at twelve months. Plain
+      word-counting beats it on every cut. The two signals correlate at −0.42, so they
+      overlap partially; most of what the LLM adds is not what predicts returns.
+    </p>
+  </section>
+
+  <section>
+    <h2>The one lead, and how it died</h2>
+    <p>
+      Item 1A similarity at twelve months gave <span class="struck">+7.98%, t = 2.48</span>
+      — correctly signed, magnitude matching the paper's ~7% a year, and the only
+      specification in the study to clear significance. It looked like a finding.
+    </p>
+    <p>
+      It was drawn from 24 specifications. Shuffling returns against signals 1,000 times
+      asks how often chance alone produces a <em class="term">t</em> that large
+      <em>somewhere</em> among 24 tries:
+    </p>
+
+    <table class="evidence">
+      <caption>Permutation test · 5,000 draws</caption>
+      <thead><tr><th>Test</th><th>p</th><th>Reading</th></tr></thead>
+      <tbody>
+        <tr><td>This specification alone</td><td>0.0118</td><td>significant</td></tr>
+        <tr class="is-key"><td>Family-wise, all 24 specifications</td><td class="neg">0.1310</td><td>not significant</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      Three further diagnostics agree it is a tail artifact rather than a relationship.
+      A real signal strengthens as you move toward the extremes; this one peaks exactly at
+      the quintile boundary and disappears at the median.
+    </p>
+
+    <table class="evidence">
+      <caption>Portfolio cut sensitivity · Item 1A, 12M</caption>
+      <thead><tr><th>Cut</th><th>Spread</th><th>t</th></tr></thead>
+      <tbody>
+        <tr><td>Decile — top/bottom 10%</td><td>+5.17%</td><td>1.04</td></tr>
+        <tr class="is-key"><td>Quintile — top/bottom 20%</td><td>+7.98%</td><td>2.48</td></tr>
+        <tr><td>Median split</td><td>+0.16%</td><td>0.06</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      Spearman's rho across the whole distribution is <strong>+0.099</strong> — no monotone
+      relationship. And in the crisis cohort, the subsample the entire thesis is about, the
+      spread <strong>reverses to −23.42%</strong>: among banks that actually got into
+      trouble, quiet filings preceded worse returns, not better.
+    </p>
+
+    <blockquote class="verdict">
+      Direction without significance. Positive in all four years, robust to dropping the
+      crisis banks and to winsorising — yet indistinguishable from noise once the search is
+      accounted for.
+      <span>This is what an underpowered test of a small real effect looks like. It is also
+      what a null looks like. This design cannot tell them apart.</span>
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>Why it could never have worked</h2>
+    <p>
+      The null was structural, and knowable before a single filing was parsed:
+    </p>
+    <table class="evidence">
+      <caption>Power against the published effect</caption>
+      <tbody>
+        <tr><td>Standard deviation of 6M excess returns</td><td>15.2%</td></tr>
+        <tr><td>Standard error of a quintile spread (n=39/side)</td><td>3.4%</td></tr>
+        <tr><td>Minimum detectable spread at 95%</td><td>6.7%</td></tr>
+        <tr><td>Lazy Prices effect over 6 months</td><td>2.0–3.5%</td></tr>
+        <tr class="is-key"><td>Observations needed to detect it</td><td>~725</td></tr>
+        <tr><td>Observations available</td><td class="neg">224</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Roughly a third of the sample required. Worse, US banks nearly all file in February,
+      so the 224 observations cluster into <strong>four independent time periods</strong>,
+      not 224 independent draws — inside a window dominated by one sector-wide shock. More
+      banks would not fix this. More <em>years</em> would.
+    </p>
+  </section>
+
+  <section>
+    <h2>What the instrument was actually doing</h2>
+    <p>
+      The more useful output of this study is not the null. It is the catalogue of ways a
+      pipeline can produce confident, plausible, wrong output — none of which was visible
+      from its results.
+    </p>
+
+    <dl class="ledger">
+      <div class="defect">
+        <dt>Embeddings</dt>
+        <dd><b>Never ran.</b> A stale auth token made the hub answer 401 for an optional
+        file; the loader silently fell back to bag-of-words TF-IDF while every document,
+        endpoint and export continued to claim dense semantic alignment.</dd>
+      </div>
+      <div class="defect">
+        <dt>Thresholds</dt>
+        <dd><b>13% of records never saw the judge.</b> A recall cut calibrated for dense
+        cosine similarity, applied to bag-of-words scores, auto-labelled 4,346 units as NEW
+        with a hardcoded confidence of 0.85. Re-running one bank with real embeddings took
+        its NEW rate from 28% to zero.</dd>
+      </div>
+      <div class="defect">
+        <dt>Corpus</dt>
+        <dd><b>Cohort was confounded with code version.</b> The corpus was ingested over
+        five days while seven pipeline commits landed, and each cohort happened to be
+        processed on a different day. Unit yield tracked the ingestion date, not the issuer.</dd>
+      </div>
+      <div class="defect">
+        <dt>Conclusions</dt>
+        <dd><b>Hardcoded.</b> The generated report asserted a strong negative relationship
+        while the computed spread was flat-to-inverted. The three "key findings" were string
+        literals that could never contradict the data.</dd>
+      </div>
+      <div class="defect">
+        <dt>Alignment</dt>
+        <dd><b>Look-ahead control never engaged.</b> A key-name mismatch meant every
+        observation fell back to a hardcoded filing date. Four distinct dates across 240
+        rows — the study's headline methodological claim, silently inert.</dd>
+      </div>
+      <div class="defect">
+        <dt>Judge</dt>
+        <dd><b>7% precision on its most-used signal class.</b> Measured against blind labels:
+        RETAINED 94%, ABSORBED 86%, REMOVED 50% with conservative errors — but SOFTENED,
+        weighted equally in the score, was wrong nine times in ten.</dd>
+      </div>
+      <div class="defect">
+        <dt>Item 7A</dt>
+        <dd><b>Unusable.</b> Extracted length ranges from 20 to 52,602 words, bimodal
+        between cross-reference stubs and over-captures that swallow neighbouring sections.
+        This is the section holding the quantitative sensitivity tables the thesis depends on.</dd>
+      </div>
+    </dl>
+
+    <div class="note">
+      <b>Every one of these produced output that looked correct.</b> Nothing crashed, no
+      run reported failure, and the numbers had the right shape. They were found by
+      auditing the instrument against its own claims, not by reading its results.
+    </div>
+  </section>
+
+  <section>
+    <h2>What would answer the question</h2>
+    <ol>
+      <li><strong>Extend the window, not the universe.</strong> FY2010–2023 gives roughly
+      fourteen independent periods instead of four. This is the binding constraint; nothing
+      else moves it.</li>
+      <li><strong>Validate the judge before scaling it.</strong> A hand-labelled gold set
+      exists and is scored; SOFTENED needs to be fixed or dropped from the score before more
+      data is bought.</li>
+      <li><strong>Fix or abandon Item 7A.</strong> Many banks cross-reference market risk
+      into MD&amp;A and have no standalone 7A. That is a design decision, not a bug fix.</li>
+      <li><strong>Control for M&amp;A.</strong> The paper excludes merger windows explicitly;
+      this study never did, and mergers dominate the top removal scores.</li>
+    </ol>
+    <p>
+      The tool itself stands apart from all of this. <em>Show me what this company stopped
+      saying</em> does not require the anomaly to replicate in 57 banks over four years.
+    </p>
+  </section>
+
+  <footer>
+    <div>Instrument: SEC EDGAR · all-mpnet-base-v2 · gpt-5.6-luna · pipeline f0bd0681fca5</div>
+    <div>224 of 228 filing pairs · 4 unavailable (FDIC seizure, liquidation, merger)</div>
+    <div>Scripts 01–10, gold set, and every figure above reproduce from the repository.</div>
+  </footer>
+
+</div>
