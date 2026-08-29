@@ -143,6 +143,30 @@ def process_pair(inst: Dict[str, Any], year1: int, year2: int) -> Dict[str, Any]
     return out
 
 
+def assert_unique_tickers(universe) -> None:
+    """
+    Fail fast if two entries would collide on the result key.
+
+    A duplicate is never harmless: the pair count silently drops, half the work
+    is discarded, and if the duplicates carry different CIKs the surviving record
+    depends on thread scheduling.
+    """
+    import collections
+    counts = collections.Counter(e["ticker"].upper() for e in universe)
+    dupes = {t: n for t, n in counts.items() if n > 1}
+    if dupes:
+        detail = []
+        for t in sorted(dupes):
+            ciks = sorted({(e.get("cik") or "?") for e in universe if e["ticker"].upper() == t})
+            detail.append("%s x%d (CIKs: %s)" % (t, dupes[t], ", ".join(ciks)))
+        raise SystemExit(
+            "Universe contains duplicate tickers, which collide on the "
+            "{ticker}_{year1}_{year2} result key and silently overwrite each other: "
+            + "; ".join(detail)
+            + ". Remove the duplicates before running."
+        )
+
+
 def main():
     ap = argparse.ArgumentParser(description="Bag-of-words similarity baseline (no LLM)")
     ap.add_argument("--all", action="store_true")
@@ -153,6 +177,7 @@ def main():
 
     universe = json.loads(UNIVERSE_FILE.read_text(encoding="utf-8"))
     targets = universe["universe"]
+    assert_unique_tickers(targets)
     if args.tickers:
         sel = {t.strip().upper() for t in args.tickers.split(",")}
         targets = [u for u in targets if u["ticker"].upper() in sel]

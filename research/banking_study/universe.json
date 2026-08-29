@@ -8,12 +8,30 @@
     "broad_financials_etf": "XLF",
     "market_etf": "SPY"
   },
-  "fiscal_years": [2019, 2020, 2021, 2022, 2023],
+  "fiscal_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
   "comparison_pairs": [
-    {"year1": 2019, "year2": 2020},
-    {"year1": 2020, "year2": 2021},
-    {"year1": 2021, "year2": 2022},
-    {"year1": 2022, "year2": 2023}
+    {
+      "year1": 2019,
+      "year2": 2020
+    },
+    {
+      "year1": 2020,
+      "year2": 2021
+    },
+    {
+      "year1": 2021,
+      "year2": 2022
+    },
+    {
+      "year1": 2022,
+      "year2": 2023
+    }
   ],
   "universe": [
     {
@@ -151,30 +169,6 @@
       "cohort": "regional_midcap",
       "status": "active",
       "notes": "Midwestern regional bank."
-    },
-    {
-      "ticker": "RF",
-      "cik": "0001281761",
-      "name": "Regions Financial Corp",
-      "cohort": "regional_midcap",
-      "status": "active",
-      "notes": "Southeastern regional bank."
-    },
-    {
-      "ticker": "CFG",
-      "cik": "0000759944",
-      "name": "Citizens Financial Group",
-      "cohort": "regional_midcap",
-      "status": "active",
-      "notes": "Northeastern and Mid-Atlantic regional banking."
-    },
-    {
-      "ticker": "EWBC",
-      "cik": "0001070412",
-      "name": "East West Bancorp",
-      "cohort": "regional_midcap",
-      "status": "active",
-      "notes": "West Coast commercial bank focusing on US-Greater China trade."
     },
     {
       "ticker": "FCNCA",
@@ -496,5 +490,6 @@
       "status": "active",
       "notes": "Consumer credit and commercial banking control."
     }
-  ]
+  ],
+  "universe_note": "57 unique institutions. Three duplicate ticker entries were removed: they collided on the {ticker}_{y1}_{y2} result key, so 60 entries could only ever produce 228 pairs, and the EWBC duplicate carried CIK 0001070412 which is CNX Resources Corp, a natural gas company. The correct entity won previously only because the sequential resume-skip passed over the second entry; a concurrent --freeze run would have raced."
 }

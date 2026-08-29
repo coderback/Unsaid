@@ -48,6 +48,30 @@ DATA_DIR = SCRIPT_DIR / "data"
 MANIFEST_FILE = DATA_DIR / "ingest_manifest.json"
 
 
+def assert_unique_tickers(universe) -> None:
+    """
+    Fail fast if two entries would collide on the result key.
+
+    A duplicate is never harmless: the pair count silently drops, half the work
+    is discarded, and if the duplicates carry different CIKs the surviving record
+    depends on thread scheduling.
+    """
+    import collections
+    counts = collections.Counter(e["ticker"].upper() for e in universe)
+    dupes = {t: n for t, n in counts.items() if n > 1}
+    if dupes:
+        detail = []
+        for t in sorted(dupes):
+            ciks = sorted({(e.get("cik") or "?") for e in universe if e["ticker"].upper() == t})
+            detail.append("%s x%d (CIKs: %s)" % (t, dupes[t], ", ".join(ciks)))
+        raise SystemExit(
+            "Universe contains duplicate tickers, which collide on the "
+            "{ticker}_{year1}_{year2} result key and silently overwrite each other: "
+            + "; ".join(detail)
+            + ". Remove the duplicates before running."
+        )
+
+
 def load_universe() -> Dict[str, Any]:
     with open(UNIVERSE_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -263,6 +287,7 @@ def main():
 
     universe_data = load_universe()
     universe = universe_data["universe"]
+    assert_unique_tickers(universe)
     pairs = universe_data["comparison_pairs"]
 
     # Filter universe
