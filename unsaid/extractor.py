@@ -100,6 +100,13 @@ def _extract_via_regex(full_text: str, section: str) -> Optional[str]:
 # Item 1A in a bank 10-K typically runs tens of thousands of characters. A
 # table-of-contents entry slices to a few hundred, so a floor here separates the
 # body from the index without needing to parse the TOC.
+# Upper bound on a plausible section, from the observed distribution across 245
+# cached filings: Item 1A runs p90=129k with five filings above 200k; Item 7A runs
+# p90=56k with twelve above 200k. Set generously so a genuinely large section --
+# Citigroup's Item 7A is 123k chars -- still passes, and only the clear
+# over-captures are rejected.
+_MAX_PLAUSIBLE_CHARS = {"1A": 250_000, "7A": 200_000}
+
 _MIN_SECTION_PROSE = 2_000
 # Absolute floor, used only when nothing better is available.
 _MIN_FALLBACK_PROSE = 200
@@ -202,6 +209,23 @@ def _extract_via_html_slice(raw_html: str, section: str) -> Optional[str]:
     return None
 
 
+def _is_plausible(text: Optional[str], section: str) -> bool:
+    """
+    Whether an extraction is a credible instance of this section.
+
+    Deliberately one-sided in spirit: the floor only screens out empty results,
+    while the ceiling does the real work. A short Item 7A is usually CORRECT --
+    two thirds of banks cross-reference market risk into MD&A and leave a ~22-word
+    pointer -- so shortness must not be treated as failure.
+    """
+    if not text:
+        return False
+    n = len(text)
+    if n <= _MIN_FALLBACK_PROSE:
+        return False
+    return n <= _MAX_PLAUSIBLE_CHARS.get(section, 250_000)
+
+
 def extract_section(filing, section: str) -> Optional[str]:
     """
     Extract Item 1A or Item 7A from an edgartools Filing object.
@@ -237,9 +261,16 @@ def extract_section(filing, section: str) -> Optional[str]:
 
         if raw:
             text = _html_to_prose(str(raw))
-            if len(text) > 200:
+            if _is_plausible(text, section):
                 logger.info("Extracted Item %s via edgartools (len=%d)", section, len(text))
                 return text
+            if text and len(text) > _MAX_PLAUSIBLE_CHARS.get(section, 250_000):
+                logger.warning(
+                    "Rejected Item %s from edgartools: %d chars exceeds the plausible "
+                    "maximum of %d, so the section boundary has overshot. Falling through "
+                    "to the bounded HTML slice.",
+                    section, len(text), _MAX_PLAUSIBLE_CHARS.get(section, 250_000),
+                )
     except Exception as e:
         logger.debug("edgartools native extraction failed for Item %s: %s", section, e)
 
@@ -249,9 +280,14 @@ def extract_section(filing, section: str) -> Optional[str]:
             raw_html = edgar_call(filing.html)
             if raw_html:
                 res = _extract_via_html_slice(raw_html, section)
-                if res and len(res) > 200:
+                if _is_plausible(res, section):
                     logger.info("Extracted Item %s via HTML boundary slice fallback (len=%d)", section, len(res))
                     return res
+                if res:
+                    logger.warning(
+                        "Rejected Item %s from HTML slice: %d chars is outside the "
+                        "plausible range.", section, len(res),
+                    )
     except Exception as e:
         logger.debug("HTML slice fallback failed for Item %s: %s", section, e)
 
@@ -277,13 +313,22 @@ def extract_section(filing, section: str) -> Optional[str]:
 
         if full_text:
             result = _extract_via_regex(full_text, section)
-            if result and len(result) > 200:
+            if _is_plausible(result, section):
                 logger.info("Extracted Item %s via regex fallback (len=%d)", section, len(result))
                 return result
+            if result:
+                logger.warning(
+                    "Rejected Item %s from regex fallback: %d chars is outside the "
+                    "plausible range.", section, len(result),
+                )
     except Exception as e:
         logger.debug("Regex fallback failed for Item %s: %s", section, e)
 
-    logger.warning("Could not extract Item %s from filing", section)
+    logger.warning(
+        "Could not extract a plausible Item %s from filing; all three attempts were "
+        "empty or outside the plausible size range. Returning None rather than a "
+        "section that is not the section.", section,
+    )
     return None
 
 
