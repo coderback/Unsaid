@@ -96,9 +96,9 @@ Study
    any extraction quality.** SVB is the exception that made it look otherwise: it
    had a real 7A with a real EVE table, which is why the demo works.
 
-   The over-capture bug is fixed (a plausibility gate in , 250k
+   The over-capture bug is fixed (a plausibility gate in `extract_section`, 250k
    chars for 1A and 200k for 7A). **Staged but inert** - it changed the extractor
-   hash, so the text cache is stale and nothing takes effect until  re-runs
+   hash, so the text cache is stale and nothing takes effect until `08` re-runs
    (~4-5h). Its value is upstream: it stops 220k-457k-char blobs entering
    segmentation, which is where CFG's 1,499-unit pathology came from.
 
