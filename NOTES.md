@@ -84,11 +84,25 @@ Study
    thesis depends on. Many banks have no standalone 7A at all — they
    cross-reference into MD&A, so Item 7 would have to be extracted instead. That
    is a design decision, not a bug fix.
-3. **SOFTENED precision ~7%.** Measured against blind labels. It carries equal
-   weight to ABSORBED in `removal_score`, so a large share of the signal mass is
-   noise. Two prompt interventions failed to move it, which suggests the cause is
-   not in those rules. **Human labels on `gold/tasks.crux.json` (15 units, ~22
-   min) would settle whether this is real or an artifact of the model labeller.**
+3. **SOFTENED is a definitional dispute, not a judge error.** The crux set
+   established the judge is *factually correct* in all ten disputed cases -- Year-2
+   really does omit the specifics it names, verified against the text, with the
+   surviving passage at cosine 0.74-0.90. The labeller called these RETAINED
+   because the loss was immaterial; the judge called them SOFTENED because content
+   was dropped. Both readings are internally consistent and model labels cannot
+   adjudicate between them.
+
+   Three prompt interventions have targeted this. v2 (narrowing rule 5b) made
+   things worse. v3 added a NARROWED class for same-risk-less-detail: it fired
+   **once in 60 units**, and eight of the ten crux cases stayed SOFTENED. The
+   judge understood the distinction and declined to apply it. v3 is nonetheless
+   the best version (kappa 0.397 vs 0.363) because of its net-disclosure rule,
+   which fixed a verified error -- not because of the split.
+
+   Two ways to settle it: **human adjudication of `gold/tasks.crux.json`**
+   (15 units, objective textual overlap already computed per case), or evidence
+   that SOFTENED and NARROWED units behave differently in the cross-section,
+   which requires the corpus re-judged under v3.
 4. **No M&A control.** The paper excludes merger windows explicitly. Mergers
    dominate the top removal scores here (CFG, TFC, FCNCA) and were never
    controlled for.
