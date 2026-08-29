@@ -33,12 +33,14 @@ CLASSIFY_TOOL = {
         "properties": {
             "classification": {
                 "type": "string",
-                "enum": ["RETAINED", "REWORDED", "SOFTENED", "REMOVED", "ABSORBED"],
+                "enum": ["RETAINED", "REWORDED", "SOFTENED", "NARROWED", "REMOVED", "ABSORBED"],
                 "description": (
                     "RETAINED: same risk, materially same substance and specificity. "
                     "REWORDED: same risk and same specifics, different wording (not a signal). "
-                    "SOFTENED: risk downgraded, hedged, qualifiers weakened, OR specific "
-                    "quantitative disclosure dropped while the topic survives (a signal). "
+                    "SOFTENED: the RISK ITSELF is smaller in Year-2 - downgraded, hedged, "
+                    "severity or likelihood reduced, or a quantified exposure dropped. "
+                    "NARROWED: the SAME risk at the SAME severity, described with less detail - "
+                    "examples, elaboration or non-quantitative specifics dropped. "
                     "REMOVED: the specific risk disclosure is absent from Year-2 (strong signal). "
                     "ABSORBED: the SAME substance, including its specifics, is fully present "
                     "inside a broader Year-2 disclosure, not merely the same topic."
@@ -101,11 +103,19 @@ _SYSTEM_PROMPT = (
     "   almost always exists. Similarity of topic is not continuity of disclosure. Ask "
     "   what a reader LOSES going from Year-1 to Year-2, not whether the subject is "
     "   still mentioned.\n"
-    "5b. Dropping quantified disclosure is material even when the topic persists. If "
-    "   Year-1 gave a figure, table, sensitivity metric or named exposure and Year-2 "
-    "   gives only qualitative discussion, that is SOFTENED at minimum, never RETAINED, "
-    "   REWORDED or ABSORBED. If a table column or scenario is dropped, classify on the "
-    "   dropped component.\n"
+    "5b. SOFTENED vs NARROWED is the distinction between the risk shrinking and the "
+    "   DESCRIPTION shrinking. Ask what changed:\n"
+    "   - SOFTENED: Year-2 says the exposure is smaller, less likely or better "
+    "     controlled; a hedge or qualifier is weakened; or a QUANTIFIED disclosure "
+    "     (figure, table, sensitivity metric, named exposure) is gone.\n"
+    "   - NARROWED: the same risk at the same severity, with fewer words - an example "
+    "     dropped, elaboration trimmed, a list shortened. Nothing about the exposure "
+    "     changed, only how much was said about it.\n"
+    "   If a table column or rate scenario is dropped, that is SOFTENED, and classify on "
+    "   the dropped component.\n"
+    "5b-i. NET DISCLOSURE. Weigh what Year-2 adds, not only what it drops. If Year-2 "
+    "   reproduces the Year-1 substance and ADDS further risk drivers, that is RETAINED "
+    "   even if a single verb is hedged. A disclosure that grew is not a softening.\n"
     "5c. CONSISTENCY CHECK - if your own reasoning would say the Year-1 content is no "
     "   longer presented, no longer disclosed, omitted, not repeated or absent, then the "
     "   correct classification is SOFTENED or REMOVED, never RETAINED or ABSORBED. Your "

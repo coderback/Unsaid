@@ -26,7 +26,9 @@ ANSWERS_FILE = GOLD_DIR / "answers.json"
 LABELS_FILE = GOLD_DIR / "labels.json"
 REPORT_FILE = SCRIPT_DIR / "results" / "gold_set_report.md"
 
-CLASSES = ["RETAINED", "REWORDED", "SOFTENED", "REMOVED", "ABSORBED"]
+CLASSES = ["RETAINED", "REWORDED", "SOFTENED", "NARROWED", "REMOVED", "ABSORBED"]
+# NARROWED is deliberately NOT a signal class pending evidence that reduced
+# specificity predicts anything; that is the question the split exists to answer.
 SIGNAL = {"REMOVED", "SOFTENED", "ABSORBED"}
 
 
