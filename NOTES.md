@@ -79,11 +79,35 @@ Study
    224 available. And US banks nearly all file in February, so those 224 cluster
    into ~4 independent periods. Extending to FY2010–2023 is the only change that
    moves this.
-2. **Item 7A is unusable.** Extracted length ranges 20 → 52,602 words, bimodal
-   between cross-reference stubs and over-captures. This is the section the
-   thesis depends on. Many banks have no standalone 7A at all — they
-   cross-reference into MD&A, so Item 7 would have to be extracted instead. That
-   is a design decision, not a bug fix.
+2. **Item 7A: mostly not a bug, and mostly not fixable.** Three distinct
+   populations, by median extracted length per issuer:
+
+   | | issuers | |
+   |---|---|---|
+   | Stub - no standalone 7A exists | 38 (67%) | BAC=22 words, CMA=27, ASB=30 |
+   | Plausible 7A | 14 (25%) | BANC, BOH, BOKF, CATY, COLB, FCNCA |
+   | Over-capture - a real bug | 5 (9%) | C=44,098 words, FITB=38,849, TFC=26,387 |
+
+   Two thirds of the universe cross-references market risk into MD&A. No
+   extractor recovers a section that is not there; you would have to locate the
+   market-risk discussion inside Item 7 (400-500k chars), which is a larger
+   problem than the original. **The 7A thesis therefore caps at ~56 observations
+   against the ~725 the power analysis requires - untestable on this universe at
+   any extraction quality.** SVB is the exception that made it look otherwise: it
+   had a real 7A with a real EVE table, which is why the demo works.
+
+   The over-capture bug is fixed (a plausibility gate in , 250k
+   chars for 1A and 200k for 7A). **Staged but inert** - it changed the extractor
+   hash, so the text cache is stale and nothing takes effect until  re-runs
+   (~4-5h). Its value is upstream: it stops 220k-457k-char blobs entering
+   segmentation, which is where CFG's 1,499-unit pathology came from.
+
+   The restricted 7A cut (44 pairs with a real 7A in both years, 36 with returns)
+   gives +5.09% at 1M (t=1.46) on the quintile and +3.99% at 3M (t=1.78) on the
+   median split. Nothing significant, and at n=36 nothing could be - but the
+   magnitude survived dropping 84% of the pairs, and unlike Item 1A the median
+   split did not collapse.
+
 3. **SOFTENED is a definitional dispute, and the labeller is probably on the
    weaker side of it.** The crux set established the judge is *factually correct*
    in all ten disputed cases — Year-2 really does omit the specifics it names,
