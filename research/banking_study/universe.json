@@ -13,7 +13,9 @@
     2020,
     2021,
     2022,
-    2023
+    2023,
+    2024,
+    2025
   ],
   "comparison_pairs": [
     {
@@ -31,6 +33,14 @@
     {
       "year1": 2022,
       "year2": 2023
+    },
+    {
+      "year1": 2023,
+      "year2": 2024
+    },
+    {
+      "year1": 2024,
+      "year2": 2025
     }
   ],
   "universe": [
@@ -491,5 +501,6 @@
       "notes": "Consumer credit and commercial banking control."
     }
   ],
-  "universe_note": "57 unique institutions. Three duplicate ticker entries were removed: they collided on the {ticker}_{y1}_{y2} result key, so 60 entries could only ever produce 228 pairs, and the EWBC duplicate carried CIK 0001070412 which is CNX Resources Corp, a natural gas company. The correct entity won previously only because the sequential resume-skip passed over the second entry; a concurrent --freeze run would have raced."
+  "universe_note": "57 unique institutions. Three duplicate ticker entries were removed: they collided on the {ticker}_{y1}_{y2} result key, so 60 entries could only ever produce 228 pairs, and the EWBC duplicate carried CIK 0001070412 which is CNX Resources Corp, a natural gas company. The correct entity won previously only because the sequential resume-skip passed over the second entry; a concurrent --freeze run would have raced.",
+  "extension_note": "Extended forward to FY2025 on 2026-08-30. FY2024 and FY2025 10-Ks already existed when this universe was created (2026-08-21); stopping at FY2023 was arbitrary. FY2023->2024 is reserved as a pre-registered out-of-sample holdout - see EXTENSION_PLAN.md. FY2024->2025 has no 12M return until Feb 2027 and must not be pooled into any full-sample 12M figure."
 }
