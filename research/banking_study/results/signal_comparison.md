@@ -4,7 +4,10 @@ Long the quiet filers, short the changers. Both signals are reported in the
 same direction, so the numbers are directly comparable.
 
 
-**Pairs with similarity scores**: 224  
+> Everything below is **in-sample**: FY2019-2023, the period every specification in this study was searched over. FY2023->24 is held out and appears only in the pre-registered section at the end.
+
+
+**In-sample pairs**: 224  
 **Pairs with both signals**: 205
 
 
@@ -95,3 +98,12 @@ Correlation between Sim_Cosine and the LLM removal score: `-0.419` (n=205).
 
 
 Similarity is high when a filing barely changed; the removal score is high when much was deleted. A strongly NEGATIVE correlation means the two are measuring the same underlying thing. A correlation near zero means the LLM is measuring something bag-of-words does not capture -- which is either the value it adds, or noise.
+
+
+---
+
+
+## Pre-registered out-of-sample test
+
+
+**Not yet available.** The FY2023->24 pairs have not been extracted. Run `08_similarity_baseline.py --all --workers 2`, then `02_fetch_market_data.py`, then re-run this script.

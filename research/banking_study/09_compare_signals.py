@@ -39,6 +39,23 @@ REPORT = RESULTS_DIR / "signal_comparison.md"
 
 HORIZONS = ["1m", "3m", "6m", "12m"]
 
+# Every exploratory result in this study was searched over FY2019-2023. Those
+# year-pairs stay the in-sample period; anything later is held out.
+IN_SAMPLE_YEAR2 = {2020, 2021, 2022, 2023}
+
+# Pre-registered out-of-sample test, fixed in EXTENSION_PLAN.md BEFORE this data
+# was generated. Deliberately module constants rather than loop variables: the
+# value of a holdout is destroyed by searching it, and one test is what was
+# registered.
+HOLDOUT_YEAR2 = 2024
+HOLDOUT_SIGNAL = "sim_1a"       # Item 1A cosine similarity
+HOLDOUT_HORIZON = "12m"         # the horizon the in-sample result lived at
+HOLDOUT_HIGH_IS_QUIET = True    # long the quiet filers, short the changers
+
+# FY2024->25 was filed Feb 2026 and has no complete 12M return until Feb 2027.
+# Reported separately at short horizons; never pooled into a 12M figure.
+SUPPLEMENTARY_YEAR2 = 2025
+
 
 def welch_t(a: List[float], b: List[float]) -> Tuple[float, int, int]:
     a = [x for x in a if x is not None and not math.isnan(x)]
@@ -146,10 +163,101 @@ def quintile_spread(rows: List[Dict[str, Any]], field: str, horizon: str,
     }
 
 
+def _holdout_section(holdout: List[Dict[str, Any]],
+                     supplementary: List[Dict[str, Any]]) -> List[str]:
+    """
+    Run the single pre-registered out-of-sample test and nothing else.
+
+    Written before FY2023->24 existed as data: Item 1A cosine similarity, 12-month
+    horizon, median split, long the quiet filers. The in-sample version of this
+    (+7.98%, t=2.48) failed multiplicity correction at family-wise p=0.131, which
+    establishes that one hit among 24 specifications is what chance produces but
+    cannot say whether this particular one is real. Only fresh data can.
+    """
+    md = ["\n---\n", "\n## Pre-registered out-of-sample test\n"]
+
+    if not holdout:
+        md.append(
+            "\n**Not yet available.** The FY2023->24 pairs have not been extracted. "
+            "Run `08_similarity_baseline.py --all --workers 2`, then "
+            "`02_fetch_market_data.py`, then re-run this script.\n"
+        )
+        return md
+
+    md.append(
+        "\nSpecification fixed in `EXTENSION_PLAN.md` **before this data was "
+        "generated**: signal `{}`, horizon `{}`, median split, long the quiet filers. "
+        "One test. No other specification is run on this pair, because searching a "
+        "holdout is what destroys it.\n".format(HOLDOUT_SIGNAL, HOLDOUT_HORIZON.upper())
+    )
+
+    usable = [r for r in holdout
+              if r.get(HOLDOUT_SIGNAL) is not None
+              and r.get("ex_" + HOLDOUT_HORIZON) is not None]
+    md.append("\n**Holdout pairs**: {} extracted, {} with both a signal and a "
+              "12-month return.\n".format(len(holdout), len(usable)))
+
+    md.append("\n| Cut | Spread | Welch t | n |")
+    md.append("|---|---|---|---|")
+    primary = None
+    for label, frac in (("**Median split** (pre-registered)", 2), ("Quintile (reference)", 5)):
+        r = quintile_spread(holdout, HOLDOUT_SIGNAL, HOLDOUT_HORIZON,
+                            HOLDOUT_HIGH_IS_QUIET, frac=frac)
+        if not r:
+            md.append("| {} | insufficient n | | {} |".format(label, len(usable)))
+            continue
+        md.append("| {} | `{:+.2f}%` | `{:+.2f}` | {} |".format(
+            label, r["spread"], r["t"], r["n"]))
+        if frac == 2:
+            primary = r
+
+    if primary is not None:
+        md.append(
+            "\n**In-sample comparison**: the same signal and horizon gave `+7.98%` "
+            "(t=2.48) on the quintile over FY2019-2023, which did not survive "
+            "correction for the 24 specifications searched (family-wise p=0.131).\n"
+        )
+        md.append(
+            "\nReading this, per the interpretation fixed in advance: a spread of "
+            "similar magnitude and sign is a genuine out-of-sample replication and the "
+            "strongest evidence in the project; near zero means the in-sample result was "
+            "a specification artifact and the null settles cleanly; negative carries the "
+            "same conclusion as near zero.\n"
+        )
+
+    if supplementary:
+        sup = [r for r in supplementary if r.get(HOLDOUT_SIGNAL) is not None]
+        md.append("\n### Supplementary: FY2024->25\n")
+        md.append(
+            "\n{} pairs. Filed Feb 2026, so **no complete 12-month return exists until "
+            "Feb 2027** and none is reported here. Short horizons only, and this is not "
+            "part of the pre-registered test.\n".format(len(sup))
+        )
+        md.append("\n| Horizon | Spread | Welch t | n |")
+        md.append("|---|---|---|---|")
+        for h in ("1m", "3m", "6m"):
+            r = quintile_spread(supplementary, HOLDOUT_SIGNAL, h,
+                                HOLDOUT_HIGH_IS_QUIET, frac=2)
+            if not r:
+                md.append("| {} | insufficient n | | |".format(h.upper()))
+                continue
+            md.append("| {} | `{:+.2f}%` | `{:+.2f}` | {} |".format(
+                h.upper(), r["spread"], r["t"], r["n"]))
+
+    return md
+
+
 def main():
     argparse.ArgumentParser(description="Compare bag-of-words and LLM signals").parse_args()
-    rows = load()
-    logger.info("Loaded %d pairs with a similarity score", len(rows))
+    all_rows = load()
+    rows = [r for r in all_rows if r.get("year2") in IN_SAMPLE_YEAR2]
+    holdout = [r for r in all_rows if r.get("year2") == HOLDOUT_YEAR2]
+    supplementary = [r for r in all_rows if r.get("year2") == SUPPLEMENTARY_YEAR2]
+
+    logger.info("Loaded %d pairs with a similarity score", len(all_rows))
+    logger.info("  in-sample (FY2019-2023): %d", len(rows))
+    logger.info("  holdout   (FY2023->24) : %d", len(holdout))
+    logger.info("  supplementary (FY24->25): %d", len(supplementary))
     withllm = [r for r in rows if r["llm_score"] is not None]
     logger.info("  %d also have a usable LLM removal score", len(withllm))
 
@@ -157,7 +265,12 @@ def main():
     md.append("# Signal Comparison: Bag-of-Words vs LLM Classification\n")
     md.append("Long the quiet filers, short the changers. Both signals are reported in the ")
     md.append("same direction, so the numbers are directly comparable.\n")
-    md.append(f"\n**Pairs with similarity scores**: {len(rows)}  ")
+    md.append(
+        "\n> Everything below is **in-sample**: FY2019-2023, the period every "
+        "specification in this study was searched over. FY2023->24 is held out and "
+        "appears only in the pre-registered section at the end.\n"
+    )
+    md.append(f"\n**In-sample pairs**: {len(rows)}  ")
     md.append(f"**Pairs with both signals**: {len(withllm)}\n")
 
     # Extraction-stable subset: both years within 2x of each other in length.
@@ -247,6 +360,8 @@ def main():
                   "measuring the same underlying thing. A correlation near zero means the LLM "
                   "is measuring something bag-of-words does not capture -- which is either the "
                   "value it adds, or noise.\n")
+
+    md.extend(_holdout_section(holdout, supplementary))
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(md), encoding="utf-8")
