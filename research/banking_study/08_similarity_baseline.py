@@ -137,9 +137,15 @@ def process_pair(inst: Dict[str, Any], year1: int, year2: int) -> Dict[str, Any]
     for label, key in (("1A", "item1a"), ("7A", "item7a")):
         t1, t2 = s1.get(label), s2.get(label)
         out[key] = measure_pair(t1, t2) if (t1 and t2) else None
+    # The combined score requires Item 1A on both sides. Item 7A alone is a
+    # ~250-char cross-reference for two thirds of the universe, so without 1A
+    # the concatenation would be a stub-to-stub comparison reported under the
+    # same name as everyone else's 1A+7A -- a different measurement wearing the
+    # same label, which is exactly what makes cross-bank cuts meaningless.
     both1 = " ".join(x for x in (s1.get("1A"), s1.get("7A")) if x)
     both2 = " ".join(x for x in (s2.get("1A"), s2.get("7A")) if x)
-    out["combined"] = measure_pair(both1, both2) if (both1 and both2) else None
+    has_1a = bool(s1.get("1A")) and bool(s2.get("1A"))
+    out["combined"] = measure_pair(both1, both2) if (has_1a and both1 and both2) else None
     return out
 
 

@@ -107,6 +107,19 @@ def _extract_via_regex(full_text: str, section: str) -> Optional[str]:
 # over-captures are rejected.
 _MAX_PLAUSIBLE_CHARS = {"1A": 250_000, "7A": 200_000}
 
+# Lower bound, per section, and deliberately NOT symmetric.
+#
+# Item 1A is Risk Factors and is never legitimately short. Measured across 401
+# cached filings its lengths form two populations with an empty band between
+# them: 27 extractions at or below 2,181 chars (cross-reference pointers -- BK
+# 9 words, USB 17, WFC 20) and 374 at or above 18,696 chars (real sections). The
+# floor sits in that gap.
+#
+# Item 7A keeps the permissive floor on purpose. Two thirds of the universe
+# route market risk into MD&A and leave a ~250-char pointer, so for 7A a short
+# extraction is usually the CORRECT answer and must not be treated as failure.
+_MIN_PLAUSIBLE_CHARS = {"1A": 8_000}
+
 _MIN_SECTION_PROSE = 2_000
 # Absolute floor, used only when nothing better is available.
 _MIN_FALLBACK_PROSE = 200
@@ -213,15 +226,17 @@ def _is_plausible(text: Optional[str], section: str) -> bool:
     """
     Whether an extraction is a credible instance of this section.
 
-    Deliberately one-sided in spirit: the floor only screens out empty results,
-    while the ceiling does the real work. A short Item 7A is usually CORRECT --
-    two thirds of banks cross-reference market risk into MD&A and leave a ~22-word
-    pointer -- so shortness must not be treated as failure.
+    Both bounds are per-section, because the two sections fail in opposite
+    directions. Item 1A is Risk Factors: it is never legitimately short, so a
+    short result means the extractor returned a cross-reference pointer instead
+    of the section. Item 7A is the reverse -- two thirds of banks route market
+    risk into MD&A and leave a ~250-char pointer, so a short Item 7A is usually
+    the CORRECT answer and must not be treated as failure.
     """
     if not text:
         return False
     n = len(text)
-    if n <= _MIN_FALLBACK_PROSE:
+    if n <= _MIN_PLAUSIBLE_CHARS.get(section, _MIN_FALLBACK_PROSE):
         return False
     return n <= _MAX_PLAUSIBLE_CHARS.get(section, 250_000)
 
@@ -264,13 +279,21 @@ def extract_section(filing, section: str) -> Optional[str]:
             if _is_plausible(text, section):
                 logger.info("Extracted Item %s via edgartools (len=%d)", section, len(text))
                 return text
-            if text and len(text) > _MAX_PLAUSIBLE_CHARS.get(section, 250_000):
-                logger.warning(
-                    "Rejected Item %s from edgartools: %d chars exceeds the plausible "
-                    "maximum of %d, so the section boundary has overshot. Falling through "
-                    "to the bounded HTML slice.",
-                    section, len(text), _MAX_PLAUSIBLE_CHARS.get(section, 250_000),
-                )
+            if text:
+                lo = _MIN_PLAUSIBLE_CHARS.get(section, _MIN_FALLBACK_PROSE)
+                hi = _MAX_PLAUSIBLE_CHARS.get(section, 250_000)
+                if len(text) > hi:
+                    logger.warning(
+                        "Rejected Item %s from edgartools: %d chars exceeds the plausible "
+                        "maximum of %d, so the section boundary has overshot. Falling "
+                        "through to the bounded HTML slice.", section, len(text), hi,
+                    )
+                elif len(text) <= lo:
+                    logger.warning(
+                        "Rejected Item %s from edgartools: %d chars is below the plausible "
+                        "minimum of %d, so this is a cross-reference pointer rather than "
+                        "the section. Falling through.", section, len(text), lo,
+                    )
     except Exception as e:
         logger.debug("edgartools native extraction failed for Item %s: %s", section, e)
 
