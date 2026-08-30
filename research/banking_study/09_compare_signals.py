@@ -56,6 +56,25 @@ HOLDOUT_HIGH_IS_QUIET = True    # long the quiet filers, short the changers
 # Reported separately at short horizons; never pooled into a 12M figure.
 SUPPLEMENTARY_YEAR2 = 2025
 
+# Data-quality filter on the holdout, declared and committed BEFORE the test was
+# run. Item 1A is Risk Factors and is never legitimately short: edgartools' own
+# expected minimum for the section is 15,978 chars, ~2,500 words. Below that the
+# extractor has returned a cross-reference pointer rather than the section --
+# BK gave 9 words, USB 17, WFC 20 -- and two such pointers score cosine=1.0000,
+# which puts pure noise at the very top of the quiet-filer ranking, i.e. first in
+# line on the long side of this test.
+#
+# The filter reads extracted text length only. It never touches returns, so it
+# cannot be tuned to the outcome, and the threshold is edgartools' documented
+# minimum for the section rather than a number chosen here.
+MIN_REAL_1A_WORDS = 2_500
+
+
+def has_real_1a(r: Dict[str, Any]) -> bool:
+    """True when BOTH years carry a genuine Item 1A rather than a pointer."""
+    w1, w2 = r.get("w1a_y1"), r.get("w1a_y2")
+    return bool(w1 and w2 and min(w1, w2) >= MIN_REAL_1A_WORDS)
+
 
 def welch_t(a: List[float], b: List[float]) -> Tuple[float, int, int]:
     a = [x for x in a if x is not None and not math.isnan(x)]
@@ -108,6 +127,8 @@ def load() -> List[Dict[str, Any]]:
             # Item 7A length, used to tell a real section from a cross-reference
             # stub. Most banks route market risk into MD&A and leave a ~22-word
             # pointer behind; comparing two such stubs is not a measurement.
+            "w1a_y1": (s.get("item1a") or {}).get("words_y1"),
+            "w1a_y2": (s.get("item1a") or {}).get("words_y2"),
             "w7a_y1": (s.get("item7a") or {}).get("words_y1"),
             "w7a_y2": (s.get("item7a") or {}).get("words_y2"),
             "llm_score": llm,
@@ -191,11 +212,32 @@ def _holdout_section(holdout: List[Dict[str, Any]],
         "holdout is what destroys it.\n".format(HOLDOUT_SIGNAL, HOLDOUT_HORIZON.upper())
     )
 
-    usable = [r for r in holdout
+    clean = [r for r in holdout if has_real_1a(r)]
+    dropped = [r for r in holdout if not has_real_1a(r)]
+    usable = [r for r in clean
               if r.get(HOLDOUT_SIGNAL) is not None
               and r.get("ex_" + HOLDOUT_HORIZON) is not None]
-    md.append("\n**Holdout pairs**: {} extracted, {} with both a signal and a "
-              "12-month return.\n".format(len(holdout), len(usable)))
+    md.append(
+        "\n**Holdout pairs**: {} extracted, {} with a genuine Item 1A on both sides, "
+        "{} with a 12-month return as well.\n".format(len(holdout), len(clean), len(usable))
+    )
+    if dropped:
+        md.append(
+            "\n{} pairs were excluded by a data-quality filter declared and committed "
+            "**before this test was run**: both years must carry at least {:,} words of "
+            "Item 1A. Risk Factors is never legitimately that short, so below the "
+            "threshold the extractor has returned a cross-reference pointer rather than "
+            "the section, and two pointers score cosine=1.0000 -- pure noise at the very "
+            "top of the quiet-filer ranking. The filter reads extracted text length only "
+            "and never touches returns.\n".format(len(dropped), MIN_REAL_1A_WORDS)
+        )
+        md.append("\n| Excluded | Item 1A y1 | y2 | cosine |")
+        md.append("|---|---|---|---|")
+        for r in sorted(dropped, key=lambda z: min(z.get("w1a_y1") or 0, z.get("w1a_y2") or 0)):
+            md.append("| {} | {} w | {} w | {} |".format(
+                r["ticker"], r.get("w1a_y1"), r.get("w1a_y2"),
+                "`{:.4f}`".format(r["sim_1a"]) if r.get("sim_1a") is not None else "-"))
+    holdout = clean
 
     md.append("\n| Cut | Spread | Welch t | n |")
     md.append("|---|---|---|---|")
@@ -215,7 +257,11 @@ def _holdout_section(holdout: List[Dict[str, Any]],
         md.append(
             "\n**In-sample comparison**: the same signal and horizon gave `+7.98%` "
             "(t=2.48) on the quintile over FY2019-2023, which did not survive "
-            "correction for the 24 specifications searched (family-wise p=0.131).\n"
+            "correction for the 24 specifications searched (family-wise p=0.131). Under the "
+            "same filter applied here the in-sample figure is `+7.33%` (t=2.29, n=184) "
+            "on the quintile and `-0.58%` (t=-0.22) on the median split, so the filter "
+            "costs the in-sample result about 0.65pp and does not manufacture it. Those "
+            "filtered figures are the like-for-like comparators.\n"
         )
         md.append(
             "\nReading this, per the interpretation fixed in advance: a spread of "

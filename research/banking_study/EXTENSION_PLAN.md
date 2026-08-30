@@ -4,7 +4,7 @@ Single unattended job that extends the study forward two years, activates the
 staged extractor gate, and produces an out-of-sample test of the only result that
 ever cleared significance.
 
-Status: **scoped and staged.** Universe extended; extraction not yet run.
+Status: **extraction complete** (327/342 pairs scored, 2026-08-30). Pre-registered test amended below, then run.
 
 Availability confirmed against EDGAR for all 57 banks:
 
@@ -96,6 +96,43 @@ pre-specified test** on it answers what correction cannot:
   too, but the median split is the honest read)
 - **Decided in advance.** No other specification is run on this pair. Searching
   the holdout destroys what makes it a holdout.
+
+### Amendment, 2026-08-30 - added BEFORE the test was run
+
+Extraction finished and a quality check on the holdout (returns-blind: it reads
+only extracted word counts) found **5 of 53 pairs where "Item 1A" is not Item 1A**:
+
+| | Item 1A y1 | y2 | cosine |
+|---|---|---|---|
+| BK | 9 w | 9 w | `1.0000` |
+| USB | 17 w | 17 w | `1.0000` |
+| WFC | 20 w | 20 w | `1.0000` |
+| MS | 189 w | 186 w | `0.9962` |
+| CFR | 1,813 w | 4,222 w | `0.8421` |
+
+Risk Factors runs 60-160k chars; these are cross-reference pointers that
+edgartools returned in place of the section. Two identical pointers score
+cosine=1.0000, which places pure noise at the very **top** of the quiet-filer
+ranking - first in line on the long side of this exact test.
+
+**Filter, fixed now:** both years must carry at least **2,500 words** of Item 1A.
+The threshold is edgartools' own documented minimum for the section (15,978
+chars), not a number chosen here, and the rule reads extracted text length only
+- it never touches returns, so it cannot be tuned to the outcome.
+
+**Cost, measured on the already-spent in-sample data:** the same filter moves the
+in-sample quintile from `+7.98%` (t=2.48, n=197) to `+7.33%` (t=2.29, n=184), and
+the median split from `+0.16%` to `-0.58%`. It costs about 0.65pp and does not
+manufacture the result. The filtered figures are the like-for-like comparators.
+
+Three of the five excluded pairs (BK, USB, WFC) are pre-existing - edgartools
+fails to parse those filings' structure at all. **MS is caused by the gate added
+earlier in this branch**: `_is_plausible` uses a 200-char floor for both
+sections, correct for Item 7A where a short stub is genuinely what was filed, but
+wrong for Item 1A which is never legitimately short. The gate rejected a
+653,682-char over-capture and fell through to a 2,155-char fragment. Fixing that
+floor is follow-up work; it needs another full re-extraction and is not required
+for this test, which excludes the pair either way.
 
 Interpretation, also fixed in advance:
 
