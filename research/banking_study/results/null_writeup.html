@@ -33,13 +33,10 @@
 body{
   background:var(--ground); color:var(--ink);
   font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:17px; line-height:1.65; margin:0;
-  -webkit-font-smoothing:antialiased;
+  font-size:17px; line-height:1.65; margin:0; -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:940px; margin:0 auto; padding:clamp(2rem,6vw,5.5rem) clamp(1.1rem,5vw,3rem) 6rem}
-.col{max-width:var(--measure)}
 
-/* ---- masthead ---- */
 .eyebrow{
   font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em;
   text-transform:uppercase; color:var(--accent); margin:0 0 1.4rem;
@@ -58,11 +55,10 @@ h1{
   display:flex; flex-wrap:wrap; gap:.5rem 1.6rem;
 }
 
-/* ---- verdict ---- */
 .verdict{
   background:var(--raised); border:1px solid var(--rule);
   border-left:3px solid var(--refute);
-  padding:clamp(1.5rem,3.5vw,2.4rem); margin:0 0 4.5rem;
+  padding:clamp(1.5rem,3.5vw,2.4rem); margin:0 0 3rem;
 }
 .verdict h2{
   font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.14em;
@@ -88,36 +84,43 @@ h1{
 .verdict p{margin:1.7rem 0 0; max-width:60ch; color:var(--ink-soft)}
 .verdict p:last-child{margin-bottom:0}
 
-/* ---- sections ---- */
-section{margin:0 0 3.6rem; scroll-margin-top:2rem}
+.three{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule); margin:0 0 4.5rem;
+}
+.three > div{background:var(--raised); padding:1.3rem 1.4rem}
+.three .k{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:.6rem;
+}
+.three .v{
+  font-family:"IBM Plex Mono",monospace; font-size:1.05rem; font-weight:600;
+  font-variant-numeric:tabular-nums; margin-bottom:.4rem; color:var(--ink);
+}
+.three .d{font-size:.87rem; color:var(--muted); line-height:1.5}
+
+section{margin:0 0 3.6rem}
 h2.sec{
   font-family:Spectral,Georgia,serif; font-weight:600;
   font-size:clamp(1.4rem,3vw,1.85rem); line-height:1.2; letter-spacing:-.01em;
-  margin:0 0 1.1rem; text-wrap:balance;
-  display:flex; gap:.85rem; align-items:baseline;
+  margin:0 0 1.1rem; text-wrap:balance; display:flex; gap:.85rem; align-items:baseline;
 }
 h2.sec .n{
   font-family:"IBM Plex Mono",monospace; font-size:.8rem; font-weight:500;
   color:var(--accent); flex:0 0 auto; letter-spacing:.04em;
 }
-h3{
-  font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:1rem;
-  margin:2.2rem 0 .7rem; color:var(--ink);
-}
+h3{font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:1rem; margin:2.2rem 0 .7rem}
 p{margin:0 0 1.05rem; max-width:var(--measure)}
 strong{font-weight:600; color:var(--ink)}
-em{font-style:italic}
-a{color:var(--accent)}
 code{
   font-family:"IBM Plex Mono",monospace; font-size:.88em;
   background:var(--rule-soft); padding:.12em .38em; border-radius:2px;
   font-variant-numeric:tabular-nums;
 }
 ul{margin:0 0 1.05rem; padding-left:1.15rem; max-width:var(--measure)}
-li{margin-bottom:.45rem}
+li{margin-bottom:.5rem}
 li::marker{color:var(--accent)}
 
-/* ---- tables ---- */
 .tw{overflow-x:auto; margin:1.5rem 0 1.6rem; border:1px solid var(--rule); background:var(--raised)}
 table{border-collapse:collapse; width:100%; font-size:.87rem; min-width:440px}
 caption{
@@ -132,30 +135,22 @@ th{
 }
 th:first-child{text-align:left}
 td{
-  padding:.55rem 1rem; border-bottom:1px solid var(--rule-soft);
-  text-align:right; font-variant-numeric:tabular-nums;
-  font-family:"IBM Plex Mono",monospace; font-size:.85rem;
+  padding:.55rem 1rem; border-bottom:1px solid var(--rule-soft); text-align:right;
+  font-variant-numeric:tabular-nums; font-family:"IBM Plex Mono",monospace; font-size:.85rem;
 }
-td:first-child{
-  text-align:left; font-family:"IBM Plex Sans",sans-serif; font-size:.87rem;
-  color:var(--ink-soft);
-}
+td:first-child{text-align:left; font-family:"IBM Plex Sans",sans-serif; font-size:.87rem; color:var(--ink-soft)}
 tbody tr:last-child td{border-bottom:none}
 tr.hl td{background:var(--refute-soft)}
 tr.hl td:first-child{font-weight:600; color:var(--ink)}
-.pos{color:var(--confirm)} .neg{color:var(--refute)}
-.dim{color:var(--muted)}
+.pos{color:var(--confirm)} .neg{color:var(--refute)} .dim{color:var(--muted)}
 
-/* ---- callouts ---- */
 .note{
   border-left:2px solid var(--rule); padding:.15rem 0 .15rem 1.2rem;
   margin:1.6rem 0; max-width:var(--measure); color:var(--muted); font-size:.94rem;
 }
 .note strong{color:var(--ink-soft)}
-.flag{
-  background:var(--accent-soft); border:1px solid var(--rule);
-  padding:1.1rem 1.3rem; margin:1.7rem 0; max-width:var(--measure);
-}
+.flag{background:var(--accent-soft); border:1px solid var(--rule); padding:1.1rem 1.3rem;
+  margin:1.7rem 0; max-width:var(--measure)}
 .flag .h{
   font-family:"IBM Plex Mono",monospace; font-size:.71rem; letter-spacing:.1em;
   text-transform:uppercase; color:var(--accent); margin-bottom:.55rem; font-weight:500;
@@ -163,7 +158,6 @@ tr.hl td:first-child{font-weight:600; color:var(--ink)}
 .flag p{margin:0; font-size:.94rem; color:var(--ink-soft)}
 .flag p + p{margin-top:.7rem}
 
-hr{border:none; border-top:1px solid var(--rule); margin:3.4rem 0}
 footer{
   margin-top:4rem; padding-top:1.4rem; border-top:1px solid var(--rule);
   font-family:"IBM Plex Mono",monospace; font-size:.75rem; color:var(--muted);
@@ -178,98 +172,119 @@ footer{
 <h1>Lazy Prices, Retested</h1>
 <p class="standfirst">
   A pre-registered out-of-sample test of the disclosure-change signal on 57 US banks.
-  The in-sample result did not survive contact with fresh data.
+  It failed three separate ways, and the third only became visible after the
+  measuring instrument was repaired.
 </p>
 <div class="byline">
   <span>FY2019&ndash;2025</span>
-  <span>327 filing pairs</span>
+  <span>319 filing pairs</span>
   <span>57 institutions</span>
   <span>2026-08-31</span>
 </div>
 
 <div class="verdict">
-  <h2>The pre-registered test</h2>
+  <h2>In sample, then out of sample</h2>
   <div class="flip">
     <div class="flip-item">
       <div class="flip-label">In-sample &middot; FY2019&ndash;2023</div>
-      <div class="flip-num pos">+7.33%</div>
-      <div class="flip-sub">t = +2.29 &middot; n = 184</div>
+      <div class="flip-num pos">+6.15%</div>
+      <div class="flip-sub">t = +1.83 &middot; n = 186</div>
     </div>
     <div class="flip-arrow">&rarr;</div>
     <div class="flip-item">
       <div class="flip-label">Holdout &middot; FY2023&rarr;24</div>
-      <div class="flip-num neg">&minus;4.95%</div>
-      <div class="flip-sub">t = &minus;1.01 &middot; n = 45</div>
+      <div class="flip-num neg">&minus;4.93%</div>
+      <div class="flip-sub">t = &minus;1.05 &middot; n = 47</div>
     </div>
   </div>
   <p>
-    One test, on data no specification search had touched, with the signal, horizon,
-    direction and cut written down and committed to version control before the number
-    was computed. <strong>The sign flipped.</strong>
+    Both computed on the same, repaired instrument. <strong>The sign flipped</strong>
+    on data no specification search had touched, with the test written down and
+    committed to version control before the number was computed.
   </p>
   <p>
-    Per the interpretation fixed in advance &mdash; <em>&ldquo;negative carries the same
-    conclusion as near zero&rdquo;</em> &mdash; the in-sample result was a specification
-    artifact, and the null settles.
+    The pre-registered test as originally run, on the earlier instrument, gave
+    <code>&minus;4.95%</code> (t&nbsp;=&nbsp;&minus;1.01, n&nbsp;=&nbsp;45). Both are
+    reported below; neither replaces the other.
   </p>
+</div>
+
+<div class="three">
+  <div>
+    <div class="k">One &middot; multiplicity</div>
+    <div class="v">p = 0.131</div>
+    <div class="d">Family-wise, by permutation. One hit among 24 specifications is
+      what chance produces.</div>
+  </div>
+  <div>
+    <div class="k">Two &middot; out of sample</div>
+    <div class="v">&minus;4.95%</div>
+    <div class="d">Pre-registered, single test, on a year no search had touched.
+      The sign reversed.</div>
+  </div>
+  <div>
+    <div class="k">Three &middot; measurement</div>
+    <div class="v">+7.98% &rarr; +6.15%</div>
+    <div class="d">The in-sample effect shrank when extraction was fixed. t fell
+      from 2.48 to 1.83.</div>
+  </div>
 </div>
 
 <section>
   <h2 class="sec"><span class="n">01</span> The question</h2>
   <p>
-    Cohen, Malloy and Nguyen (<em>Journal of Finance</em>, 2020) found that companies which
-    change the language of their annual report earn lower subsequent returns than companies
-    whose filings barely move. Buy the quiet filers, short the changers: 34&ndash;58 basis
-    points a month, value-weighted. The intuition is that managers rewrite disclosure when
-    something has changed, and the market is slow to read it.
+    Cohen, Malloy and Nguyen (<em>Journal of Finance</em>, 2020) found that companies
+    which change the language of their annual report earn lower subsequent returns
+    than companies whose filings barely move. Buy the quiet filers, short the
+    changers: 34&ndash;58 basis points a month, value-weighted. The intuition is that
+    managers rewrite disclosure when something has changed, and the market is slow to
+    read it.
   </p>
   <p>
-    This study asked whether that holds in one sector where the stakes are unusually legible.
-    Banks fail in a specific, documented way &mdash; interest-rate risk that stops being
-    disclosed shortly before it matters &mdash; and Silicon Valley Bank supplied the motivating
-    case. The universe is 57 US banks; the measure is cosine similarity between consecutive
-    Item&nbsp;1A (Risk Factors) sections; the test is whether low-change filers outperform
-    high-change filers over the following year.
+    This study asked whether that holds in one sector where the stakes are unusually
+    legible. Banks fail in a specific, documented way &mdash; interest-rate risk that
+    stops being disclosed shortly before it matters &mdash; and Silicon Valley Bank
+    supplied the motivating case. The universe is 57 US banks; the measure is cosine
+    similarity between consecutive Item&nbsp;1A (Risk Factors) sections; the test is
+    whether low-change filers outperform high-change filers over the following year.
   </p>
 </section>
 
 <section>
   <h2 class="sec"><span class="n">02</span> What the in-sample data said</h2>
   <p>
-    Over FY2019&ndash;2023, the top-versus-bottom quintile spread on Item&nbsp;1A cosine
-    similarity at a twelve-month horizon was <strong>+7.98%</strong> with a t-statistic of
-    2.48 across 197 pairs. Right sign, right section, right horizon, conventionally
-    significant. It looked like a replication.
+    Over FY2019&ndash;2023 the top-versus-bottom quintile spread on Item&nbsp;1A cosine
+    similarity at twelve months was <strong>+7.98%</strong>, t&nbsp;=&nbsp;2.48 across
+    197 pairs. Right sign, right section, right horizon, conventionally significant.
+    It looked like a replication.
   </p>
   <p>
-    It also had a tell. The median split &mdash; the same signal, same horizon, just a
-    coarser cut &mdash; came in at <code>+0.16%</code>, t&nbsp;=&nbsp;0.06. An effect
-    concentrated entirely in the extreme quintiles and absent from the broad comparison is
-    the shape of a small number of outliers, not the shape of a pervasive anomaly.
+    It had a tell. The median split &mdash; same signal, same horizon, just a coarser
+    cut &mdash; came in at <code>+0.16%</code>, t&nbsp;=&nbsp;0.06. An effect
+    concentrated entirely in the extreme quintiles and absent from the broad
+    comparison is the shape of a few outliers, not of a pervasive anomaly.
   </p>
 </section>
 
 <section>
   <h2 class="sec"><span class="n">03</span> Why that was not enough</h2>
   <p>
-    That <code>+7.98%</code> was not the only thing measured. It was one cell in a grid of
-    <strong>24 specifications</strong>: four similarity measures, several sections, four
-    horizons, two directions. Reporting the best cell from a search of that size and calling
-    it significant is the standard way to find something that is not there.
+    That <code>+7.98%</code> was not the only thing measured. It was one cell in a grid
+    of <strong>24 specifications</strong>: four similarity measures, several sections,
+    four horizons, two directions. Reporting the best cell from a search that size and
+    calling it significant is the standard way to find something that is not there.
   </p>
   <p>
-    A permutation test answers the right question &mdash; not &ldquo;how unlikely is this
-    t-statistic?&rdquo; but &ldquo;how often does a search this wide throw up a t-statistic
-    this large somewhere, when nothing is going on?&rdquo; Shuffling the returns against the
-    signals and re-running the entire grid gave a family-wise
-    <strong>p&nbsp;=&nbsp;0.131</strong>. Thirteen percent of random draws produce a hit at
-    least this good. The result was inside the range of noise.
+    A permutation test asks the right question &mdash; not &ldquo;how unlikely is this
+    t-statistic?&rdquo; but &ldquo;how often does a search this wide throw up a
+    t-statistic this large <em>somewhere</em>, when nothing is going on?&rdquo;
+    Shuffling returns against signals and re-running the whole grid gave a family-wise
+    <strong>p&nbsp;=&nbsp;0.131</strong>. The result sat inside the range of noise.
   </p>
   <div class="note">
-    <strong>What correction can and cannot do.</strong> A family-wise p-value establishes
-    that a result is <em>consistent with</em> chance. It cannot establish whether this
-    particular result is real. Those are different claims, and only new data can separate
-    them.
+    <strong>What correction can and cannot do.</strong> A family-wise p-value
+    establishes that a result is <em>consistent with</em> chance. It cannot establish
+    whether this particular result is real. Only new data separates those.
   </div>
 </section>
 
@@ -277,70 +292,36 @@ footer{
   <h2 class="sec"><span class="n">04</span> The pre-registered test</h2>
   <p>
     Every number above came from FY2019&ndash;2023. The study had stopped there for no
-    reason: the universe file was written in August 2026, by which point the FY2024 10-Ks
-    (filed February 2025) and FY2025 10-Ks (filed February 2026) had both existed for
-    months.
+    reason: the universe file was written in August 2026, by which point the FY2024
+    10-Ks (filed February 2025) and FY2025 10-Ks (filed February 2026) had both existed
+    for months. Extending forward produced 103 new pairs, and among them one that
+    mattered more than the rest &mdash; <strong>FY2023&rarr;24, a genuine holdout</strong>
+    with complete twelve-month returns that no specification search had touched.
   </p>
   <p>
-    Extending forward produced 103 new pairs, and among them one that mattered more than the
-    rest. <strong>FY2023&rarr;24 is a genuine holdout</strong> &mdash; 53 pairs with complete
-    twelve-month returns that no specification search had ever touched.
+    A holdout you search is not a holdout, so the test was written down and committed to
+    git before extraction finished: signal <code>sim_1a</code>, horizon 12M, median
+    split, long the quiet filers, <strong>one test</strong>. The interpretation of each
+    outcome was fixed at the same time, so the reading could not drift once a number was
+    visible: similar magnitude and sign would be a genuine replication, near zero would
+    mean the in-sample result was an artifact, and negative would carry the same
+    conclusion as near zero.
   </p>
-  <p>
-    A holdout you search is not a holdout, so the test was written down first and committed
-    to git before extraction finished:
-  </p>
-  <div class="tw">
-    <table>
-      <caption>Specification, fixed in advance</caption>
-      <tbody>
-        <tr><td>Signal</td><td>Item 1A cosine similarity</td></tr>
-        <tr><td>Horizon</td><td>12 months</td></tr>
-        <tr><td>Direction</td><td>long quiet filers, short changers</td></tr>
-        <tr><td>Cut</td><td>median split</td></tr>
-        <tr><td>Tests run</td><td>one</td></tr>
-      </tbody>
-    </table>
+  <div class="flag">
+    <div class="h">Amendment, made before the number was computed</div>
+    <p>
+      A returns-blind quality check found five holdout pairs where
+      &ldquo;Item&nbsp;1A&rdquo; was a cross-reference pointer, not the section &mdash;
+      BK 9 words, USB 17, WFC 20. Two identical pointers score a perfect
+      <code>1.0000</code>, which sorts them to the very top of the quiet-filer ranking,
+      first in line on the long side of this exact test.
+    </p>
+    <p>
+      The filter requires 2,500 words of Item&nbsp;1A on both sides. Applied to the
+      already-spent in-sample data it cost about 0.65pp and did not manufacture the
+      result. Declared and committed ahead of the holdout figure.
+    </p>
   </div>
-  <p>
-    The interpretation of each possible outcome was fixed at the same time, so the reading
-    could not drift once a number was visible: a spread of similar magnitude and sign would
-    be a genuine replication; near zero would mean the in-sample result was an artifact; and
-    negative would carry the same conclusion as near zero.
-  </p>
-
-  <h3>One amendment, also made before the number was computed</h3>
-  <p>
-    A quality check on the extracted text &mdash; which reads word counts only and never
-    touches returns &mdash; found five holdout pairs where &ldquo;Item&nbsp;1A&rdquo; was not
-    Item&nbsp;1A at all:
-  </p>
-  <div class="tw">
-    <table>
-      <caption>Excluded: extraction returned a pointer, not the section</caption>
-      <thead><tr><th>Issuer</th><th>Year 1</th><th>Year 2</th><th>Cosine</th></tr></thead>
-      <tbody>
-        <tr><td>BK</td><td>9 w</td><td>9 w</td><td class="neg">1.0000</td></tr>
-        <tr><td>USB</td><td>17 w</td><td>17 w</td><td class="neg">1.0000</td></tr>
-        <tr><td>WFC</td><td>20 w</td><td>20 w</td><td class="neg">1.0000</td></tr>
-        <tr><td>MS</td><td>189 w</td><td>186 w</td><td>0.9962</td></tr>
-        <tr><td>CFR</td><td>1,813 w</td><td>4,222 w</td><td>0.8421</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>
-    A real Risk Factors section runs 60,000&ndash;160,000 characters. These are
-    cross-reference pointers the parser returned in place of the section, and two identical
-    pointers score a perfect 1.0000 &mdash; which sorts them to the very top of the
-    quiet-filer ranking, first in line on the long side of this exact test.
-  </p>
-  <p>
-    The filter requires at least 2,500 words of Item&nbsp;1A on both sides. Applied to the
-    already-spent in-sample data it moves the quintile from <code>+7.98%</code> to
-    <code>+7.33%</code> and the median split from <code>+0.16%</code> to
-    <code>&minus;0.58%</code>: it costs about 0.65pp and does not manufacture the result.
-    Those filtered figures are the like-for-like comparators used throughout.
-  </p>
 </section>
 
 <section>
@@ -350,161 +331,187 @@ footer{
       <caption>Item 1A cosine, 12-month horizon, long quiet filers</caption>
       <thead><tr><th>Sample</th><th>Cut</th><th>Spread</th><th>Welch t</th><th>n</th></tr></thead>
       <tbody>
-        <tr><td>In-sample FY2019&ndash;23</td><td>quintile</td><td class="pos">+7.33%</td><td class="pos">+2.29</td><td>184</td></tr>
-        <tr><td>In-sample FY2019&ndash;23</td><td>median</td><td class="dim">&minus;0.58%</td><td class="dim">&minus;0.22</td><td>184</td></tr>
-        <tr class="hl"><td>Holdout FY2023&rarr;24</td><td>median &mdash; pre-registered</td><td class="neg">&minus;4.95%</td><td class="neg">&minus;1.01</td><td>45</td></tr>
-        <tr><td>Holdout FY2023&rarr;24</td><td>quintile &mdash; reference</td><td class="neg">&minus;2.75%</td><td class="neg">&minus;0.33</td><td>45</td></tr>
+        <tr><td>In-sample FY2019&ndash;23</td><td>quintile</td><td class="pos">+6.15%</td><td class="pos">+1.83</td><td>186</td></tr>
+        <tr><td>In-sample FY2019&ndash;23</td><td>median</td><td class="dim">&minus;0.47%</td><td class="dim">&minus;0.18</td><td>186</td></tr>
+        <tr class="hl"><td>Holdout &mdash; pre-registered, as run</td><td>median</td><td class="neg">&minus;4.95%</td><td class="neg">&minus;1.01</td><td>45</td></tr>
+        <tr><td>Holdout &mdash; recomputed, repaired instrument</td><td>median</td><td class="neg">&minus;4.93%</td><td class="neg">&minus;1.05</td><td>47</td></tr>
+        <tr><td>Holdout &mdash; recomputed</td><td>quintile</td><td class="neg">&minus;1.09%</td><td class="neg">&minus;0.13</td><td>47</td></tr>
       </tbody>
     </table>
   </div>
   <p>
-    The signal did not merely weaken. It changed sign, on both cuts, on data selected before
+    The signal did not weaken. It changed sign, on both cuts, on data selected before
     anyone looked at it.
+  </p>
+  <p>
+    The two holdout rows are reported side by side deliberately. The registered figure
+    is the test as run; the recomputed one uses an extractor repaired afterwards, and is
+    a <strong>secondary analysis, not a second test</strong>. That the two land within
+    0.02pp of each other says the conclusion never depended on the pairs the quality
+    filter removed.
   </p>
 </section>
 
 <section>
-  <h2 class="sec"><span class="n">06</span> What this does and does not establish</h2>
+  <h2 class="sec"><span class="n">06</span> Then the instrument was repaired</h2>
   <p>
-    Stated precisely, this is a <strong>failure to confirm, not a demonstrated
-    negative</strong>. With 45 pairs and a return standard deviation near 15%, the holdout's
-    own minimum detectable effect is roughly <strong>8.8%</strong> at 95% confidence. It
-    could never have detected the 2&ndash;3.5% effect the original paper reports, and could
-    only marginally have detected the <code>+7.33%</code> that made the in-sample result look
-    interesting.
+    Four large banks &mdash; Wells Fargo, US Bancorp, BNY Mellon, Morgan Stanley &mdash;
+    were returning 20, 17, 9 and 189 words for Item&nbsp;1A. The cause was not a parsing
+    failure. Each filing says plainly where the section is:
+  </p>
+  <div class="note">
+    &ldquo;Information in response to this Item&nbsp;1A can be found in the 2024 Annual
+    Report to Shareholders under &lsquo;Financial Review &ndash; Risk
+    Factors.&rsquo;&rdquo;
+  </div>
+  <p>
+    The prose is filed as <strong>Exhibit 13</strong>, a separate document in the same
+    filing, and the extractor only ever read the primary one. Following the pointer
+    recovers it:
+  </p>
+  <div class="tw">
+    <table>
+      <caption>Item 1A recovered from the Annual Report exhibit</caption>
+      <thead><tr><th>Issuer</th><th>Before</th><th>FY2023</th><th>FY2024</th></tr></thead>
+      <tbody>
+        <tr><td>Wells Fargo</td><td class="dim">251 ch</td><td>101,149</td><td>100,076</td></tr>
+        <tr><td>US Bancorp</td><td class="dim">218 ch</td><td>97,497</td><td>97,148</td></tr>
+        <tr><td>BNY Mellon</td><td class="dim">173 ch</td><td>59,493</td><td>66,047</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Eighteen pairs recovered, their cosines moving from a degenerate <code>1.0000</code>
+    to a real 0.92&ndash;0.997. In the other direction, Morgan Stanley and Citizens were
+    found to have &ldquo;Item&nbsp;1A&rdquo; extractions of 584,000&ndash;656,000
+    characters &mdash; the entire back half of the document. Those produced plausible
+    0.99 cosines because the over-capture was consistent year to year, but they were
+    never Item&nbsp;1A, and eight such pairs were dropped.
   </p>
   <p>
-    What it does establish is that the effect did not reappear at anything like the magnitude
-    that made it worth pursuing &mdash; and that two independent lines of evidence now point
-    the same way. The in-sample result failed multiplicity correction; the out-of-sample test
-    reversed. Neither alone would settle it. Together they do.
+    In-sample data quality went from 184 of 224 pairs carrying a genuine Item&nbsp;1A to
+    <strong>213 of 218</strong>. And the in-sample result got weaker:
+  </p>
+  <div class="tw">
+    <table>
+      <caption>Item 1A cosine, 12M, before and after the repair</caption>
+      <thead><tr><th>Cut</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>Quintile</td><td class="pos">+7.98% &middot; t=2.48</td><td>+6.15% &middot; t=1.83</td></tr>
+        <tr><td>Median split</td><td class="dim">+0.16% &middot; t=0.06</td><td class="dim">&minus;0.47% &middot; t=&minus;0.18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    This is the third independent line of evidence, and arguably the most telling. The
+    result had already failed multiplicity correction; it now also falls below the naive
+    significance threshold. <strong>An effect that shrinks as measurement error is
+    removed is behaving like measurement error.</strong>
+  </p>
+</section>
+
+<section>
+  <h2 class="sec"><span class="n">07</span> What this does and does not establish</h2>
+  <p>
+    Stated precisely, the holdout is a <strong>failure to confirm, not a demonstrated
+    negative</strong>. With 45 pairs and a return standard deviation near 15%, its own
+    minimum detectable effect is roughly <strong>8.8%</strong> at 95% confidence. It
+    could never have detected the 2&ndash;3.5% effect the original paper reports, and
+    could only marginally have detected the in-sample figure that made this worth
+    pursuing.
+  </p>
+  <p>
+    What the three findings together establish is that the effect did not survive
+    correction for the search that found it, did not reappear out of sample, and shrank
+    when the instrument improved. No one of those settles it. Together they do.
   </p>
 
-  <h3>The number that is not evidence</h3>
+  <h3>The numbers that are not evidence</h3>
   <p>
-    The FY2024&rarr;25 pairs, added in the same extension, came back positive at short
-    horizons: <code>+4.00%</code> at three months (t&nbsp;=&nbsp;1.84) and
-    <code>+4.65%</code> at six months (t&nbsp;=&nbsp;1.73), on 48 pairs.
+    The FY2024&rarr;25 pairs came back positive at short horizons: <code>+3.02%</code>
+    at three months (t&nbsp;=&nbsp;1.49) and <code>+3.52%</code> at six
+    (t&nbsp;=&nbsp;1.32), on 47 pairs.
   </p>
   <div class="flag">
     <div class="h">Not part of the test</div>
     <p>
-      These sit at horizons that were never registered, on a pair-year whose twelve-month
-      returns do not exist until February 2027. Reading them as rescuing the result would be
-      exactly the specification search the holdout was built to rule out.
+      These sit at horizons that were never registered, on a pair-year whose
+      twelve-month returns do not exist until February 2027. Reading them as rescuing
+      the result would be exactly the specification search the holdout was built to rule
+      out.
     </p>
-    <p>
-      They are reported because leaving them out would be selective too. They change nothing.
-    </p>
+    <p>They are reported because omitting them would be selective too. They change nothing.</p>
   </div>
 </section>
 
 <section>
-  <h2 class="sec"><span class="n">07</span> What broke along the way</h2>
-  <p>
-    Two findings about the instrument matter more for future work than the null itself.
-  </p>
-
-  <h3>Item 7A is untestable on this universe</h3>
+  <h2 class="sec"><span class="n">08</span> Item 7A, and why it was never testable here</h2>
   <p>
     Item 7A &mdash; Quantitative and Qualitative Disclosures About Market Risk &mdash; is
-    where a bank's interest-rate sensitivity tables live, and it is the section the original
-    thesis leaned on. Measured across the universe, it splits three ways:
-  </p>
-  <div class="tw">
-    <table>
-      <caption>Item 7A by issuer</caption>
-      <thead><tr><th>Population</th><th>Issuers</th><th>Share</th></tr></thead>
-      <tbody>
-        <tr><td>No standalone 7A &mdash; cross-referenced into MD&amp;A</td><td>38</td><td>67%</td></tr>
-        <tr><td>Genuine section</td><td>14</td><td>25%</td></tr>
-        <tr><td>Over-capture &mdash; parser swallowed adjacent items</td><td>5</td><td>9%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>
-    Two thirds of the universe route market risk into the MD&amp;A and leave a
-    twenty-word pointer behind. No extractor recovers a section that was never filed
-    separately, which caps the 7A thesis at roughly 56 observations against the ~725 the
-    power analysis requires. It is not underpowered; it is untestable here. Silicon Valley
-    Bank, which had a real Item&nbsp;7A with a real sensitivity table, is the exception that
-    made it look otherwise.
-  </p>
-
-  <h3>Extraction quality was a live confound, not a footnote</h3>
-  <p>
-    Across the corpus, 7.6% of in-sample pairs and 9.4% of holdout pairs had an
-    &ldquo;Item&nbsp;1A&rdquo; that was a pointer rather than the section. Because two
-    identical pointers score 1.0000, these landed at the top of the quiet-filer ranking
-    &mdash; noise in precisely the position that most affects every result in the study.
+    where a bank's interest-rate sensitivity tables live, and it is the section the
+    original thesis leaned on. It cannot carry that weight on this universe:
+    <strong>roughly two thirds of issuers file no standalone Item&nbsp;7A</strong>,
+    routing market risk into their own MD&amp;A and leaving a twenty-word pointer.
   </p>
   <p>
-    The extractor now enforces per-section bounds. The two sections fail in opposite
-    directions, so the bounds are deliberately asymmetric: Item&nbsp;1A is never legitimately
-    short, while a short Item&nbsp;7A is usually <em>correct</em>. The floor is sited in an
-    empty band measured across 401 cached filings &mdash; 27 extractions at or below 2,181
-    characters, 374 at or above 18,696, and nothing in between.
+    A late finding softened this slightly without changing it. Some issuers point not at
+    their own MD&amp;A but at the Annual Report exhibit, which <em>is</em> followable the
+    way Item&nbsp;1A now is &mdash; about five or six of them. Recovering those would
+    take the usable 7A sample from 39 pairs to perhaps 70. The minimum detectable effect
+    at that size is still near 7% against a 2&ndash;3.5% target, so the section stays
+    untestable here; it merely becomes less thinly untestable.
   </p>
   <p>
-    This does not repair the affected filings. For four institutions the parser fails on the
-    document structure entirely and no fallback recovers it, so the honest outcome is no
-    answer rather than a wrong one: <strong>20 of 327 pairs</strong> lose Item&nbsp;1A
-    altogether.
+    Silicon Valley Bank, which had a real Item&nbsp;7A with a real sensitivity table, is
+    the exception that made the whole approach look more general than it is.
   </p>
 </section>
 
 <section>
-  <h2 class="sec"><span class="n">08</span> Where this leaves the study</h2>
+  <h2 class="sec"><span class="n">09</span> Where this leaves the study</h2>
   <p>
-    The disclosure-change anomaly does not replicate on this banking universe. That is the
-    finding, and it is a real one &mdash; arrived at through a pre-registered test rather
-    than by running out of ideas.
+    The disclosure-change anomaly does not replicate on this banking universe. That is
+    the finding, and it was reached through a pre-registered test rather than by running
+    out of ideas.
   </p>
   <p>
-    It also reprices the obvious next step. Extending the corpus back to FY2010 would take
-    the sample to roughly 855 pairs and the minimum detectable effect to 3.2%, which is the
-    first point at which the original paper's effect size becomes detectable at all. Before
-    the holdout, that was the clear move. After it, it buys statistical power for an effect
-    that has just failed its one out-of-sample test &mdash; a materially worse bet, and worth
-    saying plainly rather than proceeding on momentum.
+    It also reprices the obvious next step. Extending back to FY2010 would take the
+    sample to roughly 855 pairs and the minimum detectable effect to 3.2% &mdash; the
+    first point at which the original effect size becomes detectable at all. Before the
+    holdout that was the clear move. After it, it buys statistical power for an effect
+    that has failed its out-of-sample test and shrunk under better measurement. That is
+    a materially worse bet, and worth saying plainly rather than proceeding on momentum.
   </p>
-  <p>
-    Three constraints would bind any continuation, independent of sample size:
-  </p>
+  <p>Three constraints would bind any continuation, independent of sample size:</p>
   <ul>
-    <li>
-      <strong>Time clustering.</strong> Banks file within a few weeks of each other every
-      February, so 327 pairs represent roughly six independent periods, not 327 independent
-      observations.
-    </li>
-    <li>
-      <strong>Extraction fidelity.</strong> The instrument was measuring the wrong text for
-      about 8% of the corpus, concentrated at the extreme of the ranking that drives the
-      result.
-    </li>
-    <li>
-      <strong>Sector choice.</strong> A universe of banks maximises thematic relevance and
-      minimises independence. The original result is drawn from thousands of firms filing
-      year-round.
-    </li>
+    <li><strong>Time clustering.</strong> Banks file within weeks of each other every
+      February, so 319 pairs represent roughly six independent periods, not 319
+      independent observations.</li>
+    <li><strong>Extraction fidelity.</strong> The instrument was measuring the wrong text
+      for a meaningful fraction of the corpus, concentrated at the extreme of the ranking
+      that drives the result. It is better now; it was never checked before.</li>
+    <li><strong>Sector choice.</strong> A universe of banks maximises thematic relevance
+      and minimises independence. The original result draws on thousands of firms filing
+      year-round.</li>
   </ul>
   <div class="note">
-    <strong>On the negative result.</strong> Every number here was produced by a pipeline
-    whose defects are documented above, and the honest summary of the strongest cut is that
-    it reversed out of sample. That is worth more than a positive result from the same
-    pipeline would have been &mdash; the version of this study that reported
-    <code>+7.98%,&nbsp;t&nbsp;=&nbsp;2.48</code> and stopped would have been wrong, and
-    nothing in the in-sample data alone would have revealed it.
+    <strong>On the negative result.</strong> The version of this study that reported
+    <code>+7.98%, t&nbsp;=&nbsp;2.48</code> and stopped would have been wrong, and
+    nothing in the in-sample data alone would have revealed it. What revealed it was
+    correcting for the search, testing on data the search had not seen, and then fixing
+    the instrument and watching the effect shrink. All three were available before
+    publication. Only the first is conventional.
   </div>
 </section>
 
 <footer>
   <p>
-    57 US banks &middot; FY2019&ndash;2025 &middot; 327 of 342 pairs scored, the shortfall
-    being institutions that ceased to exist &middot; single pipeline fingerprint &middot;
-    similarity measured with bag-of-words cosine, returns computed as excess over KRE and
-    aligned to filing dates. Reference: Cohen, Malloy &amp; Nguyen, &ldquo;Lazy
-    Prices&rdquo;, <em>Journal of Finance</em> 75(3), 2020.
+    57 US banks &middot; FY2019&ndash;2025 &middot; 319 of 342 pairs scored, the
+    shortfall being institutions that ceased to exist and filings whose Item&nbsp;1A
+    could not be located &middot; single extractor fingerprint across the corpus
+    &middot; similarity measured with bag-of-words cosine, returns computed as excess
+    over KRE and aligned to filing dates. Reference: Cohen, Malloy &amp; Nguyen,
+    &ldquo;Lazy Prices&rdquo;, <em>Journal of Finance</em> 75(3), 2020.
   </p>
 </footer>
 
