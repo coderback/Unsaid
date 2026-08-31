@@ -69,6 +69,24 @@ SUPPLEMENTARY_YEAR2 = 2025
 # minimum for the section rather than a number chosen here.
 MIN_REAL_1A_WORDS = 2_500
 
+# The pre-registered out-of-sample test AS RUN, on 2026-08-30, under extractor
+# fingerprint 29c8f6adb9. Pinned as a literal on purpose.
+#
+# The extractor was later fixed to follow incorporation-by-reference into the
+# Annual Report exhibit, which recovers a genuine Item 1A for WFC, USB and BK.
+# Those three then pass the quality filter instead of being excluded, so any
+# recomputation of this cell returns a different number. That fix was motivated
+# by extraction quality and was made before any post-fix figure existed, so it is
+# not outcome-driven -- but it is still a second look at the same holdout with a
+# changed instrument, and the value of a holdout is that you only get one.
+#
+# The registered result therefore stands as reported. Recomputed values are shown
+# beside it, labelled, and never in place of it.
+REGISTERED = {
+    "spread": -4.95, "t": -1.01, "n": 45,
+    "run_on": "2026-08-30", "fingerprint": "29c8f6adb9",
+}
+
 
 def has_real_1a(r: Dict[str, Any]) -> bool:
     """True when BOTH years carry a genuine Item 1A rather than a pointer."""
@@ -239,10 +257,35 @@ def _holdout_section(holdout: List[Dict[str, Any]],
                 "`{:.4f}`".format(r["sim_1a"]) if r.get("sim_1a") is not None else "-"))
     holdout = clean
 
+    md.append("\n### The registered result\n")
+    md.append(
+        "\nAs run on {run_on} under extractor fingerprint `{fingerprint}`. This is the "
+        "pre-registered out-of-sample test and it is reported as it was computed.\n".format(
+            **REGISTERED)
+    )
+    md.append("\n| Cut | Spread | Welch t | n |")
+    md.append("|---|---|---|---|")
+    md.append("| **Median split** &mdash; pre-registered | `{spread:+.2f}%` | `{t:+.2f}` | {n} |".format(
+        **REGISTERED))
+
+    md.append("\n### Recomputed under the current extractor\n")
+    md.append(
+        "\nThe extractor was subsequently fixed to follow incorporation-by-reference into "
+        "the Annual Report exhibit, which recovers a genuine Item 1A for WFC, USB and BK. "
+        "Those three now pass the quality filter instead of being excluded, so the figures "
+        "below are computed on a different sample from the registered one.\n"
+    )
+    md.append(
+        "\n**This is a secondary analysis, not a second test.** The fix was motivated by "
+        "extraction quality and settled before any post-fix figure existed, so it is not "
+        "outcome-driven -- but it is a second look at the same holdout with a changed "
+        "instrument, and a holdout is only untouched once. It is reported beside the "
+        "registered result, never in place of it, whichever way it goes.\n"
+    )
     md.append("\n| Cut | Spread | Welch t | n |")
     md.append("|---|---|---|---|")
     primary = None
-    for label, frac in (("**Median split** (pre-registered)", 2), ("Quintile (reference)", 5)):
+    for label, frac in (("Median split &mdash; recomputed", 2), ("Quintile (reference)", 5)):
         r = quintile_spread(holdout, HOLDOUT_SIGNAL, HOLDOUT_HORIZON,
                             HOLDOUT_HIGH_IS_QUIET, frac=frac)
         if not r:

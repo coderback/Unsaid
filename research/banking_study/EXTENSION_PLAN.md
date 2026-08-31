@@ -4,7 +4,7 @@ Single unattended job that extends the study forward two years, activates the
 staged extractor gate, and produces an out-of-sample test of the only result that
 ever cleared significance.
 
-Status: **extraction complete** (327/342 pairs scored, 2026-08-30). Pre-registered test amended below, then run.
+Status: **re-extracting** under fingerprint `9e2f5cbe94` (2026-08-31) after the Exhibit 13 fix. The registered result below was run on the previous corpus and stands as reported; see Amendment 2.
 
 Availability confirmed against EDGAR for all 57 banks:
 
@@ -141,6 +141,40 @@ Interpretation, also fixed in advance:
 | Positive, similar magnitude | Genuine out-of-sample replication. Strongest evidence in the project. |
 | Near zero | In-sample result was a specification artifact. Null settles cleanly. |
 | Negative | Same conclusion as near-zero; direction was not stable. |
+
+---
+
+## Amendment 2, 2026-08-31 - added while the re-extraction was still running
+
+The extractor was fixed to follow incorporation-by-reference into Exhibit 13, the
+Annual Report to Shareholders. WFC, USB and BK satisfy Item 1A with a
+one-sentence pointer and file the Risk Factors prose there; the extractor read
+only the primary document and so returned 20, 17 and 9 words. It now recovers
+roughly 60,000-101,000 characters for each, across both years, stable to within
+1% year over year.
+
+**This moves the holdout.** Those three were excluded from the registered test by
+the Amendment 1 quality filter. With a real Item 1A they pass it, so the sample
+changes from 45 pairs to roughly 48 and the number changes with it.
+
+Declared now, before any post-fix figure has been computed - the re-extraction is
+at 50 of 342 pairs as this is written:
+
+1. **The registered result stands as reported**: median split, `-4.95%`,
+   t = `-1.01`, n = 45, run 2026-08-30 under extractor fingerprint `29c8f6adb9`.
+   It is pinned as a literal in `09_compare_signals.py` so that re-running the
+   script cannot quietly overwrite it.
+2. **The recomputed figure is a secondary analysis, not a second test.** It is
+   rendered beside the registered result, labelled, and never in place of it.
+3. **This holds whichever direction it goes.** If the recomputed number turns
+   positive, that does not resurrect the signal; if it turns more negative, that
+   does not strengthen the null. Either way it is one more look at a holdout that
+   was only untouched once.
+
+The distinction being preserved: the fix was motivated by extraction quality and
+settled before any post-fix number existed, so it is not outcome-driven. But
+"not outcome-driven" is not the same as "still a holdout", and conflating the two
+is exactly how a pre-registration quietly becomes decoration.
 
 ---
 
