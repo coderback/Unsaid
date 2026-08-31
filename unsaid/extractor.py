@@ -120,6 +120,32 @@ _MAX_PLAUSIBLE_CHARS = {"1A": 250_000, "7A": 200_000}
 # extraction is usually the CORRECT answer and must not be treated as failure.
 _MIN_PLAUSIBLE_CHARS = {"1A": 8_000}
 
+# Item 1A is often satisfied by a pointer to Exhibit 13, the Annual Report to
+# Shareholders, where the Risk Factors prose actually lives.
+_INCORP_BY_REF = re.compile(
+    r"incorporat\w+\s+(?:herein\s+|in\w*\s+th\w+\s+[\w\s]{0,24}?)?by\s+reference", re.I)
+
+# Inside the exhibit there are no "Item 1A" anchors to slice on, so the section
+# is located by its heading PLUS the investor-facing preamble that follows it.
+# The heading alone is not enough: "Risk Factors" appears up to 53 times in one
+# exhibit, nearly all of them table-of-contents rows or cross-references.
+_AR_OPENER = re.compile(
+    r"\b(?:an\s+investment\s+in|investing\s+in|you\s+should\s+carefully\s+consider|"
+    r"the\s+following\s+(?:discussion|risk)|our\s+business\s+is\s+subject\s+to|"
+    r"we\s+are\s+subject\s+to\s+(?:a\s+number\s+of\s+)?risks)", re.I)
+_AR_OPENER_WINDOW = 220
+
+# Headings that follow Risk Factors in an annual report.
+_AR_ENDERS = (
+    "Report of Independent Registered Public Accounting Firm",
+    "Consolidated Statement of Income",
+    "Consolidated Balance Sheet",
+    "Controls and Procedures",
+    "Glossary of Acronyms",
+    "Directors and Executive Officers",
+    "Managing Committee",
+)
+
 _MIN_SECTION_PROSE = 2_000
 # Absolute floor, used only when nothing better is available.
 _MIN_FALLBACK_PROSE = 200
@@ -241,6 +267,90 @@ def _is_plausible(text: Optional[str], section: str) -> bool:
     return n <= _MAX_PLAUSIBLE_CHARS.get(section, 250_000)
 
 
+def _slice_risk_factors_from_prose(prose: str) -> Optional[str]:
+    """
+    Bound the Risk Factors section inside annual-report-style prose.
+
+    Start is the first "Risk Factors" whose following text opens like a real
+    section rather than a reference to one. End is the nearest following heading
+    that leaves a plausible section behind -- the length check matters, because
+    Wells Fargo cites "Consolidated Balance Sheet" 3,278 chars into its own risk
+    prose, which is a mention and not the next heading.
+    """
+    if not prose:
+        return None
+    starts = [m.start() for m in re.finditer(r"Risk\s+Factors", prose, re.I)
+              if _AR_OPENER.search(prose[m.end():m.end() + _AR_OPENER_WINDOW])]
+    if not starts:
+        return None
+    start = starts[0]
+    floor = _MIN_PLAUSIBLE_CHARS.get("1A", _MIN_FALLBACK_PROSE)
+
+    end = None
+    for pat in _AR_ENDERS:
+        m = re.search(re.escape(pat), prose[start:], re.I)
+        if m and m.start() >= floor and (end is None or m.start() < end):
+            end = m.start()
+    if end is None:
+        logger.warning(
+            "Risk Factors found in the annual report exhibit but no end heading "
+            "followed it; capping at %d chars.", _MAX_SECTION_CHARS)
+        return prose[start:start + _MAX_SECTION_CHARS]
+    return prose[start:start + end]
+
+
+def _extract_from_annual_report_exhibit(filing, section: str) -> Optional[str]:
+    """
+    Follow an incorporation-by-reference pointer into Exhibit 13.
+
+    Only meaningful for Item 1A. Item 7A is not recovered this way: the two
+    thirds of banks with no standalone 7A cross-reference into their own MD&A,
+    not into a separate exhibit, so there is nothing to follow.
+    """
+    if section != "1A":
+        return None
+    try:
+        attachments = edgar_call(lambda: filing.attachments)
+    except Exception as e:
+        logger.debug("Could not list attachments: %s", e)
+        return None
+
+    exhibit = None
+    for att in attachments or []:
+        try:
+            kind = str(getattr(att, "document_type", "") or getattr(att, "type", "") or "")
+        except Exception:
+            continue
+        if kind.upper().startswith("EX-13"):
+            exhibit = att
+            break
+    if exhibit is None:
+        return None
+
+    html = None
+    for meth in ("download", "content", "text"):
+        try:
+            attr = getattr(exhibit, meth, None)
+            if attr is None:
+                continue
+            html = edgar_call(attr) if callable(attr) else attr
+            if html:
+                break
+        except Exception:
+            continue
+    if not html:
+        return None
+    if isinstance(html, bytes):
+        html = html.decode("utf-8", "ignore")
+
+    body = _slice_risk_factors_from_prose(_html_to_prose(html))
+    if body:
+        logger.info(
+            "Extracted Item %s from the Annual Report exhibit (EX-13) that Item %s "
+            "incorporates by reference (len=%d)", section, section, len(body))
+    return body
+
+
 def extract_section(filing, section: str) -> Optional[str]:
     """
     Extract Item 1A or Item 7A from an edgartools Filing object.
@@ -292,8 +402,28 @@ def extract_section(filing, section: str) -> Optional[str]:
                     logger.warning(
                         "Rejected Item %s from edgartools: %d chars is below the plausible "
                         "minimum of %d, so this is a cross-reference pointer rather than "
-                        "the section. Falling through.", section, len(text), lo,
+                        "the section.", section, len(text), lo,
                     )
+                    # If the pointer says the section is incorporated by reference,
+                    # take the filing at its word: the primary document does not
+                    # contain the section, and the later attempts search only the
+                    # primary document. They cannot find it, but they CAN return a
+                    # plausibly-sized slice of whatever follows -- which no size
+                    # gate can catch. Go straight to the exhibit instead.
+                    if _INCORP_BY_REF.search(text):
+                        logger.info(
+                            "Item %s is incorporated by reference; following it to the "
+                            "Annual Report exhibit rather than searching the primary "
+                            "document.", section,
+                        )
+                        body = _extract_from_annual_report_exhibit(filing, section)
+                        if _is_plausible(body, section):
+                            return body
+                        if body:
+                            logger.warning(
+                                "Rejected Item %s from the annual report exhibit: %d "
+                                "chars is outside the plausible range.", section, len(body),
+                            )
     except Exception as e:
         logger.debug("edgartools native extraction failed for Item %s: %s", section, e)
 
@@ -347,10 +477,25 @@ def extract_section(filing, section: str) -> Optional[str]:
     except Exception as e:
         logger.debug("Regex fallback failed for Item %s: %s", section, e)
 
+    # --- Attempt 4: follow incorporation by reference into Exhibit 13 ---
+    # Deliberately last: it downloads a second, often very large document, so it
+    # runs only when the primary document genuinely has not yielded the section.
+    try:
+        body = _extract_from_annual_report_exhibit(filing, section)
+        if _is_plausible(body, section):
+            return body
+        if body:
+            logger.warning(
+                "Rejected Item %s from the annual report exhibit: %d chars is outside "
+                "the plausible range.", section, len(body),
+            )
+    except Exception as e:
+        logger.debug("Annual report exhibit fallback failed for Item %s: %s", section, e)
+
     logger.warning(
-        "Could not extract a plausible Item %s from filing; all three attempts were "
-        "empty or outside the plausible size range. Returning None rather than a "
-        "section that is not the section.", section,
+        "Could not extract a plausible Item %s from filing; every attempt was empty "
+        "or outside the plausible size range. Returning None rather than a section "
+        "that is not the section.", section,
     )
     return None
 
