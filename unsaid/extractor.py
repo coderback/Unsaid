@@ -146,6 +146,19 @@ _AR_ENDERS = (
     "Managing Committee",
 )
 
+# Titles of the items that can follow each section. Used to cut an over-capture
+# back to its real end. Matched anchored to a whole line, because that is what
+# distinguishes a heading from the same words used in a sentence: "cybersecurity
+# incidents" and "residential properties" both occur inside Morgan Stanley's own
+# risk prose and defeat unanchored matching.
+_FOLLOWING_TITLES = {
+    "1A": ("Unresolved Staff Comments", "Cybersecurity", "Properties",
+           "Legal Proceedings", "Mine Safety Disclosures"),
+    "7A": ("Financial Statements and Supplementary Data",
+           "Changes in and Disagreements with Accountants",
+           "Controls and Procedures"),
+}
+
 _MIN_SECTION_PROSE = 2_000
 # Absolute floor, used only when nothing better is available.
 _MIN_FALLBACK_PROSE = 200
@@ -265,6 +278,27 @@ def _is_plausible(text: Optional[str], section: str) -> bool:
     if n <= _MIN_PLAUSIBLE_CHARS.get(section, _MIN_FALLBACK_PROSE):
         return False
     return n <= _MAX_PLAUSIBLE_CHARS.get(section, 250_000)
+
+
+def _truncate_over_capture(text: Optional[str], section: str) -> Optional[str]:
+    """
+    Cut a section that ran past its end back to the next item heading.
+
+    Returns None when no heading is found, so the caller falls through rather
+    than accepting an arbitrary truncation.
+    """
+    titles = _FOLLOWING_TITLES.get(section)
+    if not text or not titles:
+        return None
+    floor = _MIN_PLAUSIBLE_CHARS.get(section, _MIN_FALLBACK_PROSE)
+    cut = None
+    for title in titles:
+        for m in re.finditer(r"(?m)^\s*" + re.escape(title) + r"\s*$", text):
+            # Below the floor it is a heading inside the section's own prose,
+            # not the section's end.
+            if m.start() >= floor and (cut is None or m.start() < cut):
+                cut = m.start()
+    return text[:cut] if cut else None
 
 
 def _slice_risk_factors_from_prose(prose: str) -> Optional[str]:
@@ -395,9 +429,17 @@ def extract_section(filing, section: str) -> Optional[str]:
                 if len(text) > hi:
                     logger.warning(
                         "Rejected Item %s from edgartools: %d chars exceeds the plausible "
-                        "maximum of %d, so the section boundary has overshot. Falling "
-                        "through to the bounded HTML slice.", section, len(text), hi,
+                        "maximum of %d, so the section boundary has overshot.",
+                        section, len(text), hi,
                     )
+                    # The START is usually right even when the end is not, so try
+                    # cutting back to the next item heading before falling through.
+                    trimmed = _truncate_over_capture(text, section)
+                    if _is_plausible(trimmed, section):
+                        logger.info(
+                            "Recovered Item %s by truncating the over-capture at the next "
+                            "item heading (%d -> %d chars)", section, len(text), len(trimmed))
+                        return trimmed
                 elif len(text) <= lo:
                     logger.warning(
                         "Rejected Item %s from edgartools: %d chars is below the plausible "

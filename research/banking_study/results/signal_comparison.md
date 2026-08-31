@@ -31,10 +31,10 @@ same direction, so the numbers are directly comparable.
 | Sim_Cosine (Item 1A) | 3M | `+2.33%` | `+1.27` | 191 | `+0.041` |
 | Sim_Cosine (Item 1A) | 6M | `+1.93%` | `+0.80` | 191 | `-0.002` |
 | Sim_Cosine (Item 1A) | 12M | `+6.12%` | `+1.88` | 191 | `-0.001` |
-| Sim_Cosine (Item 7A) | 1M | `+5.82%` | `+1.89` | 184 | `-0.046` |
-| Sim_Cosine (Item 7A) | 3M | `+5.51%` | `+1.26` | 184 | `-0.130` |
-| Sim_Cosine (Item 7A) | 6M | `+4.45%` | `+0.91` | 184 | `-0.171` |
-| Sim_Cosine (Item 7A) | 12M | `+7.66%` | `+1.42` | 184 | `-0.075` |
+| Sim_Cosine (Item 7A) | 1M | `+5.57%` | `+1.82` | 184 | `-0.046` |
+| Sim_Cosine (Item 7A) | 3M | `+5.45%` | `+1.24` | 184 | `-0.130` |
+| Sim_Cosine (Item 7A) | 6M | `+4.54%` | `+0.92` | 184 | `-0.171` |
+| Sim_Cosine (Item 7A) | 12M | `+7.48%` | `+1.39` | 184 | `-0.075` |
 | LLM removal score | 1M | `+0.02%` | `+0.00` | 176 | `-0.048` |
 | LLM removal score | 3M | `-0.99%` | `-0.22` | 176 | `-0.002` |
 | LLM removal score | 6M | `+0.34%` | `+0.07` | 176 | `-0.033` |
@@ -63,10 +63,10 @@ Pairs where extracted length is within 2x between years (n=214 of 218). A length
 | Sim_Cosine (Item 1A) | 3M | `+2.77%` | `+1.49` | 187 |
 | Sim_Cosine (Item 1A) | 6M | `+2.29%` | `+0.94` | 187 |
 | Sim_Cosine (Item 1A) | 12M | `+6.57%` | `+1.99` | 187 |
-| Sim_Cosine (Item 7A) | 1M | `+5.81%` | `+1.88` | 183 |
-| Sim_Cosine (Item 7A) | 3M | `+6.05%` | `+1.39` | 183 |
-| Sim_Cosine (Item 7A) | 6M | `+5.44%` | `+1.14` | 183 |
-| Sim_Cosine (Item 7A) | 12M | `+7.84%` | `+1.45` | 183 |
+| Sim_Cosine (Item 7A) | 1M | `+5.56%` | `+1.81` | 183 |
+| Sim_Cosine (Item 7A) | 3M | `+5.98%` | `+1.38` | 183 |
+| Sim_Cosine (Item 7A) | 6M | `+5.53%` | `+1.16` | 183 |
+| Sim_Cosine (Item 7A) | 12M | `+7.66%` | `+1.42` | 183 |
 | LLM removal score | 1M | `-0.24%` | `-0.07` | 172 |
 | LLM removal score | 3M | `-1.11%` | `-0.24` | 172 |
 | LLM removal score | 6M | `-0.18%` | `-0.03` | 172 |
@@ -109,7 +109,7 @@ Similarity is high when a filing barely changed; the removal score is high when 
 Specification fixed in `EXTENSION_PLAN.md` **before this data was generated**: signal `sim_1a`, horizon `12M`, median split, long the quiet filers. One test. No other specification is run on this pair, because searching a holdout is what destroys it.
 
 
-**Holdout pairs**: 52 extracted, 51 with a genuine Item 1A on both sides, 47 with a 12-month return as well.
+**Holdout pairs**: 53 extracted, 52 with a genuine Item 1A on both sides, 48 with a 12-month return as well.
 
 
 1 pairs were excluded by a data-quality filter declared and committed **before this test was run**: both years must carry at least 2,500 words of Item 1A. Risk Factors is never legitimately that short, so below the threshold the extractor has returned a cross-reference pointer rather than the section, and two pointers score cosine=1.0000 -- pure noise at the very top of the quiet-filer ranking. The filter reads extracted text length only and never touches returns.
@@ -140,8 +140,8 @@ The extractor was subsequently fixed to follow incorporation-by-reference into t
 
 | Cut | Spread | Welch t | n |
 |---|---|---|---|
-| Median split &mdash; recomputed | `-4.93%` | `-1.05` | 47 |
-| Quintile (reference) | `-1.09%` | `-0.13` | 47 |
+| Median split &mdash; recomputed | `-3.91%` | `-0.85` | 48 |
+| Quintile (reference) | `-1.09%` | `-0.13` | 48 |
 
 **In-sample comparison**: the same signal and horizon gave `+7.98%` (t=2.48) on the quintile over FY2019-2023, which did not survive correction for the 24 specifications searched (family-wise p=0.131). Under the same filter applied here the in-sample figure is `+7.33%` (t=2.29, n=184) on the quintile and `-0.58%` (t=-0.22) on the median split, so the filter costs the in-sample result about 0.65pp and does not manufacture it. Those filtered figures are the like-for-like comparators.
 
@@ -152,11 +152,11 @@ Reading this, per the interpretation fixed in advance: a spread of similar magni
 ### Supplementary: FY2024->25
 
 
-49 pairs. Filed Feb 2026, so **no complete 12-month return exists until Feb 2027** and none is reported here. Short horizons only, and this is not part of the pre-registered test.
+50 pairs. Filed Feb 2026, so **no complete 12-month return exists until Feb 2027** and none is reported here. Short horizons only, and this is not part of the pre-registered test.
 
 
 | Horizon | Spread | Welch t | n |
 |---|---|---|---|
-| 1M | `-0.93%` | `-0.97` | 47 |
-| 3M | `+3.02%` | `+1.49` | 47 |
-| 6M | `+3.52%` | `+1.32` | 47 |
+| 1M | `-0.89%` | `-0.97` | 48 |
+| 3M | `+4.00%` | `+1.84` | 48 |
+| 6M | `+4.65%` | `+1.73` | 48 |
