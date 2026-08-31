@@ -128,6 +128,40 @@ Study
      cites Consolidated Balance Sheet 3,278 chars into its own risk factors. The
      minimum-length guard on end markers is load-bearing, not decoration.
 
+   **Where the 7A stubs point, measured.** The "untestable" conclusion assumed
+   every stub issuer cross-references into its own MD&A. Truist showed that is not
+   universal -- some point at the Annual Report exhibit, which IS followable the
+   same way Item 1A now is. Classified from cached stub text (no EDGAR calls):
+
+   | | issuers | |
+   |---|---|---|
+   | same document / MD&A | 25 | not followable |
+   | unclear | 7 | |
+   | Annual Report exhibit | 5 | BK, FHN, USB, WFC, WTFC |
+
+   Coverage caveat: only 37 of 57 issuers are identifiable this way, because 58
+   filings went through a filing agent (Workiva, Donnelley) whose CIK owns the
+   accession. Of those 58, only 4 classify as exhibit -- about one more issuer --
+   so the true total is roughly 5-6, not materially higher.
+
+   Two of the five are shaky on inspection: FHN points to "2020 MD&A (Item 7)",
+   which reads same-document, and WTFC's captured text is not a pointer at all but
+   mis-sliced content starting mid-word. WFC, USB and BK are the confident ones,
+   which is consistent -- their whole MD&A lives in the exhibit, so both their 1A
+   and their 7A point there.
+
+   **This does not change the 7A conclusion.** Recovering 5 issuers adds ~30 pairs
+   to the 44 that have a real 7A on both sides, so ~74. At that n the minimum
+   detectable effect is still near 6.9% against a 2-3.5% target, and the ~725
+   requirement is untouched. The dominant pattern is what was originally reported:
+   two thirds route market risk into their own MD&A, where there is nothing to
+   follow.
+
+   Extending the exhibit path to Item 7A is a one-line guard change in
+   `_extract_from_annual_report_exhibit`, but it takes a full re-extraction to have
+   any effect. +30 pairs on an untestable section is a poor trade for ~6 hours on
+   its own; bundle it with the next re-run that is warranted for another reason.
+
    The over-capture bug is fixed (a plausibility gate in `extract_section`, 250k
    chars for 1A and 200k for 7A). **Staged but inert** - it changed the extractor
    hash, so the text cache is stale and nothing takes effect until `08` re-runs
