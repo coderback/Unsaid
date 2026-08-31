@@ -96,6 +96,38 @@ Study
    any extraction quality.** SVB is the exception that made it look otherwise: it
    had a real 7A with a real EVE table, which is why the demo works.
 
+   **Item 1A extraction was silently broken for four large banks; three are now
+   fixed.** WFC, USB and BK satisfy Item 1A with a one-sentence pointer and file
+   the Risk Factors prose as Exhibit 13, the Annual Report to Shareholders. The
+   extractor only read the primary document, so it returned 20, 17 and 9 words --
+   which score cosine=1.0000 against themselves and sort to the top of the
+   quiet-filer ranking, i.e. the long side of every test. It now follows the
+   pointer into the exhibit:
+
+   | | before | after, FY2023 / FY2024 |
+   |---|---|---|
+   | WFC | 251 chars | 101,149 / 100,076 |
+   | USB | 218 chars | 97,497 / 97,148 |
+   | BK | 173 chars | 59,493 / 66,047 |
+
+   Morgan Stanley is still broken and needs a different mechanism: its section
+   headings are bare words carrying no item number in the text at all, and those
+   same words recur throughout its risk prose (cybersecurity incidents,
+   residential properties), so text matching cannot find the boundary. Only
+   HTML-structure-aware heading detection would, and the prose conversion
+   discards that. 2 of the 20 lost pairs remain unrecovered.
+
+   Two traps worth remembering, both found the hard way:
+
+   - **An unbounded HTML slice can return plausibly-sized WRONG content.** USB's
+     attempt 2 produced 48,764 chars of the items *following* the pointer -- the
+     right size, the wrong section, and no size gate can see it. When a filing
+     says a section is incorporated by reference, trust it and stop searching the
+     primary document.
+   - **End-marker matching on generic phrases misfires inside the prose.** WFC
+     cites Consolidated Balance Sheet 3,278 chars into its own risk factors. The
+     minimum-length guard on end markers is load-bearing, not decoration.
+
    The over-capture bug is fixed (a plausibility gate in `extract_section`, 250k
    chars for 1A and 200k for 7A). **Staged but inert** - it changed the extractor
    hash, so the text cache is stale and nothing takes effect until `08` re-runs
