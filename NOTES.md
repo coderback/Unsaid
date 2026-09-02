@@ -162,61 +162,50 @@ Study
    lesson -- the generalisation check was cheap, decisive, and should have come
    before the figure, not after.
 
-   **Literature check, 2026-09-02: the added/removed decomposition is largely
-   pre-empted.** Lyle, Riedl & Siano, "Changes in Risk Factor Disclosures and the
-   Variance Risk Premium", *The Accounting Review* 98(6) 2023, measure change
-   through the addition and removal of individual risk factors in 10-K filings.
-   Same decomposition, top-three accounting journal, three years old.
+   **Lyle, Riedl & Siano (2023) read in full** (`research/ssrn-4090024.pdf`, 54pp,
+   TAR 98(6) 327-352). The decomposition is definitively pre-empted, and their
+   version is better than ours.
 
-   | | Lyle/Riedl/Siano | this study |
-   |---|---|---|
-   | unit | individual risk factors (semantic) | bigram / unigram sets (cheap) |
-   | outcome | variance risk premium | stock returns |
-   | finding | added AND removed both *reduce* uncertainty | no return predictability |
+   *Their method.* The SEC requires each risk factor to carry a descriptive
+   caption. They exploit HTML formatting -- a boldface/italic header followed by a
+   plain-text paragraph -- to isolate individual risk factors, then apply string
+   similarity to the CAPTIONS year over year to classify each as static, added, or
+   removed. Measure: count of added+removed scaled by the prior year's risk-factor
+   count. Sample 33,797 annual filings, 2006-2019, 50,330 matched-pair
+   firm-year-months. Top-quintile firms change 15.8 risk factors against a mean of
+   32 disclosed; bottom quintile changes under 1.
 
-   **Correction, same day.** I first read the third row as "peer-reviewed evidence
-   against the Unsaid thesis". That was an overreach from an abstract, and it is
-   wrong. Their finding is that changes in risk-factor disclosure -- additions and
-   removals alike -- are *informative*, and that information reduces the market's
-   uncertainty about firm risk. That is a statement about the SECOND moment.
+   That is a semantic unit with a regulatory basis. Our bigram sets are a crude
+   proxy for the same thing. No contest.
 
-   It does not say removal is benign. A removal can reduce uncertainty (the market
-   learns something) and still predict negative returns (what it learns is bad).
-   Those are compatible. If anything the paper supports the weaker claim that
-   removals carry information, tested on a different outcome.
+   *They ran our orthogonality test too.* They regress against eight alternative
+   text measures including `Delta-Cosine RF Text` -- one minus cosine similarity of
+   Item 1A, explicitly citing Cohen et al. 2020 -- plus header-only and
+   paragraph-only variants, specifically to check whether "a relatively simpler
+   measure of change subsumes the specific identification of additions and
+   removals". It does not. Same question we asked with `r = +0.065`, answered on
+   50,330 observations instead of 315.
 
-   So this is a priority problem for the measurement, not a refutation of the
-   thesis. The return-predictability question remains genuinely open.
+   *They tested returns.* Section VI, **untabulated**: "limited evidence that
+   future returns are lower for firms having more added and removed risk factors."
+   Directionally the Lazy Prices sign, weak enough to be left out of the tables.
 
-   **The paper itself could not be read.** SSRN, both AAA URLs, the Kellogg page
-   and institutional repositories all returned 403 or lacked it. Everything above
-   comes from abstracts via four independent routes. Still unknown and needed
-   before any conclusion: the algorithm for identifying an individual risk factor,
-   whether stock returns appear as an outcome anywhere in the paper, whether added
-   and removed differ in magnitude rather than only in sign, and the sample period.
+   **What this does and does not close.** It closes the measurement, and it closes
+   the "is it orthogonal to cosine" question. It does NOT test added versus removed
+   SEPARATELY against returns -- the untabulated test uses the combined
+   added+removed count, so the asymmetry that motivates this project is still
+   unexamined. That is a real residual gap, but their own combined result being
+   weak and untabulated is not an encouraging prior.
 
-   The remaining gap is thin: add/remove against RETURNS rather than the VRP
-   appears unrun, but that is the obvious referee question on a published paper,
-   not a new idea.
-
-   **Caveat on this check:** web search only, no Scholar/SSRN full-text/EconLit,
-   and both SSRN and the AAA page returned 403 so the abstract was read via search
-   summaries rather than the paper. Read it in full and walk its citation graph
-   before spending anything. If they report a returns robustness test, the gap
-   closes entirely.
-
-   **Consequence:** the methods contribution (extraction error inflates reported
-   significance) is the one to build. It is unaffected by this and was always the
-   stronger finding.
-
-   **Correction to the power discussion.** Lazy Prices does not report a single
-   effect size. Value-weighted quintile sorts give 34-58 bps/month (~4-7%/yr); the
-   Risk-Factors-concentrated specification reports up to **188 bps/month, over
-   22%/yr, t=2.76**. Our test had ~37 observations per quintile, which is ample
-   against 22%/yr (needs ~6) and short against 4-7%/yr (needs ~51). So the null is
-   genuine against the headline specification and underpowered against the
-   conservative one. Earlier framing of "we had a coin flip" was true only of the
-   latter.
+   **And the earlier reading was wrong, confirmed against the text.** I had
+   recorded this as "peer-reviewed evidence against the Unsaid thesis". It is not.
+   Their result is that disclosure change -- in either direction -- is informative
+   and therefore reduces uncertainty about firm risk. That is the second moment. A
+   removal can reduce uncertainty and still predict negative returns. The paper
+   even quotes Heinle et al. (2018) on precisely this ambiguity: adding a risk
+   factor can increase perceived risk (a previously unknown risk now priced) or
+   decrease it (the risk now seen as smaller than feared). Nothing here says
+   removal is benign.
 
    **The extractor fingerprint silently invalidates the text cache, and any script
    that reads it becomes a full re-extraction.** This cost time twice in one day.
