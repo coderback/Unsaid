@@ -1,0 +1,255 @@
+<title>Where the Bad Data Sat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F6F7F8; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#7a7a75;
+  --rule:#E3E5E9; --rule-soft:#EEF0F3; --band:#EEF0F3;
+  --clean:#9a9a94; --pointer:#e34948; --overcap:#4a3aa7;
+  --accent:#8C6D1F; --good:#2C6B52;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#131519; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#949088;
+    --rule:#2b2b29; --rule-soft:#222220; --band:#232321;
+    --clean:#6d6d68; --pointer:#e66767; --overcap:#9085e9;
+    --accent:#C9A24D; --good:#63A98A;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#131519; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#949088;
+  --rule:#2b2b29; --rule-soft:#222220; --band:#232321;
+  --clean:#6d6d68; --pointer:#e66767; --overcap:#9085e9;
+  --accent:#C9A24D; --good:#63A98A;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);margin:0;
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:clamp(1.8rem,5vw,4rem) clamp(1rem,4vw,2.5rem) 5rem}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
+h1{font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(2rem,5.5vw,3.1rem);
+  line-height:1.05;letter-spacing:-.02em;margin:0 0 .9rem;text-wrap:balance}
+.stand{font-family:Spectral,Georgia,serif;font-weight:300;font-size:clamp(1.05rem,2.2vw,1.25rem);
+  color:var(--ink2);max-width:58ch;margin:0 0 2.2rem;line-height:1.5}
+
+.hero{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--pointer);
+  padding:clamp(1.2rem,3vw,1.9rem);margin:0 0 2.4rem}
+.hero .big{font-family:"IBM Plex Mono",monospace;font-size:clamp(2.1rem,6vw,3rem);
+  font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--pointer);
+  font-variant-numeric:tabular-nums}
+.hero p{margin:.9rem 0 0;color:var(--ink2);max-width:60ch}
+
+.panel{background:var(--surface);border:1px solid var(--rule);padding:clamp(1rem,2.5vw,1.5rem);margin:0 0 1.4rem}
+.ptitle{font-weight:600;font-size:1rem;margin-bottom:.15rem}
+.psub{font-size:.84rem;color:var(--muted);margin-bottom:.7rem;max-width:70ch}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:.5rem 0 .8rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:.42rem}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+
+.chartbox{position:relative}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.axis text{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--muted)}
+.bandrect{fill:var(--band)}
+.bandlbl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--muted)}
+.qlab{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600}
+.mark{stroke:var(--surface);stroke-width:.8}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--rule);
+  padding:.45rem .6rem;font-family:"IBM Plex Mono",monospace;font-size:.73rem;line-height:1.5;
+  white-space:nowrap;opacity:0;transition:opacity .1s;box-shadow:0 2px 10px rgba(0,0,0,.10);z-index:5}
+
+.barrow{display:grid;grid-template-columns:96px 1fr 62px;align-items:center;gap:.7rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;margin-bottom:.42rem;
+  font-variant-numeric:tabular-nums}
+.bartrack{height:20px;background:var(--rule-soft);position:relative}
+.barfill{position:absolute;left:0;top:3px;bottom:3px;background:var(--pointer);border-radius:2px}
+.barval{text-align:right;font-weight:600}
+
+.ba{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.ba > div{background:var(--surface);padding:1.05rem 1.15rem}
+.ba .k{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.ba .v{font-family:"IBM Plex Mono",monospace;font-size:1.45rem;font-weight:600;
+  line-height:1;font-variant-numeric:tabular-nums}
+.ba .d{font-size:.8rem;color:var(--muted);margin-top:.45rem}
+
+.note{font-size:.86rem;color:var(--muted);margin-top:1.5rem;max-width:72ch;
+  border-top:1px solid var(--rule);padding-top:1rem}
+details{margin-top:1.2rem}
+summary{cursor:pointer;font-size:.86rem;color:var(--ink2);font-weight:500}
+table{border-collapse:collapse;width:100%;margin-top:.8rem;font-size:.8rem}
+th,td{padding:.38rem .6rem;border-bottom:1px solid var(--rule-soft);text-align:right;
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+th{color:var(--muted);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+th:first-child,td:first-child{text-align:left}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<p class="eyebrow">Banking disclosure study &middot; Methods</p>
+<h1>Where the Bad Data Sat</h1>
+<p class="stand">
+  Text extraction failed on about one filing pair in ten. The failures were invisible
+  to any size check, and they did not land at random &mdash; they piled up at exactly
+  the end of the ranking a quintile sort draws its signal from.
+</p>
+
+<div class="hero">
+  <div class="big" id="herobig"></div>
+  <p id="herop"></p>
+</div>
+
+<div class="panel">
+  <div class="ptitle">Every observation, placed in its own year's ranking</div>
+  <div class="psub">
+    Each dot is one filing pair, positioned by where its Item&nbsp;1A similarity ranked
+    among banks filing that year &mdash; which is precisely how the portfolios were formed.
+    Shaded bands are quintiles. The long leg is Q5 on the right.
+  </div>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--clean)"></i>Genuine Item 1A</span>
+    <span><i class="dot" style="background:var(--pointer)"></i>Cross-reference pointer</span>
+    <span><i class="dot" style="background:var(--overcap)"></i>Over-capture</span>
+  </div>
+  <div class="chartbox" id="stripbox">
+    <svg id="strip" viewBox="0 0 900 260" preserveAspectRatio="xMidYMid meet" role="img"
+         aria-label="Distribution of filing pairs by similarity rank, coloured by extraction quality"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="ptitle">Share of each quintile that was not Item 1A</div>
+  <div class="psub">If extraction failed at random, these five bars would be equal.</div>
+  <div id="bars"></div>
+</div>
+
+<div class="panel">
+  <div class="ptitle">What correcting it did to the headline result</div>
+  <div class="psub">Item 1A cosine similarity, 12-month horizon, top-versus-bottom quintile.</div>
+  <div class="ba" id="ba"></div>
+</div>
+
+<details>
+  <summary>Data table &mdash; quintile composition</summary>
+  <table><thead><tr><th>Quintile</th><th>n</th><th>Pointers</th><th>Over-captures</th><th>Not Item 1A</th></tr></thead>
+  <tbody id="tbody"></tbody></table>
+</details>
+
+<p class="note" id="method"></p>
+</div>
+
+<script>
+const D = {"points":[{"s":0.8507,"p":0.0357,"c":"clean","t":"EWBC","y":2022,"q":1},{"s":0.986,"p":0.4211,"c":"clean","t":"EWBC","y":2021,"q":3},{"s":0.9745,"p":0.3684,"c":"clean","t":"EWBC","y":2020,"q":2},{"s":0.9763,"p":0.4211,"c":"clean","t":"SIVB","y":2020,"q":3},{"s":0.9867,"p":0.4815,"c":"clean","t":"EWBC","y":2023,"q":3},{"s":0.9867,"p":0.4561,"c":"clean","t":"SIVB","y":2021,"q":3},{"s":0.9929,"p":0.7321,"c":"clean","t":"SIVB","y":2022,"q":4},{"s":0.9631,"p":0.1754,"c":"clean","t":"SI","y":2020,"q":1},{"s":0.9865,"p":0.4386,"c":"clean","t":"SI","y":2021,"q":3},{"s":0.9711,"p":0.1786,"c":"clean","t":"CFG","y":2022,"q":1},{"s":0.9769,"p":0.3333,"c":"clean","t":"CFG","y":2023,"q":2},{"s":0.9906,"p":0.614,"c":"clean","t":"PACW","y":2021,"q":4},{"s":0.9699,"p":0.2807,"c":"clean","t":"PACW","y":2020,"q":2},{"s":0.6552,"p":0.0526,"c":"overcapture","t":"CFG","y":2021,"q":1},{"s":0.9754,"p":0.2679,"c":"clean","t":"PACW","y":2022,"q":2},{"s":0.9896,"p":0.7193,"c":"overcapture","t":"CFG","y":2020,"q":4},{"s":0.9721,"p":0.3158,"c":"clean","t":"NYCB","y":2020,"q":2},{"s":0.9609,"p":0.1481,"c":"clean","t":"NYCB","y":2023,"q":1},{"s":0.9833,"p":0.386,"c":"clean","t":"NYCB","y":2021,"q":2},{"s":0.9405,"p":0.0714,"c":"clean","t":"NYCB","y":2022,"q":1},{"s":0.5551,"p":0.0175,"c":"clean","t":"WAL","y":2021,"q":1},{"s":0.9917,"p":0.7895,"c":"clean","t":"WAL","y":2020,"q":4},{"s":0.9864,"p":0.4821,"c":"clean","t":"WAL","y":2022,"q":3},{"s":0.9891,"p":0.5741,"c":"clean","t":"WAL","y":2023,"q":3},{"s":0.8342,"p":0.0175,"c":"clean","t":"ZION","y":2020,"q":1},{"s":0.9949,"p":0.807,"c":"clean","t":"CMA","y":2021,"q":5},{"s":0.9937,"p":0.7679,"c":"clean","t":"CMA","y":2022,"q":4},{"s":0.9919,"p":0.807,"c":"clean","t":"CMA","y":2020,"q":5},{"s":0.9933,"p":0.7593,"c":"clean","t":"CMA","y":2023,"q":4},{"s":0.9404,"p":0.1579,"c":"clean","t":"ZION","y":2021,"q":1},{"s":0.9789,"p":0.3036,"c":"clean","t":"ZION","y":2022,"q":2},{"s":0.9773,"p":0.3519,"c":"clean","t":"ZION","y":2023,"q":2},{"s":0.9764,"p":0.2857,"c":"clean","t":"KEY","y":2022,"q":2},{"s":0.9826,"p":0.3684,"c":"clean","t":"KEY","y":2021,"q":2},{"s":0.9386,"p":0.1404,"c":"clean","t":"FHN","y":2021,"q":1},{"s":0.9482,"p":0.0877,"c":"clean","t":"FHN","y":2020,"q":1},{"s":0.9734,"p":0.1964,"c":"clean","t":"FHN","y":2022,"q":1},{"s":0.9787,"p":0.4561,"c":"clean","t":"KEY","y":2020,"q":3},{"s":0.9587,"p":0.1071,"c":"clean","t":"RF","y":2022,"q":1},{"s":0.987,"p":0.4737,"c":"clean","t":"RF","y":2021,"q":3},{"s":0.9724,"p":0.2593,"c":"clean","t":"KEY","y":2023,"q":2},{"s":0.9829,"p":0.5789,"c":"clean","t":"RF","y":2020,"q":3},{"s":0.9288,"p":0.0556,"c":"clean","t":"FHN","y":2023,"q":1},{"s":0.9907,"p":0.7544,"c":"clean","t":"TFC","y":2020,"q":4},{"s":0.9927,"p":0.6852,"c":"clean","t":"RF","y":2023,"q":4},{"s":0.9943,"p":0.7193,"c":"clean","t":"TFC","y":2021,"q":4},{"s":0.9812,"p":0.5439,"c":"clean","t":"PNC","y":2020,"q":3},{"s":0.9954,"p":0.9298,"c":"clean","t":"FITB","y":2020,"q":5},{"s":0.989,"p":0.5714,"c":"clean","t":"TFC","y":2022,"q":3},{"s":0.9969,"p":0.9298,"c":"clean","t":"FITB","y":2021,"q":5},{"s":0.9909,"p":0.625,"c":"clean","t":"PNC","y":2022,"q":4},{"s":0.9905,"p":0.5965,"c":"clean","t":"PNC","y":2021,"q":3},{"s":0.9981,"p":0.8929,"c":"clean","t":"FITB","y":2022,"q":5},{"s":0.9779,"p":0.3704,"c":"clean","t":"PNC","y":2023,"q":2},{"s":0.9471,"p":0.0702,"c":"clean","t":"HBAN","y":2020,"q":1},{"s":0.996,"p":0.8704,"c":"clean","t":"FITB","y":2023,"q":5},{"s":0.9661,"p":0.2632,"c":"clean","t":"HBAN","y":2021,"q":2},{"s":0.9794,"p":0.5088,"c":"clean","t":"MTB","y":2020,"q":3},{"s":0.9833,"p":0.375,"c":"clean","t":"HBAN","y":2022,"q":2},{"s":0.9693,"p":0.2807,"c":"clean","t":"MTB","y":2021,"q":2},{"s":0.9844,"p":0.4259,"c":"clean","t":"MTB","y":2023,"q":3},{"s":0.9587,"p":0.1228,"c":"clean","t":"FCNCA","y":2020,"q":1},{"s":0.9863,"p":0.463,"c":"clean","t":"HBAN","y":2023,"q":3},{"s":0.9751,"p":0.25,"c":"clean","t":"MTB","y":2022,"q":2},{"s":0.9414,"p":0.1754,"c":"clean","t":"FCNCA","y":2021,"q":1},{"s":0.9575,"p":0.1053,"c":"pointer","t":"CFR","y":2020,"q":1},{"s":0.7956,"p":0.0702,"c":"pointer","t":"CFR","y":2021,"q":1},{"s":0.9839,"p":0.3929,"c":"pointer","t":"CFR","y":2022,"q":2},{"s":0.9824,"p":0.3393,"c":"clean","t":"FCNCA","y":2022,"q":2},{"s":0.9731,"p":0.3509,"c":"clean","t":"SNV","y":2020,"q":2},{"s":0.8083,"p":0.0185,"c":"pointer","t":"CFR","y":2023,"q":1},{"s":0.964,"p":0.2281,"c":"clean","t":"SNV","y":2021,"q":2},{"s":0.9892,"p":0.5893,"c":"clean","t":"SNV","y":2022,"q":3},{"s":0.9717,"p":0.2222,"c":"clean","t":"FCNCA","y":2023,"q":2},{"s":0.9901,"p":0.6296,"c":"clean","t":"SNV","y":2023,"q":4},{"s":0.9977,"p":0.9474,"c":"clean","t":"PB","y":2020,"q":5},{"s":0.9966,"p":0.8947,"c":"clean","t":"PB","y":2021,"q":5},{"s":0.9936,"p":0.75,"c":"clean","t":"PB","y":2022,"q":4},{"s":0.9887,"p":0.5263,"c":"clean","t":"TCBI","y":2021,"q":3},{"s":0.9378,"p":0.0526,"c":"clean","t":"TCBI","y":2020,"q":1},{"s":0.9929,"p":0.7222,"c":"clean","t":"PB","y":2023,"q":4},{"s":0.7625,"p":0.0179,"c":"clean","t":"TCBI","y":2022,"q":1},{"s":0.9815,"p":0.5614,"c":"pointer","t":"CBSH","y":2020,"q":3},{"s":0.9881,"p":0.5185,"c":"clean","t":"TCBI","y":2023,"q":3},{"s":0.9933,"p":0.7018,"c":"clean","t":"CBSH","y":2021,"q":4},{"s":0.9883,"p":0.5357,"c":"clean","t":"CBSH","y":2022,"q":3},{"s":0.9741,"p":0.3148,"c":"clean","t":"CBSH","y":2023,"q":2},{"s":0.975,"p":0.4035,"c":"clean","t":"WBS","y":2020,"q":2},{"s":0.9348,"p":0.1228,"c":"clean","t":"WBS","y":2021,"q":1},{"s":0.9827,"p":0.3571,"c":"clean","t":"WBS","y":2022,"q":2},{"s":0.9932,"p":0.6842,"c":"clean","t":"PNFP","y":2021,"q":4},{"s":0.9712,"p":0.1852,"c":"clean","t":"WBS","y":2023,"q":1},{"s":0.9628,"p":0.1579,"c":"clean","t":"PNFP","y":2020,"q":1},{"s":0.9956,"p":0.8214,"c":"clean","t":"PNFP","y":2022,"q":5},{"s":0.9939,"p":0.8148,"c":"clean","t":"PNFP","y":2023,"q":5},{"s":0.9654,"p":0.2456,"c":"clean","t":"VLY","y":2020,"q":2},{"s":0.9834,"p":0.5965,"c":"clean","t":"BOKF","y":2020,"q":3},{"s":0.9425,"p":0.193,"c":"clean","t":"VLY","y":2021,"q":1},{"s":0.9858,"p":0.4035,"c":"clean","t":"BOKF","y":2021,"q":2},{"s":0.9793,"p":0.3889,"c":"clean","t":"BOKF","y":2023,"q":2},{"s":0.9606,"p":0.1429,"c":"clean","t":"VLY","y":2022,"q":1},{"s":0.9886,"p":0.5536,"c":"clean","t":"BOKF","y":2022,"q":3},{"s":0.975,"p":0.386,"c":"clean","t":"ONB","y":2020,"q":2},{"s":0.9335,"p":0.1053,"c":"clean","t":"ONB","y":2021,"q":1},{"s":0.9017,"p":0.0536,"c":"clean","t":"ONB","y":2022,"q":1},{"s":0.9883,"p":0.537,"c":"clean","t":"ONB","y":2023,"q":3},{"s":0.9592,"p":0.125,"c":"clean","t":"FNB","y":2022,"q":1},{"s":0.9649,"p":0.2456,"c":"clean","t":"FNB","y":2021,"q":2},{"s":0.9419,"p":0.0741,"c":"clean","t":"FNB","y":2023,"q":1},{"s":0.9788,"p":0.4912,"c":"clean","t":"FNB","y":2020,"q":3},{"s":0.9255,"p":0.0351,"c":"clean","t":"SSB","y":2020,"q":1},{"s":0.9914,"p":0.6491,"c":"clean","t":"SSB","y":2021,"q":4},{"s":0.9793,"p":0.3214,"c":"clean","t":"SSB","y":2022,"q":2},{"s":0.9873,"p":0.5,"c":"clean","t":"BANC","y":2022,"q":3},{"s":0.9927,"p":0.6667,"c":"clean","t":"BANC","y":2021,"q":4},{"s":0.992,"p":0.8246,"c":"clean","t":"COLB","y":2020,"q":5},{"s":0.973,"p":0.3333,"c":"clean","t":"BANC","y":2020,"q":2},{"s":0.9902,"p":0.6481,"c":"clean","t":"SSB","y":2023,"q":4},{"s":0.9857,"p":0.4107,"c":"clean","t":"COLB","y":2022,"q":2},{"s":0.9151,"p":0.0877,"c":"clean","t":"COLB","y":2021,"q":1},{"s":0.9545,"p":0.1111,"c":"clean","t":"BANC","y":2023,"q":1},{"s":0.9876,"p":0.5179,"c":"clean","t":"ASB","y":2022,"q":3},{"s":0.9271,"p":0.037,"c":"clean","t":"COLB","y":2023,"q":1},{"s":0.9949,"p":0.7895,"c":"clean","t":"WTFC","y":2021,"q":4},{"s":0.971,"p":0.2982,"c":"clean","t":"ASB","y":2020,"q":2},{"s":0.9927,"p":0.8421,"c":"clean","t":"UMBF","y":2020,"q":5},{"s":0.9707,"p":0.1667,"c":"clean","t":"ASB","y":2023,"q":1},{"s":0.9848,"p":0.6316,"c":"clean","t":"WTFC","y":2020,"q":4},{"s":0.986,"p":0.4286,"c":"clean","t":"WTFC","y":2022,"q":3},{"s":0.978,"p":0.2982,"c":"clean","t":"ASB","y":2021,"q":2},{"s":0.9961,"p":0.8596,"c":"clean","t":"UMBF","y":2021,"q":5},{"s":0.9909,"p":0.7719,"c":"clean","t":"FHB","y":2020,"q":4},{"s":0.9982,"p":0.9286,"c":"clean","t":"UMBF","y":2022,"q":5},{"s":0.9932,"p":0.7407,"c":"clean","t":"WTFC","y":2023,"q":4},{"s":0.9907,"p":0.6316,"c":"clean","t":"FHB","y":2021,"q":4},{"s":0.9968,"p":0.9259,"c":"clean","t":"UMBF","y":2023,"q":5},{"s":0.9642,"p":0.193,"c":"clean","t":"BOH","y":2020,"q":1},{"s":0.9959,"p":0.8393,"c":"clean","t":"FHB","y":2022,"q":5},{"s":0.961,"p":0.2105,"c":"clean","t":"BOH","y":2021,"q":1},{"s":0.9926,"p":0.6667,"c":"clean","t":"FHB","y":2023,"q":4},{"s":0.9951,"p":0.8036,"c":"clean","t":"BOH","y":2022,"q":4},{"s":0.972,"p":0.2407,"c":"clean","t":"BOH","y":2023,"q":2},{"s":0.9874,"p":0.6842,"c":"clean","t":"CATY","y":2020,"q":4},{"s":0.9742,"p":0.2143,"c":"clean","t":"CATY","y":2022,"q":1},{"s":0.6465,"p":0.0351,"c":"clean","t":"FULT","y":2021,"q":1},{"s":0.9872,"p":0.6667,"c":"clean","t":"FULT","y":2020,"q":4},{"s":0.9946,"p":0.7368,"c":"clean","t":"CATY","y":2021,"q":4},{"s":0.9963,"p":0.9074,"c":"clean","t":"CATY","y":2023,"q":5},{"s":0.9916,"p":0.6607,"c":"clean","t":"GBCI","y":2022,"q":4},{"s":0.9854,"p":0.4444,"c":"clean","t":"FULT","y":2023,"q":3},{"s":0.9538,"p":0.0893,"c":"clean","t":"FULT","y":2022,"q":1},{"s":0.9697,"p":0.2632,"c":"clean","t":"GBCI","y":2020,"q":2},{"s":0.982,"p":0.3509,"c":"clean","t":"GBCI","y":2021,"q":2},{"s":0.9875,"p":0.5,"c":"clean","t":"GBCI","y":2023,"q":3},{"s":0.9902,"p":0.6071,"c":"clean","t":"UBSI","y":2022,"q":3},{"s":0.9616,"p":0.1404,"c":"clean","t":"UBSI","y":2020,"q":1},{"s":0.9796,"p":0.3158,"c":"clean","t":"UBSI","y":2021,"q":2},{"s":0.9928,"p":0.7037,"c":"clean","t":"UBSI","y":2023,"q":4},{"s":0.9959,"p":0.8421,"c":"clean","t":"IBTX","y":2021,"q":5},{"s":0.9847,"p":0.614,"c":"clean","t":"IBTX","y":2020,"q":4},{"s":0.9645,"p":0.2105,"c":"clean","t":"HOMB","y":2020,"q":1},{"s":0.9818,"p":0.3333,"c":"clean","t":"HOMB","y":2021,"q":2},{"s":0.9985,"p":0.9464,"c":"clean","t":"IBTX","y":2022,"q":5},{"s":0.9981,"p":0.963,"c":"clean","t":"IBTX","y":2023,"q":5},{"s":0.9904,"p":0.5789,"c":"clean","t":"FFIN","y":2021,"q":3},{"s":0.995,"p":0.9123,"c":"clean","t":"FFIN","y":2020,"q":5},{"s":0.9745,"p":0.2321,"c":"clean","t":"HOMB","y":2022,"q":2},{"s":0.9938,"p":0.7963,"c":"clean","t":"HOMB","y":2023,"q":4},{"s":0.9862,"p":0.4464,"c":"clean","t":"FFIN","y":2022,"q":3},{"s":0.9884,"p":0.5556,"c":"clean","t":"FFIN","y":2023,"q":3},{"s":0.9894,"p":0.5439,"c":"clean","t":"CVBF","y":2021,"q":3},{"s":0.9648,"p":0.2281,"c":"clean","t":"CVBF","y":2020,"q":2},{"s":0.9802,"p":0.5263,"c":"clean","t":"SFBS","y":2020,"q":3},{"s":0.9927,"p":0.7143,"c":"clean","t":"CVBF","y":2022,"q":4},{"s":0.9715,"p":0.2037,"c":"clean","t":"CVBF","y":2023,"q":1},{"s":0.9967,"p":0.9123,"c":"clean","t":"SFBS","y":2021,"q":5},{"s":0.9978,"p":0.875,"c":"clean","t":"SFBS","y":2022,"q":5},{"s":0.9901,"p":0.6111,"c":"clean","t":"SFBS","y":2023,"q":4},{"s":0.9787,"p":0.4737,"c":"clean","t":"INDB","y":2020,"q":3},{"s":0.9977,"p":0.8571,"c":"clean","t":"JPM","y":2022,"q":5},{"s":0.9975,"p":0.9474,"c":"clean","t":"JPM","y":2021,"q":5},{"s":0.991,"p":0.6429,"c":"clean","t":"INDB","y":2022,"q":4},{"s":0.9942,"p":0.8333,"c":"clean","t":"INDB","y":2023,"q":5},{"s":0.9948,"p":0.7719,"c":"clean","t":"INDB","y":2021,"q":4},{"s":0.9978,"p":0.9444,"c":"clean","t":"JPM","y":2023,"q":5},{"s":0.994,"p":0.8947,"c":"clean","t":"JPM","y":2020,"q":5},{"s":1.0,"p":0.9821,"c":"pointer","t":"WFC","y":2022,"q":5},{"s":1.0,"p":0.9825,"c":"pointer","t":"WFC","y":2021,"q":5},{"s":1.0,"p":0.9825,"c":"pointer","t":"WFC","y":2020,"q":5},{"s":0.9776,"p":0.4386,"c":"clean","t":"BAC","y":2020,"q":3},{"s":0.9898,"p":0.5614,"c":"clean","t":"BAC","y":2021,"q":3},{"s":1.0,"p":0.9907,"c":"pointer","t":"WFC","y":2023,"q":5},{"s":0.9863,"p":0.4643,"c":"clean","t":"BAC","y":2022,"q":3},{"s":0.9895,"p":0.5926,"c":"clean","t":"BAC","y":2023,"q":3},{"s":0.9928,"p":0.8596,"c":"clean","t":"GS","y":2020,"q":5},{"s":0.9857,"p":0.6491,"c":"clean","t":"C","y":2020,"q":4},{"s":0.9904,"p":0.7368,"c":"overcapture","t":"MS","y":2020,"q":4},{"s":0.9953,"p":0.8246,"c":"clean","t":"GS","y":2021,"q":5},{"s":0.9795,"p":0.4074,"c":"clean","t":"C","y":2023,"q":2},{"s":1.0,"p":0.9825,"c":"pointer","t":"USB","y":2020,"q":5},{"s":1.0,"p":0.9825,"c":"pointer","t":"USB","y":2021,"q":5},{"s":0.9877,"p":0.5088,"c":"clean","t":"C","y":2021,"q":3},{"s":0.969,"p":0.1607,"c":"clean","t":"C","y":2022,"q":1},{"s":1.0,"p":0.9821,"c":"pointer","t":"USB","y":2022,"q":5},{"s":0.9922,"p":0.6786,"c":"clean","t":"GS","y":2022,"q":4},{"s":0.9961,"p":0.8772,"c":"overcapture","t":"MS","y":2021,"q":5},{"s":1.0,"p":0.9907,"c":"pointer","t":"USB","y":2023,"q":5},{"s":1.0,"p":0.9821,"c":"pointer","t":"BK","y":2022,"q":5},{"s":1.0,"p":0.9825,"c":"pointer","t":"BK","y":2020,"q":5},{"s":0.9981,"p":0.9107,"c":"overcapture","t":"MS","y":2022,"q":5},{"s":0.9934,"p":0.7778,"c":"clean","t":"GS","y":2023,"q":4},{"s":1.0,"p":0.9825,"c":"pointer","t":"BK","y":2021,"q":5},{"s":0.9467,"p":0.0926,"c":"pointer","t":"BK","y":2023,"q":1},{"s":0.988,"p":0.7018,"c":"clean","t":"COF","y":2020,"q":4},{"s":0.9962,"p":0.8889,"c":"overcapture","t":"MS","y":2023,"q":5},{"s":0.9875,"p":0.4912,"c":"clean","t":"COF","y":2021,"q":3},{"s":0.9941,"p":0.7857,"c":"clean","t":"STT","y":2022,"q":4},{"s":0.9923,"p":0.6964,"c":"clean","t":"COF","y":2022,"q":4},{"s":0.9936,"p":0.8772,"c":"clean","t":"STT","y":2020,"q":5},{"s":0.9948,"p":0.7544,"c":"clean","t":"STT","y":2021,"q":4},{"s":0.9953,"p":0.8519,"c":"clean","t":"STT","y":2023,"q":5},{"s":0.9728,"p":0.2778,"c":"clean","t":"COF","y":2023,"q":2},{"s":0.9596,"p":0.1296,"c":"clean","t":"VLY","y":2023,"q":1},{"s":0.9731,"p":0.2963,"c":"clean","t":"TFC","y":2023,"q":2},{"s":0.9897,"p":0.3396,"c":"clean","t":"EWBC","y":2024,"q":2},{"s":0.9593,"p":0.0566,"c":"clean","t":"NYCB","y":2024,"q":1},{"s":0.994,"p":0.66,"c":"clean","t":"EWBC","y":2025,"q":4},{"s":0.9965,"p":0.78,"c":"clean","t":"CFG","y":2025,"q":4},{"s":0.9963,"p":0.7358,"c":"clean","t":"CFG","y":2024,"q":4},{"s":0.9616,"p":0.12,"c":"clean","t":"NYCB","y":2025,"q":1},{"s":0.9946,"p":0.5849,"c":"clean","t":"WAL","y":2024,"q":3},{"s":0.9909,"p":0.6,"c":"clean","t":"WAL","y":2025,"q":3},{"s":0.9971,"p":0.7925,"c":"clean","t":"CMA","y":2024,"q":4},{"s":0.9747,"p":0.1132,"c":"clean","t":"ZION","y":2024,"q":1},{"s":0.9292,"p":0.04,"c":"clean","t":"ZION","y":2025,"q":1},{"s":0.9817,"p":0.2264,"c":"clean","t":"KEY","y":2024,"q":2},{"s":0.994,"p":0.4717,"c":"clean","t":"RF","y":2024,"q":3},{"s":0.9506,"p":0.08,"c":"clean","t":"FHN","y":2025,"q":1},{"s":0.9883,"p":0.46,"c":"clean","t":"KEY","y":2025,"q":3},{"s":0.9943,"p":0.5094,"c":"clean","t":"FHN","y":2024,"q":3},{"s":0.9905,"p":0.58,"c":"clean","t":"RF","y":2025,"q":3},{"s":0.9945,"p":0.566,"c":"clean","t":"TFC","y":2024,"q":3},{"s":0.9845,"p":0.34,"c":"clean","t":"TFC","y":2025,"q":2},{"s":0.9978,"p":0.8302,"c":"clean","t":"FITB","y":2024,"q":5},{"s":0.9958,"p":0.6226,"c":"clean","t":"MTB","y":2024,"q":4},{"s":0.9828,"p":0.2453,"c":"clean","t":"HBAN","y":2024,"q":2},{"s":0.9989,"p":0.9,"c":"clean","t":"MTB","y":2025,"q":5},{"s":0.9731,"p":0.18,"c":"clean","t":"HBAN","y":2025,"q":1},{"s":0.9974,"p":0.8113,"c":"clean","t":"PNC","y":2024,"q":5},{"s":0.9901,"p":0.56,"c":"clean","t":"PNC","y":2025,"q":3},{"s":0.9897,"p":0.54,"c":"clean","t":"FITB","y":2025,"q":3},{"s":0.8421,"p":0.0377,"c":"pointer","t":"CFR","y":2024,"q":1},{"s":0.9942,"p":0.4906,"c":"clean","t":"SNV","y":2024,"q":3},{"s":0.9788,"p":0.1509,"c":"clean","t":"FCNCA","y":2024,"q":1},{"s":0.9388,"p":0.06,"c":"clean","t":"CFR","y":2025,"q":1},{"s":0.9778,"p":0.28,"c":"clean","t":"FCNCA","y":2025,"q":2},{"s":0.9988,"p":0.88,"c":"clean","t":"PB","y":2025,"q":5},{"s":0.9945,"p":0.5472,"c":"clean","t":"TCBI","y":2024,"q":3},{"s":0.9971,"p":0.7736,"c":"clean","t":"PB","y":2024,"q":4},{"s":0.9892,"p":0.5,"c":"clean","t":"TCBI","y":2025,"q":3},{"s":0.9959,"p":0.6604,"c":"clean","t":"CBSH","y":2024,"q":4},{"s":0.9856,"p":0.36,"c":"clean","t":"CBSH","y":2025,"q":2},{"s":0.9788,"p":0.1698,"c":"clean","t":"WBS","y":2024,"q":1},{"s":0.9653,"p":0.14,"c":"clean","t":"WBS","y":2025,"q":1},{"s":0.9985,"p":0.8868,"c":"clean","t":"PNFP","y":2024,"q":5},{"s":0.9944,"p":0.5283,"c":"clean","t":"BOKF","y":2024,"q":3},{"s":0.9969,"p":0.7547,"c":"clean","t":"ONB","y":2024,"q":4},{"s":0.9882,"p":0.3208,"c":"clean","t":"VLY","y":2024,"q":2},{"s":0.9926,"p":0.64,"c":"clean","t":"ONB","y":2025,"q":4},{"s":0.9959,"p":0.74,"c":"clean","t":"BOKF","y":2025,"q":4},{"s":0.9812,"p":0.1887,"c":"clean","t":"FNB","y":2024,"q":1},{"s":0.9759,"p":0.22,"c":"clean","t":"FNB","y":2025,"q":2},{"s":0.9872,"p":0.44,"c":"clean","t":"VLY","y":2025,"q":3},{"s":0.9931,"p":0.4151,"c":"clean","t":"SSB","y":2024,"q":3},{"s":0.9932,"p":0.434,"c":"clean","t":"BANC","y":2024,"q":3},{"s":0.9953,"p":0.72,"c":"clean","t":"SSB","y":2025,"q":4},{"s":0.9874,"p":0.3019,"c":"clean","t":"COLB","y":2024,"q":2},{"s":0.9862,"p":0.4,"c":"clean","t":"COLB","y":2025,"q":2},{"s":0.9837,"p":0.32,"c":"clean","t":"BANC","y":2025,"q":2},{"s":0.9852,"p":0.283,"c":"clean","t":"ASB","y":2024,"q":2},{"s":0.9962,"p":0.6981,"c":"clean","t":"WTFC","y":2024,"q":4},{"s":0.9703,"p":0.16,"c":"clean","t":"ASB","y":2025,"q":1},{"s":0.9961,"p":0.76,"c":"clean","t":"WTFC","y":2025,"q":4},{"s":0.9705,"p":0.0943,"c":"clean","t":"UMBF","y":2024,"q":1},{"s":0.9988,"p":0.9057,"c":"clean","t":"FHB","y":2024,"q":5},{"s":0.9993,"p":0.9245,"c":"clean","t":"CATY","y":2024,"q":5},{"s":0.9952,"p":0.7,"c":"clean","t":"FHB","y":2025,"q":4},{"s":0.997,"p":0.8,"c":"clean","t":"UMBF","y":2025,"q":4},{"s":0.9861,"p":0.38,"c":"clean","t":"BOH","y":2025,"q":2},{"s":0.9663,"p":0.0755,"c":"clean","t":"BOH","y":2024,"q":1},{"s":0.9991,"p":0.92,"c":"clean","t":"CATY","y":2025,"q":5},{"s":0.9947,"p":0.6038,"c":"clean","t":"FULT","y":2024,"q":3},{"s":0.977,"p":0.24,"c":"clean","t":"FULT","y":2025,"q":2},{"s":0.9844,"p":0.2642,"c":"clean","t":"UBSI","y":2024,"q":2},{"s":0.9753,"p":0.1321,"c":"clean","t":"GBCI","y":2024,"q":1},{"s":0.9887,"p":0.48,"c":"clean","t":"GBCI","y":2025,"q":3},{"s":0.9959,"p":0.6415,"c":"clean","t":"HOMB","y":2024,"q":4},{"s":0.9771,"p":0.26,"c":"clean","t":"UBSI","y":2025,"q":2},{"s":0.9922,"p":0.3585,"c":"clean","t":"SFBS","y":2024,"q":2},{"s":0.9863,"p":0.42,"c":"clean","t":"HOMB","y":2025,"q":3},{"s":0.9961,"p":0.6792,"c":"clean","t":"CVBF","y":2024,"q":4},{"s":0.9276,"p":0.02,"c":"clean","t":"SFBS","y":2025,"q":1},{"s":0.9979,"p":0.86,"c":"clean","t":"FFIN","y":2025,"q":5},{"s":0.9994,"p":0.9434,"c":"clean","t":"FFIN","y":2024,"q":5},{"s":0.9545,"p":0.1,"c":"clean","t":"CVBF","y":2025,"q":1},{"s":1.0,"p":0.9811,"c":"pointer","t":"WFC","y":2024,"q":5},{"s":1.0,"p":0.97,"c":"pointer","t":"WFC","y":2025,"q":5},{"s":0.9934,"p":0.4528,"c":"clean","t":"INDB","y":2024,"q":3},{"s":0.4124,"p":0.0189,"c":"clean","t":"JPM","y":2024,"q":1},{"s":0.9896,"p":0.52,"c":"clean","t":"INDB","y":2025,"q":3},{"s":0.9816,"p":0.2075,"c":"clean","t":"BAC","y":2024,"q":1},{"s":0.9802,"p":0.3,"c":"clean","t":"JPM","y":2025,"q":2},{"s":0.9949,"p":0.68,"c":"clean","t":"BAC","y":2025,"q":4},{"s":1.0,"p":0.9811,"c":"pointer","t":"USB","y":2024,"q":5},{"s":1.0,"p":0.97,"c":"pointer","t":"USB","y":2025,"q":5},{"s":1.0,"p":0.9811,"c":"pointer","t":"BK","y":2024,"q":5},{"s":1.0,"p":0.97,"c":"pointer","t":"BK","y":2025,"q":5},{"s":0.9962,"p":0.717,"c":"pointer","t":"MS","y":2024,"q":4},{"s":0.9928,"p":0.3962,"c":"clean","t":"C","y":2024,"q":2},{"s":1.0,"p":0.97,"c":"pointer","t":"MS","y":2025,"q":5},{"s":0.9918,"p":0.62,"c":"clean","t":"C","y":2025,"q":4},{"s":0.9974,"p":0.82,"c":"clean","t":"STT","y":2025,"q":5},{"s":0.9985,"p":0.8679,"c":"clean","t":"STT","y":2024,"q":5},{"s":0.9981,"p":0.8491,"c":"clean","t":"GS","y":2024,"q":5},{"s":0.9743,"p":0.2,"c":"clean","t":"COF","y":2025,"q":1},{"s":0.9978,"p":0.84,"c":"clean","t":"GS","y":2025,"q":5},{"s":0.9927,"p":0.3774,"c":"clean","t":"COF","y":2024,"q":2}],"counts":{"clean":295,"pointer":26,"overcapture":6},"quintiles":[{"q":1,"n":68,"bad":6},{"q":2,"n":64,"bad":1},{"q":3,"n":64,"bad":1},{"q":4,"n":64,"bad":3},{"q":5,"n":67,"bad":21}],"before":{"spread":7.98,"t":2.48,"n":197},"after":{"spread":6.15,"t":1.83,"n":186}};
+const P = D.points, Q = D.quintiles;
+
+const nbad = Q[4].bad, ntop = Q[4].n;
+document.getElementById("herobig").textContent =
+  Math.round(100 * nbad / ntop) + "% of the long leg";
+document.getElementById("herop").innerHTML =
+  `<b>${nbad} of ${ntop}</b> observations in the buy-side quintile were not Item&nbsp;1A. ` +
+  `They were cross-reference pointers of 9&ndash;20 words, or over-captures running to the ` +
+  `bottom of the document. Two identical pointers score a cosine of exactly ` +
+  `<code>1.0000</code>, the maximum possible, which pins them to the top of the ranking ` +
+  `by construction. The middle quintiles were ${(100 * (Q[1].bad + Q[2].bad) / (Q[1].n + Q[2].n)).toFixed(1)}% contaminated.`;
+
+/* ---------- strip plot ---------- */
+const W = 900, H = 260, M = {t: 24, r: 16, b: 34, l: 16};
+const iw = W - M.l - M.r, ih = H - M.t - M.b;
+const svg = document.getElementById("strip");
+const NS = "http://www.w3.org/2000/svg";
+const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+for (let q = 0; q < 5; q++) {
+  if (q % 2 === 0) {
+    svg.appendChild(el("rect", {class: "bandrect", x: M.l + (q / 5) * iw, y: M.t,
+                                width: iw / 5, height: ih}));
+  }
+  const lab = el("text", {class: "qlab", x: M.l + ((q + 0.5) / 5) * iw, y: M.t - 9,
+                          "text-anchor": "middle",
+                          fill: q === 4 ? "var(--pointer)" : "var(--muted)"});
+  lab.textContent = q === 4 ? "Q5 · LONG" : (q === 0 ? "Q1 · SHORT" : "Q" + (q + 1));
+  svg.appendChild(lab);
+}
+const ax = el("g", {class: "axis"});
+[["least similar", 0], ["most similar", 1]].forEach(([t, p]) => {
+  const e = el("text", {x: M.l + p * iw, y: H - 12,
+                        "text-anchor": p ? "end" : "start"});
+  e.textContent = t; ax.appendChild(e);
+});
+svg.appendChild(ax);
+
+// deterministic vertical jitter so dots do not overlap
+const order = {clean: 0, overcapture: 1, pointer: 2};
+const sorted = P.slice().sort((a, b) => order[a.c] - order[b.c]);
+sorted.forEach((d, i) => {
+  const x = M.l + d.p * iw;
+  const y = M.t + 12 + ((i * 37) % (ih - 24));
+  const c = d.c === "pointer" ? "var(--pointer)" : d.c === "overcapture" ? "var(--overcap)" : "var(--clean)";
+  const dot = el("circle", {class: "mark", cx: x.toFixed(1), cy: y.toFixed(1),
+                            r: d.c === "clean" ? 3 : 4.6, fill: c,
+                            "fill-opacity": d.c === "clean" ? .5 : .95});
+  dot.dataset.i = i;
+  svg.appendChild(dot);
+});
+
+const tip = document.getElementById("tip"), box = document.getElementById("stripbox");
+svg.addEventListener("pointerover", e => {
+  const i = e.target.dataset && e.target.dataset.i;
+  if (i === undefined) return;
+  const d = sorted[+i];
+  const nm = d.c === "pointer" ? "cross-reference pointer"
+           : d.c === "overcapture" ? "over-capture" : "genuine Item 1A";
+  tip.innerHTML = `<b>${d.t}</b> FY${d.y}<br>cosine ${d.s.toFixed(4)}<br>Q${d.q} · ${nm}`;
+  tip.style.opacity = 1;
+  const r = box.getBoundingClientRect();
+  tip.style.left = Math.min(Math.max(e.clientX - r.left + 12, 4), r.width - 190) + "px";
+  tip.style.top = Math.max(e.clientY - r.top - 46, 2) + "px";
+});
+svg.addEventListener("pointerout", () => { tip.style.opacity = 0; });
+
+/* ---------- bars ---------- */
+const maxPct = Math.max(...Q.map(q => 100 * q.bad / q.n));
+document.getElementById("bars").innerHTML = Q.map(q => {
+  const pct = 100 * q.bad / q.n;
+  const lbl = q.q === 5 ? "Q5 · long" : q.q === 1 ? "Q1 · short" : "Q" + q.q;
+  return `<div class="barrow"><span>${lbl}</span>
+    <span class="bartrack"><span class="barfill" style="width:${(pct / maxPct) * 100}%;
+      background:${q.q === 5 ? "var(--pointer)" : "var(--clean)"}"></span></span>
+    <span class="barval">${pct.toFixed(1)}%</span></div>`;
+}).join("");
+
+document.getElementById("tbody").innerHTML = Q.map(q => {
+  const ptr = q.bad, tot = q.n;
+  return `<tr><td>Q${q.q}${q.q === 5 ? " (long)" : q.q === 1 ? " (short)" : ""}</td>
+    <td>${tot}</td><td>&mdash;</td><td>&mdash;</td><td>${ptr} (${(100 * ptr / tot).toFixed(1)}%)</td></tr>`;
+}).join("");
+
+/* ---------- before / after ---------- */
+const b = D.before, a = D.after;
+document.getElementById("ba").innerHTML = `
+  <div><div class="k">Before &mdash; contaminated</div>
+    <div class="v" style="color:var(--pointer)">+${b.spread.toFixed(2)}%</div>
+    <div class="d">t = ${b.t.toFixed(2)} · n = ${b.n} · clears the conventional threshold</div></div>
+  <div><div class="k">After &mdash; extraction fixed</div>
+    <div class="v" style="color:var(--good)">+${a.spread.toFixed(2)}%</div>
+    <div class="d">t = ${a.t.toFixed(2)} · n = ${a.n} · no longer clears it</div></div>
+  <div><div class="k">Moved by</div>
+    <div class="v">${(a.spread - b.spread).toFixed(2)}pp</div>
+    <div class="d">t fell ${(b.t - a.t).toFixed(2)}, across the 1.96 line</div></div>`;
+
+document.getElementById("method").innerHTML =
+  `<b>Method.</b> ${P.length} filing pairs, 57 US banks, FY2019&ndash;2025, ranked within each ` +
+  `filing year exactly as the backtest forms portfolios. A pair is classed a <b>pointer</b> when ` +
+  `either year's Item&nbsp;1A falls below 2,500 words &mdash; Risk Factors is never legitimately ` +
+  `that short, so the extractor returned a cross-reference in its place &mdash; and an ` +
+  `<b>over-capture</b> when either year exceeds 40,000 words, where the section boundary ran past ` +
+  `its end. Neither is detectable from the similarity score alone: identical pointers score a ` +
+  `perfect 1.0000, and over-captures score a plausible 0.99 because the excess text repeats ` +
+  `year to year. Counts here are from the corpus <em>before</em> the extractor was corrected.`;
+</script>
