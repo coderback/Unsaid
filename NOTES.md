@@ -128,6 +128,46 @@ Study
      cites Consolidated Balance Sheet 3,278 chars into its own risk factors. The
      minimum-length guard on end markers is load-bearing, not decoration.
 
+   **Literature check, 2026-09-02: the added/removed decomposition is largely
+   pre-empted.** Lyle, Riedl & Siano, "Changes in Risk Factor Disclosures and the
+   Variance Risk Premium", *The Accounting Review* 98(6) 2023, measure change
+   through the addition and removal of individual risk factors in 10-K filings.
+   Same decomposition, top-three accounting journal, three years old.
+
+   | | Lyle/Riedl/Siano | this study |
+   |---|---|---|
+   | unit | individual risk factors (semantic) | bigram / unigram sets (cheap) |
+   | outcome | variance risk premium | stock returns |
+   | finding | added AND removed both *reduce* uncertainty | no return predictability |
+
+   The third row matters more than the priority dispute. They find removal
+   *reduces* uncertainty about firm risk -- a benign, symmetric reading, opposite
+   to the concealment story this project is built on. That is peer-reviewed
+   evidence against the Unsaid thesis, not just someone getting there first.
+
+   The remaining gap is thin: add/remove against RETURNS rather than the VRP
+   appears unrun, but that is the obvious referee question on a published paper,
+   not a new idea.
+
+   **Caveat on this check:** web search only, no Scholar/SSRN full-text/EconLit,
+   and both SSRN and the AAA page returned 403 so the abstract was read via search
+   summaries rather than the paper. Read it in full and walk its citation graph
+   before spending anything. If they report a returns robustness test, the gap
+   closes entirely.
+
+   **Consequence:** the methods contribution (extraction error inflates reported
+   significance) is the one to build. It is unaffected by this and was always the
+   stronger finding.
+
+   **Correction to the power discussion.** Lazy Prices does not report a single
+   effect size. Value-weighted quintile sorts give 34-58 bps/month (~4-7%/yr); the
+   Risk-Factors-concentrated specification reports up to **188 bps/month, over
+   22%/yr, t=2.76**. Our test had ~37 observations per quintile, which is ample
+   against 22%/yr (needs ~6) and short against 4-7%/yr (needs ~51). So the null is
+   genuine against the headline specification and underpowered against the
+   conservative one. Earlier framing of "we had a coin flip" was true only of the
+   latter.
+
    **The extractor fingerprint silently invalidates the text cache, and any script
    that reads it becomes a full re-extraction.** This cost time twice in one day.
    `extract_both_sections` looks up `cache/text/<accession>__<fingerprint>.json`;
