@@ -128,6 +128,58 @@ Study
      cites Consolidated Balance Sheet 3,278 chars into its own risk factors. The
      minimum-length guard on end markers is load-bearing, not decoration.
 
+   **The extractor fingerprint silently invalidates the text cache, and any script
+   that reads it becomes a full re-extraction.** This cost time twice in one day.
+   `extract_both_sections` looks up `cache/text/<accession>__<fingerprint>.json`;
+   change one byte of `extractor.py` and every entry misses, so a script that
+   looks like cheap analysis quietly starts re-extracting at ~60s a filing.
+   The Morgan Stanley fix moved the fingerprint to `67a8d843f9`, under which only
+   MS and CFG exist -- so `12_decompose_changes.py` began a five-hour re-extraction
+   and was caught only because it managed 3 pairs in 90 seconds.
+
+   The fix, and the pattern for any future cache reader: read across fingerprints,
+   newest first.
+
+   ```python
+   _FINGERPRINTS = [_extractor_fingerprint(), "9e2f5cbe94", "29c8f6adb9"]
+   for fp in _FINGERPRINTS:
+       hit = textcache.load(accession, fp)
+       if hit:
+           return hit
+   ```
+
+   Newest-first matters: a filing that WAS redone under the current extractor gets
+   the corrected text, everything else falls back. This is only safe because the
+   output is byte-identical across fingerprints outside the over-capture path,
+   which was verified by re-extracting ZION FY2022, WFC FY2024 and CATY FY2023 and
+   diffing rather than assumed. If a future extractor change alters output for
+   ordinary filings, that fallback list must be pruned, not extended.
+
+   Symptom to watch for: a cache-reading script logging `Text cache hit` for a few
+   filings and then going quiet for minutes. That is extraction, not thinking.
+
+   **Added vs removed decomposition (`12`, `13`) -- the one genuinely new
+   measurement in the study.** Cosine similarity is symmetric and cannot say
+   whether a filing grew or shrank. The directional split is computable at
+   bag-of-words cost: `added = |B\A|/|B|`, `removed = |A\B|/|A|`, on unigrams and
+   bigrams. Bigrams are the better proxy for a passage disappearing.
+
+   Across 315 pairs:
+
+   | | r |
+   |---|---|
+   | net removal vs cosine | `+0.065` |
+   | added vs removed, bigrams | `+0.615` |
+   | added vs removed, unigrams | `+0.297` |
+
+   **Net removal is very nearly orthogonal to cosine** -- it is not a repackaging
+   of "how much changed", which is the precondition for the decomposition being
+   worth anything. It does NOT predict returns here: largest of 16 specifications
+   is `|t| = 1.73`, about what 16 draws give under the null, and pointing the wrong
+   way for the concealment story. Expected on a sample that could not detect the
+   published effect either. The claim it supports is only that the signal is
+   constructible and independent -- test it where there is power.
+
    **Where the 7A stubs point, measured.** The "untestable" conclusion assumed
    every stub issuer cross-references into its own MD&A. Truist showed that is not
    universal -- some point at the Annual Report exhibit, which IS followable the
