@@ -174,10 +174,26 @@ Study
    | outcome | variance risk premium | stock returns |
    | finding | added AND removed both *reduce* uncertainty | no return predictability |
 
-   The third row matters more than the priority dispute. They find removal
-   *reduces* uncertainty about firm risk -- a benign, symmetric reading, opposite
-   to the concealment story this project is built on. That is peer-reviewed
-   evidence against the Unsaid thesis, not just someone getting there first.
+   **Correction, same day.** I first read the third row as "peer-reviewed evidence
+   against the Unsaid thesis". That was an overreach from an abstract, and it is
+   wrong. Their finding is that changes in risk-factor disclosure -- additions and
+   removals alike -- are *informative*, and that information reduces the market's
+   uncertainty about firm risk. That is a statement about the SECOND moment.
+
+   It does not say removal is benign. A removal can reduce uncertainty (the market
+   learns something) and still predict negative returns (what it learns is bad).
+   Those are compatible. If anything the paper supports the weaker claim that
+   removals carry information, tested on a different outcome.
+
+   So this is a priority problem for the measurement, not a refutation of the
+   thesis. The return-predictability question remains genuinely open.
+
+   **The paper itself could not be read.** SSRN, both AAA URLs, the Kellogg page
+   and institutional repositories all returned 403 or lacked it. Everything above
+   comes from abstracts via four independent routes. Still unknown and needed
+   before any conclusion: the algorithm for identifying an individual risk factor,
+   whether stock returns appear as an outcome anywhere in the paper, whether added
+   and removed differ in magnitude rather than only in sign, and the sample period.
 
    The remaining gap is thin: add/remove against RETURNS rather than the VRP
    appears unrun, but that is the obvious referee question on a published paper,
