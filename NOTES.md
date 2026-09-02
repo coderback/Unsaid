@@ -128,6 +128,40 @@ Study
      cites Consolidated Balance Sheet 3,278 chars into its own risk factors. The
      minimum-length guard on end markers is load-bearing, not decoration.
 
+   **One-day test, 2026-09-02: the methods paper is dead too. Three independent
+   reasons, any one sufficient.**
+
+   *1. It does not generalise.* Ran the extractor over 52 large-cap non-financial
+   issuers across 11 sectors for FY2023 (`15_cross_sector_audit.py`), recording
+   both what an unguarded pipeline gets and what the gated extractor returns.
+   **Zero failures. 52 of 52 clean on both paths.** Against ~10% in the banking
+   corpus. The failure is not a general property of 10-K extraction; it is a
+   property of large financial issuers, who incorporate Item 1A by reference into
+   Exhibit 13 and file unusually structured documents.
+
+   *2. The pointer failure is already handled by standard practice.* Loughran-
+   McDonald's convention is to drop sections under 250 words precisely because
+   they are "usually only incorporated by reference". That catches every pointer
+   this study found (9-20 words). Researchers using the standard corpus get
+   MISSING observations, not contaminated ones -- a milder problem than the one
+   the figure describes.
+
+   *3. Segmentation accuracy is already studied.* BERT4ItemSeg / GPT4ItemSeg
+   (arXiv 2502.08875, Journal of Information Systems) benchmark 10-K item
+   segmentation on 3,737 annotated reports: macro-F1 0.98 for their model, 0.90
+   for a rule-based baseline. The residual gap -- nobody measures where failures
+   land in a return-relevant ranking -- is real but is now a thin observation on
+   top of a sector artefact, not a paper.
+
+   **What survives:** the over-capture mode (a 600k-char "Item 1A" passes any
+   minimum-word rule and scores a plausible 0.99) is genuinely not addressed by
+   the LM convention. But it was 6 of 327 pairs even in banking and 0 of 52
+   outside it. Too thin.
+
+   **Cost of the test: about an hour. It saved weeks.** That is the reusable
+   lesson -- the generalisation check was cheap, decisive, and should have come
+   before the figure, not after.
+
    **Literature check, 2026-09-02: the added/removed decomposition is largely
    pre-empted.** Lyle, Riedl & Siano, "Changes in Risk Factor Disclosures and the
    Variance Risk Premium", *The Accounting Review* 98(6) 2023, measure change
