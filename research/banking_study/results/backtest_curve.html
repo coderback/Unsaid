@@ -176,7 +176,7 @@ const N = S.x.length;
 
 /* ---------- KPIs ---------- */
 const kpis = [
-  ["Annualised", K.annualised.toFixed(2) + "%", "over " + K.years + " years, vs ~7% reported by Lazy Prices"],
+  ["Annualised", K.annualised.toFixed(2) + "%", "over " + K.years + " years. Lazy Prices reports 4&ndash;7% value-weighted, up to 22% for Risk-Factor changes"],
   ["Total spread", (K.final > 0 ? "+" : "") + K.final.toFixed(1) + "%", K.nlong + " long and " + K.nshort + " short positions"],
   ["Max drawdown", K.maxdd.toFixed(1) + "%", "larger than the entire cumulative gain"],
   ["Excluding 2023 &amp; 2026", K.ex_episodes.toFixed(1) + "%", "strip two windows and it is negative"],
