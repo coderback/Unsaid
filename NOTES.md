@@ -1,6 +1,6 @@
 # Working Notes
 
-Operational state of the pipeline and the banking study. Updated 27 Aug 2026.
+Operational state of the pipeline and the banking study. Updated 2 Sep 2026.
 
 Generated reports in `research/banking_study/results/` are outputs and get
 overwritten on every run — this file is the durable record of decisions,
@@ -10,15 +10,25 @@ gotchas, and what is still broken.
 
 ## Status
 
-**Banking study: null result, published.** No signal survives correction for the
-24 specifications examined (family-wise `p = 0.131`). See
-`results/null_writeup.html`. The study is underpowered by roughly 3× against the
-effect it targets, so this is a weak null — it cannot distinguish "no effect"
-from "too noisy to see one."
+**Banking study: settled null. Publication direction closed.**
 
-**Do not run the full re-ingest yet.** Nothing measured so far suggests either
-signal would clear the bar at n=224. The binding constraint is sample size, not
-code quality, and re-ingesting the same 228 pairs does not change it.
+The signal failed three independent ways, and the third only appeared after the
+instrument was repaired:
+
+| | |
+|---|---|
+| multiplicity | family-wise `p = 0.131` across 24 specifications |
+| out of sample | pre-registered `-4.95%` on FY2023→24, sign reversed |
+| measurement | `+7.98% t=2.48` → `+6.15% t=1.83` once extraction was fixed |
+
+An effect that shrinks as measurement error is removed is behaving like
+measurement error. Corpus is FY2019–2025, 321 of 342 pairs scored.
+
+**Do not run the full LLM re-ingest.** The binding constraint is sample size and
+universe design, not code quality. Re-ingesting the same pairs changes neither.
+
+**Do not start a paper.** See "Publication direction" below — all three candidate
+contributions are closed, each for a different and independent reason.
 
 ---
 
@@ -365,6 +375,66 @@ Study
 
 ---
 
+## Publication direction — closed 2 Sep 2026
+
+Three candidate contributions, three independent reasons none survives. Recorded
+so nobody reopens them without new information.
+
+**1. The banking study as a test of Lazy Prices.** Underpowered and mis-designed,
+not merely unlucky. Banks all file in February, so 321 pairs are roughly six
+independent draws; benchmarking excess-over-KRE inside a bank universe differences
+away sector variation the effect may live in; and the period was dominated by
+COVID, the 2022 rate shock and the 2023 deposit run. More years does not fix any
+of that. Note the effect size is a range, not a number: 34–58 bps/month
+value-weighted (4–7%/yr), up to 188 bps/month (>22%/yr, t=2.76) for
+Risk-Factors-concentrated changes. At ~37 per quintile we had ample power against
+the headline and none against the conservative version.
+
+**2. The added/removed decomposition.** Pre-empted by Lyle, Riedl & Siano (2023),
+read in full — see the entry above. Their unit is better (SEC-mandated captions,
+not bigram sets), their sample is 160× larger, and they ran the same
+orthogonality test against cosine. Closed.
+
+**3. The extraction-error methods paper.** Does not generalise. 52 large-cap
+non-financial issuers across 11 sectors, FY2023: **zero failures** on both the
+naive and gated paths, against ~10% in banking (`15_cross_sector_audit.py`). The
+failure is a property of large financial issuers who incorporate Item 1A by
+reference into Exhibit 13, not of 10-K extraction. Separately, the pointer mode is
+already handled by the Loughran-McDonald convention of dropping sections under 250
+words, and segmentation accuracy is already benchmarked (arXiv 2502.08875, JIS:
+macro-F1 0.98, rule-based baseline 0.90).
+
+### What is genuinely still open
+
+One distinction the literature has not crossed, and it is where this project sits:
+
+> Lyle et al. measure whether the caption **text** changed — syntactic.
+> Unsaid asks whether a material risk disclosure was **withdrawn** — semantic.
+
+These come apart both ways. Reword a caption while saying the same thing and their
+method counts one removal plus one addition. Keep a similar caption while gutting
+the substance beneath it and their method counts it static. Neither is what a
+reader would call a removal. String similarity cannot separate those; an LLM can.
+Their untabulated return test also used the **combined** add+remove count, so the
+asymmetry itself is unexamined.
+
+### Why that is not a reason to start now
+
+- **The judge is not validated.** Gold-set work surfaced real problems and the
+  bag-of-words baseline beat it on every cut. Building a study on an unvalidated
+  instrument repeats the mistake this branch spent its time undoing.
+- **The prior is poor.** If the combined measure barely moved returns across
+  50,330 observations, the split is unlikely to be dramatic.
+- **The build is large.** Caption-level extraction, market-wide sample,
+  factor-adjusted returns, 2006 onward — their paper again, plus the addition.
+
+**If this is ever revived, the first step is not a study.** It is validating the
+judge on a gold set until its labels are worth betting on. That is self-contained,
+cheap relative to a study, required for any version of this, and useful for the
+product whether or not a paper follows.
+
+---
+
 ## Operational gotchas
 
 **Worker counts differ by stage.** Extraction is CPU-bound Python, so the GIL
@@ -426,4 +496,16 @@ cache by design.
   disclosure-unit level vs positive/negative at document level.
 - ~~"60 institutions, 240 pairs."~~ 57 and 228.
 - ~~"Claude Opus judge."~~ The corpus was judged by `gpt-5.6-luna` on Azure.
+- ~~"Lazy Prices reports ~7% a year."~~ It reports a range by specification:
+  34–58 bps/month value-weighted, up to 188 bps/month for Risk-Factors-
+  concentrated changes. Quoting a single number misstates our own power.
+- ~~"Lyle et al. is peer-reviewed evidence against the Unsaid thesis."~~ Read the
+  paper. Their result is that disclosure change in either direction is informative
+  and so reduces uncertainty — the second moment. A removal can reduce uncertainty
+  and still predict negative returns; the paper quotes Heinle et al. (2018) on
+  exactly that ambiguity. This was an overreach from an abstract.
+- ~~"Extraction error inflates results in text-based finance research."~~ True of
+  large financial issuers, 0 of 52 elsewhere. It is a banking artefact.
+- ~~"The signal would have flagged SVB."~~ SVB ranked 4th of 5 quintiles on Item
+  1A similarity — one quintile from the LONG leg. Neither leg ever held it.
 - The 86% negative-sentiment figure **does** check out — verified verbatim.
