@@ -35,7 +35,9 @@ def code_fingerprint() -> str:
         if path.name in _EXCLUDED:
             continue
         h.update(path.name.encode("utf-8"))
-        h.update(path.read_bytes())
+        # LF-normalised so a Windows checkout cannot change the hash;
+        # see the note in extractor.py._extractor_fingerprint.
+        h.update(path.read_bytes().replace(b"\r\n", b"\n"))
     return h.hexdigest()[:12]
 
 

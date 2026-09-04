@@ -555,7 +555,12 @@ def _extractor_fingerprint() -> str:
     if _EXTRACTOR_FP is None:
         import hashlib
         from pathlib import Path
-        src = Path(__file__).resolve().read_bytes()
+        # Normalise line endings before hashing. Git rewrites tracked files
+        # with CRLF on Windows checkout, so hashing raw bytes makes the
+        # fingerprint depend on the platform and on which branch was last
+        # checked out. That silently invalidates the entire text cache and
+        # starts a multi-hour re-extraction with no code change behind it.
+        src = Path(__file__).resolve().read_bytes().replace(b"\r\n", b"\n")
         _EXTRACTOR_FP = hashlib.sha256(src).hexdigest()[:10]
     return _EXTRACTOR_FP
 
