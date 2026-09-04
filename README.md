@@ -87,25 +87,39 @@ Given a company ticker and two fiscal years, Unsaid:
 
 ## Research: does it actually predict returns?
 
-Unsaid was tested against its own premise. [`research/banking_study/`](research/banking_study/)
-runs the pipeline across **57 US banks and 224 consecutive 10-K pairs** (FY2019–2023),
-scores each pair by removal severity, and measures forward returns against the KRE
+Unsaid was tested against its own premise, on the
+[`research/banking-study`](../../tree/research/banking-study) branch: the pipeline
+across **57 US banks and 321 consecutive 10-K pairs** (FY2019–2025), scoring each
+pair by disclosure change and measuring forward returns against the KRE
 regional-banking index.
 
-**It found nothing.** No signal survives correction for the 24 specifications examined
-(family-wise `p = 0.131`), and the design is underpowered by roughly 3× against the effect
-it targets — ~725 observations would be needed, and US banks nearly all file in February,
-so 224 observations cluster into about four independent time periods.
+**The signal failed three independent ways.**
 
-A **bag-of-words baseline** — the term-frequency similarity Cohen et al. actually use —
-outperformed the LLM classifier on every cut. The semantic score was insignificant at every
-horizon and wrong-signed at twelve months.
+| | |
+|---|---|
+| multiplicity | family-wise `p = 0.131` across 24 specifications |
+| out of sample | pre-registered test on a held-out year reversed sign, `−4.95%` |
+| measurement | `+7.98% (t=2.48)` → `+6.15% (t=1.83)` once text extraction was fixed |
 
-📉 **[Full write-up with the numbers and the instrument defects →](research/banking_study/results/null_writeup.html)**
+The third is the most telling: an effect that shrinks as measurement error is
+removed is behaving like measurement error.
 
-The tool's value does not depend on the anomaly replicating in 57 banks over four years.
-*Show me what this company stopped saying* stands on its own. But the study is the honest
-test of the stronger claim, so it ships with the repo rather than being left out.
+Two caveats stated plainly, because they cut both ways. The point estimate's
+*magnitude* does land inside the range Cohen et al. report (4–7%/yr
+value-weighted), so this is a study that was underpowered rather than one
+measuring something unrelated. And 57 banks that nearly all file in February are
+roughly **six independent bets**, not 321 — so this is not a refutation of a paper
+drawn from thousands of firms across every sector.
+
+A **bag-of-words baseline** — the term-frequency similarity Cohen et al. actually
+use — outperformed the LLM classifier on every cut.
+
+📉 **[Full write-up, with the instrument defects →](https://claude.ai/code/artifact/631c8c2a-ea3f-4c9e-bd01-93e45928fde5)**
+
+The tool's value does not depend on the anomaly replicating in 57 banks over six
+years. *Show me what this company stopped saying* stands on its own. But the study
+is the honest test of the stronger claim, and it is kept in full — code, corpus and
+null — rather than quietly dropped.
 
 ---
 
