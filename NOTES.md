@@ -1,6 +1,7 @@
 # Working Notes
 
-Operational state of the pipeline and the banking study. Updated 2 Sep 2026.
+Operational state of the pipeline and the banking study. Updated 4 Sep 2026.
+The study is parked on `research/banking-study`; `master` carries the product only.
 
 Generated reports in `research/banking_study/results/` are outputs and get
 overwritten on every run — this file is the durable record of decisions,
@@ -375,6 +376,89 @@ Study
 
 ---
 
+## The judge — the one thing still worth doing
+
+**Nothing has validated the judge.** This was the single most misleading belief
+carried through the session, so it is recorded precisely.
+
+`gold/labels.template.json` has 60 human slots and **all 60 are null**. They were
+never filled. What exists instead is `gold/labels.model.json` — Claude's own blind
+labels, whose own header says *"not human ground truth, for inter-model agreement
+only"*. Every "agreement" number quoted before today is therefore
+**Claude vs judge across model families**, not validation.
+
+Recomputed correctly (`labels.model.json` vs `answers.v3.json`):
+
+| | |
+|---|---|
+| raw agreement | 55.0% (33/60) |
+| Cohen kappa | 0.364 |
+
+Disagreement is **not diffuse** — one cell carries 37% of it:
+
+| labeller | judge | n |
+|---|---|---|
+| RETAINED | SOFTENED | **10** |
+| ABSORBED | RETAINED | 4 |
+| UNSURE | REMOVED | 3 |
+
+### Why I could not settle it myself
+
+`labels.model.json` is my output *and* I wrote the v3 rubric the judge runs. Me
+adjudicating is the rubric's author deciding whether a model applying the rubric
+read it correctly. The earlier crux adjudication — "the judge was factually
+correct in all ten" — has exactly this defect and should not be treated as
+evidence.
+
+### What an independent ruler says (`16_softened_objective.py`)
+
+SOFTENED is a claim with textual consequences, measurable without anyone's
+opinion. Each year-1 unit against its closest year-2 candidate, median per group:
+
+| group | n | len ratio | hedge/1k |
+|---|---|---|---|
+| DISPUTED (judge said SOFTENED) | 10 | **0.66** | **+2.2** |
+| AGREED RETAINED (both) | 21 | 1.01 | −1.4 |
+| AGREED REMOVED (both) | 6 | 0.95 | +7.6 |
+
+Two of three signatures fire. Disputed units keep 66% of their length where
+agreed-RETAINED units hold at 101%, and they gain hedging where agreed-RETAINED
+units lose it. Numeric density does not separate them.
+
+**This supports the JUDGE, and implies kappa 0.364 mostly reflects MY labelling
+error rather than judge unreliability** — close to the opposite of what the
+earlier session concluded. It is independent of both disputants because neither
+wrote the ruler.
+
+Caveat that matters: it measures whether the **language** softened, not whether
+the **risk** did. A firm can hedge wording while disclosing the same exposure, or
+drop a real exposure without changing tone. That gap is precisely the semantic
+question Unsaid exists to answer, and no word count closes it.
+
+### The 30-minute experiment that would settle it
+
+`gold/adjudicate.html` — 10 disputed units plus 5 agreed controls, shuffled with a
+fixed seed, fully blind: no judge call, no Claude call, no marking of which are
+disputed. Saves to localStorage, emits `gold/labels.human.json`.
+
+Every outcome is useful:
+
+| you side with | conclusion |
+|---|---|
+| the judge | instrument validated; kappa 0.364 was labeller error |
+| the RETAINED labels | judge over-calls SOFTENED — a prompt fix, not a dead end |
+| neither | the six-way rubric is the problem, not either model |
+
+The controls exist to catch that third case, which would indict the rubric rather
+than the judge.
+
+**This is the only open thread with forward value.** It is the product, not a
+study artefact — a validated judge does not resurrect the study or the paper, but
+it answers whether the thing Unsaid is built on works at all. Nobody currently
+knows.
+
+---
+
 ## Publication direction — closed 2 Sep 2026
 
 Three candidate contributions, three independent reasons none survives. Recorded
@@ -432,6 +516,26 @@ asymmetry itself is unexamined.
 judge on a gold set until its labels are worth betting on. That is self-contained,
 cheap relative to a study, required for any version of this, and useful for the
 product whether or not a paper follows.
+
+---
+
+## Repo layout — split 4 Sep 2026
+
+`master` carries the product only: `unsaid/`, `api/`, `frontend/`, `scripts/`,
+`assets/`. The banking study lives on **`research/banking-study`**, which holds
+the full history including every commit from the pipeline-integrity work.
+
+Nothing is lost by this split — master's history still contains the study
+commits, only its working tree is product-only. To get the study back:
+`git checkout research/banking-study`.
+
+The coupling was verified one-way before splitting: the study imports `unsaid/`
+(4 scripts), and **no product code imports the study**. So the product builds and
+runs without `research/` present.
+
+`cache/` stays on master. It is a runtime text cache keyed by SEC accession and
+extractor fingerprint, written by `unsaid/textcache.py`, and serves the product's
+extractor as much as the study's.
 
 ---
 
