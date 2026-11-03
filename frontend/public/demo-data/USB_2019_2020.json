@@ -1,0 +1,35 @@
+{
+  "ticker": "USB",
+  "company_name": "US BANCORP \\DE\\",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-23T13:48:10.240194+00:00",
+  "summary_counts": {
+    "RETAINED": 2
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 1A can be found in the 2019 Annual Report on pages 146 to 156 under the heading “Risk Factors.” That information is incorporated into this report by reference.",
+      "year2_quote_or_null": "Information in response to this Item 1A can be found in the 2020 Annual Report on pages 146 to 158 under the heading “Risk Factors.” That information is incorporated into this report by reference.",
+      "reasoning": "The disclosure continues to incorporate the Annual Report’s Risk Factors section by reference under Item 1A. The page range changed, but the underlying economic risk disclosure remains present and materially unchanged; the Item 7A candidate addresses a different market-risk section.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_incorporated_by_reference",
+      "title": "Risk Factors Incorporated By Reference"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 7A can be found in the 2019 Annual Report on pages 36 to 56 under the heading “Corporate Risk Profile.” That information is incorporated into this report by reference.",
+      "year2_quote_or_null": "Information in response to this Item 7A can be found in the 2020 Annual Report on pages 36 to 58 under the heading “Corporate Risk Profile.” That information is incorporated into this report by reference.",
+      "reasoning": "The Year-2020 Item 7A disclosure continues to incorporate the Corporate Risk Profile by reference, with the same underlying market-risk disclosure and only updated annual-report year and page range. The Item 1A candidate is a separate risk-factors reference and does not alter the Item 7A economic risk.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_incorporated_reference",
+      "title": "Market Risk Disclosures Incorporated By Reference"
+    }
+  ]
+}

@@ -45,7 +45,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   openaiModelSegmenter: "gpt-4o-mini",
   openaiApiKey: "",
 
-  edgarIdentity: "Unsaid/1.0 tobiojebiyi@gmail.com",
+  edgarIdentity: "Unsaid/1.0 you@example.com",
   candidateSimilarityThreshold: 0.20,
   maxCandidates: 5,
 };

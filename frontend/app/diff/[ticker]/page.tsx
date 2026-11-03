@@ -10,6 +10,7 @@ import { ChangeCard } from "@/components/ChangeCard";
 import { ExportModal } from "@/components/ExportModal";
 import { LiveRunModal } from "@/components/LiveRunModal";
 import { SIGNAL_ORDER } from "@/lib/constants";
+import { DEMO_MODE } from "@/lib/demo";
 
 type SectionFilter = "ALL" | "1A" | "7A";
 type SortMode = "SEVERITY" | "CONFIDENCE_DESC" | "SECTION" | "ALPHABETICAL";
@@ -40,6 +41,7 @@ export default function DiffPage() {
   const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
+    setSectionFilter("ALL");
     loadAnalysis();
   }, [ticker, year1Param, year2Param]);
 
@@ -149,7 +151,7 @@ export default function DiffPage() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-[#09090b] font-mono flex flex-col text-zinc-100">
+      <main className="min-h-screen bg-[var(--background)] font-mono flex flex-col text-zinc-100">
         <TopBar ticker={ticker} />
         <div className="flex-1 flex items-center justify-center px-6 py-12">
           <div className="max-w-lg w-full text-center border border-zinc-800 bg-zinc-950 p-8 space-y-4">
@@ -158,7 +160,9 @@ export default function DiffPage() {
             </span>
             <p className="text-zinc-200 text-sm font-semibold">{error}</p>
             <p className="text-zinc-500 text-xs leading-relaxed">
-              This filing comparison has not been computed yet. You can launch an automated ingest run from the homepage terminal.
+              {DEMO_MODE
+                ? "This demo only contains saved comparisons. Live runs are disabled; pick a saved analysis from the archive."
+                : "This filing comparison has not been computed yet. You can launch an automated ingest run from the homepage terminal."}
             </p>
             <div className="pt-4 flex justify-center gap-3">
               <Link
@@ -176,7 +180,7 @@ export default function DiffPage() {
 
   if (loading || !data) {
     return (
-      <main className="min-h-screen bg-[#09090b] font-mono flex flex-col text-zinc-100">
+      <main className="min-h-screen bg-[var(--background)] font-mono flex flex-col text-zinc-100">
         <TopBar ticker={ticker} />
         <div className="flex-1 flex items-center justify-center py-20">
           <div className="text-center space-y-2">
@@ -184,7 +188,7 @@ export default function DiffPage() {
             <p className="text-zinc-400 text-xs tracking-widest">
               LOADING DISCLOSURE INTELLIGENCE…
             </p>
-            <p className="text-zinc-600 text-[11px]">Querying cached comparisons for {ticker}</p>
+            <p className="text-zinc-600 text-[11px]">Loading saved comparisons for {ticker}</p>
           </div>
         </div>
       </main>
@@ -198,9 +202,15 @@ export default function DiffPage() {
   const absorbedCount = data.summary_counts?.ABSORBED ?? 0;
   const signalTotal = removedCount + softenedCount + newCount + absorbedCount;
   const signalPct = totalRisks > 0 ? Math.round((signalTotal / totalRisks) * 100) : 0;
+  const sectionsCovered = [...new Set(data.changes.map((c) => c.section))].sort();
+  const sectionsLabel = sectionsCovered.length
+    ? `ITEM ${sectionsCovered.join(" + ")}`
+    : "NO SECTIONS";
+  const legacyRun = !data.model_judge;
+  const isSvbFeatured = data.ticker === "SIVB" && data.year1 === 2021 && data.year2 === 2022;
 
   return (
-    <main className="min-h-screen bg-[#09090b] font-mono text-zinc-100 flex flex-col selection:bg-cyan-500 selection:text-black">
+    <main className="min-h-screen bg-[var(--background)] font-mono text-zinc-100 flex flex-col selection:bg-cyan-500 selection:text-black">
       <TopBar
         ticker={data.ticker}
         onExport={() => setShowExportModal(true)}
@@ -226,8 +236,13 @@ export default function DiffPage() {
               <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-zinc-500 tracking-wider">
                 <span>
                   COMPARING <strong className="text-zinc-300">FY{data.year1}</strong> ➔{" "}
-                  <strong className="text-zinc-300">FY{data.year2}</strong> · ITEM 1A + 7A
+                  <strong className="text-zinc-300">FY{data.year2}</strong> · {sectionsLabel}
                 </span>
+                {legacyRun && (
+                  <span className="text-[10px] px-2 py-0.5 border border-zinc-700 text-zinc-400">
+                    Judge model not recorded
+                  </span>
+                )}
                 {data.model_provider && (
                   <span className={`text-[10px] px-2 py-0.5 border ${
                     data.model_provider === "azure_foundry"
@@ -244,21 +259,37 @@ export default function DiffPage() {
             </div>
 
             <div className="flex items-center gap-2">
+              {DEMO_MODE && (
+                <span className="text-[10px] text-zinc-500">
+                  Saved run{data.generated_at ? ` · ${data.generated_at.slice(0, 10)}` : ""}
+                </span>
+              )}
               <button
                 onClick={() => setShowExportModal(true)}
                 className="text-xs bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-200 px-3 py-1.5 transition-colors font-medium flex items-center gap-1.5"
               >
                 📥 EXPORT
               </button>
-              <button
-                onClick={handleLaunchRerun}
-                disabled={rerunLoading}
-                className="text-xs bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-200 px-3 py-1.5 transition-colors font-medium flex items-center gap-1.5"
-              >
-                🔄 RE-RUN
-              </button>
+              {!DEMO_MODE && (
+                <button
+                  onClick={handleLaunchRerun}
+                  disabled={rerunLoading}
+                  className="text-xs bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-200 px-3 py-1.5 transition-colors font-medium flex items-center gap-1.5"
+                >
+                  🔄 RE-RUN
+                </button>
+              )}
             </div>
           </div>
+
+          {DEMO_MODE && legacyRun && (
+            <p className="text-[11px] leading-relaxed text-amber-300 border border-amber-900 bg-amber-950/30 p-3">
+              <strong>Provenance:</strong> this saved run did not record its judge model or pipeline
+              version, and covers {sectionsLabel.replace("ITEM", "Item")} only.
+              {isSvbFeatured &&
+                " Item 1A extraction failed on this filing at the time and alignment used TF-IDF rather than dense embeddings. The findings can be checked against the filings themselves, but this run is not reproducible under the current pipeline."}
+            </p>
+          )}
 
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
@@ -296,7 +327,9 @@ export default function DiffPage() {
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
             {/* Section tabs */}
             <div className="flex gap-1.5">
-              {(["ALL", "1A", "7A"] as SectionFilter[]).map((s) => (
+              {(["ALL", "1A", "7A"] as SectionFilter[])
+                .filter((s) => s === "ALL" || sectionsCovered.includes(s))
+                .map((s) => (
                 <button
                   key={s}
                   onClick={() => setSectionFilter(s)}
@@ -386,7 +419,10 @@ export default function DiffPage() {
         {/* Methodology Footer Note */}
         <div className="mt-12 pt-6 border-t border-zinc-900 text-xs text-zinc-600 leading-relaxed">
           <p>
-            <strong className="text-zinc-400 font-semibold">Methodology:</strong> 10-K sections extracted from SEC EDGAR. Disclosure units segmented via Claude Sonnet. Dense neural alignment computed via all-mpnet-base-v2 (used for top-5 candidate recall only). Every risk shift evaluated by Claude Opus judge based on economic substance rather than stylistic phrasing (Lazy Prices anomaly, Cohen et al. 2020).
+            <strong className="text-zinc-400 font-semibold">Methodology:</strong> 10-K sections extracted from SEC EDGAR and split into disclosure units by an LLM segmenter. Embeddings are used only to recall candidate matches. An LLM judge then classifies each unit on economic substance rather than stylistic phrasing (motivated by Lazy Prices, Cohen et al. 2020).{" "}
+            {data.model_judge
+              ? `Judge for this run: ${data.model_judge}${data.model_segmenter ? `; segmenter: ${data.model_segmenter}` : ""}.`
+              : "The judge model for this run was not recorded."}
           </p>
         </div>
       </div>
@@ -431,7 +467,7 @@ function TopBar({
   copiedLink,
 }: TopBarProps) {
   return (
-    <div className="border-b border-zinc-800 px-4 sm:px-6 py-3.5 flex items-center justify-between sticky top-0 bg-[#0a0a0a]/95 backdrop-blur z-20 font-mono">
+    <div className="border-b border-zinc-800 px-4 sm:px-6 py-3.5 flex items-center justify-between sticky top-0 bg-[var(--background)] backdrop-blur z-20 font-mono">
       <div className="flex items-center gap-4">
         <Link
           href="/"
@@ -443,7 +479,7 @@ function TopBar({
         <span className="text-sm font-bold text-white tracking-widest">[{ticker}]</span>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap justify-end">
         {onShare && (
           <button
             onClick={onShare}

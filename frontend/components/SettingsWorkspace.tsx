@@ -624,7 +624,7 @@ export function SettingsWorkspace({
               className="w-full bg-zinc-900 border border-zinc-750 text-xs px-3 py-2.5 text-zinc-200 focus:outline-none focus:border-cyan-400 font-mono"
             />
             <p className="text-[10px] text-zinc-600 mt-1.5">
-              Current default: <code className="text-zinc-400 font-mono">Unsaid/1.0 tobiojebiyi@gmail.com</code>
+              Current default: <code className="text-zinc-400 font-mono">Unsaid/1.0 you@example.com</code>
             </p>
           </div>
 

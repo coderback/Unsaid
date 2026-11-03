@@ -1,0 +1,560 @@
+{
+  "ticker": "CMA",
+  "company_name": "COMERICA INC",
+  "year1": 2021,
+  "year2": 2022,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-22T15:47:05.307632+00:00",
+  "summary_counts": {
+    "RETAINED": 37,
+    "SOFTENED": 1,
+    "ABSORBED": 2,
+    "REWORDED": 3,
+    "REMOVED": 1,
+    "NEW": 10
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "This report includes forward-looking statements as defined in the Private Securities Litigation Reform Act of 1995. In addition, Comerica may make other written and oral communications from time to time that contain such statements.",
+      "year2_quote_or_null": "This report includes forward-looking statements as defined in the Private Securities Litigation Reform Act of 1995. In addition, Comerica may make other written and oral communications from time to time that contain such statements.",
+      "reasoning": "The Year-2022 disclosure retains the same underlying economic/legal risk disclosure: identifying forward-looking statements and the associated uncertainty that actual results may differ materially from expectations. The Year-2022 text adds cautionary language but does not weaken or remove the Year-2021 disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_000_forward_looking_statements_definition",
+      "title": "Forward-Looking Statements Definition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Forward-looking statements speak only as of the date the statement is made, and Comerica does not undertake to update forward-looking statements to reflect facts, circumstances, assumptions or events that occur after the date the forward-looking statements are made.",
+      "year2_quote_or_null": "Forward-looking statements speak only as of the date the statement is made, and Comerica does not undertake to update forward-looking statements to reflect facts, circumstances, assumptions or events that occur after the date the forward-looking statements are made.",
+      "reasoning": "The Year-2 disclosure repeats the same economic caution: forward-looking statements are subject to changing assumptions, risks and uncertainties, actual results may differ materially, and Comerica has no obligation to update statements after they are made. Additional surrounding language does not alter that underlying risk disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_001_forward_looking_statements_caution",
+      "title": "Forward-Looking Statements Caution"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition to factors mentioned elsewhere in this report or previously disclosed in Comerica's SEC reports ... the factors contained below, among others, could cause actual results to differ materially from forward-looking statements, and future results could differ materially from historical performance.",
+      "year2_quote_or_null": "In addition to factors mentioned elsewhere in this report or previously disclosed in Comerica's SEC reports ... the factors contained below, among others, could cause actual results to differ materially from forward-looking statements, and future results could differ materially from historical performance.",
+      "reasoning": "The Year-2 candidate reproduces the same risk-disclosure scope and caution that factors disclosed elsewhere or previously in SEC reports may cause materially different actual results. The surrounding forward-looking-statements language does not change that underlying economic disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_risk_factors_scope",
+      "title": "Risk Factors Scope"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Under such circumstances, as occurred during the COVID-19 pandemic, Comerica could experience an increase in the level of provision for credit losses, nonperforming assets, net charge-offs and reserve for credit losses, which could adversely affect Comerica's financial results.",
+      "year2_quote_or_null": "Under such circumstances, as occurred during the COVID-19 pandemic, Comerica could experience an increase in the level of provision for credit losses and reserve for credit losses, which could adversely affect Comerica's financial results.",
+      "reasoning": "The core risk of unforeseen default events causing credit losses and adverse financial results was retained. However, Year-2 omits the specifically identified potential increases in nonperforming assets and net charge-offs, narrowing and therefore softening the stated consequences; the added higher-risk portfolio discussion does not restore those omitted impacts.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_003_credit_quality",
+      "title": "Credit Quality Deterioration"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Any decline in one of these businesses or industries could cause increased credit losses, which in turn could adversely affect Comerica. Further, any decline in these businesses or industries could cause decreased borrowings, either due to reduced demand or reductions in the borrowing base available for each customer loan.",
+      "year2_quote_or_null": "Declines in the businesses or industries of Comerica's customers could cause increased credit losses or decreased loan balances, which could adversely affect Comerica.",
+      "reasoning": "The core economic risk—customer-industry declines causing higher credit losses and reduced loan balances/borrowings—is retained in Year-2, but it is bundled into a broader opening disclosure and summarized rather than presented with the Year-1 detail. The specific pandemic-susceptible industry list is not carried forward, but the underlying customer-industry decline risk is absorbed into the broader customer industry disclosure.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_0_004_customer_industry_declines",
+      "title": "Customer Industry Declines"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Individual, economic, political, industry-specific conditions and other factors outside of Comerica's control, such as pandemics, inflation, fuel prices, energy costs, tariffs, real estate values or other factors that affect customer income levels, could alter predicted customer borrowing, repayment, investment and deposit practices.",
+      "year2_quote_or_null": "Individual, economic, political, industry-specific conditions and other factors outside of Comerica's control, such as pandemics, inflation, military conflicts, labor shortages, supply chain constraints, fuel prices, energy costs, tariffs, real estate values or other factors that affect customer income levels, could alter predicted customer borrowing, repayment, investment and deposit practices.",
+      "reasoning": "The Year-2022 disclosure retains the same underlying risks: external economic and other conditions may change customer borrowing, repayment, investment, and deposit behavior, and difficult conditions may reduce consumer confidence. The added examples (military conflicts, labor shortages, supply chain constraints, and recession) expand the examples but do not materially change or weaken the disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_customer_behavior",
+      "title": "Customer Behavior Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in monetary and fiscal policies are beyond Comerica's control and difficult to predict. Comerica's financial condition and results of operations could be materially adversely impacted by changes in governmental monetary and fiscal policies.",
+      "year2_quote_or_null": "Changes in monetary and fiscal policies are beyond Comerica's control and difficult to predict. Comerica's financial condition and results of operations could be materially adversely impacted by changes in governmental monetary and fiscal policies.",
+      "reasoning": "The Year-2 disclosure retains the same economic risk: governmental and FRB monetary and fiscal policy changes can affect funding costs, lending and investment returns, deposits, and Comerica’s financial condition and results. The added introductory sentence does not change the substance or severity of the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_monetary_fiscal_policies",
+      "title": "Monetary and Fiscal Policies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A continued low interest rate environment will adversely affect the interest income Comerica earns on loans and investments.",
+      "year2_quote_or_null": "The Federal Reserve raised interest rates seven times in 2022; if the Federal Reserve lowers interest rates in the future, it will adversely affect the interest income Comerica earns on loans and investments.",
+      "reasoning": "The Year-2 disclosure retains the underlying economic risk that interest-rate movements—particularly lower rates—can reduce interest income and net interest income. It also retains the deposit-pricing/funding-cost, disintermediation, and broader market-condition risks, with additional discussion of hedging and 2022 rate effects; these are substantive updates rather than removal or weakening of the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_007_interest_rate_fluctuations",
+      "title": "Interest Rate Fluctuations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The market transition away from LIBOR to an alternative reference rate is complex and could have a range of adverse effects on our business, financial condition and results of operations.",
+      "year2_quote_or_null": "The market transition away from LIBOR to an alternative reference rate is complex and could have a range of adverse effects on Comerica's business, financial condition and results of operations.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risks: outstanding LIBOR exposure, adverse effects on rates, revenues, expenses and instrument values, regulatory scrutiny, and counterparty disputes. The updated exposure and remediation figures do not reduce or eliminate the risk, and no material risk category was removed or merely bundled elsewhere.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_libor_transition",
+      "title": "LIBOR Transition Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica’s liquidity and ability to fund and run its business could be materially adversely affected by a variety of conditions and factors, including financial and credit market disruptions and volatility, a lack of market or customer confidence in financial markets in general, or deposit competition based on interest rates, which may result in a loss of customer deposits or outflows of cash or collateral and/or adversely affect Comerica's ability to access capital markets on favorable terms.",
+      "year2_quote_or_null": "Comerica’s liquidity and ability to fund and run its business could be materially adversely affected by a variety of conditions and factors, including financial and credit market disruptions and volatility, a lack of market or customer confidence in financial markets in general, or deposit competition based on interest rates, which may result in a loss of customer deposits or outflows of cash or collateral and/or adversely affect Comerica's ability to access capital markets on favorable terms.",
+      "reasoning": "The Year-2022 disclosure reproduces the Year-2021 liquidity and funding risk essentially verbatim, including the risks of market disruption, deposit outflows, funding-market access, borrowing costs, and ineffective liquidity management. The added statement about maintaining adequate funding for regulatory expectations supplements rather than changes or absorbs the prior economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_009_liquidity_funding",
+      "title": "Liquidity and Funding Adequacy"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There can be no assurance that Comerica will maintain its current ratings. While recent credit rating actions have had little to no detrimental impact on Comerica's profitability, borrowing costs, or ability to access the capital markets, future downgrades to Comerica's or its subsidiaries' credit ratings could adversely affect Comerica's profitability, borrowing costs, or ability to access the capital markets.",
+      "year2_quote_or_null": "There can be no assurance that Comerica will maintain its current ratings. While recent credit rating actions have had little to no detrimental impact on Comerica's profitability, borrowing costs, or ability to access the capital markets, future downgrades to Comerica's or its subsidiaries' credit ratings could adversely affect Comerica's profitability, borrowing costs, or ability to access the capital markets.",
+      "reasoning": "The Year-2 candidate reproduces the same economic risks as Year-1, including potential effects of downgrades on profitability, borrowing costs, capital-market access, contractual liabilities, and security holders' ability to sell. The disclosure is therefore retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_010_credit_ratings",
+      "title": "Credit Rating Reductions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica's ability to engage in routine funding transactions could be adversely affected by the actions and commercial soundness of other financial institutions.",
+      "year2_quote_or_null": "Comerica's ability to engage in routine funding transactions could be adversely affected by the actions and commercial soundness of other financial institutions.",
+      "reasoning": "The Year-2 disclosure retains the same economic risk and reproduces the substantive discussion of interconnection, counterparty default, market-wide liquidity problems, collateral risk, and potentially material losses. The added heading does not change the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_011_financial_institution_soundness",
+      "title": "Financial Institution Soundness"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica’s computer systems and network infrastructure and those of third parties, on which Comerica is highly dependent, are subject to security risks and could be susceptible to cyber attacks.",
+      "year2_quote_or_null": "Comerica’s computer systems and network infrastructure and those of third parties, on which Comerica is highly dependent, are subject to security risks and could be susceptible to cyber attacks, such as denial of service attacks, hacking, terrorist activities or identity theft.",
+      "reasoning": "The core economic risk—cyber attacks and security breaches affecting Comerica’s and third parties’ systems, potentially compromising information and causing business, legal, or financial harm—remains materially disclosed in Year-2. Candidate 1 retains the principal cybersecurity disclosure, while Candidate 2 separately retains disruption and undetected-attack consequences; the changes add detail but do not weaken or remove the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_cybersecurity",
+      "title": "Cybersecurity and Data Security"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Cyber attacks or other information or security breaches, whether directed at Comerica or third parties, may result in a material loss or have material consequences.",
+      "year2_quote_or_null": "Cyber attacks or other information or security breaches, whether directed at Comerica or third parties, may result in a material loss or have material consequences.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1, retaining the same cybersecurity breach consequences, reputational, operational, legal, financial, and insurance-coverage risks without any material weakening or omission.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_000_cybersecurity_breach_consequences",
+      "title": "Cybersecurity Breach Consequences and Insurance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As cybersecurity and data privacy risks for banking organizations and the broader financial system have significantly increased in recent years, cybersecurity and data privacy issues have become the subject of increasing legislative and regulatory focus.",
+      "year2_quote_or_null": "As cybersecurity and data privacy risks for banking organizations and the broader financial system have significantly increased in recent years, cybersecurity and data privacy issues have become the subject of increasing legislative and regulatory focus.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and addresses the same heightened legislative and regulatory focus on cybersecurity and data privacy risks, including enhanced standards and breach-notification requirements.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_cybersecurity_regulatory_focus",
+      "title": "Cybersecurity and Data Privacy Regulatory Focus"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Both personally identifiable information and personal financial information is increasingly subject to legislation and regulation, the intent of which is to protect the privacy of personal information that is collected and handled.",
+      "year2_quote_or_null": "Both personally identifiable information and personal financial information is increasingly subject to legislation and regulation, the intent of which is to protect the privacy of personal information that is collected and handled.",
+      "reasoning": "The Year-2 disclosure retains the same economic risk: Comerica’s collection and handling of customer information is subject to expanding privacy laws and regulations. The omitted reference to the California governor’s signing of the CCPA is historical detail, while the CCPA applicability and effective-date risk remains unchanged.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_002_personal_information_privacy",
+      "title": "Customer Information Privacy Obligations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica may become subject to new legislation or regulation concerning cybersecurity or the privacy of personally identifiable information and personal financial information or of any other information Comerica may store or maintain.",
+      "year2_quote_or_null": "Comerica may become subject to new legislation or regulation concerning cybersecurity or the privacy of personally identifiable information and personal financial information or of any other information Comerica may store or maintain.",
+      "reasoning": "The Year-2 disclosure reproduces the same economic risk: future cybersecurity and privacy regulation could require system or business-practice changes and expose Comerica to fines, litigation, or enforcement. There is no material change in the risk, qualifiers, or scope.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_003_future_privacy_regulation",
+      "title": "Future Cybersecurity and Privacy Regulation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica’s operational or security systems or infrastructure, or those of third parties, could fail or be breached, which could disrupt Comerica’s business and adversely impact Comerica’s results of operations, liquidity and financial condition, as well as cause legal or reputational harm.",
+      "year2_quote_or_null": "Comerica’s operational or security systems or infrastructure, or those of third parties, could fail or be breached, which could disrupt Comerica’s business and adversely impact Comerica’s results of operations, liquidity and financial condition, as well as cause legal or reputational harm.",
+      "reasoning": "Candidate 1 reproduces the same underlying operational and security systems failure or breach risk, including third-party exposure and potential operational, financial, legal, and reputational consequences. Candidate 2 adds cyberattack-specific detail but does not alter the fact that the broader Year-1 disclosure is retained in Candidate 1.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_004_operational_systems_breach",
+      "title": "Operational Systems Failure or Breach"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica faces the risk of operational disruption, failure or capacity constraints due to its dependency on third party vendors for components of its delivery systems.",
+      "year2_quote_or_null": "Comerica faces the risk of operational disruption, failure or capacity constraints due to its dependency on third party vendors for components of its delivery systems.",
+      "reasoning": "The Year-2 disclosure retains the same economic risk: operational disruption, failure, or capacity constraints arising from dependence on third-party vendors. The listed services change slightly (cash services is added), but the underlying dependency, consequences, and risk qualifiers remain materially the same.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_005_third_party_delivery_systems",
+      "title": "Third-Party Delivery System Dependencies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Legal and regulatory proceedings and related matters with respect to the financial services industry, including those directly involving Comerica and its subsidiaries, could adversely affect Comerica or the financial services industry in general.",
+      "year2_quote_or_null": "Legal and regulatory proceedings and related matters with respect to the financial services industry, including those directly involving Comerica and its subsidiaries, could adversely affect Comerica or the financial services industry in general.",
+      "reasoning": "The Year-2 candidate reproduces the Year-1 disclosure, including the risks of legal proceedings, adverse determinations, regulatory actions, costs, reserves, and potential effects on financial condition and results of operations. The underlying economic risk is materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_006_legal_regulatory_proceedings",
+      "title": "Legal and Regulatory Proceedings"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Fraudulent activity can take many forms and has escalated as more tools for accessing financial services emerge, such as real-time payments.",
+      "year2_quote_or_null": "Fraudulent activity can take many forms and has escalated as more tools for accessing financial services emerge, such as real-time payments.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: evolving fraud activity may cause losses and requires ongoing investment in detection and prevention. The changes are cosmetic wording and formatting differences, without a material change in scope, severity, or qualifiers.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_007_fraud_losses",
+      "title": "Fraud-Related Losses and Investments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Disclosure controls and procedures or internal controls and procedures, no matter how well conceived and operated, can provide only reasonable, not absolute, assurance that the objectives of the control system are met, due to certain inherent limitations.",
+      "year2_quote_or_null": "Disclosure controls and procedures or internal controls and procedures, no matter how well conceived and operated, can provide only reasonable, not absolute, assurance that the objectives of the control system are met, due to certain inherent limitations.",
+      "reasoning": "The Year-2 disclosure presents the same economic risk: inherent limitations in controls mean they provide reasonable rather than absolute assurance, and errors or fraud may not be prevented or detected. The language and substance are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_008_controls_procedures_limitations",
+      "title": "Controls and Procedures Limitations"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Further, even if such regulations or oversight do not change, Comerica's business may develop such that it may be subject to increased regulatory requirements.",
+      "year2_quote_or_null": "Further, even if such regulations or oversight do not change, Comerica's business may develop such that it may be subject to increased regulatory requirements. For example, if Comerica's asset size increases in the future and exceeds $100 billion in average total consolidated assets calculated over four consecutive financial quarters, Comerica will become a Category IV institution.",
+      "reasoning": "The Year-2021 disclosure about potential increased regulatory requirements as Comerica approached the $100 billion asset threshold is still present in Candidate 1, but it is framed within the broader Category IV regulatory-requirements disclosure. The underlying economic risk—greater compliance burdens, restrictions, costs, scrutiny, and penalties upon crossing the threshold—remains substantively unchanged.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_009_regulatory_change_oversight",
+      "title": "Regulatory Change and Oversight"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica is required to satisfy stringent regulatory capital standards, as set forth in the “Supervision and Regulation” section of this report.",
+      "year2_quote_or_null": "Comerica is required to satisfy stringent regulatory capital standards, as set forth in the “Supervision and Regulation” section of this report.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and preserves the same economic risk: stringent capital and liquidity requirements may constrain dividends, share repurchases, business levels, or profitability.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_010_capital_requirements",
+      "title": "Regulatory Capital Requirements"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Federal income tax treatment of corporations may be clarified and/or modified by legislative, administrative or judicial changes or interpretations at any time. Any such changes could adversely affect Comerica, either directly, or indirectly as a result of effects on Comerica's customers.",
+      "year2_quote_or_null": "Federal income tax treatment of corporations may be clarified and/or modified by legislative, administrative or judicial changes or interpretations at any time. Any such changes could adversely affect Comerica, either directly, or indirectly as a result of effects on Comerica's customers.",
+      "reasoning": "The Year-2 disclosure reproduces the Year-1 economic risk verbatim: legislative, administrative, or judicial tax changes or interpretations could adversely affect Comerica directly or through customers. The added IRA examples and statement that the IRA is not expected to have a material impact do not eliminate or weaken the broader tax-regulation risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_011_tax_regulation_changes",
+      "title": "Tax Regulation Changes and Interpretations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "News or other publicity that impairs Comerica’s reputation, or the reputation of the financial services industry generally, can therefore cause significant harm to Comerica’s business and prospects.",
+      "year2_quote_or_null": "News or other publicity that impairs Comerica’s reputation, or the reputation of the financial services industry generally, can therefore cause significant harm to Comerica’s business and prospects.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and preserves the same economic risk: adverse publicity or negative information can materially harm Comerica’s business and prospects.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_012_reputational_damage",
+      "title": "Reputational Damage to Business"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica may not be able to utilize technology to efficiently and effectively develop, market, and deliver new products and services to its customers.",
+      "year2_quote_or_null": "Comerica may not be able to effectively develop new technology-driven products and services or be successful in marketing or supporting these products and services to its customers, which could have a material adverse impact on Comerica’s financial condition and results of operations.",
+      "reasoning": "The core economic risk is unchanged: Comerica may fail to use technology to develop, market, deliver, and support new products and services, adversely affecting performance. Candidate 1 restates the same risk in expanded form, while Candidate 2 preserves the salient summary sentence.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_013_technology_product_development",
+      "title": "Technology-Driven Product Development"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Competitive product and pricing pressures within Comerica's markets may change.",
+      "year2_quote_or_null": "Competitive product and pricing pressures within Comerica's markets may change.",
+      "reasoning": "The Year-2 disclosure repeats the Year-1 economic risk verbatim and further elaborates on competitive pressures, including pricing, products, technology, and non-bank competitors. The underlying risk is therefore retained.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_014_competitive_product_pricing",
+      "title": "Competitive Product and Pricing Pressures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica operates in a very competitive environment, which is characterized by competition from a number of other financial institutions in each market in which it operates.",
+      "year2_quote_or_null": "Comerica operates in a very competitive environment, which is characterized by competition from a number of other financial institutions in each market in which it operates.",
+      "reasoning": "The core economic risk—intense competition from financial institutions affecting Comerica's products, pricing, customer relationships, and business—is expressly retained in Year-2. Year-2 expands the disclosure to include additional competitors and regulatory and technology-related pressures, but does not materially weaken or remove the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_000_competitive_environment",
+      "title": "Competition in Financial Services Markets"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica's competitors may be subject to a significantly different or reduced degree of regulation due to their asset size or types of products offered.",
+      "year2_quote_or_null": "Comerica's competitors may be subject to significantly different or lesser regulation due to their asset size or types of products offered.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risk: competitors may face materially different or less regulation based on size or product mix, creating competitive advantages through lower compliance burdens and cost structures. The wording is substantively equivalent, despite minor phrasing changes.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_001_regulatory_competition",
+      "title": "Regulatory Differences Among Competitors"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition to banks, Comerica's banking subsidiaries also face competition from other financial intermediaries, including savings and loan associations, consumer and commercial finance companies, leasing companies, venture capital funds, credit unions, investment banks, insurance companies and securities firms.",
+      "year2_quote_or_null": "In addition to banks, Comerica and its banking subsidiaries also face competition from financial intermediaries, including savings and loan associations, consumer and commercial finance companies, leasing companies, venture capital funds, credit unions, investment banks, insurance companies and securities firms.",
+      "reasoning": "The Year-2 disclosure preserves the same underlying economic risk: competition from non-bank financial intermediaries, including fintech and alternative financial-service providers that face fewer regulatory constraints and may have lower costs. The surrounding competitive product and pricing discussion broadens the section but does not materially weaken or remove this risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_002_nonbank_competition",
+      "title": "Competition from Non-Bank Financial Institutions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If Comerica is unable to compete effectively in products and pricing in its markets, business could decline, which could have a material adverse effect on Comerica's business, financial condition or results of operations.",
+      "year2_quote_or_null": "If Comerica is unable to compete effectively in products and pricing in its markets, business could decline, which could have a material adverse effect on Comerica's business, financial condition or results of operations.",
+      "reasoning": "The Year-2 disclosure repeats the same underlying economic risk—failure to compete effectively on products and pricing could reduce business and materially harm results—and retains the Year-1 consequence essentially verbatim. The additional discussion broadens context but does not weaken or remove the risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_003_competitive_effects",
+      "title": "Consequences of Ineffective Competition"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The introduction, implementation, withdrawal, success and timing of business initiatives and strategies may be less successful or may be different than anticipated, which could adversely affect Comerica's business.",
+      "year2_quote_or_null": "The introduction, implementation, withdrawal, success and timing of business initiatives and strategies may be less successful or may be different than anticipated, which could adversely affect Comerica's business.",
+      "reasoning": "The core economic risk—that business initiatives and strategies may fail, differ from expectations, or adversely affect the business—is unchanged and is stated identically. The expansion example changes from the Southeastern U.S. to the Southeastern and Mountain West regions, but this does not alter the underlying strategy-execution risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_004_business_initiatives",
+      "title": "Risks from Business Initiatives and Strategies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Failure to create new customer relationships and to maintain and expand existing customer relationships to the extent anticipated may adversely impact Comerica's earnings.",
+      "year2_quote_or_null": "Failure to create new customer relationships and to maintain and expand existing customer relationships to the extent anticipated may adversely impact Comerica's earnings.",
+      "reasoning": "The Year-2 disclosure retains the same economic risk: competition may prevent Comerica from creating, maintaining, or expanding customer relationships, adversely affecting earnings. The COVID-19 disruption sentence was omitted, but that does not change the core customer-relationship retention and expansion risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_005_customer_relationships",
+      "title": "Customer Relationship Retention and Expansion"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica's future operating results depend substantially upon the continued service of its executive officers and key personnel. Comerica's future operating results also depend in significant part upon its ability to attract and retain qualified management, financial, technical, marketing, sales and support personnel.",
+      "year2_quote_or_null": "Comerica's future operating results depend substantially upon the continued service of its executive officers and key personnel. Comerica's future operating results also depend in significant part upon its ability to attract and retain qualified management, financial, technical, marketing, sales and support personnel.",
+      "reasoning": "The core economic risk—difficulty retaining key personnel and attracting qualified employees, with potential adverse effects on operating results—remains materially unchanged. Year-2 adds remote-work-related competition for talent, but this supplements rather than weakens or replaces the Year-1 disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_006_key_personnel",
+      "title": "Retention and Recruitment of Key Personnel"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any future strategic acquisitions or divestitures may present certain risks to Comerica's business and operations.",
+      "year2_quote_or_null": "Any future strategic acquisitions or divestitures may present certain risks to Comerica's business and operations.",
+      "reasoning": "The Year-2 disclosure is substantively identical to the Year-1 disclosure and preserves the same economic risks involving future acquisitions, divestitures, integration, deposit attrition, employee loss, disruption, and failure to realize expected benefits.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_007_strategic_transactions",
+      "title": "Risks from Future Acquisitions and Divestitures"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The COVID-19 pandemic has and will likely continue to adversely impact our business, and the ultimate impact on our business and financial results will depend on future developments, which are highly uncertain and cannot be predicted, including the scope and duration of the pandemic and actions taken by governmental authorities in response to the pandemic.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2 candidate meaningfully addresses the disclosed economic risk that the COVID-19 pandemic could adversely affect the company’s business, demand, credit losses, operations, financial results, capital, or liquidity. Under the provided evidence, the risk was removed rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_008_covid19_impacts",
+      "title": "COVID-19 Pandemic Business and Financial Impacts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Conditions related to the COVID-19 pandemic, inflation, recession, unemployment, volatile interest rates, international conflicts, changes in trade policies and other factors, such as real estate values, energy prices, state and local municipal budget deficits, government spending and the U.S. national debt, outside of our control may, directly and indirectly, adversely affect Comerica.",
+      "year2_quote_or_null": "Conditions related to inflation, recession, unemployment, volatile interest rates, international conflicts, changes in trade policies and other factors, such as real estate values, energy prices, state and local municipal budget deficits, government spending and the U.S. national debt, outside of our control may, directly and indirectly, adversely affect Comerica.",
+      "reasoning": "The underlying economic risk—adverse effects from unfavorable domestic and international political, economic, financial-market, and industry conditions—is expressly retained. Year-2 updates the specific conditions (e.g., recessionary pressures, surging rates, inflation, geopolitical conflict, and weaker housing/export conditions) and removes the COVID-19 reference, but does not materially reduce or eliminate the broader risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_009_macroeconomic_conditions",
+      "title": "General Political and Economic Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Instruments, systems and strategies used to hedge or otherwise manage exposure to various types of credit, market, liquidity, technology, operational, compliance, financial reporting and strategic risks could be less effective than anticipated.",
+      "year2_quote_or_null": "Instruments, systems and strategies used to hedge or otherwise manage exposure to various types of credit, market, liquidity, technology, operational, compliance, financial reporting and strategic risks could be less effective than anticipated.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risk, including the possibility that risk-mitigation instruments, systems, and strategies may be ineffective and cause material adverse impacts. The only change is the page reference for the related Risk Management discussion, which is not economically substantive.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_010_risk_management_effectiveness",
+      "title": "Effectiveness of Risk Mitigation Methods"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Catastrophic events may adversely affect the general economy, financial and capital markets, specific industries, and Comerica.",
+      "year2_quote_or_null": "Catastrophic events, including pandemics, may adversely affect the general economy, financial and capital markets, specific industries, and Comerica.",
+      "reasoning": "The underlying economic risk is retained: catastrophic events may disrupt Comerica, its customers, markets, and the broader economy. Year-2 adds pandemic-specific detail but does not materially reduce or eliminate the Year-1 risk; the omitted climate-change qualifier does not change the core catastrophic-event exposure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_011_catastrophic_events",
+      "title": "Catastrophic Events and Business Disruption"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "From time to time accounting standards setters change the financial accounting and reporting standards that govern the preparation of Comerica’s financial statements. These changes can be difficult to predict and can materially impact how Comerica records and reports its financial condition and results of operations.",
+      "year2_quote_or_null": "From time to time accounting standards setters change the financial accounting and reporting standards that govern the preparation of Comerica’s financial statements. These changes can be difficult to predict and can materially impact how Comerica records and reports its financial condition and results of operations.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and preserves the same economic risk: changes in accounting standards may materially affect Comerica’s reported financial condition and results, including through retroactive application or charges to retained earnings.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_012_accounting_standards",
+      "title": "Changes in Accounting Standards"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Because of the uncertainty surrounding management's judgments and the estimates pertaining to these matters, Comerica cannot guarantee that it will not be required to adjust accounting policies or restate prior period financial statements.",
+      "year2_quote_or_null": "Because of the uncertainty surrounding management's judgments and the estimates pertaining to these matters, Comerica cannot guarantee that it will not be required to adjust accounting policies or restate prior period financial statements.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks: uncertainty in critical accounting judgments and estimates, potential materially different reported amounts, and the possibility of accounting-policy adjustments or prior-period restatements. The only change is updated page references, which is cosmetic.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_013_accounting_estimates",
+      "title": "Critical Accounting Estimates and Judgments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Comerica's stock price can fluctuate significantly in response to a variety of factors including, among other things: Actual or anticipated variations in quarterly results of operations; Recommendations or projections by securities analysts.",
+      "year2_quote_or_null": "Comerica's stock price can fluctuate significantly in response to a variety of factors including, among other things: Actual or anticipated variations in quarterly results of operations; Recommendations or projections by securities analysts.",
+      "reasoning": "The underlying economic risk—Comerica's stock-price volatility driven by operating, market, industry, regulatory, geopolitical, and other factors—remains disclosed in Year-2. The candidate disclosures reproduce the core language and separately retain the related market-fluctuation, underlying-value, transaction, and short-seller risks; no material weakening or removal is evident.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_014_stock_price_volatility",
+      "title": "Stock Price Volatility and Market Factors"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Reference is made to the subheadings entitled “Market and Liquidity Risk,” “Operational Risk,” \"Technology Risk,\" “Compliance Risk” and “Strategic Risk” on pages F-27 through F-33 of the Financial Section of this report.",
+      "year2_quote_or_null": "Reference is made to the subheadings entitled “Market and Liquidity Risk,” “Operational Risk,” \"Technology Risk,\" “Compliance Risk” and “Strategic Risk” on pages F-24 through F-30 of the Financial Section of this report.",
+      "reasoning": "The same five economic risk categories remain expressly cross-referenced in Year-2. Only the page range changed, which does not alter the underlying risk disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_cross_reference",
+      "title": "Market Risk Disclosure Cross-Reference"
+    },
+    {
+      "id": "1A_2_007_inflation",
+      "title": "Inflationary Pressures and Profitability",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Inflation could negatively impact Comerica's business, profitability and stock price.\n\nProlonged periods of inflation may impact Comerica profitability by negatively impacting its fixed costs and expenses, including increasing funding costs and expense related to talent acquisition and retention, a",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_2_010_climate_change",
+      "title": "Climate Change Physical and Transition Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Climate change manifesting as physical or transition risks could adversely affect Comerica's operations, businesses and customers.\n\nThere is an increasing concern over the risks of climate change and related environmental sustainability matters. The physical risks of climate change include discrete",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_000_market_perceptions",
+      "title": "Marketplace Perceptions of Comerica",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Perceptions in the marketplace regarding Comerica and/or its competitors.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_001_competitive_technology",
+      "title": "Competitor Technology and Services",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•New technology used, or services offered, by competitors.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_002_strategic_transactions",
+      "title": "Strategic Transactions and Capital Commitments",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Significant acquisitions or business combinations, strategic partnerships, joint ventures or capital commitments by or involving Comerica or its competitors.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_003_dividends_capital_returns",
+      "title": "Dividends and Capital Returns Changes",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Changes in dividends and capital returns.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_004_government_regulations",
+      "title": "Changes in Government Regulations",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Changes in government regulations.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_005_cyclical_fluctuations",
+      "title": "Cyclical Market Fluctuations",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Cyclical fluctuations.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_006_geopolitical_conditions",
+      "title": "Geopolitical Conditions and Conflicts",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Geopolitical conditions such as acts or threats of terrorism or military conflicts.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_007_short_seller_activity",
+      "title": "Short Seller Activity Restrictions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "•Activity by short sellers and changing government restrictions on such activity.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

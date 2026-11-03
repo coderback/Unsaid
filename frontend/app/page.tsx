@@ -6,6 +6,7 @@ import { DemoCard } from "@/components/DemoCard";
 import { LiveRunModal } from "@/components/LiveRunModal";
 import { SettingsWorkspace } from "@/components/SettingsWorkspace";
 import { loadSettings } from "@/lib/settings";
+import { DEMO_MODE, DEMO_DISABLED_MESSAGE, GITHUB_URL } from "@/lib/demo";
 import {
   fetchLibrary,
   fetchFilingYears,
@@ -23,7 +24,11 @@ import type {
 type TabView = "ANALYZER" | "LIBRARY" | "CASE_STUDIES" | "METHODOLOGY" | "SETTINGS";
 
 
-const POPULAR_TICKERS = ["SIVB", "PTON", "META", "NVDA", "AAPL", "MSFT", "TSLA", "AMZN"];
+const POPULAR_TICKERS = DEMO_MODE
+  ? ["SIVB", "SI", "PACW", "WAL", "JPM", "PTON", "META", "ZION"]
+  : ["SIVB", "PTON", "META", "NVDA", "AAPL", "MSFT", "TSLA", "AMZN"];
+
+const FEATURED = ["SIVB_2021_2022", "SI_2020_2021", "PACW_2021_2022"];
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState<TabView>("ANALYZER");
@@ -216,6 +221,13 @@ export default function LandingPage() {
       return;
     }
 
+    if (DEMO_MODE) {
+      setFilingError(
+        `No saved analysis for ${t} FY${year1} to FY${year2}. Choose consecutive years. ${DEMO_DISABLED_MESSAGE}`
+      );
+      return;
+    }
+
     // Launch live ingest run
     setStartingRun(true);
     try {
@@ -268,9 +280,9 @@ export default function LandingPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-100 font-mono flex flex-col selection:bg-cyan-500 selection:text-black">
+    <main className="min-h-screen bg-[var(--background)] text-zinc-100 font-mono flex flex-col selection:bg-cyan-500 selection:text-black">
       {/* Top System Status Ribbon */}
-      <div className="border-b border-zinc-800 bg-[#0c0c0e] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-[11px] text-zinc-400 gap-3">
+      {!DEMO_MODE && <div className="border-b border-zinc-800 bg-[var(--background)] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between text-[11px] text-zinc-400 gap-3">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -301,10 +313,10 @@ export default function LandingPage() {
           )}
           <span className="text-zinc-600 text-[10px]">v1.2</span>
         </div>
-      </div>
+      </div>}
 
       {/* Main Header & Nav Tabs */}
-      <header className="border-b border-zinc-800 px-4 sm:px-6 py-4 bg-[#0a0a0a]/90 backdrop-blur sticky top-0 z-20 flex flex-wrap items-center justify-between gap-4">
+      <header className="border-b border-zinc-800 px-4 sm:px-6 py-4 bg-[var(--background)] backdrop-blur sticky top-0 z-20 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-bold tracking-[0.3em] text-white">UNSAID</span>
@@ -315,13 +327,13 @@ export default function LandingPage() {
         </div>
 
         {/* Navigation Tabs */}
-        <nav className="flex gap-1.5 bg-zinc-900/80 p-1 border border-zinc-800">
+        <nav aria-label="Sections" className="flex flex-wrap gap-1.5 bg-zinc-900/80 p-1 border border-zinc-800">
           {[
             { id: "ANALYZER", label: "⚡ ANALYZER" },
             { id: "LIBRARY", label: `📁 ARCHIVE (${library.length})` },
             { id: "CASE_STUDIES", label: "★ CASE STUDIES" },
             { id: "METHODOLOGY", label: "📖 METHODOLOGY" },
-            { id: "SETTINGS", label: "⚙️ SETTINGS" },
+            ...(DEMO_MODE ? [] : [{ id: "SETTINGS", label: "⚙️ SETTINGS" }]),
           ].map((tab) => (
             <button
               key={tab.id}
@@ -355,10 +367,17 @@ export default function LandingPage() {
                 softening disclosures in Item 1A (Risk Factors) and Item 7A (Market Risk).
                 Unsaid aligns units via semantic embeddings and evaluates shifts with frontier LLM judges.
               </p>
+              {DEMO_MODE && (
+                <p className="text-xs text-amber-300 leading-relaxed max-w-2xl mt-3">
+                  Live ingestion is switched off here. Pick a company below to browse the saved
+                  run: what was removed, softened and newly added, with verbatim quotes and the
+                  judge&apos;s reasoning.
+                </p>
+              )}
             </div>
 
             {/* Model Provider Selector Bar */}
-            <div className="border border-zinc-800 bg-zinc-950/90 p-4 space-y-2.5">
+            {!DEMO_MODE && <div className="border border-zinc-800 bg-zinc-950/90 p-4 space-y-2.5">
               <span className="text-[11px] text-zinc-400 font-semibold uppercase tracking-wider block">
                 Select Model Provider &amp; Inference Engine:
               </span>
@@ -426,7 +445,7 @@ export default function LandingPage() {
                   </p>
                 </button>
               </div>
-            </div>
+            </div>}
 
             {/* Quick-Pick Popular Tickers */}
             <div>
@@ -462,7 +481,7 @@ export default function LandingPage() {
                     <span>STOCK TICKER / SYMBOL</span>
                     {loadingFilings && (
                       <span className="text-[11px] text-cyan-400 animate-pulse">
-                        Querying EDGAR…
+                        {DEMO_MODE ? "Checking saved runs…" : "Querying EDGAR…"}
                       </span>
                     )}
                   </label>
@@ -472,7 +491,8 @@ export default function LandingPage() {
                       value={ticker}
                       onChange={(e) => setTicker(e.target.value.toUpperCase())}
                       onBlur={() => handleLookupFilings()}
-                      placeholder="e.g. NVDA, AAPL, SIVB"
+                      aria-label="Stock ticker"
+                      placeholder={DEMO_MODE ? "e.g. SIVB, JPM, WAL" : "e.g. NVDA, AAPL, SIVB"}
                       maxLength={12}
                       className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 font-mono text-sm px-4 py-3 focus:outline-none focus:border-cyan-400 tracking-widest uppercase placeholder:text-zinc-700"
                     />
@@ -480,7 +500,8 @@ export default function LandingPage() {
                       type="button"
                       onClick={() => handleLookupFilings()}
                       className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 border border-zinc-700 border-l-0 transition-colors"
-                      title="Inspect Available 10-K Years on EDGAR"
+                      title={DEMO_MODE ? "Look up saved runs" : "Inspect Available 10-K Years on EDGAR"}
+                      aria-label={DEMO_MODE ? "Look up saved runs" : "Inspect available 10-K years on EDGAR"}
                     >
                       🔍
                     </button>
@@ -500,7 +521,7 @@ export default function LandingPage() {
                     >
                       {filingMeta.filings.map((f) => (
                         <option key={f.year} value={f.year}>
-                          FY{f.year} ({f.period_of_report || f.filing_date})
+                          FY{f.year}{DEMO_MODE ? "" : ` (${f.period_of_report || f.filing_date})`}
                         </option>
                       ))}
                     </select>
@@ -527,7 +548,7 @@ export default function LandingPage() {
                     >
                       {filingMeta.filings.map((f) => (
                         <option key={f.year} value={f.year}>
-                          FY{f.year} ({f.period_of_report || f.filing_date})
+                          FY{f.year}{DEMO_MODE ? "" : ` (${f.period_of_report || f.filing_date})`}
                         </option>
                       ))}
                     </select>
@@ -552,7 +573,7 @@ export default function LandingPage() {
                         : "bg-zinc-100 text-zinc-950 hover:bg-white"
                     } disabled:opacity-30 disabled:cursor-not-allowed`}
                   >
-                    {startingRun ? "…" : "RUN →"}
+                    {startingRun ? "…" : DEMO_MODE ? "OPEN →" : "RUN →"}
                   </button>
                 </div>
               </div>
@@ -562,16 +583,22 @@ export default function LandingPage() {
                 <div className="p-3 border border-zinc-800 bg-zinc-900/60 flex flex-wrap items-center justify-between text-xs text-zinc-400 gap-2">
                   <div className="flex items-center gap-3">
                     <span className="text-zinc-200 font-semibold">{filingMeta.company_name}</span>
-                    <span className="text-zinc-600">·</span>
-                    <span className="text-zinc-500">CIK: {filingMeta.cik}</span>
+                    {!DEMO_MODE && (
+                      <>
+                        <span className="text-zinc-600">·</span>
+                        <span className="text-zinc-500">CIK: {filingMeta.cik}</span>
+                      </>
+                    )}
                     <span className="text-zinc-600">·</span>
                     <span className="text-emerald-400">
-                      {filingMeta.filings.length} 10-K Filings on EDGAR
+                      {DEMO_MODE
+                        ? `${filingMeta.total_available} saved comparison${filingMeta.total_available === 1 ? "" : "s"}`
+                        : `${filingMeta.filings.length} 10-K Filings on EDGAR`}
                     </span>
                   </div>
                   {isCached && !forceRerun && (
                     <span className="text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-800 px-2 py-0.5">
-                      ⚡ PRE-COMPUTED CACHE AVAILABLE
+                      ⚡ {DEMO_MODE ? "SAVED RUN AVAILABLE" : "PRE-COMPUTED CACHE AVAILABLE"}
                     </span>
                   )}
                 </div>
@@ -584,7 +611,7 @@ export default function LandingPage() {
               )}
 
               {/* Advanced Settings Accordion */}
-              <div className="pt-2 border-t border-zinc-850">
+              {!DEMO_MODE && <div className="pt-2 border-t border-zinc-850">
                 <button
                   type="button"
                   onClick={() => setShowAdvanced(!showAdvanced)}
@@ -697,19 +724,22 @@ export default function LandingPage() {
                     </div>
                   </div>
                 )}
-              </div>
+              </div>}
             </form>
 
             {/* Quick Spotlight Case Studies Grid */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
-                  Featured Case Studies
+                  {DEMO_MODE ? "Featured Saved Runs" : "Featured Case Studies"}
                 </span>
-                <span className="text-xs text-zinc-600">Zero-Latency Instant Load</span>
+                <span className="text-xs text-zinc-600">{DEMO_MODE ? "Saved runs" : "Zero-Latency Instant Load"}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {library.slice(0, 3).map((item) => (
+                {(DEMO_MODE
+                  ? FEATURED.flatMap((key) => library.filter((i) => `${i.ticker}_${i.year1}_${i.year2}` === key))
+                  : library.slice(0, 3)
+                ).map((item) => (
                   <DemoCard key={`${item.ticker}_${item.year1}_${item.year2}`} demo={item} />
                 ))}
               </div>
@@ -728,7 +758,9 @@ export default function LandingPage() {
                   Analysis Archive &amp; Research Library
                 </h2>
                 <p className="text-xs text-zinc-400 mt-1">
-                  All 10-K disclosure comparisons computed and cached on disk.
+                  {DEMO_MODE
+                    ? `${library.length} saved 10-K comparisons committed in the repo, mostly US banks from the banking study.`
+                    : "All 10-K disclosure comparisons computed and cached on disk."}
                 </p>
               </div>
 
@@ -801,15 +833,17 @@ export default function LandingPage() {
                         OPEN REPORT →
                       </button>
 
-                      <button
-                        onClick={(e) =>
-                          handleDeleteCacheItem(e, item.ticker, item.year1, item.year2)
-                        }
-                        title="Delete cached analysis"
-                        className="text-[11px] text-zinc-600 hover:text-red-400 transition-colors"
-                      >
-                        🗑 Delete
-                      </button>
+                      {!DEMO_MODE && (
+                        <button
+                          onClick={(e) =>
+                            handleDeleteCacheItem(e, item.ticker, item.year1, item.year2)
+                          }
+                          title="Delete cached analysis"
+                          className="text-[11px] text-zinc-600 hover:text-red-400 transition-colors"
+                        >
+                          🗑 Delete
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -829,7 +863,7 @@ export default function LandingPage() {
           <div className="space-y-8">
             <div>
               <h2 className="text-xl font-bold text-white tracking-wide mb-1">
-                Institutional Forensic Case Studies
+                {DEMO_MODE ? "Case Studies" : "Institutional Forensic Case Studies"}
               </h2>
               <p className="text-xs text-zinc-400">
                 Verified historical disclosure shifts surfaced from real SEC filings.
@@ -854,7 +888,7 @@ export default function LandingPage() {
               </div>
 
               <p className="text-xs text-zinc-300 leading-relaxed">
-                On <strong>February 24, 2023</strong>, SVB filed its FY2022 10-K. On <strong>March 10, 2023</strong>, the bank collapsed in the second-largest bank failure in US history. Unsaid detected critical removals in <strong>Item 7A (Market Risk)</strong>:
+                On <strong>February 24, 2023</strong>, SVB filed its FY2022 10-K. On <strong>March 10, 2023</strong>, the bank collapsed, at the time the second-largest bank failure in US history. Unsaid flagged these changes in <strong>Item 7A (Market Risk)</strong>. This saved run covers Item 7A only:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
@@ -871,7 +905,7 @@ export default function LandingPage() {
                     2. -$5.7B EVE Table Elimination (SOFTENED)
                   </span>
                   <p className="text-zinc-400 text-[11px] leading-relaxed">
-                    FY2021 quantified a catastrophic -27.7% / -$5,722M Economic Value of Equity loss on a +200bp rate hike. In FY2022, the EVE column was eliminated entirely from the filing table.
+                    FY2021 quantified a -27.7% / -$5,722M Economic Value of Equity change on a +200bp rate shock. In FY2022, the EVE column was eliminated entirely from the filing table.
                   </p>
                 </div>
               </div>
@@ -883,7 +917,7 @@ export default function LandingPage() {
                 <div>
                   <h3 className="text-lg font-bold text-zinc-100">[PTON] Peloton Interactive</h3>
                   <p className="text-xs text-amber-400 font-semibold mt-0.5">
-                    FY2021 vs FY2022 · Post-Pandemic Growth-to-Distress Transition
+                    FY2021 vs FY2022 · Item 7A only · 1 SOFTENED, 4 RETAINED
                   </p>
                 </div>
                 <button
@@ -894,7 +928,7 @@ export default function LandingPage() {
                 </button>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Tracks the transition as pandemic hardware demand normalized. Identifies foreign currency exposure downgrades and credit agreement modification shifts in Item 7A.
+                A quieter result. The one flagged change: foreign currency risk retained, but FY2022 adds hedging language (forwards, options, a natural hedge) that characterises the exposure as partially hedged.
               </p>
             </div>
 
@@ -904,7 +938,7 @@ export default function LandingPage() {
                 <div>
                   <h3 className="text-lg font-bold text-zinc-100">[META] Meta Platforms</h3>
                   <p className="text-xs text-cyan-400 font-semibold mt-0.5">
-                    FY2021 vs FY2022 · Strategic Pivot toward Reality Labs &amp; Ad Restructuring
+                    FY2021 vs FY2022 · Item 7A only · 1 SOFTENED, 1 ABSORBED, 5 RETAINED
                   </p>
                 </div>
                 <button
@@ -915,7 +949,7 @@ export default function LandingPage() {
                 </button>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Highlights large-cap disclosure restructuring during the corporate rebranding and capital allocation shifts into virtual reality and AI compute infrastructure.
+                A mostly unchanged large-cap filing. The judge flagged hedged wording around impairment of privately-held equity investments, and one cross-reference folded into a broader pointer.
               </p>
             </div>
           </div>
@@ -962,9 +996,32 @@ export default function LandingPage() {
                 <p className="text-zinc-500">→ Cosine Similarity: &gt;0.92 (High Match), yet economic meaning is 100% opposite.</p>
               </div>
               <p>
-                In Unsaid, dense embeddings (`all-mpnet-base-v2`) are restricted strictly to <strong>candidate recall (Top-5)</strong>. Frontier judges (e.g. <strong>GPT-5.6 Luna on Azure AI Foundry</strong> or <strong>Claude Opus 4.8</strong>) evaluate the economic substance.
+                In Unsaid, dense embeddings (`all-mpnet-base-v2`) are restricted strictly to <strong>candidate recall (Top-5)</strong>. Frontier judges (e.g. <strong>GPT-5.6 Luna on Azure AI Foundry</strong> or <strong>Claude Opus 4.8</strong>) evaluate the economic substance. Most runs saved in this archive used GPT-5.6 Luna; each report shows its own model.
               </p>
             </div>
+
+            {DEMO_MODE && (
+              <div className="p-4 border border-amber-800 bg-amber-950/20 space-y-3">
+                <h3 className="text-sm font-bold text-amber-300 uppercase tracking-wider">
+                  Does it predict returns? In this study, no.
+                </h3>
+                <p>
+                  The pipeline was tested against its own premise across 57 US banks and 321
+                  consecutive 10-K pairs (FY2019 to FY2025). The signal failed three ways:
+                  multiplicity (family-wise p = 0.131 across 24 specifications), out of sample (a
+                  pre-registered test on a held-out year reversed sign, -4.95%) and measurement
+                  (+7.98%, t = 2.48, fell to +6.15%, t = 1.83, once text extraction was fixed). A
+                  bag-of-words baseline outperformed the LLM classifier on every cut. The study
+                  was underpowered, so this does not refute the published anomaly. The tool shows
+                  what a company stopped saying; it is not a trading signal.
+                </p>
+                <p>
+                  <a href={`${GITHUB_URL}/tree/research/banking-study`} className="underline text-amber-300">
+                    Banking study branch on GitHub
+                  </a>
+                </p>
+              </div>
+            )}
 
             <div className="p-4 border border-zinc-800 bg-zinc-950 space-y-3">
               <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-wider">
@@ -980,7 +1037,7 @@ export default function LandingPage() {
         {/* ========================================================================= */}
         {/* TAB 5: SYSTEM CONFIGURATION & SETTINGS */}
         {/* ========================================================================= */}
-        {activeTab === "SETTINGS" && (
+        {!DEMO_MODE && activeTab === "SETTINGS" && (
           <SettingsWorkspace
             health={health}
             library={library}
@@ -1024,10 +1081,16 @@ export default function LandingPage() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-zinc-900 px-6 py-4 mt-auto bg-[#070708]">
+      <footer className="border-t border-zinc-900 px-6 py-4 mt-auto bg-[var(--background)]">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between text-xs text-zinc-600 gap-2">
           <span>UNSAID · Multi-Model Disclosure Intelligence</span>
-          <span>Azure AI Foundry (GPT-5.6 Luna) · Claude Opus · SEC EDGAR</span>
+          {DEMO_MODE ? (
+            <a href={GITHUB_URL} className="underline hover:text-zinc-300">
+              github.com/coderback/Unsaid
+            </a>
+          ) : (
+            <span>Azure AI Foundry (GPT-5.6 Luna) · Claude Opus · SEC EDGAR</span>
+          )}
         </div>
       </footer>
     </main>

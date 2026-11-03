@@ -1,0 +1,970 @@
+{
+  "ticker": "BANC",
+  "company_name": "BANC OF CALIFORNIA, INC.",
+  "year1": 2020,
+  "year2": 2021,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T16:03:25.631907+00:00",
+  "summary_counts": {
+    "RETAINED": 76,
+    "REMOVED": 3,
+    "SOFTENED": 2,
+    "REWORDED": 6,
+    "ABSORBED": 2,
+    "NEW": 6
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An investment in our securities is subject to certain risks. These risk factors should be considered by prospective and current investors in our securities when evaluating the disclosures in this Annual Report on Form 10-K.",
+      "year2_quote_or_null": "An investment in our securities is subject to certain risks. These risk factors should be considered by prospective and current investors in our securities when evaluating the disclosures in this Annual Report on Form 10-K.",
+      "reasoning": "The Year-2021 candidate reproduces the same general investment-risk disclaimer and underlying economic warning as Year-2020, with no material change in scope, qualifiers, or risk posture.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_000_risk_factors_intro",
+      "title": "General Investment Risk Disclaimer"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "•New lines of business, new products and services, or strategic project initiatives may subject us to additional risks.",
+      "year2_quote_or_null": "New lines of business, new products and services, or strategic project initiatives may subject us to additional risks.",
+      "reasoning": "The Year-2021 candidate expressly retains the same economic risk: new businesses, products, services, and strategic initiatives may create additional risks. The detailed discussion adds implementation, regulatory, legal, cost, and operational-risk examples but does not weaken or materially change the underlying disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_001_risk_summary_operations",
+      "title": "Operations Risk Factors Summary"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any breach of representations and warranties made by us to our residential mortgage loan purchasers or credit default on our loan sales may require us to repurchase such loans.",
+      "year2_quote_or_null": "Any breach of representations and warranties made by us to our loan purchasers or credit default on our loan sales may require us to repurchase loans we have sold.",
+      "reasoning": "The Year-2 disclosure addresses the same economic risk: breaches of representations and warranties or defaults on sold loans can trigger repurchase obligations. It is retained with only a broader reference to loan purchasers rather than residential mortgage loan purchasers.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_risk_summary_interest_credit",
+      "title": "Interest and Credit Risk Summary"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Inability to develop and maintain a strong core deposit base or low cost funding sources.",
+      "year2_quote_or_null": "Inability to develop and maintain a strong core deposit base or low cost funding sources.",
+      "reasoning": "The Year-2021 candidate reproduces the Year-2020 Funding and Liquidity Risks disclosure, including the core deposit and low-cost funding risk, with no material change in the underlying economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_003_risk_summary_funding_liquidity",
+      "title": "Funding and Liquidity Risk Summary"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Volcker Rule covered fund provisions could adversely affect us.",
+      "year2_quote_or_null": "The Volcker Rule covered fund provisions could adversely affect us.",
+      "reasoning": "The Year-2021 Candidate 2 contains the same Volcker Rule covered-fund economic risk with materially identical language. It is therefore retained.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_004_risk_summary_legal_compliance",
+      "title": "Legal and Compliance Risk Summary"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Severe weather, natural disasters, pandemics, acts of war or terrorism and other external events.",
+      "year2_quote_or_null": "Climate change, severe weather events, natural disasters, pandemics, acts of war or terrorism and other external events.",
+      "reasoning": "The Year-2021 summary retains the same underlying external-event risk and adds climate change; the economic risk is not weakened or removed. Candidate 3 provides a substantially expanded treatment of the same risk, including potential effects on business operations, borrowers, collateral, revenue, and expenses.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_risk_summary_markets_external",
+      "title": "Markets and External Events Summary"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Coronavirus Disease 2019 (COVID-19) pandemic has created economic and financial disruptions that have adversely affected, and are likely to continue to adversely affect, our business, financial condition, liquidity, capital and results of operations.",
+      "year2_quote_or_null": "The Coronavirus Disease 2019 (“COVID-19”) pandemic has created economic and financial disruptions that have adversely affected, and may continue to adversely affect, our business, financial condition, liquidity, capital and results of operations.",
+      "reasoning": "Year-2021 continues to disclose the same underlying economic risk: COVID-19-related disruptions adversely affecting the company’s business, financial condition, liquidity, capital and results. Although some details and qualifiers changed and additional pandemic effects were added, the core risk was retained.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_006_covid19_pandemic",
+      "title": "COVID-19 Pandemic Business Effects"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If these measures are not effective in serving our customers or affect the productivity of our employees, they may lead to significant disruptions in our business operations.",
+      "year2_quote_or_null": "If these measures are not effective in serving our customers or affect the productivity of our employees, they may lead to significant disruptions in our business operations.",
+      "reasoning": "The Year-2021 disclosure retains the Year-2020 operational disruption risk from branch closures, limited hours, remote work, and impaired employee productivity, using the same economic warning. It also retains and expands the related risk that counterparties and third-party service providers may be disrupted or unable to perform essential services.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_007_covid19_operations",
+      "title": "COVID-19 Operational Disruptions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are actively engaged with borrowers who are seeking payment relief and waiving certain fees for impacted clients. One method we have deployed is offering forbearance or deferment to qualifying clients making such requests.",
+      "year2_quote_or_null": "We have engaged with borrowers who are seeking payment relief and waiving certain fees for impacted clients. One method we have deployed is offering forbearance or deferment to qualifying clients making such requests.",
+      "reasoning": "The Year-2021 disclosure expressly retains the same borrower payment-relief measures, including fee waivers and 90-day, extendable forbearance/deferment for SFR and non-SFR loans, along with the potential for adverse revenue, default, and credit-loss effects. The wording changes are cosmetic and do not alter the underlying economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_covid19_borrower_relief",
+      "title": "COVID-19 Borrower Payment Relief"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "If interest rates are reduced further in response to COVID-19, we expect that our net interest income will decline, perhaps significantly.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2 disclosure meaningfully addresses the COVID-19-related risk that further Federal Reserve rate reductions would materially reduce net interest income. The absence of a semantically similar candidate supports classifying the risk as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_009_covid19_interest_rates",
+      "title": "COVID-19 Interest Rate Impact"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The effects of the COVID-19 pandemic on economic and market conditions have increased demands on our liquidity as we meet our clients’ needs.",
+      "year2_quote_or_null": "The effects of the COVID-19 pandemic on economic and market conditions have increased liquidity in the marketplace and resulted in generally lower line utilization by our clients.",
+      "reasoning": "The Year-2021 disclosure retains the broader COVID-19 economic, capital, credit-loss, investment-portfolio, and business-impact risks, but changes the specific liquidity effect from increased demands and draws on facilities to increased marketplace liquidity and generally lower client utilization. This materially weakens the liquidity-pressure component, while the other adverse effects remain substantially retained.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_010_covid19_liquidity_capital",
+      "title": "COVID-19 Liquidity and Capital Effects"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Additionally, from time to time we undertake strategic project initiatives. Significant effort and resources are necessary to manage and oversee the successful completion of these initiatives.",
+      "year2_quote_or_null": "Additionally, from time to time we undertake strategic project initiatives, including but not limited to, investment in technology, process improvement, client experience and fintech partnerships. Significant effort and resources are necessary to manage and oversee the successful completion of these initiatives.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risks for new businesses, products and strategic initiatives, including resource demands, implementation costs, operational risk, regulatory exposure, and potential adverse effects on results. It adds examples of strategic initiatives but does not materially weaken, negate, remove, or broaden the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_011_new_business_initiatives",
+      "title": "New Businesses and Strategic Initiatives"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our cyber-security measures may not be sufficient to mitigate losses or exposure to cyber-attack or cyber theft.",
+      "year2_quote_or_null": "Our cyber-security measures may not be sufficient to mitigate losses or exposure to cyber-attack or cyber theft.",
+      "reasoning": "The Year-2021 disclosure preserves the same underlying economic risks: cyber-attacks, unauthorized access, data breaches, operational disruption, financial and reputational losses, and internet-banking account fraud. The differences are cosmetic wording and formatting only.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_012_technology_cybersecurity",
+      "title": "Cybersecurity and Technology Risks"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "We rely on communications, information, operating and financial control systems technology from third party service providers, and we may suffer an interruption in those systems.",
+      "year2_quote_or_null": "We rely heavily on third party service providers for much of our communications, information, operating and financial control systems technology, including our online banking services and data processing systems.",
+      "reasoning": "The underlying risk of systems failures or interruptions remains present in Year-2, but the standalone disclosure is bundled into the broader “Third-Party Technology and Systems Reliance” unit, which also expands the discussion to service interruptions, security breaches, and operational consequences. Candidate 2 retains only the opening portion and does not address the full disclosure, while Candidate 1 absorbs the economic risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_013_technology_system_failures",
+      "title": "Systems Failures and Interruptions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We rely on third party providers to help ensure the confidentiality of our client information and acknowledge the additional risks these third parties expose us to. Third party providers may experience unauthorized access to and disclosure of our consumer or client information or result in the destruction or corruption of company information.",
+      "year2_quote_or_null": "We rely on third party providers to help ensure the confidentiality of our client information and acknowledge the additional risks these third parties expose us to. Third party providers may experience unauthorized access to and disclosure of our consumer or client information or result in the destruction or corruption of Company information.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risks: reliance on third-party technology and data processing, provider system failures or interruptions, cybersecurity breaches, compromise or loss of information, and resulting operational, reputational, client, and financial harm. The wording is materially unchanged, with Year-2021 also adding related operational and legal/regulatory consequences.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_014_third_party_service_providers",
+      "title": "Third-Party Service Provider Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "To the extent we acquire other banks, bank branches, other assets or other businesses, we may be negatively impacted by certain risks inherent with such acquisitions.",
+      "year2_quote_or_null": "To the extent we acquire other banks, bank branches, other assets or other businesses, such as the PMB Acquisition, we may be negatively impacted by certain risks inherent with such acquisitions.",
+      "reasoning": "The core economic risk—being negatively impacted by risks inherent in acquisitions—is expressly retained in Year-2 with materially the same language. Year-2 adds specificity and elaborates the constituent integration, execution, regulatory, financing, and strategic risks, but does not weaken or remove the Year-1 disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_015_acquisition_risks",
+      "title": "Acquisition-Related Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Acquiring other banks, bank branches, other assets or other businesses involves various risks, including the risks of incorrectly assessing the credit quality of acquired assets, encountering greater than expected costs of integrating acquired banks, branches or businesses...",
+      "year2_quote_or_null": "Acquiring other banks, bank branches, other assets or other businesses involves various risks, including the risks of incorrectly assessing the credit quality of acquired assets, encountering greater than expected costs of integrating acquired banks, branches or businesses...",
+      "reasoning": "Candidate 1 retains the same underlying acquisition risks, including asset-quality misassessment, integration costs, loss of clients or employees, failure to achieve synergies, regulatory/consummation risk, management diversion, and acquisition financing effects on leverage, liquidity, and dilution. The disclosure is materially carried forward and even updated to reference the PMB Acquisition.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_000_acquisition_risks",
+      "title": "Acquisition Integration and Financing Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We face significant operational risks. We operate many different financial service functions and rely on the ability of our employees, third party vendors and systems to process a significant number of transactions. Operational risk is the risk of loss from operations, including fraud by employees or outside persons, employees’ execution of incorrect or unauthorized transactions, data processing and technology errors or hacking and breaches of internal control systems. These risks have increased in light of work-from-home arrangements implemented in response to the COVID-19 pandemic.",
+      "year2_quote_or_null": "We face significant operational risks. We operate many different financial service functions and rely on the ability of our employees, third party vendors and systems to process a significant number of transactions. Operational risk is the risk of loss from operations, including fraud by employees or outside persons, employees’ execution of incorrect or unauthorized transactions, data processing and technology errors or hacking and breaches of internal control systems. These risks have increased in light of work-from-home arrangements implemented in response to the COVID-19 pandemic.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1: it retains the same operational, transaction-processing, fraud, technology, hacking, internal-control, and work-from-home risks with no meaningful change in qualifiers or economic substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_operational_risks",
+      "title": "Operational Processing and Technology Risks"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "If our enterprise risk management framework proves ineffective we could suffer unexpected losses, which could materially adversely affect our results of operations or financial condition.",
+      "year2_quote_or_null": "If our enterprise risk framework is ineffective, either because it fails to keep pace with changes in the financial markets, regulatory requirements, our businesses, our counterparties, clients or service providers or for other reasons, we could incur losses, suffer reputational damage or find ourselves out of compliance with applicable regulatory or contractual mandates.",
+      "reasoning": "The underlying risk remains substantially disclosed, but the Year-2 version omits the Year-1 statement that ineffective risk management could cause unexpected losses that materially adversely affect results of operations or financial condition. The economic consequence is therefore stated less forcefully, while the framework and model limitations remain.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_1_002_enterprise_risk_management",
+      "title": "Enterprise Risk Management Framework Limitations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Threats to our reputation can come from many sources, including adverse sentiment about financial institutions generally, unethical practices, employee misconduct, failure to deliver minimum standards of service or quality, compliance deficiencies, regulatory investigations, marketplace rumors and questionable or fraudulent activities of our clients.",
+      "year2_quote_or_null": "Threats to our reputation can come from many sources, including adverse sentiment about financial institutions generally, unethical practices, employee misconduct, failure to deliver minimum standards of service or quality, compliance deficiencies, regulatory investigations, marketplace rumors and questionable or fraudulent activities of our clients.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risks, sources of reputational harm, potential consequences, and negative-publicity dynamics as Year-2020. The only change is a cosmetic correction from “social medial” to “social media,” which does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_003_reputational_risk",
+      "title": "Reputation Threats and Negative Publicity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our success will, to a large extent, depend on the continued employment of our key management personnel. The unexpected loss of the services of any of these individuals could have a detrimental effect on our business.",
+      "year2_quote_or_null": "Our success will, to a large extent, depend on the continued employment of our key management personnel. The unexpected loss of the services of any of these individuals could have a detrimental effect on our business.",
+      "reasoning": "The Year-2021 disclosure is substantively identical to the Year-2020 disclosure and continues to describe the same economic risk: dependence on key management personnel and the adverse effects of their unexpected departure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_004_key_management",
+      "title": "Dependence on Key Management Personnel"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We also could be adversely affected to the extent such an agreement is not renewed by the third party vendor or is renewed on terms less favorable to us.",
+      "year2_quote_or_null": "We also could be adversely affected to the extent such an agreement is not renewed by the third party vendor or is renewed on terms less favorable to us.",
+      "reasoning": "The Year-2021 disclosure presents the same economic risks as Year-2020: vendor nonperformance, operational disruption, and nonrenewal or renewal on less favorable terms. The language is materially identical, so the risk was retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_external_vendors",
+      "title": "External Vendor Performance and Renewal Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have a net DTA and cannot assure that it will be fully realized.",
+      "year2_quote_or_null": "We have a net DTA and cannot assure that it will be fully realized.",
+      "reasoning": "The underlying economic risk—the potential inability to fully realize the net deferred tax asset, including the possibility of a valuation allowance and related charge—remains materially unchanged. Only the reported DTA amount and note reference year changed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_006_deferred_tax_asset",
+      "title": "Deferred Tax Asset Realization Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If actual losses on our loans exceed our estimates used to establish our allowance for credit losses, our business, financial condition and profitability may suffer.",
+      "year2_quote_or_null": "If actual losses on our loans exceed our estimates used to establish our allowance for credit losses, our business, financial condition and profitability may suffer.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risk: inaccurate allowance-for-credit-loss estimates may be insufficient to cover loan losses and adversely affect results. The only substantive change shown is the updated year-end allowance metrics, which does not alter the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_007_allowance_estimation",
+      "title": "Allowance for Credit Loss Estimation Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "ASU 2016-13, Measurement of Credit Losses on Financial Instruments, which we adopted on January 1, 2020, substantially changes the accounting for credit losses on loans and other financial assets held by banks, financial institutions and other organizations.",
+      "year2_quote_or_null": "ASU 2016-13, Measurement of Credit Losses on Financial Instruments, which we adopted on January 1, 2020, substantially changed the accounting for credit losses on loans and other financial assets held by banks, financial institutions and other organizations.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risk and all material CECL effects described in Year-2020, including lifetime expected losses, earlier recognition, net presentation, AFS allowances, and use of broader information. The changes are grammatical and terminological (including spelling out CECL), not substantive.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_008_cecl_accounting_change",
+      "title": "CECL Accounting Methodology Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The CECL model materially impacts how we determine our allowance for credit losses and required us to significantly increase our allowance for credit losses. Furthermore, we may experience more fluctuations in our allowance for credit losses, which may be significant.",
+      "year2_quote_or_null": "The CECL model materially impacts how we determine our allowance for credit losses and required us to significantly increase our allowance for credit losses. Furthermore, we may experience more fluctuations in our allowance for credit losses, which may be significant.",
+      "reasoning": "The core economic risk—CECL materially increasing and causing significant fluctuations in the allowance for credit losses—is reproduced verbatim in Year-2. Year-2 adds related risks concerning future provisions, lending activity, and regulatory-capital phase-in, but does not weaken or remove the Year-1 disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_009_cecl_model_impact",
+      "title": "CECL Model and Allowance Impact"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Future provisions under the CECL model could have a material adverse effect on our results of operations and financial condition. It is also possible that our ongoing lending activity will be negatively impacted in periods following adoption. The FRB, OCC and FDIC have adopted a rule that gives a banking organization the option to phase in over a five-year period the day-one adverse effects of CECL on its regulatory capital. We adopted this phase in option during 2020.",
+      "year2_quote_or_null": "Future provisions under the CECL model could have a material adverse effect on our results of operations and financial condition. It is also possible that our ongoing lending activity will be negatively impacted in periods following adoption. The FRB, OCC and FDIC have adopted a rule that gives a banking organization the option to phase in over a five-year period the day-one adverse effects of CECL on its regulatory capital. We adopted this phase in option during 2020.",
+      "reasoning": "The Year-2021 candidate repeats the Year-2020 disclosure verbatim, preserving the same economic risks: adverse effects from future CECL provisions, potential lending impacts, and regulatory-capital effects mitigated through the five-year phase-in.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_010_cecl_future_effects",
+      "title": "Future CECL Provisions and Capital Phase-In"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "There are risks associated with our lending activities and our allowance for loan losses may prove to be insufficient to absorb actual incurred losses in our loan portfolio.",
+      "year2_quote_or_null": "There are risks associated with our lending activities and our allowance for credit losses may prove to be insufficient to absorb actual losses in our loan portfolio.",
+      "reasoning": "The lending and allowance risks remain substantively the same, including the risk that the allowance will not cover losses in the loan portfolio. The changes from “loan losses” to “credit losses” and from “actual incurred losses” to “actual losses” do not materially alter the underlying economic risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_011_lending_credit_risks",
+      "title": "Lending Activities and Loan Loss Allowance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business may be adversely affected by credit risk associated with residential property and declining property values.",
+      "year2_quote_or_null": "Our business may be adversely affected by credit risk associated with residential property and declining property values.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risk: residential-property credit exposure, declining collateral values, borrower defaults, and resulting losses. The changes are limited to updated loan amounts and percentages, so the risk is retained.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_012_residential_property_credit_risk",
+      "title": "Residential Property Credit and Valuation Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A substantial majority of our real estate secured loans held are adjustable rate loans. Any rise in prevailing market interest rates may result in increased payments for some borrowers who have adjustable rate mortgage loans, increasing the possibility of defaults.",
+      "year2_quote_or_null": "A substantial majority of our real estate secured loans held-for-investment are adjustable rate loans. Any rise in prevailing market interest rates may result in increased payments for some borrowers who have adjustable rate mortgage loans, increasing the possibility of defaults.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risk: a substantial majority of the real estate-secured loan portfolio is adjustable-rate, and rising market rates could increase borrower payments and defaults. The addition of “held-for-investment” is a scope clarification, not a substantive change to the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_013_adjustable_rate_loans",
+      "title": "Adjustable Rate Loan Default Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Finally, we may have higher credit risk, or experience higher credit losses, to the extent our loans are concentrated by loan type, industry segment, borrower type, or location of the borrower or collateral.",
+      "year2_quote_or_null": "Finally, we may have higher credit risk, or experience higher credit losses, to the extent our loans are concentrated by loan type, industry segment, borrower type, or location of the borrower or collateral.",
+      "reasoning": "The core economic risks—underwriting limitations, borrower fraud/model risk, concentration risk, and potential higher credit losses—remain disclosed in Year-2. The 2018 charge-off example was omitted, but the underlying underwriting and fraud risks were retained, and the geographic concentration disclosure remains materially the same.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_014_underwriting_practices",
+      "title": "Loan Underwriting and Concentration Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our non-traditional and interest only SFR loans expose us to increased lending risk.",
+      "year2_quote_or_null": "Our non-traditional and interest only SFR loans expose us to increased lending risk.",
+      "reasoning": "The Year-2021 disclosure addresses the same economic risks with materially identical discussion: nonconforming underwriting characteristics, CFPB qualified-mortgage and related regulatory/legal risks, and limited secondary-market demand. No risk has been weakened, removed, or bundled into another disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_015_nontraditional_sfr_loans",
+      "title": "Non-Traditional and Interest-Only SFR Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "For these reasons, interest only loans and negative amortization loans are considered to have an increased risk of delinquency, default and foreclosure than conforming loans and may result in higher levels of realized losses.",
+      "year2_quote_or_null": "For these reasons, interest only loans and negative amortization loans are considered to have an increased risk of delinquency, default and foreclosure than conforming loans and may result in higher levels of realized losses.",
+      "reasoning": "The Year-2021 disclosure retains the same economic risks, including payment shock, balloon-payment risk, negative-amortization credit exposure, and elevated delinquency, default, foreclosure, and loss risk. The only substantive change is the reported balance and percentage of interest-only loans, which increased, but the risk disclosure itself was retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_000_interest_only_negative_amortization",
+      "title": "Interest-Only and Negative-Amortization Loan Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Repayment of our commercial and industrial loans is often dependent on the cash flows of the borrower, which may be unpredictable, and the collateral securing these loans may not be sufficient to repay the loan in the event of default.",
+      "year2_quote_or_null": "Repayment of our commercial and industrial loans is often dependent on the cash flows of the borrower, which may be unpredictable, and the collateral securing these loans may not be sufficient to repay the loan in the event of default.",
+      "reasoning": "Candidate 1 retains the same commercial and industrial loan repayment risk, including dependence on unpredictable borrower cash flows and potentially insufficient collateral, with the substantive disclosure unchanged. The updated loan balance and percentage are quantitative updates, not a change in the underlying economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_001_commercial_industrial_loan_repayment",
+      "title": "Commercial and Industrial Loan Repayment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are exposed to risk of environmental liabilities with respect to real properties acquired.",
+      "year2_quote_or_null": "We are exposed to risk of environmental liabilities with respect to real properties acquired.",
+      "reasoning": "The Year-2021 disclosure addresses the same economic risk—environmental liabilities and related costs arising from acquired or foreclosed real properties—with materially identical language and scope.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_002_environmental_liabilities_real_estate",
+      "title": "Environmental Liabilities From Acquired Real Estate"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Secondary mortgage market conditions could have a material adverse impact on our business, results of operations, financial condition or liquidity.",
+      "year2_quote_or_null": "Secondary mortgage market conditions could have a material adverse impact on our business, results of operations, financial condition or liquidity.",
+      "reasoning": "The Year-2021 candidate addresses the same secondary mortgage market risks, including investor demand and yield requirements, potential deterioration, and inability to sell loans at desired levels. The disclosure is substantively identical, with no change in the economic risk or its qualifiers.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_003_secondary_mortgage_market",
+      "title": "Secondary Mortgage Market Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Any breach of representations and warranties made by us to our loan purchasers or credit default on our loan sales may require us to repurchase loans we have sold.",
+      "year2_quote_or_null": "Any breach of representations and warranties made by us to our loan purchasers or credit default on our loan sales may require us to repurchase loans we have sold.",
+      "reasoning": "The core economic risk—repurchase obligations arising from breaches of representations and warranties, fraud or misrepresentation, or certain early payment defaults—is expressly carried forward in Year-2021 with materially the same disclosure. The additional discussion expands the exposure to indemnification, reserves, and adverse economic conditions but does not weaken or remove the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_004_loan_repurchase_representations",
+      "title": "Loan Repurchase and Representation Warranty Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The determination of the appropriate level of the reserve inherently involves a high degree of subjectivity and requires us to make estimates of repurchase and indemnification risks and expected losses. The estimates used could be inaccurate, resulting in a level of reserve that is less than actual losses.",
+      "year2_quote_or_null": "The determination of the appropriate level of the reserve inherently involves a high degree of subjectivity and requires us to make estimates of repurchase and indemnification risks and expected losses. The estimates used could be inaccurate, resulting in a level of reserve that is less than actual losses.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risk: representations-and-warranties repurchase/indemnification exposure, including the possibility that estimated reserves are insufficient to cover actual losses. It also updates the reserve amount and adds further downside scenarios, but does not weaken or remove the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_005_loan_repurchase_reserves",
+      "title": "Loan Repurchase Reserve Estimates"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Deterioration in the economy, an increase in interest rates or a decrease in home and collateral values could increase client defaults on loans that were sold and increase demand for repurchases and indemnification and increase our losses from loan repurchases and indemnification.",
+      "year2_quote_or_null": "Deterioration in the economy, an increase in interest rates or a decrease in home and collateral values could increase client defaults on loans that were sold and increase demand for repurchases and indemnification and increase our losses from loan repurchases and indemnification.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 economic risk verbatim and retains the related risk that repurchase or indemnification losses could exceed reserves and adversely affect results. The additional discussion provides greater detail but does not change or weaken the underlying exposure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_006_loan_repurchase_adverse_effects",
+      "title": "Loan Repurchase Losses and Claims"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Credit impairment in our investment securities portfolio could result in losses and adversely affect our continuing operations.",
+      "year2_quote_or_null": "Credit impairment in our investment securities portfolio could result in losses and adversely affect our continuing operations.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk—credit impairment in investment securities causing losses and adverse effects on continuing operations—and further provides updated portfolio and credit-loss monitoring detail. The shift in the causes of unrealized losses does not remove or weaken the stated credit-impairment risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_007_investment_securities_credit_impairment",
+      "title": "Investment Securities Credit Impairment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Beginning January 1, 2020, available-for-sale debt securities are analyzed for credit losses under ASC 326 Financial Instruments - Credit Losses, which requires the Company to determine whether impairment exists as of the reporting date and whether that impairment is due to credit losses.",
+      "year2_quote_or_null": "Beginning January 1, 2020, available-for-sale debt securities are analyzed for credit losses under ASC 326 Financial Instruments - Credit Losses, which requires the Company to determine whether impairment exists as of the reporting date and whether that impairment is due to credit losses.",
+      "reasoning": "The Year-2021 disclosure repeats the same economic risk and ASC 326 credit-loss assessment, including the allowance framework and the assessment of whether unrealized losses are credit-related. The added portfolio data and broader discussion do not change the substance of the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_008_available_for_sale_credit_losses",
+      "title": "Available-for-Sale Credit Loss Assessment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Prior to January 1, 2020, our portfolio was evaluated using either OTTI guidance provided by FASB ASC 320... or ASC 325...",
+      "year2_quote_or_null": "Prior to January 1, 2020, our portfolio was evaluated using either OTTI guidance provided by FASB ASC 320... or ASC 325...",
+      "reasoning": "The Year-1 disclosure is reproduced verbatim in the Year-2 candidate, including the economic distinction between ASC 320 treatment and ASC 325 treatment for certain below-AA purchased beneficial interests. The surrounding ASC 326 discussion adds current credit-impairment guidance but does not change or absorb the prior OTTI risk disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_009_prior_otti_guidance",
+      "title": "Prior OTTI Evaluation Guidance"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "We previously recorded a loss of $3.3 million during the year ended December 31, 2018 following our decision to sell our entire CMBS portfolio, which was completed in January 2019. We also recorded a loss of $731 thousand during the year ended December 31, 2019 as a result of our decision to sell its U.S. government agency and U.S. government sponsored enterprise residential mortgage-backed securities.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2021 disclosure meaningfully addresses the economic risk of losses from sales of the CMBS and agency/GSE residential mortgage-backed securities portfolios. Accordingly, the Year-2020 disclosure was removed rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_010_investment_security_sales_losses",
+      "title": "Investment Securities Sales Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We closely monitor our investment securities for changes in credit risk. The valuation of our investment securities also is influenced by external market and other factors, including implementation of SEC and FASB guidance on fair value accounting. Accordingly, if market conditions deteriorate further and we determine our holdings of other investment securities have experienced credit losses, our future earnings, stockholders’ equity, regulatory capital and continuing operations could be materially adversely affected.",
+      "year2_quote_or_null": "We closely monitor our investment securities for changes in credit risk. The valuation of our investment securities also is influenced by external market and other factors, including implementation of SEC and FASB guidance on fair value accounting. Accordingly, if market conditions deteriorate further and we determine our holdings of other investment securities have experienced credit losses, our future earnings, stockholders’ equity, regulatory capital and continuing operations could be materially adversely affected.",
+      "reasoning": "The Year-2021 disclosure repeats the Year-2020 risk verbatim, preserving the underlying economic risk that investment-securities credit losses and market-driven valuation changes could materially harm earnings, equity, regulatory capital, and continuing operations.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_011_investment_security_monitoring",
+      "title": "Investment Securities Market and Credit Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our CLO portfolio consists entirely of variable rate securities, which we believe supports our interest rate risk management strategy by lowering the extension risk and duration risk inherent to certain fixed rate investment securities. However, in a decreasing interest rate environment, our interest income may be negatively impacted.",
+      "year2_quote_or_null": "Our CLO portfolio consists entirely of variable rate securities, which we believe supports our interest rate risk management strategy by lowering the extension risk and duration risk inherent to certain fixed rate investment securities. However, in a decreasing interest rate environment, our interest income may be negatively impacted.",
+      "reasoning": "The underlying economic risk—concentration in CLO assets and the potential effect of declining interest rates on income—remains disclosed with materially identical language. The lower CLO balance and percentage in 2021 do not eliminate or materially change the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_012_clo_asset_concentration",
+      "title": "Collateralized Loan Obligation Asset Concentration"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "All of our CLOs are floating rate, with rates set on a quarterly basis at three month LIBOR plus a spread.",
+      "year2_quote_or_null": "All of our CLOs are floating rate, with rates set on a quarterly basis at three month LIBOR plus a spread.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risks: CLO credit ratings/downgrade exposure and floating-rate interest-rate exposure. It repeats the rating status and downgrade statement, and carries forward the identical floating-rate/LIBOR-plus-spread disclosure; additional discussion of declining-rate income impact does not weaken or remove the original risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_013_clo_ratings_and_rates",
+      "title": "CLO Ratings and Floating Rates"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The market value of CLOs may be affected by, among other things, perceived changes in the economy, performance by the manager and performance of the underlying loans.",
+      "year2_quote_or_null": "The market value of CLOs may be affected by, among other things, perceived changes in the economy, performance by the manager and performance of the underlying loans.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 CLO structure and valuation-risk disclosure verbatim, including risks from economic conditions, CLO manager performance, and underlying-loan performance. The additional discussion of illiquidity and credit-risk mitigation does not change the status of the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_014_clo_structure_and_valuation",
+      "title": "CLO Structure and Valuation Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The CLOs we currently hold may, from time to time, not be actively traded, and under certain market conditions may be relatively illiquid investments, and volatility in the CLO trading market may cause the value of these investments to decline.",
+      "year2_quote_or_null": "The CLOs we currently hold, from time to time, may not be actively traded, and under certain market conditions may be relatively illiquid investments, and volatility in the CLO trading market may cause the value of these investments to decline. Although we attempt to mitigate the credit and liquidity risks associated with CLOs by purchasing CLOs with credit ratings of AA or higher and by maintaining a pre-purchase due diligence and ongoing review process by a dedicated credit administration team, no assurance can be given that these risk mitigation efforts will be successful. A deterioration in market conditions and decline in the market value of CLOs could adversely impact our financial condition, results of operations and stockholders' equity.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 economic risks of CLO illiquidity, trading-market volatility, potential value declines, and unsuccessful mitigation of credit and liquidity risk without weakening or negating them. It is therefore retained, despite being embedded within a broader CLO asset-concentration discussion.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_015_clo_liquidity_and_credit",
+      "title": "CLO Liquidity and Credit Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our income property loans, consisting of commercial real estate and multifamily loans, involve higher principal amounts than other loans and repayment of these loans may be dependent on factors outside our control or the control of our borrowers.",
+      "year2_quote_or_null": "Our income property loans, consisting of commercial real estate and multifamily loans, involve higher principal amounts than other loans and repayment of these loans may be dependent on factors outside our control or the control of our borrowers.",
+      "reasoning": "The core economic risk—large commercial real estate and multifamily loan exposures whose repayment depends on property cash flows and factors outside the lender’s or borrowers’ control—is disclosed verbatim in Year-2021 Candidate 1. The added discussion provides further detail but does not alter the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_016_income_property_loan_risk",
+      "title": "Income Property Loan Repayment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Commercial real estate and multifamily loans also expose us to credit risk because the collateral securing these loans often cannot be sold easily. In addition, many of our commercial real estate and multifamily loans are not fully amortizing and contain large balloon payments upon maturity.",
+      "year2_quote_or_null": "Commercial real estate and multifamily loans also expose us to credit risk because the collateral securing these loans often cannot be sold easily. In addition, many of our commercial real estate and multifamily loans are not fully amortizing and contain large balloon payments upon maturity.",
+      "reasoning": "The Year-2021 disclosure repeats the same economic risks: illiquid collateral, longer foreclosure holding periods, large single-borrower exposures, and balloon-payment/refinancing risk. The wording and substance are materially retained, with no meaningful weakening or removal.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_017_commercial_real_estate_collateral",
+      "title": "Commercial Real Estate Collateral Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business is subject to interest rate risk and variations in interest rates may hurt our profits.",
+      "year2_quote_or_null": "Our business is subject to interest rate risk and variations in interest rates may hurt our profits.",
+      "reasoning": "The Year-2021 candidate reproduces the same economic risk disclosure, including the mechanisms by which changing rates could reduce net interest income, asset values, and profitability. There is no material change in scope, qualifiers, or negation.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_018_interest_rate_risk",
+      "title": "Interest Rate Risk and Profitability"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Uncertainty relating to the LIBOR transition process and potential phasing out of LIBOR may adversely affect us.",
+      "year2_quote_or_null": "Uncertainty relating to the LIBOR transition process and phasing out of LIBOR may adversely affect us.",
+      "reasoning": "The Year-2021 disclosure expressly preserves the same underlying economic risk: uncertainty from the LIBOR transition and phaseout may adversely affect the company. The additional detail about cessation timing, replacement rates, litigation, expenses, and hedging/borrowing impacts expands the disclosure but does not change or weaken the original risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_019_libor_transition",
+      "title": "LIBOR Transition and Phaseout Uncertainty"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "If LIBOR rates are no longer available, and we are required to implement substitute indices for the calculation of interest rates under our loan agreements with our borrowers, we may incur significant expenses in effecting the transition, and may be subject to disputes or litigation with clients over the appropriateness or comparability to LIBOR of the substitute indices, which could have a material adverse effect on our results of operations and financial condition.",
+      "year2_quote_or_null": "The implementation of substitute indices for the calculation of interest rates under our loan agreements with our borrowers, may cause us to incur significant expenses in effecting the transition, and may be subject to disputes or litigation with clients over the appropriateness or comparability to LIBOR of the substitute indices, which could have a material adverse effect on our results of operations and financial condition.",
+      "reasoning": "The Year-2 disclosure preserves the same underlying economic risks: transition expenses and disputes or litigation over the comparability of substitute indices, with a potential material adverse effect. The omission of the conditional phrase “If LIBOR rates are no longer available” does not change the substance of the identified risk, and the broader LIBOR uncertainty risks are also materially retained.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_000_libor_transition",
+      "title": "LIBOR Transition and Replacement Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Regulators, industry groups and certain committees (e.g., the Alternative Reference Rates Committee) have, among other things, published recommended fallback language for LIBOR-linked financial instruments, identified recommended alternatives for certain LIBOR rates (e.g., the Secured Overnight Financing Rate as the recommended alternative to U.S. Dollar LIBOR), and proposed implementations of the recommended alternatives in floating rate instruments.",
+      "year2_quote_or_null": "Regulators, industry groups and certain committees (e.g., the Alternative Reference Rates Committee) have, among other things, published recommended fallback language for LIBOR-linked financial instruments, identified recommended alternatives for certain LIBOR rates (e.g., the Secured Overnight Financing Rate (“SOFR”) as the recommended alternative to U.S. Dollar LIBOR), and proposed implementations of the recommended alternatives in floating rate instruments.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risk: uncertainty over regulatory/industry LIBOR fallback recommendations, alternative rates such as SOFR, their acceptance and evolution, and effects on floating-rate instrument markets. The only change is cosmetic wording and punctuation.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_001_libor_fallbacks",
+      "title": "LIBOR Fallback Recommendations and Alternatives"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may not be able to develop and maintain a strong core deposit base or other low cost funding sources.",
+      "year2_quote_or_null": "We may not be able to develop and maintain a strong core deposit base or other low cost funding sources.",
+      "reasoning": "The Year-2021 disclosure retains the same economic risk: difficulty developing core deposits and other low-cost funding, competitive deposit markets, potential outflows, and resulting adverse effects. The only substantive update is extending the described competitive landscape through 2021, which does not change the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_002_core_deposits",
+      "title": "Core Deposit Base and Funding Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Liquidity risk could impair our ability to fund operations and jeopardize our financial condition.",
+      "year2_quote_or_null": "Liquidity risk could impair our ability to fund operations and jeopardize our financial condition.",
+      "reasoning": "The Year-2021 disclosure reproduces the same economic risks as Year-2020: inability to raise adequate funding, impaired access to acceptable funding sources, and adverse market, industry, business-activity, or regulatory factors. The language and substance are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_003_liquidity_funding",
+      "title": "Liquidity and Access to Funding Sources"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may elect or be compelled to seek additional capital in the future, but that capital may not be available when it is needed or on acceptable terms.",
+      "year2_quote_or_null": "We may elect or be compelled to seek additional capital in the future, but that capital may not be available when it is needed or on acceptable terms.",
+      "reasoning": "The Year-2021 candidate repeats the same economic risks: potential need for additional capital, inability to obtain it when needed or on acceptable terms, regulatory capital requirements, and adverse effects on growth, liquidity, and financial condition. No material qualifier or substantive risk change is apparent.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_004_additional_capital",
+      "title": "Availability of Additional Capital"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our holding company relies on dividends from the Bank for substantially all of its income and as the primary source of funds for cash dividends to our preferred and common stockholders.",
+      "year2_quote_or_null": "Our holding company relies on dividends from the Bank for substantially all of its income and as the primary source of funds for cash dividends to our preferred and common stockholders.",
+      "reasoning": "The core economic risk—holding-company dependence on Bank dividends and the resulting vulnerability of stockholder dividend payments—is expressly repeated in Year-2021 Candidate 2. The related regulatory restriction, approval, and potential inability to service obligations is also retained verbatim in Candidate 1, so the disclosure is not materially weakened or removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_005_bank_dividends",
+      "title": "Holding Company Reliance on Bank Dividends"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Although we have historically declared cash dividends on our common stock, we are not required to do so and there may be circumstances under which we would eliminate our common stock dividend in the future.",
+      "year2_quote_or_null": "Although we have historically declared cash dividends on our common stock, we are not required to do so and there may be circumstances under which we would reduce, suspend, or eliminate our common stock dividend in the future.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: the company may reduce or discontinue common stock dividends, adversely affecting the stock price, and regulatory approval may be uncertain. Adding “reduce, suspend” expands the stated range of possible dividend actions but does not change or weaken the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_006_common_dividends",
+      "title": "Common Stock Dividend Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are subject to a variety of litigation pertaining to fiduciary and other claims and legal proceedings. Currently, there are certain legal proceedings pending against us in the ordinary course of business.",
+      "year2_quote_or_null": "We are subject to a variety of litigation pertaining to fiduciary and other claims and legal proceedings. Currently, there are certain legal proceedings pending against us in the ordinary course of business.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risk: exposure to pending litigation and potential adverse financial consequences. The only change is the cross-reference from Note 28 to Note 26, which does not alter the risk disclosed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_007_litigation",
+      "title": "Litigation and Legal Proceedings"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in federal, state or local tax laws, or audits from tax authorities, could negatively affect our financial condition and results of operations.",
+      "year2_quote_or_null": "Changes in federal, state or local tax laws, or audits from tax authorities, could negatively affect our financial condition and results of operations.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks: adverse changes in tax laws, including increased effective tax rates and effects on borrowers and collateral values, as well as unfavorable tax audits, penalties, or additional taxes. The language and substantive consequences are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_008_tax_laws_audits",
+      "title": "Tax Law Changes and Tax Audits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We face the risk of becoming subject to new or more stringent requirements in connection with the introduction of new regulations or modifications of existing regulations, which could require us to hold more capital or liquidity or have other adverse effects on our businesses or profitability.",
+      "year2_quote_or_null": "We face the risk of becoming subject to new or more stringent requirements in connection with the introduction of new regulations or modifications of existing regulations, which could require us to hold more capital or liquidity or have other adverse effects on our businesses or profitability.",
+      "reasoning": "The Year-2 disclosure preserves the same economic risks: extensive regulatory oversight, adverse effects from FRB policies, possible new or stricter requirements, increased capital or liquidity needs, higher compliance costs, and limits on products or competition. The only changes are cosmetic or terminology updates, such as “allowance for loan losses” to “allowance for credit losses” and expanded acronym wording.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_009_regulatory_environment",
+      "title": "Regulatory Environment and Policy Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Compliance with the rules and policies adopted by the CFPB has limited the products we may permissibly offer to some or all of our clients, or limited the terms on which those products may be issued, or may adversely affect our ability to conduct our business as previously conducted.",
+      "year2_quote_or_null": "Compliance with the rules and policies adopted by the CFPB has limited the products we may offer to some or all of our clients, or limited the terms on which those products may be issued, or may adversely affect our ability to conduct our business as previously conducted.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risks: CFPB regulation may constrain products or their terms, adversely affect business operations, and require significant compliance expenses. The minor wording change from “permissibly offer” to “offer” is cosmetic and does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_010_cfpb_supervision",
+      "title": "CFPB Supervision and Compliance Burdens"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are subject to federal and state fair lending laws, and failure to comply with these laws could lead to material penalties.",
+      "year2_quote_or_null": "We are subject to federal and state fair lending laws, and failure to comply with these laws could lead to material penalties.",
+      "reasoning": "The Year-2021 disclosure addresses the same fair lending compliance and enforcement risk with materially identical economic substance, including the same potential penalties, sanctions, and adverse effects. It is therefore retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_011_fair_lending",
+      "title": "Fair Lending Compliance and Enforcement"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Although we have developed policies, procedures and processes designed to assist in compliance with these laws and regulations, no assurance can be given that these policies and procedures will be effective in detecting violations of these laws and regulations.",
+      "year2_quote_or_null": "Although we have developed policies, procedures and processes designed to assist in compliance with these laws and regulations, no assurance can be given that these policies and procedures will be effective in detecting violations of these laws and regulations.",
+      "reasoning": "The Year-2 disclosure reproduces the Year-1 anti-money-laundering compliance risk essentially verbatim, including the potential for fines, sanctions, operating restrictions, and ineffective detection controls. The additional regulatory-enforcement discussion expands the disclosure but does not change the underlying Year-1 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_012_aml_compliance",
+      "title": "Anti-Money Laundering Compliance Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our federal regulators have extensive discretion in connection with their supervisory and enforcement activities over our operations and compliance with the USA PATRIOT and Bank Secrecy Acts.",
+      "year2_quote_or_null": "Our federal regulators have extensive discretion in connection with their supervisory and enforcement activities over our operations and compliance with the USA PATRIOT and Bank Secrecy Acts.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 federal regulatory supervision and compliance risk verbatim, including the federal/state-law conflict, ineffective compliance programs, and potential fines, penalties, consent orders, and operating restrictions. The additional AML discussion expands the context but does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_000_regulatory_supervision_compliance",
+      "title": "Federal Regulatory Supervision and Compliance Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "However, the Volcker Rule and its implementing regulations are relatively new and untested, and it is possible that certain CLOs in which we have invested may be found subsequently to be covered funds.",
+      "year2_quote_or_null": "However, the Volcker Rule and its implementing regulations are relatively new and untested, and it is possible that certain CLOs in which we have invested may be found subsequently to be covered funds.",
+      "reasoning": "Candidate 1 reproduces the same underlying economic risk, including the possibility that invested CLOs could be deemed covered funds and require divestiture at a loss. The disclosure is materially unchanged; Candidate 2 is only a heading-like summary and does not alter the substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_001_volcker_rule_covered_funds",
+      "title": "Volcker Rule Covered Fund Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Severe weather, natural disasters such as earthquakes and wildfires, acts of war or terrorism, pandemics (including the COVID-19 pandemic) and other adverse external events could have a significant impact on our ability to conduct business.",
+      "year2_quote_or_null": "Severe weather, natural disasters such as earthquakes and wildfires, acts of war or terrorism, pandemics (including the COVID-19 pandemic), epidemics and other health-related crises, and other adverse external events have had and could have a significant impact on our ability to conduct business.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risks and the same significant-impact qualifier, while adding epidemics and other health-related crises. The added categories expand the disclosure but do not materially weaken, remove, or bundle the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_002_severe_weather_external_events",
+      "title": "Severe Weather and External Event Impacts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our financial condition and results of operations are dependent on the national and local economy, particularly in the Bank’s market areas. A worsening in economic conditions in the market areas we serve may impact our earnings adversely and could increase the credit risk of our loan portfolio.",
+      "year2_quote_or_null": "Our financial condition and results of operations are dependent on the national and local economy, particularly in the Bank’s market areas. A worsening in economic conditions in the market areas we serve may impact our earnings adversely and could increase the credit risk of our loan portfolio.",
+      "reasoning": "The core economic risk—adverse national or local economic conditions in the Bank’s market areas harming earnings, financial condition, and loan-portfolio credit quality—is disclosed in materially identical language in Year-2021 Candidate 1. Candidate 2 also preserves the specific consequences, so the disclosure was retained rather than removed or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_003_economic_conditions_market_areas",
+      "title": "Economic Conditions in Market Areas"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Strong competition within our market areas may limit our growth and profitability.",
+      "year2_quote_or_null": "Strong competition within our market areas may limit our growth and profitability.",
+      "reasoning": "The Year-2021 disclosure reproduces the same economic risks as Year-2020: intense competition from a broad range of financial-services competitors, potential disadvantages in resources and offerings, dependence of profitability on successful competition, and technology-investment disadvantages. No material qualifier or risk scope changed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_004_competition_growth_profitability",
+      "title": "Competition Limiting Growth and Profitability"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business could be negatively affected as a result of actions by activist stockholders.",
+      "year2_quote_or_null": "Our business could be negatively affected as a result of actions by activist stockholders.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risk: activist stockholder actions, including board challenges and strategy disruption, may divert management attention and adversely affect business prospects, capital raising, reputation, and securities prices. The wording changes are cosmetic and do not alter the substance or strength of the disclosure.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_005_activist_stockholders",
+      "title": "Activist Stockholder Actions"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "When the market price of a company's stock drops significantly, as ours did initially following the posting of the first blog, it is not unusual for stockholder lawsuits to be filed or threatened against the company and its board of directors and for a company to suffer reputational damage.",
+      "year2_quote_or_null": "When the market price of a company's stock drops significantly, as ours did initially following the posting of the first blog, it is not unusual for stockholder lawsuits to be filed or threatened against the company and its board of directors and for a company to suffer reputational damage.",
+      "reasoning": "The short-seller/manipulation and stock-price-volatility risk remains substantively present in Year-2021 Candidate 1, while the litigation, reputational, and related business-impact risks remain in Candidate 2. The Year-2020 disclosure has therefore been split across two Year-2021 disclosure units rather than economically removed or softened.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_4_006_short_sellers_stock_price",
+      "title": "Short Sellers and Stock Price Volatility"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "None.",
+      "year2_quote_or_null": null,
+      "reasoning": "The Year-2020 unit reports no unresolved staff comments, and no semantically similar Year-2021 disclosure was identified. Following the supplied candidate assessment, the unit is classified as removed rather than retained or reworded.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_4_007_item_1b_unresolved_comments",
+      "title": "Unresolved Staff Comments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The risk associated with changes in interest rates and our ability to adapt to these changes is known as interest rate risk and is our most significant market risk.",
+      "year2_quote_or_null": "The risk associated with changes in interest rates and our ability to adapt to these changes is known as interest rate risk and is our most significant market risk.",
+      "reasoning": "The Year-2021 disclosure is substantively identical to the Year-2020 disclosure and continues to describe the same economic exposure to changing market interest rates and its impact on results of operations. No material qualifier or scope change is present.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_000_interest_rate_market_risk",
+      "title": "Interest Rate Changes Create Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As part of our attempt to manage our exposure to changes in interest rates and comply with applicable regulations, we have established asset/liability committees to monitor our interest rate risk.",
+      "year2_quote_or_null": "As part of our attempt to manage our exposure to changes in interest rates and comply with applicable regulations, we have established asset/liability committees to monitor our interest rate risk.",
+      "reasoning": "The Year-2021 disclosure is substantively identical to Year-2020: it retains the same interest-rate exposure, monitoring committees, and asset/liability analysis based on payment streams, maturities/prepayments, and sensitivity to market-rate changes.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_001_interest_rate_measurement",
+      "title": "Measuring Interest Rate Risk Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In order to manage the risk of potential adverse effects of material and prolonged or volatile changes in interest rates on our results of operations, we have adopted asset/liability management policies to align maturities and repricing terms of interest-earning assets to interest-bearing liabilities.",
+      "year2_quote_or_null": "In order to manage the risk of potential adverse effects of material and prolonged or volatile changes in interest rates on our results of operations, we have adopted asset/liability management policies to align maturities and repricing terms of interest-earning assets to interest-bearing liabilities.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 governance, interest-rate risk, asset/liability policy, monitoring, and ALCO oversight language without changing the underlying economic risk. The disclosure is therefore retained.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_002_alco_governance",
+      "title": "ALCO Governance and Management Policies"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In order to manage our assets and liabilities and achieve the desired liquidity, credit quality, interest rate risk, profitability and capital targets, we evaluate various strategies including:",
+      "year2_quote_or_null": "In order to manage our assets and liabilities and achieve the desired liquidity, credit quality, interest rate risk, profitability and capital targets, we evaluate various strategies including:",
+      "reasoning": "The Year-2021 disclosure presents the same interest-rate-risk management strategies, including the same approaches to loan origination and sales, investment duration, deposits, FHLB advances/derivatives, and fixed-rate loan exposure. The economic risk and mitigation actions are unchanged.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_003_interest_rate_strategies",
+      "title": "Strategies for Managing Interest Rate Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "At times, depending on the level of general interest rates, the relationship between long- and short-term interest rates, market conditions and competitive factors, the ALCOs may decide to increase our interest rate risk position within the asset/liability tolerance set forth by our Board of Directors.",
+      "year2_quote_or_null": "At times, depending on the level of general interest rates, the relationship between long- and short-term interest rates, market conditions and competitive factors, the ALCOs may decide to increase our interest rate risk position within the asset/liability tolerance set forth by our Board of Directors.",
+      "reasoning": "The Year-2021 disclosure is verbatim identical to the Year-2020 disclosure and retains the same economic risk: ALCO may increase interest rate risk exposure within Board-approved asset/liability limits.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_004_alco_risk_position",
+      "title": "ALCO Interest Rate Risk Positioning"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As part of its procedures, the ALCOs regularly review interest rate risk by forecasting the impact of alternative interest rate environments on net interest income and market value of portfolio equity, which is defined as the net present value of an institution’s existing assets, liabilities and off-balance sheet instruments, and evaluating such impacts against the maximum potential changes in net interest income and market value of portfolio equity.",
+      "year2_quote_or_null": "As part of its procedures, the ALCOs regularly review interest rate risk by forecasting the impact of alternative interest rate environments on net interest income and market value of portfolio equity, which is defined as the net present value of an institution’s existing assets, liabilities and off-balance sheet instruments, and evaluating such impacts against the maximum potential changes in net interest income and market value of portfolio equity.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and retains the same interest-rate-risk forecasting process, including impacts on net interest income and market value of portfolio equity.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_005_alco_forecasting",
+      "title": "Forecasting Interest Rate Risk Impacts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Interest rate risk is caused by the following factors: •Repricing risk - timing differences in the repricing and maturity of interest-earning assets and interest-bearing liabilities; •Option risk - changes in the expected maturities of assets and liabilities, such as borrowers’ ability to prepay loans and depositors’ ability to redeem certificates of deposit before maturity; •Yield curve risk - changes in the yield curve where interest rates increase or decrease in a nonparallel fashion; and •Basis risk - changes in spread relationships between different yield curves, such as U.S. Treasuries, U.S. Prime Rate and London Interbank Offered Rate.",
+      "year2_quote_or_null": "Interest rate risk is caused by the following factors: •Repricing risk - timing differences in the repricing and maturity of interest-earning assets and interest-bearing liabilities; •Option risk - changes in the expected maturities of assets and liabilities, such as borrowers’ ability to prepay loans and depositors’ ability to redeem certificates of deposit before maturity; •Yield curve risk - changes in the yield curve where interest rates increase or decrease in a nonparallel fashion; and •Basis risk - changes in spread relationships between different yield curves, such as U.S. Treasuries, U.S. Prime Rate and London Interbank Offered Rate.",
+      "reasoning": "The Year-2021 disclosure repeats the same four economic sources of interest rate risk—repricing, option, yield curve, and basis risk—with materially identical descriptions. No risk was removed, weakened, or bundled into another disclosure.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_006_interest_rate_risk_factors",
+      "title": "Factors Causing Interest Rate Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Since our earnings are primarily dependent on our ability to generate net interest income, we focus on actively monitoring and managing the effects of adverse changes in interest rates on our net interest income.",
+      "year2_quote_or_null": "Since our earnings are primarily dependent on our ability to generate net interest income, we focus on actively monitoring and managing the effects of adverse changes in interest rates on our net interest income.",
+      "reasoning": "The Year-2 candidate preserves the same economic risk: adverse interest-rate changes affecting net interest income, along with substantially identical Board and Management ALCO oversight, modeling, mitigation, and policy-limit review.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_007_interest_rate_oversight",
+      "title": "Interest Rate Risk Oversight"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Interest rate risk management is an active process that encompasses monitoring loan and deposit flows complemented by investment and funding activities.",
+      "year2_quote_or_null": "Interest rate risk management is an active process that encompasses monitoring loan and deposit flows complemented by investment and funding activities.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1: it retains the same active interest-rate-risk management process, including monitoring repricing-sensitive flows and aligning the interest-rate posture with forecasts, objectives, market expectations, and policy constraints.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_008_interest_rate_management_process",
+      "title": "Active Interest Rate Risk Management"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our interest rate risk exposure is measured and monitored through various risk management tools, including a simulation model that performs interest rate sensitivity analysis under multiple scenarios.",
+      "year2_quote_or_null": "Our interest rate risk exposure is measured and monitored through various risk management tools, including a simulation model that performs interest rate sensitivity analysis under multiple scenarios.",
+      "reasoning": "The Year-2021 disclosure reproduces the same economic risk and modeling methodology as Year-2020, including scenario-based interest-rate sensitivity analysis, Rate Shock, NII at Risk, and EVE. There is no material change in exposure, qualifiers, or treatment of the risk.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_009_risk_modeling_tools",
+      "title": "Interest Rate Sensitivity Modeling Tools"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "EVE measures the period end market value of assets minus the market value of liabilities. Asset liability management uses this value to measure the changes in the economic value of the Bank under various interest rate scenarios.",
+      "year2_quote_or_null": "EVE measures the period end market value of assets minus the market value of liabilities. Asset liability management uses this value to measure the changes in the economic value of the Bank under various interest rate scenarios.",
+      "reasoning": "The Year-2 disclosure reproduces the same economic risk and measurement discussion, including EVE's use in assessing changes in the Bank's economic value under various interest-rate scenarios and its capture of anticipated cash flows.",
+      "section": "7A",
+      "confidence": 1,
+      "id": "7A_0_010_economic_value_equity",
+      "title": "Economic Value of Equity Measurement"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The balance sheet is considered “asset sensitive” when an increase in short-term interest rates is expected to expand our net interest margin, as rates earned on our interest-earning assets reprice higher at a pace faster than rates paid on our interest-bearing liabilities. Conversely, the balance sheet is considered “liability sensitive” when an increase in short-term interest rates is expected to compress our net interest margin, as rates paid on our interest-bearing liabilities reprice higher at a pace faster than rates earned on our interest-earning assets.",
+      "year2_quote_or_null": "The balance sheet is considered “asset sensitive” when an increase in short-term interest rates is expected to expand our net interest margin, as rates earned on our interest-earning assets reprice higher at a pace faster than rates paid on our interest-bearing liabilities. Conversely, the balance sheet is considered “liability sensitive” when an increase in short-term interest rates is expected to compress our net interest margin, as rates paid on our interest-bearing liabilities reprice higher at a pace faster than rates earned on our interest-earning assets.",
+      "reasoning": "The Year-2 disclosure reproduces the Year-1 economic risk and definitions verbatim: changes in short-term interest rates may expand or compress net interest margin depending on the relative repricing speed of assets and liabilities.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_011_asset_liability_sensitivity",
+      "title": "Asset and Liability Sensitivity Definitions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "At December 31, 2020, our interest rate risk profile reflects an “asset sensitive” position. Given the uncertainty of the magnitude, timing and direction of future interest rate movements, as well as the shape of the yield curve, actual results may vary from those predicted by our model.",
+      "year2_quote_or_null": "At December 31, 2021, our interest rate risk profile reflects an “asset sensitive” position. Given the uncertainty of the magnitude, timing and direction of future interest rate movements, as well as the shape of the yield curve, actual results may vary from those predicted by our model.",
+      "reasoning": "The same economic risk—an asset-sensitive interest rate profile subject to uncertainty in future rate movements and yield-curve shape—appears in Year-2 with materially unchanged disclosure. Only the reporting date changed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_012_current_risk_profile",
+      "title": "Current Interest Rate Risk Profile"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The following table presents the projected change in the Bank’s economic value of equity at December 31, 2020 and net interest income over the next twelve months, that would occur upon an immediate change in interest rates based on independent analysis, but without giving effect to any steps that management might take to counteract that change:",
+      "year2_quote_or_null": "The following table presents the projected change in the Bank’s economic value of equity at December 31, 2021 and net interest income over the next twelve months, that would occur upon an immediate change in interest rates based on independent analysis, but without giving effect to any steps that management might take to counteract that change:",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: sensitivity of economic value of equity and next-twelve-month net interest income to immediate, uniform interest-rate changes. The table is updated for the new reporting date and amounts, but the risk and scenario methodology remain materially the same.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_013_sensitivity_table",
+      "title": "EVE and Net Interest Income Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As with any method of measuring interest rate risk, certain shortcomings are inherent in the method of analysis presented in the foregoing table.",
+      "year2_quote_or_null": "As with any method of measuring interest rate risk, certain shortcomings are inherent in the method of analysis presented in the foregoing table.",
+      "reasoning": "The Year-2021 disclosure presents the same economic limitations as Year-2020: differing asset/liability responses to rate changes, timing lags, rate caps, and deviations in prepayments or early withdrawals. The language is materially identical, so the risk was retained.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_014_sensitivity_limitations",
+      "title": "Limitations of Interest Rate Analysis"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Interest rate risk is the most significant market risk affecting us. Other types of market risk, such as foreign currency exchange risk and commodity price risk, do not arise in the normal course of our business activities and operations.",
+      "year2_quote_or_null": "Interest rate risk is the most significant market risk affecting us. Other types of market risk, such as foreign currency exchange risk and commodity price risk, do not arise in the normal course of our business activities and operations.",
+      "reasoning": "The Year-2 disclosure is verbatim identical to Year-1 and preserves the same economic conclusion: interest rate risk is the most significant market risk, while foreign currency and commodity price risks do not arise in the normal course of business.",
+      "section": "7A",
+      "confidence": 1.0,
+      "id": "7A_0_015_other_market_risks",
+      "title": "Other Market Risks Not Material"
+    },
+    {
+      "id": "1A_1_000_acquisition_integration_risks",
+      "title": "Acquisition Integration Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Acquiring other banks, bank branches, other assets or other businesses, such as the PMB Acquisition, also involve risks associated with integration, which may cause us to not fully realize the benefits of an acquisition.\n\nThe success of any such transaction will depend on, among other things, our ab",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_001_libor_indexed_portfolios",
+      "title": "LIBOR-Indexed Loan and Securities Portfolios",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "At December 31, 2021, approximately 45.0% of our total loan portfolio was indexed to 30-day, 90-day, 180-day and one-year LIBOR. These amounts include our warehouse lending portfolio which totals 22.1% of our total loan portfolio and will renew or mature prior to the cessation of LIBOR publication M",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_4_001_climate_change_overall_risks",
+      "title": "Climate Change Creates Multiple Business Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Our business, as well as the operations and activities of our customers, is subject to the potential risks associated with climate change. Climate change presents both immediate and long-term risks to us and our customers and these risks are expected to increase over time. Climate changes presents m",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_4_002_climate_change_physical_risks",
+      "title": "Climate Change Physical and Credit Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Climate change exposes us to physical risk as its effects may lead to more frequent and more extreme weather events, such as prolonged droughts, an increase in the number and severity of wildfires and extreme seasonal weather; and longer-term shifts, such as increasing average temperatures, ozone de",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_4_003_climate_change_transition_risks",
+      "title": "Climate Change Transition and Regulatory Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Climate change also exposes us to transition risks associated with the transition to a less carbon-dependent economy. Transition risks may result from changes in policies; laws and regulations; technologies; and/or market preferences to address climate change. Such changes could materially, negative",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "7A_0_014_rising_rate_positioning",
+      "title": "Positioning for Rising Interest Rates",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We believe we are very well positioned to benefit from a potential cycle of rising interest rates. Due to the transformation of the franchise to our relationship-based banking model, with higher percentages of noninterest-bearing deposits and variable rate commercial loans, our one year gap ratio, w",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "7A",
+      "confidence": 0.85
+    }
+  ]
+}

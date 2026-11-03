@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { DisclosureChange } from "@/lib/types";
 import { CLASS_CONFIG } from "@/lib/constants";
 import { SectionTag } from "./SectionTag";
+import { DEMO_MODE } from "@/lib/demo";
 
 interface ChangeCardProps {
   change: DisclosureChange;
@@ -33,9 +34,18 @@ export function ChangeCard({ change, defaultExpanded = false }: ChangeCardProps)
       style={{ borderLeftColor: cfg.color }}
     >
       {/* Card Header */}
-      <button
-        className="w-full text-left px-4 py-3.5 flex items-start gap-3 select-text cursor-pointer focus:outline-none"
+      <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        className="w-full text-left px-4 py-3.5 flex items-start gap-3 select-text cursor-pointer"
         onClick={() => setExpanded((v) => !v)}
+        onKeyDown={(e) => {
+          if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            setExpanded((v) => !v);
+          }
+        }}
       >
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -57,7 +67,7 @@ export function ChangeCard({ change, defaultExpanded = false }: ChangeCardProps)
               </span>
             </div>
           </div>
-          <p className="font-mono text-sm text-zinc-100 font-medium truncate">{change.title}</p>
+          <p className="font-mono text-sm text-zinc-100 font-medium break-words">{change.title}</p>
         </div>
 
         <div className="flex items-center gap-2 shrink-0 mt-0.5">
@@ -72,7 +82,7 @@ export function ChangeCard({ change, defaultExpanded = false }: ChangeCardProps)
             {expanded ? "▲" : "▼"}
           </span>
         </div>
-      </button>
+      </div>
 
       {/* Expanded Body: Comparative Disclosure Box */}
       {expanded && (
@@ -148,7 +158,7 @@ export function ChangeCard({ change, defaultExpanded = false }: ChangeCardProps)
                 <span className="text-[11px] font-bold text-zinc-400 tracking-wider uppercase">
                   AI JUDGE RATIONALE
                 </span>
-                <span className="text-[10px] text-zinc-600">Claude Opus Economic Evaluation</span>
+                <span className="text-[10px] text-zinc-600">{DEMO_MODE ? "Saved model output" : "Claude Opus Economic Evaluation"}</span>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
                 {change.reasoning}

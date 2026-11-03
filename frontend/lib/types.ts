@@ -37,6 +37,8 @@ export interface DiffResult {
   model_provider?: ModelProvider | string;
   model_judge?: string;
   model_segmenter?: string;
+  embed_backend?: string | null;
+  pipeline_version?: string | null;
   generated_at: string;
   summary_counts: SummaryCounts;
   changes: DisclosureChange[];
@@ -67,6 +69,7 @@ export interface AnalysisLibraryItem {
   summary_counts: SummaryCounts;
   total_changes?: number;
   signals_count?: number;
+  sections?: string[];
 }
 
 export interface FilingYearInfo {

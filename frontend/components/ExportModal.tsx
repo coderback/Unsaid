@@ -19,7 +19,7 @@ export function ExportModal({ data, onClose }: ExportModalProps) {
       `# 10-K Disclosure Analysis: ${data.ticker} (${data.company_name})`,
       `**Comparison**: FY${data.year1} → FY${data.year2}`,
       `**Generated**: ${data.generated_at ? new Date(data.generated_at).toUTCString() : "N/A"}`,
-      `**Engine**: Unsaid Semantic Disclosure Detector (Claude Opus Judge)`,
+      `**Engine**: Unsaid Semantic Disclosure Detector (judge: ${data.model_judge ?? "not recorded"})`,
       "",
       "## Executive Summary",
       `| Metric | Count |`,

@@ -1,0 +1,288 @@
+{
+  "ticker": "CFR",
+  "company_name": "TEGNA INC",
+  "year1": 2021,
+  "year2": 2022,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T09:55:07.528323+00:00",
+  "summary_counts": {
+    "RETAINED": 15,
+    "SOFTENED": 6,
+    "REMOVED": 2,
+    "REWORDED": 4
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An investment in our common stock involves risks and uncertainties and investors should consider carefully the following risk factors before investing in our securities.",
+      "year2_quote_or_null": "An investment in our common stock involves risks and uncertainties and investors should consider carefully the following risk factors before investing in our securities.",
+      "reasoning": "The Year-2022 disclosure is identical to the Year-2021 disclosure and presents the same general investment risks, uncertainty, and limitations on the completeness or predictability of identified risks.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_000_risk_disclaimer",
+      "title": "General Risk Factors Disclaimer"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The Merger is subject to receipt of approval from our shareholders as well as the satisfaction of other closing conditions, including conditions that may not be satisfied or completed on a timely basis, if at all.",
+      "year2_quote_or_null": "The Merger is subject to the satisfaction of closing conditions, including conditions that may not be satisfied or completed on a timely basis, if at all.",
+      "reasoning": "The core risk that closing conditions may not be satisfied timely remains, but Year-2 removes the explicit risk of not receiving shareholder approval and states that shareholder approval was received on May 17, 2022. It also notes that all HSR waiting periods expired, reducing—not eliminating—the disclosed uncertainty around closing conditions and timing.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_001_merger_closing_conditions",
+      "title": "Merger Closing Conditions And Timing"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "•we may be required to pay a cash termination fee as required under the Merger Agreement;",
+      "year2_quote_or_null": null,
+      "reasoning": "Candidate 1 retains the overall economic risk of failing to complete the Merger, but it omits the specific risk that the company may have to pay a cash termination fee. The remaining merger-failure disclosure is otherwise substantially retained; because a material component is absent, the unit is best classified as softened rather than removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_failed_merger_impacts",
+      "title": "Consequences Of Failing To Complete Merger"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are subject to certain restrictions in the Merger Agreement that may hinder operations pending the consummation of the Merger.",
+      "year2_quote_or_null": "We are subject to certain restrictions in the Merger Agreement that may hinder operations pending the consummation of the Merger.",
+      "reasoning": "Candidate 1 reproduces the same economic risk: the Merger Agreement restricts ordinary-course operations and may impair business opportunities, responses to competitive pressures, and financial results while the Merger remains pending. Candidate 2 also mentions the restriction, but the dedicated Year-2 disclosure is substantively unchanged, so the risk was retained rather than absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_003_merger_operating_restrictions",
+      "title": "Merger Agreement Operating Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We will be subject to various uncertainties while the Merger is pending that may cause disruption and may make it more difficult to maintain relationships with employees, clients, customers, and others with whom we do business.",
+      "year2_quote_or_null": "We will be subject to various uncertainties while the Merger is pending that may cause disruption and may make it more difficult to maintain relationships with employees, clients, customers, and others with whom we do business.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1 and retains the same economic risks: merger-related uncertainty, employee retention concerns, business-relationship disruption, management distraction, and adverse effects on operations and financial results.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_004_merger_uncertainty_disruption",
+      "title": "Merger Uncertainty And Business Disruption"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "These provisions might discourage an otherwise-interested third party from considering or proposing an acquisition of TEGNA, including proposals that may be deemed to offer greater value to our shareholders than as provided in the Merger Agreement.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2 disclosure meaningfully addresses the economic risks arising from merger-agreement restrictions, termination fees, or their potential to deter superior acquisition proposals. The disclosure is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_superior_acquisition_proposals",
+      "title": "Restrictions On Superior Acquisition Proposals"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Demand for advertising is highly correlated with the strength of the U.S. economy... A decline in economic conditions in the U.S. could have a significant adverse impact on our businesses and could significantly impact our television spot and digital advertising revenues.",
+      "year2_quote_or_null": "Demand for advertising is highly correlated with the strength of the U.S. economy... if macroeconomic conditions in the U.S. were to deteriorate there could be a significant adverse impact on our television spot and digital advertising revenues.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: weaker U.S. and regional economic conditions can reduce advertising demand and materially harm television spot and digital advertising revenue. Although Year-2 adds specific macroeconomic examples and updates the revenue mix, it does not weaken or negate the risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_006_advertising_demand_cyclicality",
+      "title": "Advertising Demand And Economic Cyclicality"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "For example, increasing demand for content generated for consumption through other forms of media such as Amazon Prime Video, Disney+, HBO Max, Hulu, Netflix, or Peacock could cause our advertising revenues to decline...",
+      "year2_quote_or_null": "For example, increasing demand for content generated for consumption through other forms of media such as Amazon Prime Video, Disney+, HBO Max, Hulu, Netflix, Paramount+ or Peacock could cause our advertising revenues to decline...",
+      "reasoning": "The underlying economic risk is unchanged: alternative media and streaming could reduce television audiences, advertiser attractiveness, and advertising revenue. Year-2 only adds Paramount+ to the illustrative list of competing platforms, which is a cosmetic update rather than a substantive change in risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_007_media_competition",
+      "title": "Competition From Alternative Media"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "A resurgence in the rate of COVID-19 infections that is significant enough to force widespread business closures could materially and adversely affect our financial condition, results of operations and cash flows.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2 candidate meaningfully addresses the disclosed economic risk that a significant COVID-19 resurgence, related business closures, and pandemic effects on customers could materially harm financial performance. The risk therefore appears to have been removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_008_covid19_resurgence",
+      "title": "COVID-19 Resurgence And Financial Impact"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The failure of our information technology systems to perform as we anticipate could disrupt our business and could result in transaction errors, processing inefficiencies, broadcasting disruptions, and loss of sales and customers, causing our business and results to be impacted.",
+      "year2_quote_or_null": "The failure of our information technology systems to perform as we anticipate could disrupt our business and could result in transaction errors, processing inefficiencies, broadcasting disruptions, and loss of sales and customers, causing our business and results to be impacted.",
+      "reasoning": "The Year-2 disclosure is identical to the Year-1 disclosure and addresses the same risk that information technology system failures could disrupt operations and negatively affect sales, customers, assets, and results.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_009_information_technology_failures",
+      "title": "Information Technology System Failures"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "While the measures we employ meet or exceed industry standards they nonetheless may not be sufficient in preventing or timely detecting breaches or cyber-attacks due to the evolving nature and ever-increasing abilities of cyber-attackers.",
+      "year2_quote_or_null": "The measures we employ may not be sufficient in preventing or timely detecting breaches or cyber-attacks due to the evolving nature and ever-increasing abilities of cyber-attackers.",
+      "reasoning": "The cybersecurity incident, breach, vendor-impact, and insurance-limit risks remain economically present and are otherwise retained. However, Year-2 removes the material qualifier that the controls \"meet or exceed industry standards,\" which weakens the disclosure of the controls’ effectiveness characterization; therefore the overall unit is classified as SOFTENED rather than merely reworded.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_010_cybersecurity_incidents",
+      "title": "Cybersecurity Incidents And Insurance Limits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As has historically been the case in the broadcast sector, loss of, or changes in, affiliation agreements or retransmission consent agreements could adversely affect operating results for our stations",
+      "year2_quote_or_null": "As has historically been the case in the broadcast sector, loss of, or changes in, affiliation agreements or retransmission consent agreements could adversely affect operating results for our stations",
+      "reasoning": "The core economic risk—loss or unfavorable changes to network affiliation and retransmission consent agreements adversely affecting station operating results—is stated verbatim in Year-2. Year-2 adds detail about expiration, renewal, replacement programming, streaming competition, and blackouts, but does not weaken or remove the Year-1 risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_011_broadcast_affiliation_agreements",
+      "title": "Broadcast Affiliation And Retransmission Agreements"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "If renewed, our network affiliation agreements may be renewed on terms that are less favorable to us. The non-renewal or termination of any of our network affiliation agreements would prevent us from being able to carry programming of the affiliate network.",
+      "year2_quote_or_null": "If renewed, our network affiliation agreements may be renewed on terms that are less favorable to us. The non-renewal or termination of any of our network affiliation agreements would prevent us from being able to carry programming of the affiliate network.",
+      "reasoning": "The core economic risk—unfavorable renewal terms and the loss of network programming if agreements are not renewed or are terminated, potentially requiring costlier or less attractive replacement programming and reducing revenues—is repeated materially unchanged. The expiration dates changed, but that reflects updated timing rather than a change in the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_000_network_affiliation_expirations",
+      "title": "Network Affiliation Expirations and Renewals"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An increase in the availability of network programming on alternative platforms that either bypass or provide less favorable terms to local stations ... may dilute the exclusivity and the value of network programming originally broadcast by our stations and could adversely affect the business, financial condition and results of operations of our stations.",
+      "year2_quote_or_null": "An increase in the availability of network programming on alternative platforms that either bypass or provide less favorable terms to local stations - such as cable channels, the Internet and other distribution vehicles - may dilute the exclusivity and the value of network programming originally broadcast by our stations and could adversely affect the business, financial condition and results of operations of our stations.",
+      "reasoning": "The Year-2022 disclosure reproduces the same economic risk: network streaming and other alternative distribution platforms may bypass local stations, reducing the exclusivity and value of their programming. It is expressly retained within the broader network affiliation agreement risks disclosure, but the underlying risk itself is materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_001_alternative_network_streaming",
+      "title": "Alternative Platforms Dilute Network Exclusivity"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "This source of revenue represented approximately 49% of our 2021 total revenues. ... Future blackouts, should they occur, or if we are unable to renew our retransmission agreements on market terms, or at all, could negatively impact our business, financial condition and results of operations.",
+      "year2_quote_or_null": "This source of revenue represented approximately 47% of our 2022 total revenues. ... Future blackouts, should they occur, or if we are unable to renew our retransmission agreements on market terms, or at all, could negatively impact our business, financial condition and results of operations.",
+      "reasoning": "The core economic risk—MVPD retransmission-agreement nonrenewal or unfavorable terms causing blackouts, loss of compensation, and adverse results—remains expressly disclosed in Year-2. It is softened because the Year-2 disclosure omits the Year-1 reference to a recent actual blackout/failed negotiation with a major provider and states that agreements were renewed without the prior qualification that they were at leading affiliate rates, making the risk less immediate while preserving the forward-looking exposure.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_1_002_retransmission_consent_agreements",
+      "title": "Retransmission Consent and MVPD Blackouts"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, the Merger could affect our relationships with broadcast television networks and MVPDs.",
+      "year2_quote_or_null": "In addition, the Merger could affect our relationships with broadcast television networks and MVPDs. Please see the Risk Factor titled “We will be subject to various uncertainties while the Merger is pending that may cause disruption and may make it more difficult to maintain relationships with employees, clients, customers, and others with whom we do business.”",
+      "reasoning": "The Year-2 disclosure repeats the same economic risk—that the pending Merger could disrupt or adversely affect relationships with broadcast networks and MVPDs—and directly retains the Year-1 sentence. The surrounding uncertainty-and-disruption risk factor provides additional context but does not change the substance or weaken the disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_003_merger_relationship_disruption",
+      "title": "Merger Effects on Network and MVPD Relationships"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We operate our business in a single broadcast segment, which increases our exposure to the changes and highly competitive environment of the broadcast industry",
+      "year2_quote_or_null": "We operate our business in a single broadcast segment, which increases our exposure to the changes and highly competitive environment of the broadcast industry",
+      "reasoning": "The Year-2022 candidates preserve both economic components of the Year-2021 disclosure: single-segment concentration exposure (Candidate 2) and the competitive broadcast-industry risks, including audience, advertising, and programming-cost pressure (Candidate 1). The language is materially unchanged, so the disclosure is retained rather than merely absorbed or reworded.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_004_broadcast_segment_concentration",
+      "title": "Single-Segment Broadcast Industry Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, the FCC and Congress may enact new laws and regulations, and/or changes to existing laws and regulations, that could impact media ownership and other broadcast-related activities.",
+      "year2_quote_or_null": "In addition, the FCC and Congress may enact new laws and regulations, and/or changes to existing laws and regulations, that could impact media ownership and other broadcast-related activities.",
+      "reasoning": "The Year-2022 candidates retain the Year-2021 economic risks: regulatory changes affecting broadcast activities, affiliation/retransmission negotiations, revenues, costs, valuations, and FCC license renewal. The content is split across two units, but no material risk has been weakened or removed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_broadcast_regulatory_changes",
+      "title": "Broadcast Regulation and Licensing Changes"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "If broadcast ownership rules become more restrictive, our opportunities to grow our broadcast business through acquisitions or other strategic transactions could be impaired.",
+      "year2_quote_or_null": "If FCC rules and policies, including broadcast ownership rules become more restrictive, our opportunities to grow our broadcast business through acquisitions or other strategic transactions could be impaired.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risks: regulatory changes may impose new obligations, limit exclusivity or retransmission consent rights, and restrict growth through acquisitions. It adds that acquisitions are subject to FCC review and approval, but does not materially weaken or eliminate the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_006_communications_act_requirements",
+      "title": "Communications Act and FCC Requirements"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, prospective acquisition activities may be subject to antitrust review by the Antitrust Division of the Department of Justice (DOJ). DOJ’s review could result in restrictions on our ability to pursue or consummate future transactions, and/or a requirement that we divest certain television stations if an acquisition would result in excessive concentration in a market.",
+      "year2_quote_or_null": "In addition, prospective acquisition activities may be subject to antitrust review by the Antitrust Division of the Department of Justice (DOJ). DOJ’s review could result in restrictions on our ability to pursue or consummate future transactions, and/or a requirement that we divest certain television stations if an acquisition would result in excessive concentration in a market.",
+      "reasoning": "The Year-2 disclosure is verbatim identical to the Year-1 disclosure and presents the same economic risk: DOJ antitrust review may restrict acquisitions or require station divestitures, with potential adverse effects on the transaction or business.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_007_antitrust_transaction_review",
+      "title": "Antitrust Review of Broadcast Acquisitions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If any of these facts, assumptions, representations or undertakings is incorrect or not satisfied, TEGNA and its stockholders may not be able to rely on the opinion of tax counsel and could be subject to significant tax liabilities.",
+      "year2_quote_or_null": "If any of these facts, assumptions, representations or undertakings is incorrect or not satisfied, TEGNA and its stockholders may not be able to rely on the opinion of tax counsel and could be subject to significant tax liabilities.",
+      "reasoning": "The Year-2 disclosure repeats the same underlying economic risk—that failure of the spin-off’s tax-free conditions could result in significant tax liabilities—and expands it with additional IRS-audit and taxability scenarios. The risk was not weakened, removed, or merely absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_008_cars_com_spin_off_tax",
+      "title": "Tax Liability from Cars.com Spin-Off"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Notwithstanding the opinion of tax counsel, the Internal Revenue Service could determine on audit that the spin-off is taxable... If the spin-off was determined to be taxable... TEGNA and its stockholders... could incur significant U.S. federal income tax liabilities.",
+      "year2_quote_or_null": "Notwithstanding the opinion of tax counsel, the Internal Revenue Service could determine on audit that the spin-off is taxable... If the spin-off was determined to be taxable... TEGNA and its stockholders... could incur significant U.S. federal income tax liabilities.",
+      "reasoning": "The core economic risk—that the IRS could determine the Cars.com spin-off was taxable, resulting in significant federal income tax liabilities for TEGNA and its taxable stockholders—remains materially unchanged. The examination statute-of-limitations date changed, but that does not alter the underlying taxability risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_009_irs_spin_off_tax_audit",
+      "title": "IRS Audit and Taxability of Spin-Off"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Volatility in the U.S. credit markets could significantly impact our ability to obtain new financing to fund our operations or to refinance our existing debt at reasonable rates and terms as it matures",
+      "year2_quote_or_null": "Access to the capital markets for longer-term financing is generally unpredictable and volatile credit markets could make it harder for us to obtain debt financings.",
+      "reasoning": "The Year-2 disclosure continues to describe the same underlying economic risks: volatile credit markets may restrict access to financing, make refinancing more difficult, and affect debt maturities. The surrounding debt amounts and borrowing capacity changed, but the risk disclosure itself was materially retained.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_010_credit_market_financing",
+      "title": "Credit Market Volatility and Refinancing"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Goodwill and other intangible assets were approximately $5.42 billion as of December 31, 2021, representing approximately 78% of our total assets.",
+      "year2_quote_or_null": "Goodwill and other intangible assets were approximately $5.36 billion as of December 31, 2022, representing approximately 73% of our total assets.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: goodwill and intangible assets may require impairment charges due to adverse operating, market, or valuation conditions. The numerical updates and minor wording changes do not alter the risk disclosed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_011_intangible_asset_impairment",
+      "title": "Goodwill and Intangible Asset Impairment"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Our main exposure to market risk relates to interest rates.",
+      "year2_quote_or_null": "Historically, our main exposure to market risk has related to interest rates.",
+      "reasoning": "The underlying interest-rate market risk remains disclosed, but the shift from a present-tense exposure to “Historically” implies the exposure may no longer be current, materially weakening the disclosure.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_000_market_risk_definition",
+      "title": "Market Risk Definition and Exposure"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "We had $166.0 million in floating interest rate obligations outstanding on December 31, 2021, and therefore are subject to changes in the amount of interest expense we might incur.",
+      "year2_quote_or_null": "As of December 31, 2022, we did not have any floating interest obligations outstanding... Any amounts borrowed under the revolving credit facility in the future are subject to a variable rate.",
+      "reasoning": "The current exposure to floating-rate obligations and associated interest-expense sensitivity no longer exists as of December 31, 2022, so the disclosed risk is materially reduced. A contingent future variable-rate exposure remains through the revolving credit facility, making SOFTENED more precise than REMOVED.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_001_floating_rate_obligations",
+      "title": "Floating Rate Obligations Sensitivity"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "We believe that our market risk from financial instruments, such as accounts receivable, accounts payable and debt, is not material.",
+      "year2_quote_or_null": "We believe that our market risk from financial instruments, such as cash equivalents, accounts receivable, accounts payable and debt, is not material.",
+      "reasoning": "The underlying economic risk and the conclusion that it is not material are unchanged. Year-2 only adds cash equivalents to the illustrative list of financial instruments, which does not materially alter the disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_002_financial_instruments_materiality",
+      "title": "Financial Instruments Market Risk Materiality"
+    }
+  ]
+}

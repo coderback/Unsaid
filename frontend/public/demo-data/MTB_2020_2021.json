@@ -1,0 +1,869 @@
+{
+  "ticker": "MTB",
+  "company_name": "M&T BANK CORP",
+  "year1": 2020,
+  "year2": 2021,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T07:35:40.030442+00:00",
+  "summary_counts": {
+    "REWORDED": 10,
+    "RETAINED": 52,
+    "ABSORBED": 3,
+    "SOFTENED": 6,
+    "NEW": 14
+  },
+  "changes": [
+    {
+      "classification": "REWORDED",
+      "year1_quote": "M&T and its subsidiaries face a number of potential risks and uncertainties that are difficult to predict. As a financial institution certain risk elements are inherent in the ordinary course of the Company’s business activities...",
+      "year2_quote_or_null": "M&T and its subsidiaries face a number of potential risks and uncertainties that are difficult to predict. As a financial institution, certain risk elements are inherent in the ordinary course of the Company’s business activities...",
+      "reasoning": "The core economic disclosure is unchanged: M&T faces inherently unpredictable risks in its ordinary financial-institution activities that may materially harm the business and financial results. Year-2 adds liquidity, changes the reference from common stock to securities, and adds acquisition-specific risks, but does not materially alter or weaken the underlying overview risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_000_risk_factors_overview",
+      "title": "Risk Factors Overview"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s business, financial condition, capital and results of operations have been, and will likely continue to be, adversely affected by the COVID-19 pandemic.",
+      "year2_quote_or_null": "M&T’s business, financial condition, capital and results of operations have been, and will likely continue to be, adversely affected by the COVID-19 pandemic.",
+      "reasoning": "The Year-2021 summary disclosure states the same underlying economic risk—continued adverse effects of the COVID-19 pandemic on the company’s business, financial condition, capital and results of operations. The change from “The Company” to “M&T” is cosmetic and does not alter the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_001_risk_summary_covid",
+      "title": "Summary — COVID-19 Pandemic Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s business and financial performance is impacted significantly by market interest rates and movements in those rates over which the Company has no control.",
+      "year2_quote_or_null": "The Company’s business and financial performance is impacted significantly by market interest rates and movements in those rates. The monetary, tax and other policies of governmental agencies, including the Federal Reserve, have a significant impact on interest rates and overall financial market performance over which the Company has no control and which the Company may not be able to anticipate adequately.",
+      "reasoning": "The underlying risk that market interest-rate movements, outside the Company’s control, significantly affect business and financial performance remains expressly disclosed. Year-2 adds detail about policy-driven rate movements but does not weaken or remove the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_002_risk_summary_market",
+      "title": "Summary — Market Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The Company is subject to extensive government regulation and supervision.",
+      "year2_quote_or_null": "The Company is subject to extensive government regulation and supervision and this regulatory environment can be and has been significantly impacted by financial regulatory reform initiatives.",
+      "reasoning": "The underlying risk of extensive government regulation and supervision remains present in Year-2. The added reference to regulatory reform provides context but does not materially change or weaken the economic risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_003_risk_summary_compliance",
+      "title": "Summary — Compliance and Regulation"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "If the Company is unable to maintain or grow its deposits, it may be subject to paying higher funding costs.",
+      "year2_quote_or_null": "If the Company is unable to maintain or grow its deposits, it may be subject to paying higher funding costs.",
+      "reasoning": "The deposit-retention/funding-cost risk remains economically unchanged in Year-2021, but it is no longer listed under the Credit Risk summary; it appears in the broader Summary — Liquidity Risks disclosure (and is further elaborated in Deposit Retention and Funding Costs).",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_004_risk_summary_credit",
+      "title": "Summary — Credit Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company must maintain adequate sources of funding and liquidity.",
+      "year2_quote_or_null": "The Company must maintain adequate sources of funding and liquidity.",
+      "reasoning": "The Year-2021 disclosure preserves both Year-2020 economic risks: the need to maintain adequate funding and liquidity, and reliance on subsidiary dividends for liquidity. The added deposit/funding-cost risk does not weaken or alter the original disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_005_risk_summary_liquidity",
+      "title": "Summary — Liquidity Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Difficulties in combining the operations of acquired entities with the Company’s own operations may prevent M&T from achieving the expected benefits from its acquisitions.",
+      "year2_quote_or_null": "Difficulties in obtaining regulatory approval for acquisitions and in combining the operations of acquired entities with the Company’s own operations may prevent M&T from achieving the expected benefits from its acquisitions.",
+      "reasoning": "The core economic risk—failure to realize expected acquisition benefits because of integration difficulties—was retained. Year-2021 adds a distinct regulatory-approval risk but does not weaken, remove, or materially alter the Year-2020 integration risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_006_risk_summary_strategic",
+      "title": "Summary — Strategic Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company is subject to operational risk which could adversely affect the Company’s business and reputation and create material legal and financial exposure.",
+      "year2_quote_or_null": "The Company is subject to operational risk which could adversely affect the Company’s business and reputation and create material legal and financial exposure.",
+      "reasoning": "The Year-2021 Candidate 1 repeats the same operational risk and its stated business, reputation, legal, and financial consequences without changing the underlying economic exposure. The additional detail in the information-systems bullet does not weaken or remove the broader operational-risk disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_007_risk_summary_operational",
+      "title": "Summary — Operational Risks"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Severe weather, natural disasters, pandemics, acts of war or terrorism and other external events could significantly impact the Company’s business",
+      "year2_quote_or_null": "Pandemics, acts of war or terrorism and other adverse external events could significantly impact the Company’s business.",
+      "reasoning": "The Year-2021 disclosure retains pandemics, war/terrorism, and other external events, but omits severe weather and natural disasters from the expressly identified risks. Because those economic risks are no longer stated, the Year-2020 disclosure is materially narrowed/softened rather than merely reworded.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_008_risk_summary_business",
+      "title": "Summary — Business Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The pandemic has created economic and financial disruptions that have adversely affected, and are likely to continue to adversely affect, the Company’s business, financial condition, capital and results of operations.",
+      "year2_quote_or_null": "The pandemic has created economic and financial disruptions that have adversely affected, and are likely to continue to adversely affect, the Company’s business, financial condition, capital and results of operations.",
+      "reasoning": "The core economic risk—COVID-19 causing continuing adverse effects on M&T’s business, financial condition, capital, and results of operations—remains materially unchanged in Year-2. The addition of possible new variants does not weaken or remove the disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_009_covid_pandemic_impact",
+      "title": "COVID-19 Pandemic Impact"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "A decrease in the rates and yields on U.S. Treasury securities, which has negatively impacted the Company’s net interest income and margin;",
+      "year2_quote_or_null": "A decrease in the rates and yields on U.S. Treasury securities, which could negatively impact the Company’s net interest income and margin;",
+      "reasoning": "The Year-2021 disclosure retains most of the Year-2020 COVID-related economic, market, operational, and counterparty risks, but changes the realized negative impact on net interest income and margin from “has negatively impacted” to the contingent “could negatively impact.” It also omits the Year-2020 asset-management fee-income risk and the explicit cessation of stock repurchases, while the core risk set remains disclosed rather than removed.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_0_010_covid_risk_consequences",
+      "title": "COVID-19 Risk Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Governmental authorities have taken unprecedented measures to provide economic assistance to individual households and businesses, stabilize the markets and support economic growth.",
+      "year2_quote_or_null": "Governmental authorities have taken unprecedented measures to provide economic assistance to individual households and businesses, stabilize the markets and support economic growth.",
+      "reasoning": "Candidate 1 retains the same underlying economic risks: government measures may be insufficient, loan-payment and foreclosure suspensions may harm results and increase defaults/credit losses, and participation may trigger scrutiny and litigation. The minor addition of “additional measures” does not change the substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_011_covid_government_response",
+      "title": "COVID-19 Government Measures"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The length of the pandemic and the efficacy of the measures being put in place to address it are unknown. It is unknown when there will be a return to normal business activity and a subsiding of the economic stress associated with the pandemic.",
+      "year2_quote_or_null": "The length of the pandemic and the efficacy of the measures being put in place to address it are unknown. It is unknown when there will be a return to normal business activity and a subsiding of the economic stress associated with the pandemic.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying risks: uncertain pandemic duration, reduced fee-related revenues, increased defaults, and potential for a prolonged recession with material adverse effects. The change from “expects” to “may experience” does not materially negate or weaken the economic risk in context, and the added merger reference is supplemental.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_covid_duration_uncertainty",
+      "title": "COVID-19 Duration and Economic Effects"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Other-than-temporary impairment of investment securities in the Company’s investment securities portfolio or other investments.",
+      "year2_quote_or_null": "An increase in the number of delinquencies, bankruptcies or defaults could result in higher levels of nonperforming assets, net charge-offs, provision for credit losses as well as impairment write-downs of certain investment securities and valuation adjustments on loans held for sale.",
+      "reasoning": "The specific risk of other-than-temporary impairment of investment securities is no longer listed as a standalone economic consequence. It remains disclosed in substance as impairment write-downs of certain investment securities within the broader discussion of credit deterioration, delinquencies, bankruptcies, and defaults.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_013_economic_weakness",
+      "title": "Economic Weakness and Performance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s business and financial performance is impacted significantly by market interest rates and movements in those rates.",
+      "year2_quote_or_null": "The Company’s business and financial performance is impacted significantly by market interest rates and movements in those rates.",
+      "reasoning": "The core economic risk—material exposure of business performance and profitability to market interest-rate movements—continues in Candidate 1 with essentially the same substance. Candidate 1 also retains the detailed effects on net interest income, borrowers, demand, hedging, and mortgage banking; Candidate 2 separately retains the governmental-policy channel.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_014_interest_rate_risk",
+      "title": "Interest Rate Risk and Performance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, the Company is routinely subject to examinations from various governmental taxing authorities. Such examinations may result in challenges to the tax return treatment applied by the Company to specific transactions.",
+      "year2_quote_or_null": "In addition, the Company is routinely subject to examinations from various governmental taxing authorities. Such examinations may result in challenges to the tax return treatment applied by the Company to specific transactions.",
+      "reasoning": "The Year-2021 disclosure is substantively identical to the Year-2020 disclosure and preserves the same risks: tax authority examinations, challenges to tax treatment, and potentially material effects from tax-law changes or inappropriate assumptions.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_015_tax_authority_risk",
+      "title": "Tax Authority Examination Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The forecasted discontinuation of LIBOR and uncertainty related to the emergence of one or more alternative benchmark indices to replace LIBOR could adversely impact the Company’s business and results of operations.",
+      "year2_quote_or_null": "The discontinuation of LIBOR as a permissible rate index in new contracts after 2021, the formal announcement of LIBOR’s cessation date (June 30, 2023), and ongoing uncertainty related to the emergence of one or more alternative benchmark indices to replace LIBOR, could adversely impact the Company’s business and results of operations.",
+      "reasoning": "The core economic risk—LIBOR discontinuation and uncertainty regarding replacement benchmark indices adversely affecting the Company—remains expressly disclosed in Candidate 3. The Year-2 disclosure adds specificity about the cessation timeline and new-contract restrictions but does not reduce or eliminate the underlying risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_016_libor_transition_risk",
+      "title": "LIBOR Discontinuation and Transition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The fact that SOFR is a secured rate and considered a “risk free” rate, while LIBOR is an unsecured rate that factors in credit risk, means that SOFR may perform differently than LIBOR, and those differences may be material, particularly in times of economic stress, negatively impacting the Company’s profitability.",
+      "year2_quote_or_null": "The fact that SOFR is a secured overnight rate and considered a “risk free” rate, while LIBOR is an unsecured term rate that factors in credit risk, means that SOFR may perform differently than LIBOR, and those differences may be material, particularly in times of economic stress, negatively impacting the Company’s profitability.",
+      "reasoning": "The core economic risk—that SOFR and LIBOR may perform differently because of their secured versus unsecured, risk-free versus credit-risk characteristics, with potentially material adverse effects on profitability during economic stress—is stated essentially unchanged in Candidate 1. The added transition and fallback disclosure in Candidate 2 does not alter the retained risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_017_alternative_benchmark_risk",
+      "title": "Alternative Benchmark Development Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Whether this or other alternatives develop and gain any traction in the market are unknown and unpredictable, and this adds further uncertainty to the LIBOR transition process, both with respect to amending existing LIBOR contracts and pricing new contracts based on SOFR or an alternative reference rate going forward.",
+      "year2_quote_or_null": "Whether BSBY or other alternatives develop and gain any significant traction in the market are unknown and unpredictable at this time, and this adds further uncertainty to the LIBOR transition process, both with respect to amending existing LIBOR contracts and pricing new contracts based on SOFR or an alternative reference rate going forward.",
+      "reasoning": "The underlying economic risk is unchanged: uncertainty over whether SOFR alternatives will gain market traction and the resulting difficulty in amending LIBOR contracts and pricing new loans. The Year-2 disclosure adds BSBY as an example and uses different wording, but does not materially change the risk or its severity.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_018_libor_replacement_uncertainty",
+      "title": "LIBOR Replacement Uncertainty"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "There is a possibility that the Company’s end-user customers may not adhere to the Protocol, which would necessitate one-on-one negotiation with each such customer to amend legacy interest rate derivatives.",
+      "year2_quote_or_null": "M&T and M&T Bank adhered to the Protocol on November 5, 2020, and the Company is in the process of remediating its interest rate swap hedging transactions with its end user customers, i.e., borrowers who have hedged their interest rate payment obligations.",
+      "reasoning": "The core LIBOR fallback and remediation risk is retained, including uncertainty if appropriate fallbacks cannot be agreed. However, the Year-2 disclosure omits the specific possibility that end-user customers may not adhere to the Protocol and the resulting need for one-on-one negotiations, while reporting that clearinghouses have adopted the fallbacks; this reduces the prominence and specificity of the counterparty-remediation risk.",
+      "section": "1A",
+      "confidence": 0.88,
+      "id": "1A_1_000_isda_fallbacks_protocol",
+      "title": "ISDA LIBOR Fallbacks Protocol Transition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Some of the contracts provide for selecting replacement rates in a manner that presents significant challenges or that gives the Company or another party discretion to select a rate or provide for determination of a reference rate.",
+      "year2_quote_or_null": "Some of these contracts provide for selecting replacement rates in a manner that presents significant challenges or that gives the Company or another party discretion to select a rate or provide for determination of a reference rate.",
+      "reasoning": "The underlying economic risk—uncertainty and significant challenges in transitioning LIBOR-linked securities whose contracts lack workable cessation or replacement-rate provisions—is expressly retained. Year-2021 adds statutory-transition developments and labels the contracts “Tough Legacy Contracts,” but does not materially weaken or remove the risk; it reiterates that uncertainty will likely continue.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_001_libor_referencing_securities",
+      "title": "LIBOR-Linked Securities Contractual Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In November 2020, ... [the IBA and FCA] announced a proposal to ... extend the publication of the most commonly utilized tenors of LIBOR until June 30, 2023 ... and ... encouraged banks to ... transition away from LIBOR ... no later than December 31, 2021.",
+      "year2_quote_or_null": "The uncertainty lessened in November 2020, when ... the IBA ... and the FCA ... announced a proposal to ... extend the publication of the most commonly utilized tenors of USD LIBOR until June 30, 2023, and ... encouraged banks to ... transition away from USD LIBOR ... no later than December 31, 2021 ... . On March 5, 2021, ... the FCA and IBA confirmed the future cessation ... of all USD LIBOR tenors.",
+      "reasoning": "The Year-2021 disclosure retains the same economic risk and regulatory timeline from Year-2020, including the June 30, 2023 extension, the December 31, 2021 transition deadline, and fallback-language expectations. It also adds confirmation of future USD LIBOR cessation, which updates rather than weakens or removes the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_002_libor_transition_regulatory_timeline",
+      "title": "LIBOR Transition Regulatory Timeline"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The discontinuation of LIBOR or changes in market perceptions of the acceptability of LIBOR as a benchmark could result in changes to the Company’s risk exposures ... or otherwise result in losses on a product or having to pay more or receive less on securities that the Company has issued or owns.",
+      "year2_quote_or_null": "The discontinuation of LIBOR as a benchmark could result in changes to the Company’s risk exposures ... or otherwise result in losses on a product or having to pay more or receive less on securities that the Company has issued or owns.",
+      "reasoning": "The core economic risk—LIBOR discontinuation causing exposure changes, losses, funding/interest-rate effects, and operational, legal, tax, accounting, and market impacts—remains substantially unchanged. Year 2 removes the separate reference to changes in market perceptions of LIBOR’s acceptability and updates the contract-maturity/fallback-language wording, but these are not enough to change the overall classification.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_1_003_libor_discontinuation_exposures",
+      "title": "LIBOR Discontinuation Financial and Operational Risks"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The market’s transition from LIBOR to an alternative reference rate will be complex and unpredictable, giving rise to a variety of risks, including operational risks, risks of value transfer between contract parties, the potential for customer disputes and litigation, as well as regulatory scrutiny, as the most recent regulatory announcements indicate that there will be increased regulatory focus on LIBOR transition in 2021 and beyond, which increases the Company’s risk related to regulatory compliance.",
+      "year2_quote_or_null": "The market’s transition from LIBOR to an alternative reference rate will be complex and unpredictable, giving rise to a variety of risks, including operational risks, risks of value transfer between contract parties, the potential for customer disputes and litigation, as well as regulatory scrutiny, as the most recent regulatory announcements indicate that there will be increased regulatory focus on LIBOR transition in 2022 and beyond.",
+      "reasoning": "The core economic risks—transition complexity, operational disruption, value transfer, disputes/litigation, and regulatory scrutiny—are disclosed essentially unchanged. The reference to increased regulatory focus shifts from 2021 to 2022, but does not change or weaken the underlying risk; the added transition-program details provide mitigation and status information rather than removing the risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_004_libor_transition_complexity",
+      "title": "LIBOR Transition Complexity and Regulatory Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company established an enterprise-wide LIBOR transition program in 2019, which now includes a LIBOR Transition Office with senior management level leadership and dedicated full-time employee staffing. An impact assessment has been completed to identify on- and off-balance sheet exposures, systems, processes, models, customers, and employees affected by the discontinuation of LIBOR.",
+      "year2_quote_or_null": "The Company established an enterprise-wide LIBOR transition program in 2019, which now includes a LIBOR Transition Office with senior management level leadership and dedicated full-time employee staffing. An impact assessment has been completed to identify on- and off-balance sheet exposures, systems, processes, models, customers, and employees affected by the discontinuation of LIBOR.",
+      "reasoning": "The Year-2021 disclosure repeats the Year-2020 economic risk and transition-program details verbatim, while adding further risks associated with the complexity and unpredictability of the LIBOR transition. The original risk is therefore retained, not softened or absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_libor_transition_program",
+      "title": "Enterprise-Wide LIBOR Transition Program"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s business and performance is vulnerable to the impact of volatility in debt and equity markets.",
+      "year2_quote_or_null": "The Company’s business and performance is vulnerable to the impact of volatility in debt and equity markets.",
+      "reasoning": "The core economic risk—exposure of the Company’s business and performance to debt and equity market volatility—is expressly disclosed in Year-2021 with the same substantive consequences and essentially identical supporting risk factors. Candidate 2 also preserves the real-estate and broader economic-market volatility component, but does not alter the classification of the overall disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_006_debt_equity_market_volatility",
+      "title": "Debt and Equity Market Volatility Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s regional concentrations expose it to adverse economic conditions in its primary retail banking office footprint.",
+      "year2_quote_or_null": "The Company’s regional concentrations expose it to adverse economic conditions in its primary retail banking office footprint.",
+      "reasoning": "The Year-2021 disclosure addresses the same regional concentration and adverse economic-condition risk, with the same underlying exposure and substantially identical language. No economic qualifier was weakened or removed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_007_regional_banking_concentrations",
+      "title": "Regional Banking Concentration Economic Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company is subject to extensive government regulation and supervision and this regulatory environment can be and has been significantly impacted by financial regulatory reform initiatives.",
+      "year2_quote_or_null": "The Company is subject to extensive government regulation and supervision and this regulatory environment can be and has been significantly impacted by financial regulatory reform initiatives.",
+      "reasoning": "The core economic risk—extensive regulatory oversight and the potential for regulatory reform to materially affect the Company—remains expressly disclosed in Year-2021. The related compliance, enforcement, regulatory-change, and reform-uncertainty risks are also retained in Candidates 1–3, with additional enforcement-risk detail rather than a material reduction or removal.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_008_regulatory_supervision",
+      "title": "Extensive Government Regulation and Supervision"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Regulators have and may, from time to time, implement changes to these regulatory capital adequacy and liquidity requirements.",
+      "year2_quote_or_null": "Regulators have and may, from time to time, implement changes to these regulatory capital adequacy and liquidity requirements.",
+      "reasoning": "The Year-2021 Candidate 1 retains the same underlying economic risks: changing regulatory capital and liquidity requirements, potential limits on business activity and expansion, shareholder dilution or restrictions on capital returns, and reduced ability to invest in longer-term assets. The Basel IV discussion is updated to reflect the regulatory proposal status, but this is a factual update rather than a material change in the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_009_capital_liquidity_requirements",
+      "title": "Capital and Liquidity Requirements"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "If the Federal Reserve objects to M&T’s capital plan, it could impose restrictions on M&T’s ability to return capital to shareholders, including through paying dividends, entering into acquisitions or repurchasing its common stock.",
+      "year2_quote_or_null": "As a general matter, if M&T is unable to maintain capital in excess of regulatory minimum levels inclusive of its Stress Capital Buffer, it would be subject to limitations on its ability to make capital distributions, including paying dividends and repurchasing stock.",
+      "reasoning": "The Year-2021 disclosures continue to address the underlying risk that Federal Reserve stress testing and capital requirements can restrict dividends, repurchases, and other capital returns. The specific CCAR capital-plan objection and capital-issuance compliance mechanics are replaced by the broader Stress Capital Buffer and regulatory-minimum framework, chiefly in Candidate 2.",
+      "section": "1A",
+      "confidence": 0.94,
+      "id": "1A_1_010_capital_returns_regulatory_approval",
+      "title": "Capital Returns and Federal Reserve Approval"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As a general matter, if M&T is unable to maintain capital in excess of these levels, it would be subject to limitations on its ability to make capital distributions, including paying dividends and repurchasing stock.",
+      "year2_quote_or_null": "As a general matter, if M&T is unable to maintain capital in excess of regulatory minimum levels inclusive of its Stress Capital Buffer, it would be subject to limitations on its ability to make capital distributions, including paying dividends and repurchasing stock.",
+      "reasoning": "The core economic risk is retained: falling below capital requirements, including the Stress Capital Buffer, can limit dividends and share repurchases. Year-2 adds updated timing, stress-test uncertainty, and potential increases in the buffer, but does not weaken or remove the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_011_stress_capital_buffer",
+      "title": "Stress Capital Buffer Distribution Limitations"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The COVID-19 pandemic may cause the Company to further extend the suspension of its share repurchase program and limit capital distributions, including reducing or suspending its common stock dividend.",
+      "year2_quote_or_null": "While these restrictions are no longer applicable, the Federal Reserve may implement similar restrictions in the future, including in response to adverse or uncertain economic conditions.",
+      "reasoning": "The Year-2 disclosure still recognizes the economic risk that Federal Reserve action could limit share repurchases, dividends, and other capital distributions, and it retains the resubmission-of-capital-plan approval risk. However, it states that the prior restrictions are no longer applicable, downgrading the immediate COVID-19 capital-preservation exposure to a potential future risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_012_covid_capital_preservation",
+      "title": "COVID-19 Capital Preservation Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If an orderly liquidation of a systemically important BHC or non-bank financial company were triggered, M&T could face assessments for the Orderly Liquidation Fund (“OLF”).",
+      "year2_quote_or_null": "If an orderly liquidation of a systemically important BHC or non-bank financial company were triggered, M&T could face assessments for the Orderly Liquidation Fund (“OLF”).",
+      "reasoning": "The Year-2 Item 1A disclosure reproduces the Year-1 disclosure, including the same underlying risk that M&T could face OLF assessments if an orderly liquidation is triggered. Candidate 2 summarizes the same risk but does not alter or replace the detailed disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_013_orderly_liquidation_fund",
+      "title": "Orderly Liquidation Fund Assessment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Deteriorating credit quality could adversely impact the Company.",
+      "year2_quote_or_null": "Deteriorating credit quality could adversely impact the Company.",
+      "reasoning": "The Year-2021 disclosure repeats the same economic risk—adverse effects from deteriorating credit quality—without weakening, negating, or materially changing its scope. The additional repayment and collateral language in Candidate 2 expands the surrounding discussion but does not alter the retained Year-2020 risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_014_credit_quality_deterioration",
+      "title": "Deteriorating Credit Quality"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As a lender, the Company is exposed to the risk that customers will be unable to repay their loans and other obligations in accordance with the terms of the relevant agreements, and that any collateral securing the loans and obligations may be insufficient to assure full repayment.",
+      "year2_quote_or_null": "As a lender, the Company is exposed to the risk that customers will be unable to repay their loans and other obligations in accordance with the terms of the relevant agreements, and that any collateral securing the loans and obligations may be insufficient to assure full repayment. Credit losses are inherent in the business of making loans and entering into other financial arrangements.",
+      "reasoning": "The Year-2021 disclosure preserves the same underlying economic risk—borrower nonpayment and insufficient collateral, including the inherent risk of credit losses—with materially identical language. The added heading and introductory sentence do not change the substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_000_credit_loss_exposure",
+      "title": "Credit Losses From Lending Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Factors that influence the Company’s credit loss experience include overall economic conditions affecting businesses and consumers, generally, but also residential and commercial real estate valuations, in particular, given the size of the Company’s real estate loan portfolios.",
+      "year2_quote_or_null": "Factors that influence the Company’s credit loss experience include overall economic conditions affecting businesses and consumers, generally, but also residential and commercial real estate valuations, in particular, given the size of the Company’s real estate loan portfolios.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 economic risks, including real estate valuations, portfolio concentrations, regional and industry exposures, consumer-loan charge-offs, and COVID-19-related disruption, with no material change in the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_001_credit_loss_drivers",
+      "title": "Factors Affecting Credit Loss Experience"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A significant number of the Company’s customers sought to suspend their mortgage payments under these programs. Suspensions of mortgage payments and foreclosures and reduced pricing under these programs may adversely affect the Company’s revenue and results of operations.",
+      "year2_quote_or_null": "A significant number of the Company’s customers sought to suspend their mortgage payments under these programs. Suspensions of mortgage payments and foreclosures and reduced pricing under these programs may adversely affect the Company’s revenue and results of operations.",
+      "reasoning": "Candidate 1 retains the same underlying economic risks: customer payment deferrals and foreclosure suspensions may reduce revenue and results of operations, while ineffective programs or post-expiration inability to pay may increase defaults, credit losses, and the allowance for credit losses. The changes mainly clarify timing and wording, without weakening or removing the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_002_covid_customer_assistance",
+      "title": "COVID-19 Payment Deferrals And Credit Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Commercial real estate valuations can be highly subjective as they are based upon many assumptions. Such valuations can be significantly affected over relatively short periods of time by changes in business climate, economic conditions, interest rates and, in many cases, the results of operations of businesses and other occupants of the real property.",
+      "year2_quote_or_null": "Commercial real estate valuations can be highly subjective as they are based upon many assumptions. Such valuations can be significantly affected over relatively short periods of time by changes in business climate, economic conditions, interest rates and, in many cases, the results of operations of businesses and other occupants of the real property. Emerging and evolving factors such as the shift to work-from-home arrangements, changing consumer preferences (including for online shopping), COVID-19-related restrictions and resulting changes in occupancy rates as a result of these and other trends can also impact such valuations over relatively short periods.",
+      "reasoning": "The core economic risk—short-term volatility in commercial and residential real estate valuations driven by market, economic, interest-rate, occupancy, housing, financing, policy, and consumer conditions—is retained. Year-2021 adds emerging factors affecting valuations but does not weaken or remove the prior risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_003_real_estate_valuations",
+      "title": "Volatility In Real Estate Valuations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "However, there is no assurance that the allowance is sufficient to cover all credit losses that may occur.",
+      "year2_quote_or_null": "However, there is no assurance that the allowance is sufficient to cover all credit losses that may occur.",
+      "reasoning": "The underlying economic risk— that the allowance for credit losses may be insufficient to cover all credit losses—remains disclosed with materially identical language. The only change is the reporting date from December 31, 2020 to December 31, 2021.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_004_allowance_for_credit_losses",
+      "title": "Allowance For Credit Losses Sufficiency"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company may be adversely affected by the soundness of other financial institutions.",
+      "year2_quote_or_null": "The Company may be adversely affected by the soundness of other financial institutions.",
+      "reasoning": "The Year-2021 disclosure repeats the same economic risk and language as Year-2020. Its inclusion in a broader summary does not change the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_005_financial_institution_soundness",
+      "title": "Soundness Of Other Financial Institutions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Many of these transactions expose the Company to credit risk in the event of a default by a counterparty or client. In addition, the Company’s credit risk may be exacerbated when the collateral held by the Company cannot be realized or is liquidated at prices not sufficient to recover the full amount of the credit due to or derivative exposure of the Company.",
+      "year2_quote_or_null": "Many of these transactions expose the Company to credit risk in the event of a default by a counterparty or client. In addition, the Company’s credit risk may be exacerbated when the collateral held by the Company cannot be realized or is liquidated at prices not sufficient to recover the full amount of the credit due to or derivative exposure of the Company.",
+      "reasoning": "The Year-2021 disclosure reproduces the Year-2020 economic risks without material change: counterparty default credit risk and potential collateral shortfalls remain disclosed with the same material-adverse-effect framing. The title change does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_006_counterparty_credit_risk",
+      "title": "Counterparty And Financial Institution Credit Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The Company must maintain adequate funding sources in the normal course of business to support its operations and fund outstanding liabilities, as well as meet regulatory expectations.",
+      "year2_quote_or_null": "The Company must maintain adequate funding sources in the normal course of business to support its operations and fund outstanding liabilities, as well as meet regulatory requirements and supervisory expectations.",
+      "reasoning": "The same economic risk is disclosed in Year-2021: maintaining adequate funding and liquidity to support operations, liabilities, and regulatory expectations. Candidate 1 also preserves the deposit and borrowing liquidity sources, with only immaterial wording changes and an added reference to debt and equity capital markets.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_007_liquidity_funding_sources",
+      "title": "Adequate Funding And Liquidity Sources"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s liquidity and ability to fund and operate the business could be materially adversely affected by a variety of conditions and factors, including financial and credit market disruptions and volatility or a lack of market or customer confidence in financial markets in general,",
+      "year2_quote_or_null": "The Company’s liquidity and ability to fund and operate the business could be materially adversely affected by a variety of conditions and factors, including financial and credit market disruptions and volatility or a lack of market or customer confidence in financial markets in general,",
+      "reasoning": "The Year-2021 candidate preserves the same economic risks, including market disruption and volatility, loss of customer confidence and deposits, funding and capital-market access constraints, credit-rating downgrades, and increased collateral or borrowing costs. The wording is materially unchanged, so the disclosure was retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_008_liquidity_market_disruptions",
+      "title": "Liquidity Impacts Of Market Disruptions"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Moreover, the Company does not anticipate significant changes to its overall liquidity and capital levels or composition as a result of the final rules.",
+      "year2_quote_or_null": "While marginal relief from certain capital and liquidity standards has been afforded to the Company (such as relief from LCR compliance), overall capital and liquidity management practices and expectations will remain unchanged for the foreseeable future.",
+      "reasoning": "The core regulatory liquidity and risk-management exposure is retained, but the Year-2021 disclosure omits the Year-2020 statement that the Company does not anticipate significant changes to its overall liquidity and capital levels or composition. This reduces the specificity of the mitigating qualifier and therefore softens the disclosure rather than merely rewording it.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_2_009_liquidity_regulation",
+      "title": "Liquidity Regulation And Risk Management"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If the Company is unable to continue to fund assets through customer bank deposits or access funding sources on favorable terms or if the Company suffers an increase in borrowing costs or otherwise fails to manage liquidity effectively, the Company’s liquidity, operating margins, financial condition and results of operations may be materially adversely affected.",
+      "year2_quote_or_null": "If the Company is unable to continue to fund assets through customer bank deposits or access funding sources on favorable terms or if the Company suffers an increase in borrowing costs or otherwise fails to manage liquidity effectively, the Company’s liquidity, operating margins, financial condition and results of operations may be materially adversely affected.",
+      "reasoning": "The Year-2021 candidate preserves the same liquidity-management failure risk and the same stated consequences, including potential capital raising, dilution, and reductions or elimination of dividends or repurchases. The title change is cosmetic and does not alter the economic substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_010_liquidity_management_failure",
+      "title": "Consequences Of Liquidity Management Failure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If the Company is unable to maintain or grow its deposits, it may be subject to paying higher funding costs.",
+      "year2_quote_or_null": "If the Company is unable to sufficiently maintain or grow its deposits to meet liquidity objectives, it may be subject to paying higher funding costs.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying economic risk: insufficient deposit growth or retention can force the Company to pay higher funding costs and reduce net interest income. Candidate 1 reproduces the substantive disclosure, while Candidate 2 also summarizes the same risk but is not needed to classify the full disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_011_deposit_funding_costs",
+      "title": "Deposit Growth And Funding Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Limitations on M&T’s ability to receive dividends from its subsidiaries could have a material adverse effect on its liquidity and ability to pay dividends on its stock or interest and principal on its debt, and ability to fund purchases of its common stock.",
+      "year2_quote_or_null": "Limitations on M&T’s ability to receive dividends from its subsidiaries could have a material adverse effect on its liquidity and ability to pay dividends on its stock or interest and principal on its debt, and ability to fund purchases of its common stock.",
+      "reasoning": "The Year-2021 disclosure preserves the same economic risk: regulatory or other limits on subsidiary dividends could impair M&T’s liquidity and its ability to service debt, pay shareholder dividends, and repurchase stock. The differences are cosmetic or cross-reference wording changes.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_012_subsidiary_dividends",
+      "title": "Reliance On Subsidiary Dividends"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The financial services industry is highly competitive and creates competitive pressures that could adversely affect the Company’s revenue and profitability.",
+      "year2_quote_or_null": "The financial services industry in which the Company operates is highly competitive.",
+      "reasoning": "Year-2 retains the core competition risk, including comparable competitive sources and pricing pressure, but removes the explicit statement that competition could adversely affect revenue and profitability. Candidate 1 also weakens the pricing-pressure language by omitting the specific risk of competitors paying higher deposit interest rates, while Candidate 2 retains the technology-driven competition risk.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_2_013_financial_services_competition",
+      "title": "Competition In Financial Services"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Difficulties in combining the operations of acquired entities with the Company’s own operations may prevent M&T from achieving the expected benefits from its acquisitions.",
+      "year2_quote_or_null": "Difficulties in combining the operations of acquired entities with the Company’s own operations may prevent M&T from achieving the expected benefits from its acquisitions.",
+      "reasoning": "The core economic risk—failure to obtain expected acquisition benefits because of difficulties integrating acquired operations—is expressly repeated in Year-2021. Candidate 1 also retains the same detailed integration-risk factors, while Candidate 2 independently confirms the risk in a strategic-risk summary.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_014_acquisition_integration",
+      "title": "Risks Of Acquisition Integration"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "M&T’s success depends, in large part, on its ability to attract and retain key individuals and to have a diverse workforce.",
+      "year2_quote_or_null": "M&T’s success depends, in large part, on its ability to attract and retain key individuals and to have a diverse workforce.",
+      "reasoning": "The core economic risk—failure to attract and retain skilled, qualified and diverse personnel, impairing execution and business performance—is materially unchanged and appears in Candidate 2. The Year-2021 disclosure adds remote-work and labor-market competition details but does not weaken or remove the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_015_skilled_personnel",
+      "title": "Attracting And Retaining Skilled Personnel"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company is subject to operational risk which could adversely affect the Company’s business and reputation and create material legal and financial exposure.",
+      "year2_quote_or_null": "The Company is subject to operational risk which could adversely affect the Company’s business and reputation and create material legal and financial exposure.",
+      "reasoning": "The Year-2021 disclosures repeat the Year-2020 economic risk verbatim and further elaborate its sources, including system failures, fraud, data-security breaches, outsourcing, and COVID-19 effects. The underlying operational risk and potential business, reputational, legal, and financial exposure are unchanged.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_2_016_operational_risk",
+      "title": "Operational Risk And Potential Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Like all businesses, the Company is subject to operational risk, which represents the risk of loss resulting from human error or misconduct, inadequate or failed internal processes and systems, and external events, including the risk of loss resulting from fraud by employees or persons outside the company, and breaches in data security.",
+      "year2_quote_or_null": "Like all businesses, the Company is subject to operational risk, which represents the risk of loss resulting from human error or misconduct, inadequate or failed internal processes and systems, and external events, including the risk of loss resulting from fraud by employees or persons outside the company, and breaches in data security.",
+      "reasoning": "The Year-2021 disclosure retains the same underlying operational risks, including control failures, fraud, data security breaches, outsourcing exposure, legal/compliance risk, and resulting financial, reputational, and business impacts. The added COVID-19 language expands the disclosure but does not weaken or remove the Year-2020 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_000_operational_risk",
+      "title": "Operational Risk and Control Failures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As described further in the risk factor above, the Company’s operational risks have been impacted by the COVID-19 pandemic and are generally expected to remain elevated until the pandemic subsides.",
+      "year2_quote_or_null": "As described further in the risk factor herein, the Company’s operational risks have been impacted by the COVID-19 pandemic and are generally expected to remain elevated until the pandemic subsides.",
+      "reasoning": "The Year-2 disclosure repeats the same economic risk: COVID-19 has elevated the Company’s operational risks, and that elevation is expected to persist until the pandemic subsides. The wording and cross-reference changed, but the substance did not.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_001_covid_operational_risk",
+      "title": "COVID-19 Impact on Operational Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s information systems may experience interruptions or breaches in security, including due to events beyond the Company’s control.",
+      "year2_quote_or_null": "The Company’s information systems may experience interruptions or breaches in security, including due to events beyond the Company’s control.",
+      "reasoning": "The Year-2021 disclosure presents the same underlying economic risks—information-system interruptions and security breaches, including risks arising from events beyond the Company’s control—with materially identical language and scope.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_3_002_information_systems_disruption",
+      "title": "Information Systems Interruptions and Breaches"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information security risks for large financial institutions such as M&T have increased significantly in recent years in part because of the proliferation of new technologies, such as digital and mobile banking to conduct financial transactions, and the increased sophistication and activities of organized crime, hackers, terrorists, nation-states, activists and other external parties.",
+      "year2_quote_or_null": "Information security risks for large financial institutions such as M&T have increased significantly in recent years in part because of the proliferation of new technologies, such as digital and mobile banking to conduct financial transactions, and the increased sophistication and activities of organized crime, hackers, terrorists, nation-states, activists and other external parties.",
+      "reasoning": "The Year-2021 disclosure reproduces the same underlying economic risks as Year-2020, including heightened cyber threats, unauthorized access or data theft, system disruption, and ransomware-related extortion and loss of functionality. No material qualifier, negation, or scope change is apparent.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_003_evolving_cyber_threats",
+      "title": "Evolving Cybersecurity Threats"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As cyber security threats continue to evolve, the Company may be required to expend significant additional resources to continue to modify or enhance its layers of defense or to investigate and remediate any information security vulnerabilities.",
+      "year2_quote_or_null": "As cyber security threats continue to evolve, the Company expects to continue to expend significant additional resources to modify or enhance its layers of defense or to investigate and remediate any information security vulnerabilities.",
+      "reasoning": "The same economic risk is disclosed in Year-2: evolving cybersecurity threats may require significant spending on defenses and vulnerability investigation/remediation. The change from “may be required” to “expects to continue” does not materially alter the underlying risk or its significance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_004_cybersecurity_defense_costs",
+      "title": "Cybersecurity Defense and Remediation Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Further, third parties with which the Company does business, as well as vendors and other third parties with which the Company’s customers do business, can also be sources of information security risk to the Company...",
+      "year2_quote_or_null": "Further, third parties with which the Company does business, as well as vendors and other third parties with which the Company’s customers do business, can also be sources of information security risk to the Company...",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: third parties and vendors—including parties serving the Company’s customers—may suffer security incidents that require protective action, increase costs, and harm the business. The disclosure is substantively unchanged; only minor wording and punctuation differ.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_005_third_party_information_security",
+      "title": "Third-Party Information Security Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company continues to expand its use of cloud service providers, which providers could experience system breakdowns or failures, outages, downtime, cyber security-attacks, negative changes to financial condition, bankruptcy, or other adverse conditions, which could have a material adverse effect on the Company’s business and reputation.",
+      "year2_quote_or_null": "The Company, as well as third parties with which the Company does business, has expanded the use of cloud service providers, which providers could experience system breakdowns or failures, outages, downtime, cyber security-attacks, negative changes to financial condition, bankruptcy, or other adverse conditions, which could have a material adverse effect on the Company’s business and reputation.",
+      "reasoning": "The core economic risk—cloud service providers experiencing operational, cyber, financial, or bankruptcy-related adverse conditions that materially harm the Company—remains expressly disclosed with materially equivalent substance. Year-2021 broadens the parties covered and adds related systems, supply-chain, and resiliency risks, but does not weaken or remove the Year-2020 cloud-provider risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_006_cloud_outsourcing_risk",
+      "title": "Cloud Service Provider Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company could incur higher costs, experience lower revenue, and suffer reputational damage in the event of the theft, loss or misuse of information, including due to a cyber security attack.",
+      "year2_quote_or_null": "The Company could incur higher costs, experience lower revenue, and suffer reputational damage in the event of the theft, loss or misuse of information, including due to a cyber security attack.",
+      "reasoning": "The core economic risk—cybersecurity incidents or information misuse causing higher costs, lower revenue, and reputational damage—remains explicitly disclosed in Year-2021. The related incident, control-failure, and consequence disclosures also remain present, with only an added supply-chain attack reference and minor wording changes.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_007_cybersecurity_incidents",
+      "title": "Cybersecurity Incidents and Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company is also subject to laws and regulations relating to the privacy of the information of clients, employees or others, and any failure to comply with these laws and regulations could expose the Company to liability and/or reputational damage.",
+      "year2_quote_or_null": "The Company is also subject to laws and regulations relating to the privacy of the information of clients, employees or others, and any failure to comply with these laws and regulations could expose the Company to liability and/or reputational damage.",
+      "reasoning": "The core economic risk—privacy-law noncompliance causing liability and reputational damage—appears materially unchanged in Year-2021 Candidate 1. The related burdens, data-use limitations, penalties, litigation, and jurisdictional-compliance risks are also substantively preserved across Candidates 1 and 2; Candidate 3 additionally summarizes the same privacy risk within operational risks.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_008_privacy_compliance",
+      "title": "Privacy Laws and Regulatory Compliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Third parties provide key components of the Company’s business infrastructure such as banking services, processing, and Internet connections and network access.",
+      "year2_quote_or_null": "Third parties provide key components of the Company’s business infrastructure such as banking services, processing, and Internet connections and network access.",
+      "reasoning": "The Year-2021 disclosure retains the same economic risks: reliance on third parties for infrastructure, disruption or capacity failures, inadequate insurance, and exposure to common service providers. The only change is a cosmetic reference from “our” third-party service providers to “the Company’s” third-party service providers.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_009_third_party_infrastructure",
+      "title": "Third-Party Business Infrastructure Reliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Many aspects of the Company’s business and operations involve substantial risk of legal liability. M&T and/or its subsidiaries have been named or threatened to be named as defendants in various lawsuits arising from its or its subsidiaries’ business activities.",
+      "year2_quote_or_null": "Many aspects of the Company’s business and operations involve substantial risk of legal liability. M&T and/or its subsidiaries have been named or threatened to be named as defendants in various lawsuits arising from its or its subsidiaries’ business activities.",
+      "reasoning": "The Year-2021 candidates preserve the Year-2020 disclosure’s underlying economic risks: litigation and regulatory inquiries, significant legal penalties and reputational harm, uncertain legal-loss accruals, and CARES Act/PPP-related inquiries and litigation. The text is materially unchanged rather than softened, removed, or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_010_legal_proceedings",
+      "title": "Legal Proceedings and Regulatory Inquiries"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in accounting standards could impact the Company’s financial condition and results of operations.",
+      "year2_quote_or_null": "Changes in accounting standards could impact the Company’s financial condition and results of operations.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: changes in accounting standards may materially affect the Company’s financial condition, results of operations, and reporting, including possible retroactive restatement. The omitted 2020 example does not alter the core risk, and the note reference change is cosmetic.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_011_accounting_standard_changes",
+      "title": "Changes in Accounting Standards"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Accounting policies and processes are fundamental to the Company’s reported financial condition and results of operations. Some of these policies require use of estimates and assumptions that may affect the reported amounts of assets or liabilities and financial results.",
+      "year2_quote_or_null": "Accounting policies and processes are fundamental to the Company’s reported financial condition and results of operations. Some of these policies require use of estimates and assumptions that may affect the reported amounts of assets or liabilities and financial results.",
+      "reasoning": "Candidate 1 preserves the same economic risk: accounting methods and estimates involve uncertain judgments that can materially affect reported financial condition, results, and potentially cause losses or restatements. The disclosure is substantively unchanged, while Candidate 2 is only a shortened overlapping statement and Candidate 3 summarizes rather than replaces the detailed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_012_accounting_estimates",
+      "title": "Accounting Estimates and Judgment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s models used for business planning purposes could perform poorly or provide inadequate information.",
+      "year2_quote_or_null": "The Company’s models used for business planning purposes could perform poorly or provide inadequate information.",
+      "reasoning": "The Year-2021 disclosure is substantively identical to the Year-2020 disclosure and continues to describe the same economic risk: model deficiencies or misuse could produce inadequate information and adversely affect business, risk-management, capital-planning, and financial decisions.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_000_model_performance_risk",
+      "title": "Business Planning Model Performance Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company is exposed to reputational risk.",
+      "year2_quote_or_null": "The Company is exposed to reputational risk.",
+      "reasoning": "The Year-2021 disclosure addresses the same reputational risk and retains the same underlying drivers, consequences, and social-media amplification described in Year-2020, with no material weakening or removal.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_001_reputational_risk",
+      "title": "Reputational Risk From Negative Public Opinion"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The Company’s risk management framework is made up of various processes and strategies to manage its risk exposure.",
+      "year2_quote_or_null": "The Company’s risk management framework is made up of various processes and strategies to manage its risk exposure.",
+      "reasoning": "The Year-2021 candidate reproduces the Year-2020 disclosure and preserves the same economic risk: the risk management framework, including its assumptions and processes, may fail and cause unexpected losses or adverse effects.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_002_risk_management_framework",
+      "title": "Risk Management Framework Effectiveness"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Severe weather, natural disasters, pandemics, acts of war or terrorism and other adverse external events could have a significant impact on the Company’s ability to conduct business.",
+      "year2_quote_or_null": "Pandemics, acts of war or terrorism and other adverse external events, including severe weather and other natural disasters, could have a significant impact on the Company’s ability to conduct business.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk and materially preserves the associated consequences and mitigations; it only changes the ordering and phrasing of the listed events. Candidate 2 is a summary reference and does not alter the substantive disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_003_external_event_risk",
+      "title": "Severe Weather and Other External Events"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Discussions of the specific risks outlined above and other risks facing the Company are included within this Annual Report on Form 10-K in Part I, Item 1 “Business,” and Part II, Item 7 “Management’s Discussion and Analysis of Financial Condition and Results of Operations.”",
+      "year2_quote_or_null": "Discussions of the specific risks outlined above and other risks facing the Company are included within this Annual Report on Form 10-K in Part I, Item 1 “Business,” and Part II, Item 7 “Management’s Discussion and Analysis of Financial Condition and Results of Operations.”",
+      "reasoning": "Candidate 1 reproduces the Year-2020 disclosure verbatim, including the same references to where the Company’s risks and forward-looking-statement risks are discussed. Candidate 2 is an additional market-risk cross-reference but does not alter or replace the Year-2020 disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_004_incorporated_risk_discussions",
+      "title": "Additional Risk Discussions In Annual Report"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, the market price of M&T common stock may fluctuate significantly in response to a number of other factors, including changes in securities analysts’ estimates of financial performance, volatility of stock market prices and volumes, rumors or erroneous information, changes in market valuations of similar companies and changes in accounting policies or procedures as may be required by the FASB or other regulatory agencies.",
+      "year2_quote_or_null": "In addition, the market price of M&T common stock may fluctuate significantly in response to a number of other factors, including changes in securities analysts’ estimates of financial performance, volatility of stock market prices and volumes, rumors or erroneous information, changes in market valuations of similar companies and changes in accounting policies or procedures as may be required by the FASB or other regulatory agencies.",
+      "reasoning": "The Year-2 candidate reproduces the Year-1 disclosure verbatim and addresses the same economic risk: significant M&T common-stock price volatility driven by market, informational, analyst, valuation, and accounting-policy factors.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_005_common_stock_price_volatility",
+      "title": "M&T Common Stock Price Volatility"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Incorporated by reference to the discussion contained in Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations,” under the captions “Liquidity, Market Risk, and Interest Rate Sensitivity” (including Table 22) and “Capital.”",
+      "year2_quote_or_null": "Incorporated by reference to the discussion contained in Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations,” under the captions “Liquidity, Market Risk, and Interest Rate Sensitivity” (including Table 21) and “Capital.”",
+      "reasoning": "The Year-2021 disclosure continues to incorporate the same Item 7 discussions covering liquidity, market risk, interest-rate sensitivity, and capital. The change from Table 22 to Table 21 is a citation/update detail and does not alter the underlying economic risk disclosed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_incorporated_reference",
+      "title": "Market Risk Disclosures Incorporated By Reference"
+    },
+    {
+      "id": "1A_0_000_risk_factors_summary_merger",
+      "title": "Summary — Merger Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Risks Relating to the Merger with People’s United\n\n•\n\nM&T is expected to incur significant costs related to the merger and integration.\n\n•\n\nCombining M&T and People’s United may be more difficult, costly or time-consuming than expected, and M&T may fail to realize the anticipated benefits of the mer",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_010_merger_costs",
+      "title": "Merger Costs and Integration Expenses",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Risks Related to the Merger with People’s United\n\nM&T is expected to incur significant costs related to the merger and integration.\n\nM&T has incurred and expects to incur significant, non-recurring costs in connection with negotiating the merger agreement and closing the merger. In addition, M&T wil",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_011_merger_integration",
+      "title": "Merger Integration and Anticipated Benefits",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Combining M&T and People’s United may be more difficult, costly or time-consuming than expected, and M&T may fail to realize the anticipated benefits of the merger.\n\nThe success of the merger will depend, in part, on the ability to realize the anticipated cost savings from combining the businesses o",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_012_merger_personnel_retention",
+      "title": "Retention of Merger Personnel",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "M&T may be unable to retain M&T and/or People’s United personnel successfully.\n\nThe success of the merger will depend in part on M&T’s ability to retain the talents and dedication of key employees currently employed by M&T and People’s United. It is possible that these employees may decide not to re",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_013_merger_covid_delay",
+      "title": "COVID-19 Effects on Merger Completion",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The COVID-19 pandemic may delay and adversely affect the completion of the merger.\n\nThe COVID-19 pandemic has created economic and financial disruptions that have adversely affected, and are likely to continue to adversely affect, the business, financial condition, liquidity, capital and results of ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_014_merger_regulatory_approval",
+      "title": "Federal Reserve Approval Conditions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Regulatory approval from the Federal Reserve Board may not be received, may take longer than expected, or may impose conditions that are not presently anticipated or that could have an adverse effect on M&T following the merger.\n\nBefore the merger and the other transactions contemplated by the merge",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_015_merger_failure",
+      "title": "Consequences of Merger Failure",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Failure to complete the merger could negatively impact M&T.\n\nIf the merger is not completed for any reason, there may be various adverse consequences and M&T may experience negative reactions from the financial markets and from its customers and employees. For example, M&T’s business may have been i",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_016_merger_pending_uncertainty",
+      "title": "Merger-Pending Uncertainty and Restrictions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "M&T is subject to business uncertainties and contractual restrictions while the merger is pending.\n\nUncertainty about the effect of the merger on employees and customers may have an adverse effect on M&T. These uncertainties may impair M&T’s ability to attract, retain and motivate key personnel unti",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_017_merger_litigation",
+      "title": "Merger-Related Litigation",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Litigation related to the merger has been filed against People’s United, the People’s United board of directors and M&T, and additional litigation may be filed against People’s United, the People’s United board of directors, M&T and the M&T board of directors in the future, which could prevent or de",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_000_merger_litigation",
+      "title": "Merger Litigation and Potential Injunctions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Litigation related to the merger has been filed against People’s United, the People’s United board of directors and M&T, and additional litigation may be filed against People’s United, the People’s United board of directors, M&T and the M&T board of directors in the future. Among other remedies, lit",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_007_inflation_risk",
+      "title": "Inflation and Economic Risk Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Volatility and uncertainty related to inflation and the effects of inflation, which may lead to increased costs for businesses and consumers and potentially contribute to poor business and economic conditions generally, may also enhance or contribute to some of the risks discussed herein. For exampl",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_3_014_acquisition_regulatory_approval",
+      "title": "Acquisition Regulatory Approval Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "M&T has expanded its business through past acquisitions and may do so in the future.  The Company’s ability to complete acquisitions is in many instances subject to regulatory approval, and the Company cannot be certain when or if, or on what terms and conditions, any required regulatory approvals w",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_5_005_climate_physical_risk",
+      "title": "Climate Risk — Physical Impacts",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The Company’s assets, communities, operations, reputation and customers could be adversely affected by the impacts of climate risk.\n\nThe Company operates in regions where its businesses and the activities of its customers could be negatively impacted by climate risk.\n\nThis includes the physical risk",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_5_006_climate_transition_risk",
+      "title": "Climate Risk — Transition Impacts",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Further, climate risk may manifest from efforts to transition to a low-carbon economy. Transition risks may arise from changes in consumer and business preferences, legislation, regulation, policy, and technological advancement associated with the changes necessary to limit climate change. Such risk",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

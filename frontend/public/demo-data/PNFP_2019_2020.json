@@ -1,0 +1,1600 @@
+{
+  "ticker": "PNFP",
+  "company_name": "PINNACLE FINANCIAL PARTNERS INC",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-24T12:39:20.569629+00:00",
+  "summary_counts": {
+    "RETAINED": 95,
+    "ABSORBED": 7,
+    "SOFTENED": 2,
+    "REMOVED": 11,
+    "REWORDED": 10,
+    "NEW": 33
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Investing in our common stock involves various risks which are particular to our company, our industry and our market areas. If any of the following risks were to occur, we may not be able to conduct our business as currently planned and our results of operations and financial condition could be materially and negatively impacted. These matters could cause the trading price of our common stock to decline in future periods.",
+      "year2_quote_or_null": "Investing in our common stock involves various risks which are particular to our company, our industry and our market areas. If any of the following risks were to occur, we may not be able to conduct our business as currently planned and our results of operations and financial condition could be materially and negatively impacted. These matters could cause the trading price of our common stock to decline in future periods.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and retains the same economic risk: company-, industry-, and market-specific risks could materially harm operations, financial condition, and stock price.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_000_risk_factors_overview",
+      "title": "General Risk Factors Overview"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our net interest margin, and consequently our net earnings, are significantly affected by interest rate levels.",
+      "year2_quote_or_null": "Our net interest margin, and consequently our net earnings, are significantly affected by interest rate levels.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the Year-2019 disclosure's underlying economic risk essentially verbatim, including the effects of interest-rate levels, yield-curve changes, monetary policy, pricing, and LIBOR/reference-rate changes. No material weakening, removal, or absorption is evident.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_001_net_interest_margin_sensitivity",
+      "title": "Net Interest Margin Interest Rate Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes in the level of interest rates also may negatively affect our ability to originate loans, the value of our assets and our ability to realize gains from the sale of our assets, all of which could ultimately affect our results of operations and financial condition.",
+      "year2_quote_or_null": "Changes in the level of interest rates also may negatively affect our ability to originate loans, the value of our assets and our ability to realize gains from the sale of our assets, all of which could ultimately affect our results of operations and financial condition.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure verbatim, including the economic risks to asset values, liquidity, loan originations, net interest spread, hedging, and profitability. Candidate 2 is also related but does not alter the conclusion because Candidate 1 fully retains the disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_002_interest_rate_asset_liquidity_effects",
+      "title": "Interest Rate Effects on Assets Liquidity"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Because of significant competitive pressures in our markets and the negative impact of these pressures on our deposit and loan pricing, our net interest margin was negatively impacted by these rate cuts and additional rate cuts may further negatively impact our net interest margin.",
+      "year2_quote_or_null": "Following changes in the general level of interest rates, our ability to maintain a positive net interest spread is dependent on our ability to increase (in a rising rate environment) or maintain or minimize the decline in (in a falling rate environment) our loan offering rates, minimize increases on our deposit rates in a rising rate environment or promptly reduce the rates we pay on deposits in a falling rate environment, and maintain an acceptable level and mix of funding.",
+      "reasoning": "The Year-2019 risk that falling rates and competitive deposit/loan pricing pressure can compress net interest margin remains disclosed in Year-2020, but it is bundled into the broader “Interest Rate Effects on Operations” discussion, which also covers asset values, liquidity, hedging, and profitability. Candidate 3 separately reinforces the deposit-rate and funding component, while Candidate 2 provides a more specific COVID-era rate-cut example.",
+      "section": "1A",
+      "confidence": 0.95,
+      "id": "1A_0_003_rate_cuts_margin_pressure",
+      "title": "Rate Cuts and Net Interest Margin Pressure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An important component of our ability to mitigate pressures of a down rate environment will be our ability to reduce the rates we pay on deposits, including core deposits.",
+      "year2_quote_or_null": "An important component of our ability to mitigate pressures of a down rate environment will be our ability to reduce the rates we pay on deposits, including core deposits.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risks: inability to reduce deposit and noncore funding rates could pressure net interest margin, while insufficient core funding relative to loan growth could require reliance on noncore funding or slower loan growth. Although it notes that noncore funding reliance diminished during the pandemic, it expressly states reliance may increase again and preserves the related rate-sensitivity and liquidity risks.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_004_deposit_funding_rate_sensitivity",
+      "title": "Deposit Funding and Rate Sensitivity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As interest rates change, we expect that we will periodically experience “gaps” in the interest rate sensitivities of our assets and liabilities... if market interest rates should move contrary to our position, this “gap” may work against us.",
+      "year2_quote_or_null": "As interest rates change, we expect that we will periodically experience “gaps” in the interest rate sensitivities of our assets and liabilities... if market interest rates should move contrary to our position, this “gap” may work against us.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same economic risk: mismatches in the interest-rate sensitivity of assets and liabilities could negatively affect results and financial condition.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_005_interest_rate_gap_management",
+      "title": "Interest Rate Gap Management"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "In the second quarter of 2019 as it became more likely that short-term interest rates would decline over the remainder of 2019, we, among other actions, unwound our fixed-to-floating rate swaps and purchased an interest rate floor in an effort to better position our balance sheet for a falling rate environment.",
+      "year2_quote_or_null": "In the event that interest rates do not change in the manner that we anticipate at the times we institute our hedging strategies or at the pace that we anticipated, such transactions may materially and adversely affect our results of operations.",
+      "reasoning": "The general hedging and mismatch risk is retained, but the Year-2020 disclosure omits the Year-2019-specific economic disclosure that the company unwound fixed-to-floating swaps and purchased an interest-rate floor to reposition for a falling-rate environment. Because that strategy change and associated falling-rate positioning are no longer disclosed, the unit is best classified as softened rather than merely reworded.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_0_006_hedging_strategy_risk",
+      "title": "Interest Rate Hedging Strategy Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Hedging creates certain risks for us, including the risk that the other party to the hedge transaction will fail to perform (counterparty risk, which is a type of credit risk), and the risk that the hedge will not fully protect us from loss as intended (hedge failure risk).",
+      "year2_quote_or_null": "Hedging creates certain risks for us, including the risk that the other party to the hedge transaction will fail to perform (counterparty risk, which is a type of credit risk), and the risk that the hedge will not fully protect us from loss as intended (hedge failure risk).",
+      "reasoning": "The Year-2020 disclosure is verbatim identical to the Year-2019 disclosure and preserves both the counterparty-failure and hedge-failure economic risks, including their potential adverse effects on liquidity and earnings.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_007_hedging_counterparty_failure",
+      "title": "Hedging Counterparty and Failure Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have meaningful credit exposures to borrowers in certain businesses, including commercial and residential building lessors, new home builders and hotel and motel operators.",
+      "year2_quote_or_null": "We have meaningful credit exposures to borrowers in certain businesses, including commercial and residential building lessors, new home builders and hotel and motel owners and/or operators.",
+      "reasoning": "The core economic risk—meaningful credit exposure concentrated in specified industries, with potential deterioration affecting credit quality, charge-offs, collateral values, and financial results—remains disclosed in Year-2. The pandemic-specific discussion updates the circumstances but does not weaken or remove the underlying concentration risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_008_credit_concentration",
+      "title": "Credit Concentration Industry Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "During periods of lower economic growth or challenging economic periods, small to medium-sized businesses may be impacted more severely and more quickly than larger businesses. Consequently, the ability of such businesses to repay their loans may deteriorate, and in some cases this deterioration may occur quickly, which would adversely impact our results of operations and financial condition.",
+      "year2_quote_or_null": "During periods of lower economic growth or challenging economic periods like those resulting from the COVID-19 pandemic, small to medium-sized businesses may be impacted more severely and more quickly than larger businesses. Consequently, the ability of such businesses to repay their loans may deteriorate, and in some cases this deterioration may occur quickly, which would adversely impact our results of operations and financial condition.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risk: concentration in loans to small and medium-sized businesses and the possibility that economic downturns impair those borrowers’ repayment ability and adversely affect results and financial condition. The updated loan percentages and COVID-19 reference do not materially change the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_009_small_business_lending",
+      "title": "Small Business Lending Concentration"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "If our level of commercial real estate loans were to exceed regulatory guidelines, our ability to grow our loan portfolio in line with our targets may be negatively impacted if we don’t increase our capital levels and it may be more difficult to secure any required regulatory approvals necessary to execute on our expansion strategy without increasing our capital levels.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the disclosed economic risk: elevated commercial real estate loan concentration relative to regulatory capital, with potential constraints on growth and regulatory approvals. Accordingly, the risk appears genuinely absent rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_010_commercial_real_estate_concentration",
+      "title": "Commercial Real Estate Concentration"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "The percentage of real estate construction and development loans in our loan portfolio was approximately 12.3% of total loans at December 31, 2019 and approximately 83.6% of Pinnacle Bank's total risk-based capital.",
+      "year2_quote_or_null": "Real estate construction and development loans are also an important part of our business.",
+      "reasoning": "The underlying construction-development lending risk remains disclosed, including the high credit risk, project-completion dependence, valuation/repayment risks, and regulatory concentration limits. However, the Year-2020 disclosure removes the Year-2019 quantitative exposure metrics (12.3% of loans and 83.6% of risk-based capital) and the non-performing-loan metric, materially reducing the stated severity and specificity of the exposure.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_011_construction_development_lending",
+      "title": "Construction Development Lending Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Weakness in residential real estate market prices as well as demand could result in price reductions in home and land values adversely affecting the value of collateral securing some of the construction and development loans that we hold.",
+      "year2_quote_or_null": "Weakness in residential real estate market prices as well as demand could result in price reductions in home and land values adversely affecting the value of collateral securing some of the construction and development loans that we hold.",
+      "reasoning": "The underlying economic risk is unchanged: weakness in residential real estate prices and demand may reduce collateral values and lead to credit and operating losses. Year-2 only changes “loan losses” to “credit losses,” which is a terminology update rather than a change in the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_012_residential_real_estate_collateral",
+      "title": "Residential Real Estate Collateral Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We make loans to portfolio companies of private equity firms and other loans that qualify as highly leveraged transactions. In certain instances these loans may deteriorate and that deterioration may occur quickly. If the private equity sponsor is unwilling or unable to provide necessary support we may suffer losses on these loans that could materially and adversely affect our results of operations.",
+      "year2_quote_or_null": "We make loans to portfolio companies of private equity firms and other loans that qualify as highly leveraged transactions. In certain instances these loans may deteriorate and that deterioration may occur quickly. If the private equity sponsor is unwilling or unable to provide necessary support we may suffer losses on these loans that could materially and adversely affect our results of operations.",
+      "reasoning": "The Year-2 disclosure is substantively identical to Year-1, preserving the same economic risks: rapid deterioration of highly leveraged and private-equity-backed loans, insufficient sponsor support, and potentially material losses.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_013_private_equity_lending",
+      "title": "Private Equity and Leveraged Lending"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Our ability to grow our loan portfolio may be limited by, among other things, economic conditions, competition within our market areas, the timing of loan repayments, our ability to grow our core deposits, our ability to hire experienced bankers and seasonality.",
+      "year2_quote_or_null": "Our ability to grow our loan portfolio may be limited by, among other things, economic conditions, competition within our market areas, and our ability to hire and retain experienced bankers.",
+      "reasoning": "The loan-growth constraint risk remains expressly disclosed in Year-2, but it is bundled into the broader “Summary Credit and Lending Risks” unit. The Year-2 version omits timing of repayments, core-deposit growth, and seasonality and adds retention of experienced bankers; because the underlying loan-growth constraint is still present but incorporated into a broader risk summary, it is classified as ABSORBED.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_0_014_loan_growth_constraints",
+      "title": "Loan Portfolio Growth Constraints"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "This competition can make loan growth challenging, particularly if we are unwilling to price loans at levels that would cause unacceptable levels of compression of our net interest margin or if we are unwilling to structure a loan in a manner that we believe results in a level of risk to us that we are not willing to accept.",
+      "year2_quote_or_null": "This competition can make loan growth challenging, particularly if we are unwilling to price loans at levels that would cause unacceptable levels of compression of our net interest margin or if we are unwilling to structure a loan in a manner that we believe results in a level of risk to us that we are not willing to accept.",
+      "reasoning": "The underlying economic risk is unchanged: significant competition may constrain loan growth because pricing concessions could compress net interest margin and riskier loan structures may be unacceptable. The Year-2020 disclosure adds increasing net interest income to the dependency statement and changes recession to pandemic, but these are contextual or cosmetic changes that do not alter the disclosed risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_015_loan_growth_competition",
+      "title": "Loan Growth and Competition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our ability to grow our loan portfolio is also dependent on our ability to fund loan growth. We primarily seek to fund our loan growth through stable, core deposits, but at times our ability to attract core deposits in amounts sufficient to fund our loan growth has been limited by competitive pressures in our markets and our business model that focuses principally on serving small to medium-sized businesses and their owners rather than a broad retail distribution strategy.",
+      "year2_quote_or_null": "Our ability to grow our loan portfolio is also dependent on our ability to fund loan growth. We primarily seek to fund our loan growth through stable, core deposits, but at times our ability to attract core deposits in amounts sufficient to fund our loan growth has been limited by competitive pressures in our markets and our business model that focuses principally on serving small to medium-sized businesses and their owners rather than a broad retail distribution strategy.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the Year-2019 disclosure verbatim, including the underlying risk that insufficient core deposits to fund loan growth can require greater reliance on non-core funding. Candidate 2 also discusses related funding pressure but does not alter the classification because Candidate 1 directly retains the unit.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_0_016_loan_growth_core_funding",
+      "title": "Loan Growth Core Funding Limits"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If we are unable to attract core deposits at sufficient levels to fund our loan growth and our percentage of noncore funding rises to levels that approach our policy limits, we may need to modify our growth plans, liquidate certain assets, participate loans to correspondents or execute other actions...",
+      "year2_quote_or_null": "Though we have grown our core deposits meaningfully during the COVID-19 pandemic, if we are unable to retain or attract core deposits at sufficient levels as the economic disruption from the pandemic lessens to fund our loan growth and our percentage of noncore funding rises to levels that approach our policy limits, we may need to modify our growth plans, liquidate certain assets, participate loans to correspondents or execute other actions...",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: insufficient core deposits could increase noncore funding, potentially forcing changes to growth plans or asset actions and adversely affecting results. The added pandemic-related context and inclusion of retaining deposits do not materially weaken or remove the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_017_noncore_funding_growth",
+      "title": "Noncore Funding and Growth Plans"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Much of our organic loan growth that we have experienced in recent years (and a key part of our loan growth strategy in 2020 and beyond) was the result not of strong loan demand but rather of our ability to attract experienced financial services professionals who have been able to attract customers from other financial institutions.",
+      "year2_quote_or_null": "Much of our organic loan growth that we have experienced in recent years (and a key part of our loan growth strategy in 2021 and beyond) was the result not of strong loan demand but rather of our ability to attract experienced financial services professionals who have been able to attract customers from other financial institutions.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: failure to attract or retain experienced lending personnel and transfer or retain their customer relationships could impair loan growth. The Year-2 language is materially the same, with only the planning year updated and no weakened or negated risk qualifier.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_018_lender_retention_growth",
+      "title": "Lender Retention and Loan Growth"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Negative developments in the U.S. and local economy may adversely impact our results in the future.",
+      "year2_quote_or_null": "Negative developments in the U.S. and local economy may adversely impact our results in the future.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 economic risk verbatim and continues to state that adverse U.S. and local economic developments may harm results. The risk is therefore retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_0_019_economic_developments",
+      "title": "Negative Economic Developments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our financial performance is highly dependent on the business environment in the markets where we operate and in the U.S. as a whole. Unfavorable or uncertain economic and market conditions can be caused by declines in economic growth, business activity, investor or business confidence, consumer sentiment, limitations on the availability or increases in the cost of credit and capital, increases in inflation or interest rates, natural disasters, international trade disputes and retaliatory tariffs, terrorist attacks, global pandemics, acts of war, or a combination of these or other factors.",
+      "year2_quote_or_null": "Our financial performance is highly dependent on the business environment in the markets where we operate and in the U.S. as a whole. Unfavorable or uncertain economic and market conditions can be caused by declines in economic growth, business activity, investor or business confidence, consumer sentiment, limitations on the availability or increases in the cost of credit and capital, increases in inflation or interest rates, natural disasters, international trade disputes and retaliatory tariffs, terrorist attacks, global pandemics, acts of war, or a combination of these or other factors.",
+      "reasoning": "The core economic risk—adverse or uncertain U.S. and local economic conditions harming financial performance—is expressly retained, with the same stated adverse effects on deposits, loan demand, borrower defaults, asset values, net interest income, and competition. Year-2020 adds COVID-19-specific deterioration and related detail, but does not weaken or eliminate the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_000_economic_conditions",
+      "title": "Economic Conditions and Business Performance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Although economic conditions have strengthened in most of our markets in recent periods ... we believe that it is possible we will continue to experience an uncertain and volatile economic environment during 2020, including issues of national security, health crises around the world, prolonged international trade disputes and political uncertainties surrounding the presidential election in 2020.",
+      "year2_quote_or_null": "Although economic conditions have improved in most of our markets when compared to the first and second quarters of 2020 ... we believe it is possible we will continue to experience an uncertain and volatile economic environment during 2021, including as a result of issues of national security, COVID-19 and other health crises around the world and prolonged international trade disputes.",
+      "reasoning": "The core economic risk—continued uncertain and volatile economic conditions adversely affecting the business, financial condition, and results of operations—is expressly carried forward. The Year-2 disclosure updates the time period and examples, while also adding pandemic-related industry impacts and consequences; it does not weaken or eliminate the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_001_economic_volatility_2020",
+      "title": "Economic Volatility and 2020 Uncertainty"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "It is possible that the federal government may shut down again in the future. If a prolonged government shutdown occurs, it could significantly impact business and economic conditions generally or specifically in our principal markets, which could have a material adverse effect on our results of operations and financial condition.",
+      "year2_quote_or_null": "In addition, over the last several years, the federal government has shut down periodically, in some cases for prolonged periods. It is possible that the federal government may shut down again in the future, particularly in light of the evenly divided United States Senate. If a prolonged government shutdown occurs, it could significantly impact business and economic conditions generally or specifically in our principal markets, which could have a material adverse effect on our results of operations and financial condition.",
+      "reasoning": "The Year-2020 disclosure repeats the same federal government shutdown risk and the same potential material adverse economic and financial consequences. The added reference to the evenly divided Senate provides context but does not alter the underlying economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_002_government_shutdown",
+      "title": "Federal Government Shutdown Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "We cannot assure you that economic conditions, including loan demand, in these markets will not deteriorate during 2020 or thereafter, and upon any deterioration, we may not be able to grow our loan portfolio in line with our expectations and the ability of our customers to repay their loans to us may be negatively impacted.",
+      "year2_quote_or_null": "We cannot assure you that economic conditions, including loan demand, in these markets will not remain sluggish during 2021 or thereafter, and as a result, we may not be able to grow our loan portfolio in line with our expectations and the ability of our customers to repay their loans to us may be negatively impacted.",
+      "reasoning": "The underlying risk—geographic concentration in southeastern markets and potential deterioration or weakness in local economic conditions affecting loan growth, repayment capacity, and results—remains materially the same. The reference to expansion into Georgia and the shift from “deteriorate” to “remain sluggish,” along with the updated year, are wording and factual updates rather than a meaningful change in the economic risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_003_geographic_concentration",
+      "title": "Geographic Concentration in Southeastern Markets"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business may suffer if there are significant declines in the value of real estate.",
+      "year2_quote_or_null": "Our business may suffer if there are significant declines in the value of real estate.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk and its supporting discussion without weakening or changing the risk. The additional discussion of foreclosed real estate and local economic conditions supplements the disclosure but does not alter the original risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_004_real_estate_values",
+      "title": "Declining Real Estate Values"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Most of our foreclosed assets are comprised of real estate properties. We carry these properties at their estimated fair values less estimated selling costs. While we believe the carrying values for such assets are reasonable and appropriately reflect current market conditions, there can be no assurance that the values of such assets will not further decline prior to sale or that the amount of proceeds realized upon disposition of foreclosed assets will approximate the carrying value of such assets.",
+      "year2_quote_or_null": "Most of our foreclosed assets are comprised of real estate properties. We carry these properties at their estimated fair values less estimated selling costs. While we believe the carrying values for such assets are reasonable and appropriately reflect current market conditions, there can be no assurance that the values of such assets will not further decline prior to sale or that the amount of proceeds realized upon disposition of foreclosed assets will approximate the carrying value of such assets.",
+      "reasoning": "The Year-2020 candidate reproduces the Year-2019 foreclosed real estate valuation risk verbatim, including the possibility of further declines before sale and disposition proceeds falling below carrying value and causing losses. The surrounding broader real-estate-value disclosure does not change the treatment of this specific risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_005_foreclosed_assets",
+      "title": "Foreclosed Real Estate Valuation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Compared to national financial institutions, we are less able to spread the risks of unfavorable local economic conditions across a large number of diversified economies.",
+      "year2_quote_or_null": "Compared to national financial institutions, we are less able to spread the risks of unfavorable local economic conditions across a large number of diversified economies. Moreover, we cannot give any assurance that we will benefit from any market growth or return of more favorable economic conditions in our primary market areas if they do occur.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 geographic diversification risk verbatim, including the limited ability to diversify unfavorable local economic conditions and uncertainty regarding recovery in primary markets. Its placement within a broader real-estate-risk discussion does not change the underlying economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_006_local_market_diversification",
+      "title": "Limited Geographic Risk Diversification"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "If our allowance for loan losses is not sufficient to cover losses inherent in our loan portfolio, our results of operations and financial condition will be negatively impacted.",
+      "year2_quote_or_null": "We maintain allowances for credit losses on loans, securities and off-balance sheet credit exposures. ... If our assumptions are inaccurate, our current allowance may not be sufficient to cover potential credit losses, and additional provisions may be necessary which would negatively impact our results of operations and financial condition.",
+      "reasoning": "The underlying allowance-sufficiency risk remains in Year-2020, with the same consequences and substantially the same loan-loss estimation discussion. It is broadened and bundled into a broader credit-loss allowance disclosure covering securities and off-balance-sheet exposures, so the Year-2019 loan-portfolio risk is absorbed into that expanded unit.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_1_007_loan_loss_allowance",
+      "title": "Sufficiency of Loan Loss Allowance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Moreover, additions to the allowance may be necessary based on changes in economic and real estate market conditions, new information regarding existing loans, identification of additional problem loans, accounting rule changes ... and other factors, both within and outside of our management’s control.",
+      "year2_quote_or_null": "Moreover, additions to the allowance may be necessary based on changes in economic and real estate market conditions, new information regarding existing loans, identification of additional problem loans, accounting rule changes (like those that contributed to increases levels of provision expense in 2020 as a result of our adopting CECL and other factors, both within and outside of our management’s control.",
+      "reasoning": "Candidate 1 retains the underlying economic risks: regulatory-mandated allowance increases or charge-offs, changing economic and real-estate conditions, problem-loan information, accounting changes, and resulting provision expense. CECL-specific volatility is also addressed separately in Candidate 2, but the core Year-2019 disclosure remains substantively present rather than removed or weakened.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_1_008_regulatory_loan_loss",
+      "title": "Regulatory and Economic Allowance Adjustments"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Liquidity risk could impair our ability to fund our operations and jeopardize our financial condition.",
+      "year2_quote_or_null": "Liquidity risk could impair our ability to fund our operations and jeopardize our financial condition.",
+      "reasoning": "The core economic risk—liquidity constraints impairing operating funding and financial condition—is reproduced verbatim in Year-2020 Candidate 1. The accompanying definition of liquidity risk is also unchanged; Candidate 2 adds risks but does not alter the retained disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_009_liquidity_risk",
+      "title": "Liquidity Risk and Funding Operations"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Generally we rely on deposits, repayments of loans and cash flows from our investment securities as our primary sources of funds.",
+      "year2_quote_or_null": "Generally we rely on deposits, repayments of loans and cash flows from our investment securities as our primary sources of funds.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 liquidity-management and funding-risk disclosure verbatim, including the same funding sources, liquidity policies, and borrowing exposures. The underlying economic risk is therefore retained.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_1_010_liquidity_management",
+      "title": "Liquidity Management and Funding Sources"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An inability to maintain or raise funds in amounts necessary to meet our liquidity needs could have a substantial negative effect, individually or collectively, on Pinnacle Financial's and Pinnacle Bank's liquidity.",
+      "year2_quote_or_null": "An inability to maintain or raise funds in amounts necessary to meet our liquidity needs could have a substantial negative effect, individually or collectively, on Pinnacle Financial's and Pinnacle Bank's liquidity.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk essentially verbatim, including the risks of impaired funding access, adverse market or company-specific factors, higher borrowing costs, and adverse effects on liquidity and financial condition.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_011_liquidity_access",
+      "title": "Access to Liquidity and Funding Markets"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "As our reliance on non-core funding (particularly brokered time deposits) increased in 2019, our liquidity risk has similarly increased.",
+      "year2_quote_or_null": "An increase in our reliance on noncore funding (particularly brokered time deposits), as occurred in 2019, would increase our liquidity risk.",
+      "reasoning": "The Year-2020 disclosure continues to address the same economic risk: greater reliance on noncore funding, especially brokered time deposits, increases liquidity risk. The change from a historical statement that risk increased in 2019 to a conditional formulation does not materially weaken the underlying risk disclosure because it still expressly states that increased reliance would increase liquidity risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_1_012_secondary_liquidity",
+      "title": "Secondary Liquidity Sources and Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These noncore funding sources can be more rate sensitive than core deposits, and the availability of these noncore funding sources is subject to broad economic conditions, in some instances regulation, and to investor assessment of our financial strength.",
+      "year2_quote_or_null": "These noncore funding sources can be more rate sensitive than core deposits, and the availability of these noncore funding sources is subject to broad economic conditions, in some instances regulation, and to investor assessment of our financial strength.",
+      "reasoning": "The Year-2020 candidate is substantively identical to the Year-2019 disclosure and preserves the same risks regarding noncore funding cost volatility, availability constraints, liquidity, and uninsured high-balance core deposits.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_013_noncore_funding",
+      "title": "Noncore Funding Rate and Availability Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In the event that our funding strategies call for the use of brokered deposits, there can be no assurance that such sources will be available, or will remain available, or that the cost of such funding sources will be reasonable.",
+      "year2_quote_or_null": "In the event that our funding strategies call for the use of brokered deposits, there can be no assurance that such sources will be available, or will remain available, or that the cost of such funding sources will be reasonable.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, retaining the risks of brokered-deposit availability, cost, retention, capitalization constraints, and adverse effects on liquidity and financial condition.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_014_brokered_deposits",
+      "title": "Brokered Deposit Availability Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We anticipate we will continue to rely primarily on deposits, loan repayments, and cash flows from our investment securities to provide liquidity. Additionally, where necessary, the secondary sources of borrowed funds and brokered deposits described above will be used to augment our primary funding sources.",
+      "year2_quote_or_null": "We anticipate we will continue to rely primarily on deposits, loan repayments, and cash flows from our investment securities to provide liquidity. Additionally, where necessary, the secondary sources of borrowed funds and brokered deposits described above will be used to augment our primary funding sources.",
+      "reasoning": "The Year-2 disclosure is verbatim identical to the Year-1 disclosure and addresses the same dependence on primary liquidity sources and access to secondary funding sources, including the consequences of losing that access.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_015_funding_continuity",
+      "title": "Continuity of Primary and Secondary Funding"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The performance of our investment securities portfolio is subject to fluctuation due to changes in interest rates and market conditions, including credit deterioration of the issuers of individual securities.",
+      "year2_quote_or_null": "The performance of our investment securities portfolio is subject to fluctuation due to changes in interest rates and market conditions, including credit deterioration of the issuers of individual securities.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 investment securities interest-rate and market-risk disclosure verbatim, including the risks from interest-rate volatility, market value and return effects, and prepayment risk. The underlying economic risk is therefore retained, not merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_016_investment_securities",
+      "title": "Investment Securities Interest Rate and Market Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our investment securities portfolio consists of several securities whose trading markets are “not active.” As a result, we utilize alternative methodologies for pricing these securities that include various estimates and assumptions.",
+      "year2_quote_or_null": "Our investment securities portfolio consists of several securities whose trading markets are “not active.” As a result, we utilize alternative methodologies for pricing these securities that include various estimates and assumptions.",
+      "reasoning": "The Year-2020 disclosure is verbatim identical to the Year-2019 disclosure and preserves the same economic risk: valuation uncertainty and potential inability to sell illiquid investment securities, with adverse effects on financial condition, results of operations, and liquidity.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_017_inactive_security_markets",
+      "title": "Investment Securities Valuation and Liquidity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "To the extent we have securities in our portfolio from issuers who have experienced a deterioration of financial condition, or who may experience future deterioration of financial condition, the value of such securities may decline and could result in an other-than-temporary impairment charge, which could have an adverse effect on our financial condition, results of operations and liquidity.",
+      "year2_quote_or_null": "To the extent we have securities in our portfolio from issuers who have experienced a deterioration of financial condition, or who may experience future deterioration of financial condition, the value of such securities may decline and could result in an other-than-temporary impairment charge, which could have an adverse effect on our financial condition, results of operations and liquidity.",
+      "reasoning": "The Year-2020 disclosure is verbatim identical to the Year-2019 disclosure and presents the same issuer credit deterioration risk, including potential security-value declines and other-than-temporary impairment charges.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_018_issuer_credit_deterioration",
+      "title": "Investment Issuer Credit Deterioration"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, from time to time we may restructure portions of our investment securities portfolio as part of our asset liability management strategies, and may incur losses, which may be material, in connection with any such restructuring.",
+      "year2_quote_or_null": "In addition, from time to time we may restructure portions of our investment securities portfolio as part of our asset liability management strategies, and may incur losses, which may be material, in connection with any such restructuring.",
+      "reasoning": "The Year-2 disclosure is verbatim identical to Year-1 and addresses the same economic risk: potentially material losses from restructuring portions of the investment securities portfolio.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_019_securities_restructuring",
+      "title": "Investment Portfolio Restructuring Losses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "CECL changed the current method of provisioning for loan losses that are probable, which has required us to increase our allowance for loan losses, and is increasing the types and amounts of data we need to collect and review to determine the appropriate level of our allowance for loan losses.",
+      "year2_quote_or_null": "CECL changed the current method of provisioning for loan losses, which has required us to increase our allowance for credit losses, and is increasing the types and amounts of data we need to collect and review to determine the appropriate level of our allowance for credit losses.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: CECL changes provisioning, increases the allowance and data burden, creates potential allowance volatility, and may adversely affect capital, financial condition, and results. The terminology change from “loan losses” to “credit losses” does not alter the substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_1_020_cecl_implementation",
+      "title": "CECL Allowance Calculation Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A decline in our stock price or expected future cash flows, or a material adverse change in our results of operations or prospects, could result in impairment of our goodwill.",
+      "year2_quote_or_null": "A decline in our stock price or expected future cash flows, or a material adverse change in our results of operations or prospects, could result in impairment of our goodwill.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 goodwill impairment risk verbatim in both the dedicated Goodwill Impairment Risk section and the broader operational and market risk summary. The additional detail expands the disclosure but does not change the underlying economic risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_1_021_goodwill_impairment",
+      "title": "Goodwill Impairment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A significant and sustained decline in our stock price and market capitalization below book value, a significant decline in our expected future cash flows, a significant adverse change in the business climate, slower growth rates or other factors could result in impairment of our goodwill.",
+      "year2_quote_or_null": "A significant and sustained decline in our stock price and market capitalization below book value, a significant decline in our expected future cash flows, a significant adverse change in the business climate, slower growth rates or other factors could result in impairment of our goodwill.",
+      "reasoning": "The core economic risk—goodwill impairment caused by declines in stock price, market capitalization, expected cash flows, business conditions, or growth—appears unchanged and is repeated verbatim in Year-2 Candidate 1. The associated material-loss and dividend-capacity consequences are also retained.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_000_goodwill_impairment",
+      "title": "Goodwill Impairment Risk"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The processes we use to estimate expected credit losses, calculate our allowance for loan losses and measure the fair value of financial instruments... depend upon the use of analytical and forecasting models and tools.",
+      "year2_quote_or_null": "The processes we use to estimate expected credit losses, calculate our allowance for credit losses and measure the fair value of financial instruments... depend upon the use of analytical and forecasting models and tools.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: reliance on analytical and forecasting models and tools whose assumptions, design, or implementation may fail and materially harm results. The only substantive wording change is the terminology update from “allowance for loan losses” to “allowance for credit losses”; Candidate 2 also acknowledges the same risk but in abbreviated form, while Candidate 1 preserves the full disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_001_accounting_models",
+      "title": "Accounting Models and Tools"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Certain accounting policies are critical to presenting our financial condition and results of operations. They require management to make difficult, subjective or complex judgments about matters that are uncertain.",
+      "year2_quote_or_null": "Certain accounting policies are critical to presenting our financial condition and results of operations. They require management to make difficult, subjective or complex judgments about matters that are uncertain.",
+      "reasoning": "The Year-2020 candidates preserve both underlying economic risks: judgment and uncertainty in critical accounting estimates, including materially different reported amounts and potential adverse effects. Candidate 1 retains the specific consequences, while Candidate 2 retains the accounting-policy selection risk; the change from loan-loss to credit-loss terminology does not alter the disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_002_accounting_policies",
+      "title": "Accounting Policy Selection"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Changes to LIBOR may adversely affect the holder of, the market value of, and the interest expense paid on our subordinated notes and our subordinated debentures and related trust preferred securities, and may affect certain of our loans.",
+      "year2_quote_or_null": "Changes to LIBOR may adversely affect the holder of, the market value of, and the interest expense paid on our subordinated notes and our subordinated debentures and related trust preferred securities, and may affect certain of our loans.",
+      "reasoning": "The Year-2 disclosure retains the same underlying economic risk: LIBOR discontinuation or modification may adversely affect subordinated securities, related interest expense and certain loans. It also adds regulatory and alternative-rate detail, but does not weaken, remove, or merely bundle the Year-1 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_003_libor_transition",
+      "title": "LIBOR Transition Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "At December 31, 2019, approximately 36.3% of our total loan portfolio was indexed to 30-day, 90-day, 180-day and one-year LIBOR.",
+      "year2_quote_or_null": "At December 31, 2020, approximately 36.3% of our total loan portfolio was indexed to 30-day, 90-day, 180-day and one-year LIBOR.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: material loan-portfolio exposure to LIBOR and the same contractual uncertainty regarding replacement of LIBOR. Only the measurement date changes; the stated exposure percentage and substantive risk language remain the same.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_004_libor_loan_indexing",
+      "title": "LIBOR-Indexed Loan Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "While we have a significant stake in BHG, are entitled to designate two members of BHG’s five person board of managers and in some instances have protective rights to block BHG from engaging in certain activities, including, until March 1, 2020, a sale of BHG (following March 1, 2020, the other managers can approve a sale of BHG without our consent), the other managers and members of BHG may make most decisions regarding BHG’s and its subsidiaries’ operations without our consent or approval.",
+      "year2_quote_or_null": "While we have a significant stake in BHG, are entitled to designate two members of BHG’s five person board of managers and in some instances have protective rights to block BHG from engaging in certain activities, the other managers and members of BHG may make most decisions regarding BHG’s and its subsidiaries’ operations without our consent or approval. This includes a decision to sell the company.",
+      "reasoning": "The core economic risk was retained: despite a significant ownership stake and limited governance rights, other BHG managers and members can make most operating decisions without Pinnacle’s consent, including a sale. Year-2 also adds related risks concerning the importance of BHG earnings and potential effects of other members’ interest sales, while the expired March 1, 2020 sale-blocking protection is omitted as a time-based update rather than a change to the underlying retained risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_2_005_bhg_ownership",
+      "title": "BHG Ownership and Governance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Recently, BHG has been retaining more of the loans that it originates on its balance sheet. This practice requires more external funding of BHG’s business ... and will likely increase BHG’s funding costs. It also increases BHG’s exposure to credit losses in its portfolio.",
+      "year2_quote_or_null": "Recently, BHG has been retaining more of the loans that it originates on its balance sheet. This practice requires more external funding of BHG’s business ... and will likely increase BHG’s funding costs. It also increases BHG’s exposure to credit losses in its portfolio.",
+      "reasoning": "Candidate 1 reproduces the same economic risks: increased balance-sheet loan retention creates greater external funding needs and funding costs, while increasing exposure to credit losses and adverse effects on BHG and Pinnacle’s results. The disclosure is materially unchanged, so it is retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_006_bhg_funding_credit",
+      "title": "BHG Funding and Credit Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In the event that BHG’s loan growth slows over historical levels or its loan sales decrease (including but not limited to as a result of regulatory restrictions on banks that are the principal purchasers of BHG’s loans), its results of operations and our noninterest income would be adversely affected.",
+      "year2_quote_or_null": "In the event that BHG’s loan growth slows over historical levels, its loan sales decrease (including but not limited to as a result of regulatory restrictions on banks that are the principal purchasers of BHG’s loans) or it experiences increased levels of loan losses or requests for substitutions and loans it previously originated and sold, its results of operations and our noninterest income would be adversely affected.",
+      "reasoning": "Candidate 1 retains the Year-2019 economic risks: dependence on BHG loan growth and sales, including the effect of regulatory restrictions on purchasing banks, plus the licensing and interest-rate limitation risks. It adds risks related to loan losses and substitution requests but does not weaken or remove the prior disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_007_bhg_growth_regulation",
+      "title": "BHG Growth and Lending Regulation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Recently, BHG has expanded its operations to include commercial lending to other professional service firms like attorneys, accountants and others.",
+      "year2_quote_or_null": "Recently, BHG has expanded its operations to include commercial lending to other professional service firms like attorneys, accountants and others.",
+      "reasoning": "The Year-2020 candidate reproduces the Year-2019 disclosure and addresses the same economic risks: expansion into new lending products, potentially higher loss rates, lower profitability, and increased compliance and regulatory scrutiny. No material change in the underlying risk is evident.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_008_bhg_product_expansion",
+      "title": "BHG Product Expansion Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The FDIC has published guidance related to the operation of marketplace lenders and banks’ business relationships with such lenders and other third parties in which banks are required to exercise increased oversight and ongoing monitoring and other responsibility for such third parties’ compliance with applicable regulatory guidance and requirements.",
+      "year2_quote_or_null": "The FDIC has published guidance related to the operation of marketplace lenders and banks’ business relationships with such lenders and other third parties in which banks are required to exercise increased oversight and ongoing monitoring and other responsibility for such third parties’ compliance with applicable regulatory guidance and requirements.",
+      "reasoning": "Candidate 1 retains the same economic risks: heightened FDIC scrutiny and oversight responsibilities for BHG, increased compliance costs and potentially lower loan yields, and restrictions on banks’ ability to purchase BHG-originated loans. Candidate 2 addresses different funding and credit-loss risks and does not replace the retained disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_009_bhg_regulatory_scrutiny",
+      "title": "BHG Regulatory Oversight"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Because of our ownership of a portion of BHG, BHG is limited in the types of activities in which it may engage. Were BHG to desire to expand its operations into areas that are not permissible for an entity owned by a state member bank like Pinnacle Bank, it may need to do so through separate entities in which we do not have an ownership interest.",
+      "year2_quote_or_null": "Because of our ownership of a portion of BHG, BHG is limited in the types of activities in which it may engage. Were BHG to desire to expand its operations into areas that are not permissible for an entity owned by a state member bank like Pinnacle Bank, it may need to do so through separate entities in which we do not have an ownership interest.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 disclosure verbatim, including the economic risk that BHG’s ownership structure limits permissible activities and that expansion through separately owned entities could negatively affect the investment.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_2_010_bhg_permissible_activities",
+      "title": "BHG Permissible Activities"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Implementation of the various provisions of the Dodd-Frank Act has increased our operating costs and may continue to do so or otherwise have a material adverse effect on our business, financial condition or results of operations.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure semantically addresses the Year-2019 risk that Dodd-Frank implementation and related regulatory reforms would increase operating, compliance, and regulatory costs or materially harm the business. The disclosure is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_011_dodd_frank_regulation",
+      "title": "Dodd-Frank Regulatory Burdens"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "As an agency with evolving regulations and practices, there is uncertainty as to how the CFPB’s examination and regulatory authority might impact our business.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure candidate addresses the CFPB’s examination or regulatory-authority risk, including potential significant compliance costs or fines. The economic risk therefore appears genuinely absent rather than merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_012_cfpb_oversight",
+      "title": "CFPB Examination and Compliance Risk"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "This limitation on interchange fees has adversely impacted our results of operations and will continue to do so.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the Durbin Amendment’s debit-card interchange-fee cap or its adverse impact on results of operations. The economic risk therefore appears to have been removed from the disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_013_durbin_amendment",
+      "title": "Durbin Amendment Interchange Fees"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Ongoing compliance with our regulatory obligations has resulted in (and may continue to cause us to incur) further increased regulatory compliance costs, fee reductions and restrictions on activities in which we may have otherwise engaged.",
+      "year2_quote_or_null": null,
+      "reasoning": "The Year-2020 candidates contain no disclosure that meaningfully addresses the Year-2019 economic risk of ongoing regulatory compliance costs, fee reductions, activity restrictions, or related regulatory-change costs. Accordingly, the risk appears to have been removed rather than reworded or absorbed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_014_regulatory_compliance",
+      "title": "Ongoing Regulatory Compliance Costs"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Changes to capital requirements for bank holding companies and depository institutions that became effective January 1, 2015 and that are now fully phased in may negatively impact Pinnacle Financial’s and Pinnacle Bank’s results of operations.",
+      "year2_quote_or_null": null,
+      "reasoning": "The Year-2020 candidates contain no disclosure addressing the economic risk that regulatory capital requirement changes—including minimum capital ratios and the capital conservation buffer—could adversely affect results of operations. Because the risk is not meaningfully present in any Year-2 disclosure, it is classified as REMOVED.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_2_015_capital_requirements",
+      "title": "Capital Requirement Changes"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "CET1 capital is reduced by goodwill, certain intangible assets, net of associated deferred tax liabilities, deferred tax assets that arise from tax credit and net operating loss carryforwards, net of any valuation allowance, and certain other items specified in the Basel III capital rules.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure candidate meaningfully addresses the Year-2019 disclosure concerning Tier 1/CET1 capital composition, regulatory deductions, or Basel III capital adjustments. The economic risk disclosure therefore appears genuinely absent in Year-2020.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_000_tier_1_cet1_capital",
+      "title": "Tier 1 and CET1 Capital Composition"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Following the merger with BNC and as a result of that merger, our total assets were in excess of $15.0 billion which caused the subordinated debentures we and BNC issued related to trust preferred offerings to cease to qualify as Tier 1 capital under applicable banking regulations.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the disclosed economic risks concerning Tier 2 capital qualification, maturity-related reductions in capital recognition, or the potential need to refinance or raise capital. The unit is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_001_tier_2_capital_and_maturity",
+      "title": "Tier 2 Capital and Maturity Limitations"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The final rules allow banks and their holding companies with less than $250 billion in assets a one-time opportunity to opt-out of a requirement to include unrealized gains and losses in accumulated other comprehensive income in their capital calculation. Both Pinnacle Financial and Pinnacle Bank opted-out of this requirement.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 disclosure meaningfully addresses the one-time opt-out from including unrealized gains and losses in accumulated other comprehensive income in the capital calculation. On the provided evidence, this economic disclosure was removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_002_aoci_capital_opt_out",
+      "title": "Accumulated Other Comprehensive Income Opt-Out"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "The application of more stringent capital requirements for Pinnacle Financial and Pinnacle Bank, like those adopted to implement the Basel III reforms or future reforms, could, among other things, result in lower returns on invested capital, require the raising of additional capital, particularly in the form of common stock, make it more difficult for us to receive regulatory approvals related to our growth initiatives and result in regulatory actions if we were to be unable to comply with such requirements.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the disclosed economic risks from more stringent capital requirements, potential additional capital raising, regulatory approval constraints, or associated liquidity requirements. The Year-2019 risk is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_003_stringent_capital_and_liquidity",
+      "title": "Stringent Capital and Liquidity Requirements"
+    },
+    {
+      "classification": "REMOVED",
+      "year1_quote": "Implementation of changes to asset risk weightings for risk-based capital calculations, items included or deducted in calculating regulatory capital and/or additional capital conservation buffers could result in management modifying its business strategy and could limit our ability to make distributions, including paying dividends or buying back shares.",
+      "year2_quote_or_null": null,
+      "reasoning": "No Year-2020 candidate meaningfully addresses the economic risk that changes to regulatory capital rules, asset risk weightings, or capital conservation buffers could constrain strategy or distributions. The disclosure is therefore classified as removed.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_004_risk_weighting_changes",
+      "title": "Risk Weighting and Capital Buffer Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our ability to maintain required capital levels and adequate sources of funding and liquidity could be impacted by changes in the capital markets and deteriorating economic and market conditions.",
+      "year2_quote_or_null": "Our ability to maintain required capital levels and adequate sources of funding and liquidity could be impacted by changes in the capital markets and deteriorating economic and market conditions.",
+      "reasoning": "The Year-2020 disclosure repeats the same underlying economic risk—capital, funding, and liquidity vulnerability to capital-market changes and deteriorating economic and market conditions—with materially identical language. Candidate 1 directly retains the Year-2019 risk; Candidate 2 additionally bundles it with a broader liquidity-risk summary, but does not alter the classification.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_3_005_capital_markets_and_liquidity",
+      "title": "Capital Markets and Liquidity Conditions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Growth in assets (either organically or as a result of acquisitions) at rates in excess of the rate at which our capital is increased through retained earnings will reduce our capital ratios unless we continue to increase capital.",
+      "year2_quote_or_null": "Growth in assets (either organically or as a result of acquisitions) at rates in excess of the rate at which our capital is increased through retained earnings will reduce our capital ratios unless we continue to increase capital.",
+      "reasoning": "Candidate 1 reproduces the same economic risks: maintaining adequate regulatory capital, capital-ratio pressure from asset growth exceeding internally generated capital, and enforcement or expansion consequences for failing capital requirements. The only change is the reporting date, so the disclosure is retained.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_006_regulatory_capital_requirements",
+      "title": "Regulatory Capital Requirements and Growth"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may need to raise additional capital (including through the issuance of common or preferred stock or additional Tier 2 capital instruments) in the future to provide us with sufficient capital resources and liquidity to meet our commitments and business needs or in connection with our growth or as a result of deterioration in our asset quality.",
+      "year2_quote_or_null": "We may need to raise additional capital (including through the issuance of common or preferred stock or additional Tier 2 capital instruments) in the future to provide us with sufficient capital resources (or replace expiring capital instruments) and liquidity to meet our commitments and business needs or in connection with our growth or as a result of deterioration in our asset quality.",
+      "reasoning": "Candidate 1 retains the same underlying risks: potential need for additional capital, vulnerability of capital/funding/liquidity to market and economic conditions, and regulatory limits on bank dividends affecting the parent’s dividends and debt interest. The added reference to replacing expiring instruments and the change from common stock dividends to capital stock do not materially alter the disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_007_additional_capital_and_bank_dividends",
+      "title": "Additional Capital and Bank Dividend Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We cannot assure you that access to capital will be available to us on acceptable terms or at all. Any occurrence that may limit our access to the capital markets may materially and adversely affect our capital costs and our ability to raise capital and/or debt and, in turn, our liquidity.",
+      "year2_quote_or_null": "We cannot assure you that access to capital will be available to us in needed amounts or on acceptable terms or at all. Any occurrence that may limit our access to the capital markets may materially and adversely affect our capital costs and our ability to raise capital and/or debt and, in turn, our liquidity.",
+      "reasoning": "The core economic risk—loss or unfavorable access to capital markets, higher capital costs, impaired fundraising, liquidity, and potentially constrained operations or growth—is expressly retained, with the Year-2 disclosure reproducing the key risk language and adding related drivers and consequences.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_008_capital_access_risk",
+      "title": "Access to Capital Markets Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Investing in BOLI exposes us to liquidity, credit and interest rate risk, which could adversely affect our results of operations, financial condition and liquidity.",
+      "year2_quote_or_null": "Investing in BOLI exposes us to liquidity, credit and interest rate risk, which could adversely affect our results of operations, financial condition and liquidity.",
+      "reasoning": "The Year-2020 disclosure preserves the same BOLI-related economic risks—liquidity, credit, interest-rate, tax/penalty, and carrier/underlying-security risks—with materially identical language. The only substantive change is the reported BOLI balance, which does not alter the risk disclosure.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_009_boli_investment_risk",
+      "title": "Bank Owned Life Insurance Investment Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our acquisitions and future expansion may result in additional risks.",
+      "year2_quote_or_null": "Our acquisitions and future expansion may result in additional risks.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the same economic disclosure, including the acquisition history, planned expansion strategy, and statement that these activities involve additional risks. The differences are only heading/formatting changes, so the risk is retained.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_010_expansion_risk_overview",
+      "title": "Expansion Strategy and Related Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Management of Growth. We may be unable to successfully: •maintain loan quality in the context of significant loan growth; •identify and expand into suitable markets; •obtain regulatory and other approvals; •identify and acquire suitable sites for new banking offices; •attract sufficient deposits and capital to fund anticipated loan growth; •recruit seasoned professionals with significant experience and established books of business; •maintain adequate common equity and regulatory capital; •scale our technology platform and operational infrastructure; •avoid diversion or disruption of our existing operations or management as well as those of the acquired institution; •maintain adequate management personnel and systems to oversee and support such growth; •maintain adequate internal audit, loan review and compliance functions; and •implement additional policies, internal controls, procedures and operating systems required to support such growth.",
+      "year2_quote_or_null": "Management of Growth. We may be unable to successfully: •maintain loan quality in the context of significant loan growth; •identify and expand into suitable markets; •obtain regulatory and other approvals; •identify and acquire suitable sites for new banking offices; •attract sufficient deposits and capital to fund anticipated loan growth; •recruit seasoned professionals with significant experience and established books of business; •maintain adequate common equity and regulatory capital; •scale our technology platform and operational infrastructure; •avoid diversion or disruption of our existing operations or management as well as those of the acquired institution; •maintain adequate management personnel and systems to oversee and support such growth; •maintain adequate internal audit, loan review and compliance functions; and •implement additional policies, internal controls, procedures and operating systems required to support such growth.",
+      "reasoning": "The Year-2020 disclosure reproduces the same underlying growth risks, including loan quality, market expansion, approvals, funding, capital, personnel, infrastructure, integration, controls, and systems. The heading adds an acquisitions reference, but the economic risk disclosure itself is materially unchanged.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_011_growth_management_risk",
+      "title": "Management of Growth Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There is no assurance that existing offices or future offices will maintain or achieve deposit levels, loan balances or other operating results necessary to avoid losses or produce profits.",
+      "year2_quote_or_null": "There is no assurance that existing offices or future offices will maintain or achieve deposit levels, loan balances or other operating results necessary to avoid losses or produce profits.",
+      "reasoning": "The Year-2020 disclosure reproduces the same economic risks as Year-2019: offices may fail to generate sufficient deposits, loans, or operating results to avoid losses or achieve profits, while expansion increases overhead and historical results may not predict future performance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_012_expansion_results_risk",
+      "title": "Expansion Results and Profitability Risk"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "There are considerable costs involved in opening branches (particularly those in new markets), and new branches generally do not generate sufficient revenues to offset their costs until they have been in operation for at least a year or more.",
+      "year2_quote_or_null": "There are considerable costs involved in opening branches (particularly those in new markets), and new branches generally do not generate sufficient revenues to offset their costs until they have been in operation for at least a year or more.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same economic risks: startup costs, delayed profitability, expansion delays, regulatory and site-acquisition obstacles, and uncertainty about branch success.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_013_branch_development_risk",
+      "title": "Branch Development and Startup Costs"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Failure or inability to obtain required regulatory approvals, changes in laws and regulations or other regulatory developments and changes in prevailing economic conditions or other unanticipated events may prevent or adversely affect our continued growth and expansion.",
+      "year2_quote_or_null": "Failure or inability to obtain required regulatory approvals, changes in laws and regulations or other regulatory developments and changes in prevailing economic conditions or other unanticipated events may prevent or adversely affect our continued growth and expansion.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same regulatory and economic risks to growth and expansion without weakening or changing the underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_014_regulatory_economic_expansion",
+      "title": "Regulatory and Economic Expansion Factors"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may not successfully implement improvements to, or integrate, our information and control systems, procedures and processes in an efficient or timely manner and may discover deficiencies in existing systems and controls.",
+      "year2_quote_or_null": "We may not successfully implement improvements to, or integrate, our information and control systems, procedures and processes in an efficient or timely manner and may discover deficiencies in existing systems and controls.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, preserving the same economic risks related to implementing and integrating systems and controls, accommodating growth, and incurring infrastructure costs.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_015_expansion_infrastructure_controls",
+      "title": "Expansion Infrastructure and Controls"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Failure to successfully address these and other issues related to our expansion in Atlanta or in any other future market could have a material adverse effect on our financial condition and results of operations, and could adversely affect our ability to successfully implement our business strategy.",
+      "year2_quote_or_null": "Failure to successfully address these and other issues related to our expansion in Atlanta or in any other future market could have a material adverse effect on our financial condition and results of operations, and could adversely affect our ability to successfully implement our business strategy.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, retaining both the risks of executing expansion in Atlanta or future markets and slower-than-anticipated or declining growth.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_016_expansion_execution_failure",
+      "title": "Expansion Execution and Market Failure"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "We may face risks with respect to future acquisitions.",
+      "year2_quote_or_null": "When we attempt to expand our business through mergers and acquisitions (as we did from 2015 through 2017), we seek targets that are culturally similar to us, have experienced management and possess either significant market presence or have potential for improved profitability through economies of scale or expanded services.",
+      "reasoning": "The Year-2020 disclosure continues to address the same underlying economic risks of future acquisitions, including evaluation, financing, regulatory approval, integration, dilution, and market-entry risks. The changes are wording and factual updates (including “acquiring or merging” and the Atlanta expansion timing), without a material weakening or removal of the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_017_acquisition_risks",
+      "title": "Future Acquisition Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As a result, merger or acquisition discussions and, in some cases, negotiations may take place and future mergers or acquisitions involving cash, debt or equity securities and related capital raising transactions may occur at any time.",
+      "year2_quote_or_null": "As a result, merger or acquisition discussions and, in some cases, negotiations may take place and future mergers or acquisitions involving cash, debt or equity securities and related capital raising transactions may occur at any time.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risks: potential future acquisitions, related capital raising, dilution from premiums, and failure to realize projected benefits. The only material-looking change is the forecast year (2020 to 2021), which does not alter the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_3_018_future_ma_execution_risk",
+      "title": "Future Mergers and Acquisition Execution"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "In addition, we may face significant competition from numerous other financial services institutions, many of which may have greater financial resources than we do, when considering acquisition opportunities, particularly in our targeted high-growth markets located outside of Tennessee.",
+      "year2_quote_or_null": "In addition, we may face significant competition from numerous other financial services institutions, many of which may have greater financial resources than we do, when considering acquisition opportunities, particularly in our targeted high-growth markets located outside of Tennessee.",
+      "reasoning": "The Year-2020 disclosure is verbatim identical to the Year-2019 disclosure and presents the same economic risk: competition from better-resourced institutions may limit acquisition opportunities and successful completion of acquisitions.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_019_acquisition_competition",
+      "title": "Competition for Acquisition Opportunities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "An ineffective risk management framework could have a material adverse effect on our strategic planning and our ability to mitigate risks and/or losses and could have adverse regulatory consequences.",
+      "year2_quote_or_null": "An ineffective risk management framework could have a material adverse effect on our strategic planning and our ability to mitigate risks and/or losses and could have adverse regulatory consequences.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure, including the risk that framework ineffectiveness could cause unexpected losses and regulatory consequences. The underlying economic risk and its qualifiers are unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_3_020_risk_management_framework",
+      "title": "Risk Management Framework Effectiveness"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are dependent on our information technology and telecommunications systems and third-party servicers, and systems failures, interruptions or breaches of security could have an adverse effect on our financial condition and results of operations, as well as cause legal or reputational harm.",
+      "year2_quote_or_null": "We outsource many of our major systems, such as data processing, loan servicing and deposit processing systems. The failure of these systems, or the termination of a third-party software license or service agreement on which any of these systems is based, could interrupt our operations.",
+      "reasoning": "The Year-2020 disclosures retain the same underlying economic risk: dependence on IT/telecommunications systems and third-party providers, with system failures or interruptions adversely affecting operations and financial results. Candidate 2 provides more detail and adds potential legal, regulatory, customer, and reputational consequences, but does not materially weaken or remove the risk.",
+      "section": "1A",
+      "confidence": 0.98,
+      "id": "1A_3_021_information_technology_systems",
+      "title": "Information Technology and Systems Security"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are dependent upon information technologies, computer systems and networks, including those maintained by us and those maintained and provided to us by third parties, to conduct operations and are reliant on technology to help increase efficiency in our business.",
+      "year2_quote_or_null": "We are dependent upon information technologies, computer systems and networks, including those we maintain and those maintained and provided to us by third parties, to conduct operations and are reliant on technology to help increase efficiency in our business.",
+      "reasoning": "The Year-2020 disclosure retains the same underlying economic risk: dependence on internal and third-party information technology systems and networks, including the potential for operational disruption. The wording changes are cosmetic and do not weaken, remove, or broaden the risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_000_technology_systems_dependencies",
+      "title": "Information Technology Systems Dependency Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our operations rely on the secure processing, storage and transmission of confidential, proprietary, personal and other information in our computer systems and networks.",
+      "year2_quote_or_null": "Our operations rely on the secure processing, storage and transmission of confidential, proprietary, personal and other information in our computer systems and networks.",
+      "reasoning": "The core economic risk—cybersecurity breaches and unauthorized access affecting the company’s systems, networks, remote banking, and related parties—is expressly retained in Candidate 1 with materially identical language. Candidate 1 also expands the disclosure to newer threats, while Candidate 2 separately addresses consequences and costs but does not alter the retained underlying risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_001_information_security_breaches",
+      "title": "Information Security and Cybersecurity Breach Risks"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Cybersecurity risks for banking organizations have significantly increased in recent years in part because of the proliferation of new technologies, and the use of the Internet and telecommunications technologies to conduct financial transactions.",
+      "year2_quote_or_null": "Our operations rely on the secure processing, storage and transmission of confidential, proprietary, personal and other information in our computer systems and networks. Although we take protective measures and endeavor to modify these systems as circumstances warrant, the security of our computer systems, software and networks may be vulnerable to breaches, unauthorized access, misuse, computer viruses, ransomware or other malicious code and other events that could have a security impact.",
+      "reasoning": "The Year-2019 cybersecurity risk remains present in Year-2020, but the broad evolving-threat and consequences disclosure is bundled into Candidate 2's more comprehensive cybersecurity and information-security threats unit, which also addresses remote/mobile banking, third-party vulnerabilities, attack sources, fraud, and cloud dependencies. Candidate 1 reproduces only the costs and consequences portion and does not independently capture the full underlying risk.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_4_002_cybersecurity_evolving_threats",
+      "title": "Evolving Cybersecurity Threats and Consequences"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We outsource many of our major systems, such as data processing, loan servicing and deposit processing systems. The failure of these systems, or the termination of a third-party software license or service agreement on which any of these systems is based, could interrupt our operations.",
+      "year2_quote_or_null": "We outsource many of our major systems, such as data processing, loan servicing and deposit processing systems. The failure of these systems, or the termination of a third-party software license or service agreement on which any of these systems is based, could interrupt our operations.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to Year-2019, retaining the same risks from outsourced systems, third-party service or license failures, service denials, operational disruption, and resulting financial, reputational, and regulatory consequences.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_003_third_party_systems",
+      "title": "Outsourced Systems and Service Disruptions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We also face the risk of operational disruption, failure, termination, or capacity constraints of any of the third parties that facilitate our business activities, including vendors, exchanges, and other financial intermediaries.",
+      "year2_quote_or_null": "We also face the risk of operational disruption, failure, termination, or capacity constraints of any of the third parties that facilitate our business activities, including vendors, exchanges, and other financial intermediaries.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risks without any material change: third-party operational disruption, cyberattack or breach exposure, and operational failure involving customers’ systems remain expressly disclosed, including the heightened-risk qualifier.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_004_third_party_operational_risks",
+      "title": "Third-Party Operational Failure and Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "As cyber threats continue to evolve, we may be required to expend significant, additional resources to continue to modify or enhance our protective measures, investigate and remediate any information security vulnerabilities, or respond to any changes to state or federal regulations, policy statements or laws concerning information systems or security.",
+      "year2_quote_or_null": "As cyber threats continue to evolve, we may be required to expend significant additional resources to continue to modify or enhance our protective measures, investigate and remediate any information security vulnerabilities, or respond to any changes to state or federal regulations, policy statements or laws concerning information systems or security.",
+      "reasoning": "The Year-2020 disclosure preserves the same cybersecurity economic risks, including evolving threats, resource needs, security failures, regulatory costs, litigation, operational disruption, and reputational and financial impacts. The only apparent change is cosmetic punctuation/formatting, not a change in substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_005_cybersecurity_resources_liability",
+      "title": "Cybersecurity Resources, Compliance and Liability"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Environmental liability associated with commercial lending could result in losses.",
+      "year2_quote_or_null": "Environmental liability associated with commercial lending could result in losses.",
+      "reasoning": "The Year-2020 disclosure presents the same economic risk—environmental cleanup and related losses from hazardous substances on foreclosed commercial properties—with materially identical language and scope. It is therefore retained.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_006_commercial_lending_environmental_liability",
+      "title": "Environmental Liability from Commercial Lending"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have acquired a number of retail banking facilities and other real properties, any of which may contain hazardous or toxic substances.",
+      "year2_quote_or_null": "We have acquired a number of retail banking facilities and other real properties, any of which may contain hazardous or toxic substances.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 environmental risk, including potential hazardous substances, remediation and other liability, property-value/use impacts, and heightened future-law exposure. The underlying economic risk is unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_007_acquired_properties_environmental_risk",
+      "title": "Environmental Risks at Acquired Properties"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "In addition, the issuance of certain regulatory enforcement actions against Pinnacle Financial or Pinnacle Bank could constitute an event of default under our loan agreement with U.S. Bank, which could cause the acceleration of any outstanding borrowings under the loan agreement and termination of the agreement.",
+      "year2_quote_or_null": "Failure to comply with any formal or informal regulatory restrictions, including informal supervisory actions, could lead to further regulatory enforcement actions.",
+      "reasoning": "The core legislative and regulatory expense, scrutiny, restrictions, and enforcement risks were retained in substantially the same economic disclosure. The specific U.S. Bank loan-agreement default and acceleration consequence is no longer separately stated, so that narrower risk appears removed rather than retained; overall, the Year-1 disclosure is best classified as absorbed into the broader Year-2 legislation and regulation risk section.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_4_008_regulatory_legislative_expenses",
+      "title": "Legislative and Regulatory Expense Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Negative developments in the financial services industry and the impact of recently enacted or new legislation in response to those developments could negatively impact our operations by restricting our business operations, including our ability to originate or sell loans, and adversely impact our financial performance.",
+      "year2_quote_or_null": "Negative developments in the financial services industry and the impact of recently enacted or new legislation in response to those developments could negatively impact our operations by restricting our business operations, including our ability to originate or sell loans, and adversely impact our financial performance.",
+      "reasoning": "The Year-2020 disclosure reproduces the Year-2019 economic risk verbatim: adverse industry, legislative, and regulatory developments may restrict operations, including loan origination or sales, and harm financial performance. The surrounding discussion adds specific regulatory-cost and enforcement risks but does not weaken or remove the original risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_009_financial_services_regulatory_developments",
+      "title": "Financial Services Regulatory and Legislative Changes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our reputation is very important in sustaining our business and we rely on our relationships with our current, former and potential clients and shareholders and other actors in the industries that we serve. Any damage to our reputation... could strain our existing relationships and make it difficult for us to develop new relationships.",
+      "year2_quote_or_null": "Our reputation is very important in sustaining our business and we rely on our relationships with our current, former and potential clients and shareholders and other actors in the industries that we serve. Any damage to our reputation... could strain our existing relationships and make it difficult for us to develop new relationships.",
+      "reasoning": "The core economic risk—reputational damage harming existing relationships and impairing the ability to develop new relationships, with a potential material adverse business effect—is materially unchanged. Candidate 1 is effectively verbatim, while Candidate 2 is the same disclosure in abbreviated form.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_010_reputation_relationships",
+      "title": "Reputation and Relationship Damage Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We face substantial competition and are subject to certain regulatory constraints not applicable to some of our competitors, which may decrease our growth or profits.",
+      "year2_quote_or_null": "We face substantial competition and are subject to certain regulatory constraints not applicable to some of our competitors, which may decrease our growth or profits.",
+      "reasoning": "The Year-2020 disclosure addresses the same competition for banking services and customers, competitive advantages of other providers, regulatory and technological drivers, and potential adverse effects on growth or profits. The wording and economic substance are materially unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_011_competition_market_pressure",
+      "title": "Competition for Banking Services and Customers"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "These differences in resources, regulation, competitive advantages, and business strategy may decrease our net interest margin, may increase our operating costs, and may make it harder for us to compete profitably.",
+      "year2_quote_or_null": "These differences in resources, regulation, competitive advantages, and business strategy may decrease our net interest margin, may increase our operating costs, and may make it harder for us to compete profitably.",
+      "reasoning": "The Year-2020 disclosure is substantively identical to the Year-2019 disclosure and preserves the same economic risks from competitors’ regulatory, tax, cost, and strategic advantages.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_4_012_competitor_regulatory_advantages",
+      "title": "Competitor Regulatory and Structural Advantages"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The financial services industry could become even more competitive as a result of legislative, regulatory and technological changes and continued consolidation.",
+      "year2_quote_or_null": "The financial services industry could become even more competitive as a result of legislative, regulatory and technological changes and continued consolidation.",
+      "reasoning": "Candidate 1 substantively retains the full economic risk: heightened competition driven by regulatory changes, technology lowering entry barriers, non-bank competition, and industry consolidation. The minor removal of “if adopted” does not change the underlying risk, which is presented in materially the same terms.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_013_industry_consolidation_technology",
+      "title": "Industry Consolidation and Technology Competition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The implementation of other new lines of business or new products and services may subject us to additional risk.",
+      "year2_quote_or_null": "The implementation of other new lines of business or new products and services may subject us to additional risk.",
+      "reasoning": "The Year-2020 disclosure addresses the same economic risk of additional risks arising from implementing new businesses, products, and services, with the substantive risk discussion unchanged.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_4_014_new_business_products",
+      "title": "Risks from New Businesses and Products"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Inability to retain senior management and key employees or to attract new experienced financial services professionals could impair our relationship with our customers, reduce growth and adversely affect our business.",
+      "year2_quote_or_null": "Inability to retain senior management and key employees or to attract new experienced financial services professionals could adversely affect our business.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk—loss or inability to attract key personnel harming customer relationships, growth, expenses, and business performance—and expands it with additional detail. Candidate 2 also repeats the risk in summary form, so it was not removed or softened.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_4_015_key_personnel_retention",
+      "title": "Senior Management and Key Employee Retention"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Inability to retain these key personnel ... or to continue to attract experienced lenders with established books of business ... could negatively impact our growth because of the loss of these individuals’ skills and customer relationships.",
+      "year2_quote_or_null": "Inability to retain these key personnel ... or to continue to attract experienced lenders with established books of business ... could negatively impact our growth because of the loss of these individuals’ skills and customer relationships.",
+      "reasoning": "Candidate 1 retains the underlying economic risks of losing key personnel, difficulty recruiting experienced lenders, harm to growth and customer relationships, and higher compensation costs affecting expenses. The changes are primarily immaterial year references and an added introductory summary, so the disclosure is retained.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_000_key_personnel_retention",
+      "title": "Key Personnel Retention and Recruitment"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Additionally, as a number of our long-term employees approach retirement age, our ability to successfully plan for the transition of those associates’ clients to other associates becomes more important to our future success.",
+      "year2_quote_or_null": "Additionally, as a number of our long-term employees approach retirement age, our ability to successfully plan for the transition of those associates’ clients to other associates becomes more important to our future success.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 disclosure and preserves both underlying risks: the higher healthcare costs associated with an older workforce and the need to manage client transitions as employees approach retirement. The COVID-19 disclosure also references workforce age, but does not replace or materially alter the original risk.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_001_older_workforce_transition",
+      "title": "Older Workforce and Client Transitions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are subject to certain litigation, and our expenses related to this litigation may adversely affect our results.",
+      "year2_quote_or_null": "We are subject to regulatory oversight and certain litigation, and our expenses related to this regulatory oversight and litigation may adversely affect our results.",
+      "reasoning": "Candidate 1 retains the same underlying economic risk: litigation and regulatory enforcement may result in substantial monetary, defense, financial, and reputational consequences. The Year-2 disclosure adds regulatory oversight and makes a minor wording change ('cease and desist penalties and orders'), but does not weaken or remove the Year-1 litigation/enforcement risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_002_litigation_regulatory_actions",
+      "title": "Litigation and Regulatory Enforcement Risks"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The actual cost of any outstanding legal proceedings or threatened claims, however, may turn out to be substantially higher than the amount accrued. Further, our insurance may not cover all litigation, other proceedings or claims, or the costs of defense.",
+      "year2_quote_or_null": "The actual cost of any outstanding legal proceedings or threatened claims, however, may turn out to be substantially higher than the amount accrued. Further, our insurance may not cover all litigation, other proceedings or claims, or the costs of defense.",
+      "reasoning": "The Year-2 candidate reproduces the Year-1 disclosure verbatim, including the risks of accrual shortfalls, inadequate insurance coverage, and unfavorable litigation or investigation outcomes. The underlying economic risk is unchanged.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_003_litigation_accruals_insurance",
+      "title": "Legal Accruals, Insurance, and Outcomes"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our business is dependent on technology, and an inability to invest in technological improvements may adversely affect our results of operations and financial condition.",
+      "year2_quote_or_null": "Our business is dependent on technology, and an inability to invest in technological improvements may adversely affect our results of operations and financial condition.",
+      "reasoning": "The Year-2020 Candidate 1 retains the same underlying economic risks: dependence on technology, the need for investment, competitive technological change, and uncertainty over achieving efficiencies and successful implementation. The added COVID-19 sentence does not weaken or remove the Year-2019 risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_004_technology_investment",
+      "title": "Technology Investment and Competition"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are subject to various statutes and regulations that may impose additional costs or limit our ability to take certain actions.",
+      "year2_quote_or_null": "We are subject to various statutes and regulations that may impose additional costs or limit our ability to take certain actions.",
+      "reasoning": "The Year-2020 candidate reproduces the Year-2019 disclosure, including the same banking-regulation restrictions, capital and FDIC assessment risks, and privacy and information-security compliance costs. The underlying economic risks are unchanged; only the heading appears to have changed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_005_regulatory_compliance_privacy",
+      "title": "Banking Regulation and Privacy Compliance"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The soundness of other financial institutions could adversely affect us.",
+      "year2_quote_or_null": "The soundness of other financial institutions could adversely affect us.",
+      "reasoning": "The Year-2020 candidate reproduces the same economic risk: interconnected financial institutions and counterparties may default or become financially unstable, causing liquidity, credit, and related losses. The disclosure is materially unchanged, not merely bundled or weakened.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_006_counterparty_financial_institutions",
+      "title": "Financial Institution Counterparty Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We depend on the accuracy and completeness of information about customers.",
+      "year2_quote_or_null": "We depend on the accuracy and completeness of information about customers.",
+      "reasoning": "The Year-2020 disclosure addresses the same customer-information accuracy and completeness risk with materially identical economic substance and language. No qualifier, negation, or scope change is present.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_007_customer_information_accuracy",
+      "title": "Customer Information Accuracy and Completeness"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may be subject to claims and litigation asserting lender liability.",
+      "year2_quote_or_null": "We may be subject to claims and litigation asserting lender liability.",
+      "reasoning": "Candidate 1 reproduces the same lender-liability economic risk, including the potential for customer claims during economic stress, financial liability, reputational harm, and adverse effects on the business. Candidate 2 addresses the narrower risk of fiduciary-responsibility claims but does not alter the retained lender-liability disclosure.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_5_008_lender_liability",
+      "title": "Lender Liability Claims and Litigation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may be subject to claims and litigation pertaining to fiduciary responsibility.",
+      "year2_quote_or_null": "We may be subject to claims and litigation pertaining to fiduciary responsibility.",
+      "reasoning": "The Year-2020 disclosure reproduces the same fiduciary-responsibility claims risk, including the same potential financial liability and reputational harm. It is therefore retained rather than merely reworded.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_009_fiduciary_claims",
+      "title": "Fiduciary Responsibility Claims"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "Our operations and customer base are located in markets where natural disasters, including tornadoes, severe storms, fires, wildfires, floods, hurricanes and earthquakes often occur.",
+      "year2_quote_or_null": "Our operations and customer base are located in markets where natural disasters, including tornadoes, severe storms, fires, wildfires, floods, and hurricanes often occur.",
+      "reasoning": "The same underlying natural-disaster exposure and potential financial consequences are disclosed in Year-2. The only substantive textual change is the omission of “earthquakes,” which does not meaningfully alter the overall disclosed economic risk.",
+      "section": "1A",
+      "confidence": 0.97,
+      "id": "1A_5_010_natural_disasters",
+      "title": "Natural Disaster Exposure"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Under federal law, Pinnacle Financial is required to act as a source of financial and managerial strength to Pinnacle Bank, and to commit resources to support Pinnacle Bank if necessary.",
+      "year2_quote_or_null": "Under federal law, Pinnacle Financial is required to act as a source of financial and managerial strength to Pinnacle Bank, and to commit resources to support Pinnacle Bank if necessary.",
+      "reasoning": "The Year-2020 Candidate 1 reproduces the same source-of-strength obligation and the associated economic risks, including potential resource commitments during stress, costly or dilutive capital raising, subordination of capital loans, and bankruptcy-related priority. The risk was therefore retained, not merely reworded or absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_011_financial_managerial_strength",
+      "title": "Source of Strength Obligation"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Non-compliance with the USA PATRIOT Act, the Bank Secrecy Act or other laws and regulations could result in fines or sanctions against us or restrict our ability to make acquisitions.",
+      "year2_quote_or_null": "Non-compliance with the USA PATRIOT Act, the Bank Secrecy Act or other laws and regulations could result in fines or sanctions against us or restrict our ability to make acquisitions.",
+      "reasoning": "Candidate 1 reproduces the Year-2019 anti-money-laundering/BSA and USA PATRIOT Act disclosure, including the same compliance obligations and economic consequences. Candidate 2 also preserves the salient risk sentence in a summary, but the detailed disclosure is retained in Candidate 1 rather than merely absorbed.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_5_012_aml_bsa_compliance",
+      "title": "Anti-Money Laundering Compliance"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The price of our common stock may be volatile or may decline.",
+      "year2_quote_or_null": "The price of our capital stock may be volatile or may decline.",
+      "reasoning": "Candidate 1 preserves the same underlying economic risk: market volatility or decline in the issuer’s equity price, including substantially the same causal factors and consequences. The addition of depositary shares expands the securities covered but does not change or weaken the Year-2019 risk; Candidate 2 is not needed to explain the change.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_5_013_common_stock_volatility",
+      "title": "Common Stock Price Volatility"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Federal and state banking laws and regulations and state corporate laws restrict the amount of dividends we may declare and pay and that Pinnacle Bank may declare and pay to us.",
+      "year2_quote_or_null": "Federal and state banking laws and regulations and state corporate laws restrict the amount of dividends we may declare and pay and that Pinnacle Bank may declare and pay to us.",
+      "reasoning": "The Year-2019 economic risk remains disclosed in Year-2020, including restrictions arising from banking, corporate, capital, debenture, and credit-agreement rules. The disclosure is distributed across multiple Year-2020 units and expanded to cover capital stock and preferred-stock constraints, so the overall Year-2019 unit is best classified as absorbed rather than removed or materially softened.",
+      "section": "1A",
+      "confidence": 0.96,
+      "id": "1A_5_014_dividend_restrictions",
+      "title": "Dividend Declaration and Payment Restrictions"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may issue additional common stock or other equity securities in the future which could dilute the ownership interest of existing shareholders.",
+      "year2_quote_or_null": "We may issue additional common stock or other equity securities in the future which could dilute the ownership interest of existing shareholders.",
+      "reasoning": "The Year-2020 disclosure repeats the Year-2019 economic risk verbatim in Candidate 1 and also includes it in the securities-risk summary in Candidate 2. The expanded language adds examples and potentially greater dilution, but does not weaken or remove the underlying risk.",
+      "section": "1A",
+      "confidence": 1,
+      "id": "1A_5_015_future_equity_issuance",
+      "title": "Future Equity Issuance and Dilution"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We may issue additional shares of common stock, or securities convertible into, exchangeable for or representing rights to acquire shares of common stock, including in connection with acquisitions. We may sell these shares at prices below the current market price of shares, and the sale of these shares may significantly dilute shareholder ownership.",
+      "year2_quote_or_null": "We may issue additional shares of common stock, or securities convertible into, exchangeable for or representing rights to acquire shares of common stock, including in connection with acquisitions. We may sell these shares at prices below the then current market price of shares, and the sale of these shares may significantly dilute shareholder ownership.",
+      "reasoning": "The Year-2020 disclosure preserves the same economic risk: additional equity issuances, including acquisition-related issuances and below-market sales, may significantly dilute existing shareholder ownership. The added introductory sentence is consistent with and reinforces the Year-2019 disclosure rather than changing its substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_000_common_stock_dilution",
+      "title": "Additional Common Stock May Dilute Ownership"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "At December 31, 2019, Pinnacle Financial had outstanding trust preferred securities and accompanying junior subordinated debentures totaling $763.0 million. ... the accompanying subordinated debentures are senior to shares of Pinnacle Financial’s common stock.",
+      "year2_quote_or_null": "At December 31, 2020, Pinnacle Financial had outstanding trust preferred securities and accompanying junior subordinated debentures totaling $129.0 million. ... the accompanying subordinated debentures are senior to shares of Pinnacle Financial’s common stock and preferred stock.",
+      "reasoning": "Candidate 1 retains the same economic risk: junior subordinated debentures and related trust preferred securities must be paid before shareholder dividends or liquidation distributions, and distributions can be deferred for up to five years. The outstanding balance and the inclusion of preferred stock are factual scope changes, not a change in the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_001_junior_subordinated_debentures",
+      "title": "Junior Subordinated Debentures Rank Senior"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Moreover, the notes we have issued rank senior to shares of Pinnacle Financial’s common stock and Pinnacle Bank’s subordinated indebtedness is structurally senior to the rights of the holders of Pinnacle Financial’s common stock.",
+      "year2_quote_or_null": "Moreover, the notes we have issued rank senior to shares of Pinnacle Financial’s common and preferred stock and Pinnacle Bank’s subordinated indebtedness is structurally senior to the rights of the holders of Pinnacle Financial’s common and preferred stock.",
+      "reasoning": "Candidate 1 directly retains the underlying risk that Pinnacle Financial and Pinnacle Bank subordinated indebtedness has priority over common shareholders in repayment and liquidation. The addition of preferred stock and the change in outstanding amount do not alter the disclosed senior-ranking risk relative to common shareholders.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_002_subordinated_indebtedness",
+      "title": "Subordinated Indebtedness Ranks Senior"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Pinnacle Financial or Pinnacle Bank may from time to time issue, or assume in connection with an acquisition, additional subordinated indebtedness that would have to be repaid before Pinnacle Financial’s shareholders would be entitled to receive any of the assets of Pinnacle Financial or Pinnacle Bank.",
+      "year2_quote_or_null": "Pinnacle Financial or Pinnacle Bank may from time to time issue, or assume in connection with an acquisition, additional subordinated indebtedness that would have to be repaid before Pinnacle Financial’s shareholders would be entitled to receive any of the assets of Pinnacle Financial or Pinnacle Bank.",
+      "reasoning": "The Year-2019 disclosure appears verbatim in the Year-2020 candidate and retains the same economic risk: future issuance or assumption of additional subordinated debt that ranks ahead of shareholders in repayment.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_6_003_additional_subordinated_debt",
+      "title": "Additional Subordinated Debt May Be Issued"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "If we fail to maintain an effective system of internal control over financial reporting, we may not be able to accurately report our financial results.",
+      "year2_quote_or_null": "If we fail to maintain an effective system of internal control over financial reporting, we may not be able to accurately report our financial results.",
+      "reasoning": "The Year-2020 disclosure addresses the same internal-control failure risk, including inaccurate reporting, material weaknesses, remediation costs, enforcement, delisting, litigation, and investor-confidence effects, with materially identical language and economic substance.",
+      "section": "1A",
+      "confidence": 1.0,
+      "id": "1A_6_004_financial_reporting_controls",
+      "title": "Internal Control Failures Could Harm Reporting"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "Our issuance of preferred stock could adversely affect holders of our common stock.",
+      "year2_quote_or_null": "Although the affirmative vote or consent of the holders of at least two-thirds of all outstanding shares of the Series B Preferred Stock... is required... if we issue preferred stock or depositary shares in the future with voting rights that dilute the voting power of the Series B Preferred Stock or depositary shares, the rights of holders of the depositary shares or the market price of the depositary shares could be adversely affected.",
+      "reasoning": "The preferred-stock issuance authority and board discretion remain directly disclosed in Candidate 1, while the adverse dilution and market-price effects are addressed for Series B preferred/depositary-share holders in Candidate 2. The Year-2019 common-stock-focused risk is therefore absorbed into the Year-2020 preferred-stock and depositary-share disclosures, though the affected security focus has shifted.",
+      "section": "1A",
+      "confidence": 0.93,
+      "id": "1A_6_005_preferred_stock",
+      "title": "Preferred Stock Could Harm Common Holders"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Actual or anticipated changes, or downgrades in our published credit ratings... could affect the market value and liquidity of our securities, increase our borrowing costs and negatively impact our profitability.",
+      "year2_quote_or_null": "Actual or anticipated changes, or downgrades in our published credit ratings... could affect the market value and liquidity of our securities, increase our borrowing costs and negatively impact our profitability.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risk: adverse or downgraded credit ratings may impair securities liquidity and value, increase borrowing costs, and reduce profitability. The expanded reference to ratings of the company and certain debt and equity securities does not materially change the risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_006_credit_ratings",
+      "title": "Adverse Ratings Could Increase Funding Costs"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "The trading volume in our common stock on the Nasdaq Global Select Market has been relatively low... Because of this, it may be more difficult for shareholders to sell a substantial number of shares for the same price at which shareholders could sell a smaller number of shares.",
+      "year2_quote_or_null": "The trading volume in our common stock and depositary shares on the Nasdaq Global Select Market has been relatively low... Because of this, it may be more difficult for shareholders to sell a substantial number of shares for the same price at which shareholders could sell a smaller number of shares.",
+      "reasoning": "The Year-2020 disclosure retains the same economic risk: relatively low trading volume and difficulty selling a substantial number of common-stock shares without affecting price. It extends the risk disclosure to depositary shares, but does not weaken or remove the common-stock liquidity risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_007_common_stock_liquidity",
+      "title": "Common Stock May Have Limited Liquidity"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We can give no assurance that sales of substantial amounts of common stock in the market, or the potential for large amounts of sales in the market, would not cause the price of our common stock to decline or impair our future ability to raise capital through sales of our common stock.",
+      "year2_quote_or_null": "We can give no assurance that sales of substantial amounts of common stock or depositary shares in the market, or the potential for large amounts of sales in the market, would not cause the price of our common stock or depositary shares to decline or impair our future ability to raise capital through sales of our common stock or additional depositary shares.",
+      "reasoning": "The core economic risk—future or potential large sales of equity securities depressing the market price and impairing future capital-raising ability—is expressly preserved in Candidate 1. The addition of depositary shares and related wording does not change the underlying risk.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_008_future_stock_sales",
+      "title": "Future Stock Sales May Depress Price"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The market price of our common stock has fluctuated significantly, and may fluctuate in the future. These fluctuations may be unrelated to our performance.",
+      "year2_quote_or_null": "The market price of our common stock has fluctuated significantly, and may fluctuate in the future. These fluctuations may be unrelated to our performance. General market or industry price declines or overall market volatility in the future could adversely affect the price of our common stock or depositary shares, and the current market price may not be indicative of future market prices.",
+      "reasoning": "The core economic risk—significant common-stock price volatility, potentially unrelated to company performance and driven by general market or industry declines—appears verbatim in Year-2020 Candidate 1, with only the additional extension to depositary shares. Candidate 2 also addresses the same risk, but Candidate 1 is the direct continuation.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_009_stock_price_volatility",
+      "title": "Common Stock Price May Remain Volatile"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our corporate organizational documents and the provisions of Tennessee law to which we are subject contain certain provisions that could have an anti-takeover effect and may delay, make more difficult or prevent an attempted acquisition of Pinnacle Financial that you may favor.",
+      "year2_quote_or_null": "Our corporate organizational documents and the provisions of Tennessee law to which we are subject contain certain provisions that could have an anti-takeover effect and may delay, make more difficult or prevent an attempted acquisition of Pinnacle Financial that you may favor.",
+      "reasoning": "The core economic risk—that organizational documents and Tennessee law may delay, impede, or prevent an acquisition or change of control—is expressly disclosed in Year-2. The preferred-stock and Tennessee-law components are also retained in Candidate 2, while the listed charter/bylaw mechanisms are addressed across Candidates 1 and 3; the disclosure is therefore retained in substance, despite being split among candidates.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_010_anti_takeover_provisions",
+      "title": "Charter Provisions May Impede Acquisitions"
+    },
+    {
+      "classification": "REWORDED",
+      "year1_quote": "An investment in our common stock is not a bank deposit and, therefore, is not insured against loss or guaranteed by the FDIC, any other deposit insurance fund or by any other public or private entity.",
+      "year2_quote_or_null": "An investment in our common stock or depositary shares is not a bank deposit and, therefore, is not insured against loss or guaranteed by the FDIC, any other deposit insurance fund or by any other public or private entity.",
+      "reasoning": "The same economic risk—that common stock is not FDIC-insured or otherwise guaranteed and investors bear the risk of loss—was retained in Candidate 1, with only the addition of depositary shares. Candidate 2 also repeats the same disclaimer in a summary list, but does not alter the substance.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_6_011_fdic_noninsurance",
+      "title": "Common Stock Is Not FDIC Insured"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "The response to this Item is included in Item 7. \"Management's Discussion and Analysis of Financial Condition and Results of Operations\", on pages 46 through 78 and is incorporated herein by reference.",
+      "year2_quote_or_null": "The response to this Item is included in Item 7. \"Management's Discussion and Analysis of Financial Condition and Results of Operations\", on pages 54 through 89 and is incorporated herein by reference.",
+      "reasoning": "The underlying disclosure is unchanged: Item 7A market-risk information remains incorporated by reference to Item 7. Only the referenced page range changed, with no change to the economic risk addressed.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_cross_reference",
+      "title": "Market Risk Disclosures Incorporated By Reference"
+    },
+    {
+      "id": "1A_0_001_summary_covid_risks",
+      "title": "Summary COVID-19 Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Summary Risk Factors\n\nOur business is subject to a number of risks, including risks that may prevent us from achieving our business objectives or may adversely affect our business, financial condition, results of operations, cash flows, and prospects. These risks are discussed more fully below and i",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_005_summary_operational_market_risks",
+      "title": "Summary Operational and Market Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Operational and Market Risks\n\n•Negative developments in the U.S. and local economy may adversely impact our results in the future.\n\n•Our operations are principally geographically concentrated in certain markets in the southeastern United States, and changes in local economic conditions impact our pr",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_006_summary_acquisition_risks",
+      "title": "Summary Acquisition Activity Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Risks Related to Acquisition Activity\n\n•Our acquisitions and future expansion may result in additional risks.\n\n•We may face risks with respect to future acquisitions.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_009_business_risks_heading",
+      "title": "Detailed Business Risk Factors",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Risks Related to Our Business\n\nCOVID-19 Risks",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_010_covid_business_impact",
+      "title": "COVID-19 Business and Customer Impact",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The COVID-19 pandemic is adversely affecting our business and the businesses of a significant percentage of our customers as well as certain of our third-party vendors and service providers, and the adverse impacts on our business, financial position, capital, liquidity, results of operations and pr",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_011_covid_global_economic_disruption",
+      "title": "COVID-19 Global Economic Disruption",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The spread of COVID-19 has created a global public health crisis that has resulted in uncertainty, volatility and deterioration in financial markets and in governmental, commercial and consumer activity including in the United States, where we conduct substantially all of our activity. COVID-19 has ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_012_covid_government_restrictions",
+      "title": "COVID-19 Government Restrictions and Activity",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "To combat the spread of COVID-19, federal, state and local governments have taken a variety of actions that have materially and adversely affected the businesses and lives of our customers. These actions have included orders closing non-essential businesses and restricting movement of individuals th",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_013_covid_interest_rate_impact",
+      "title": "COVID-19 Interest Rate Impact",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "In March 2020, the Federal Open Market Committee reduced the target Federal funds rate by 150 basis points and for a portion of March 2020 the 10-year treasury bond rate fell to below 1.00% for the first time in history. These actions, and other actions being taken by governmental and regulatory age",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_014_covid_borrower_distress",
+      "title": "COVID-19 Borrower Distress and Collateral",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "As a result of COVID-19, many of our borrowers, particularly those that operate in the restaurant, entertainment, hospitality and retail sectors, but also other businesses as well, including owners of commercial real estate properties and hotels, are experiencing varying degrees of financial distres",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_015_covid_behavior_demand_liquidity",
+      "title": "COVID-19 Behavioral and Liquidity Effects",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The economic pressures and uncertainties arising from the COVID-19 pandemic have resulted in specific changes in consumer and business spending and borrowing and saving habits, affecting the demand for loans and other products and services we offer, and these changes are likely to persist until the ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_016_covid_bhg_borrowers",
+      "title": "COVID-19 Impact on BHG Borrowers",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Like our borrowers, BHG’s borrowers have been similarly affected by COVID-19. Many of BHG’s borrowers are medical or dental practices that were particularly impacted by safer-at-home orders that effectively caused those practices’ revenues to decline materially as a result of elective procedures bei",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_017_covid_municipal_impact",
+      "title": "COVID-19 Impact on Municipal Obligations",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "COVID-19’s economic disruption has also impacted many states and municipalities. As a result, many states and municipalities are facing a strain on resources and a reduction in tax collections and some of these have sought assistance from the Federal government to cover the cost of resource depletio",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_018_covid_regulatory_response",
+      "title": "COVID-19 Regulatory Response and Capital",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Bank regulatory agencies have been (and are expected to continue to be) very proactive in responding to both market and supervisory concerns arising from the COVID-19 pandemic as well as the potential impact on customers, especially borrowers. As shown during and following the financial crisis, peri",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_019_covid_operations_continuity",
+      "title": "COVID-19 Operations and Continuity Measures",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "As we have sought to protect the health and safety of our employees and customers during the pandemic, we have taken numerous actions to modify our business operations, including restricting employee travel, directing a significant percentage of our employees that were able to do so to work from hom",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_0_020_covid_provision_liquidity",
+      "title": "COVID-19 Provision Expense and Liquidity",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The economic uncertainty caused by COVID-19’s spread and the efforts of government and non-governmental authorities and the behavior of individuals seeking to slow its spread, caused our provision expense for credit losses to increase materially in 2020 and may contribute to further elevated levels ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_000_covid_19_economic_disruption",
+      "title": "COVID-19 Economic Disruption Uncertainty",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "COVID-19 has not yet been contained and could affect significantly more households and businesses. Given the speed and unpredictable nature with which the pandemic is evolving, and the ongoing and fluid nature of the country’s response to it, it is difficult for us to accurately estimate the length ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_001_ppp_financial_reputational_risk",
+      "title": "PPP Financial and Reputational Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Our participation in the PPP may expose us to financial liability, credit losses, compliance costs or reputational damage.\n\nUnder the CARES Act, Congress created the PPP and authorized the Treasury to implement rules regarding the program. Funding under the original loan program expired on August 8,",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_002_ppp_forgiveness_compliance_guaranty",
+      "title": "PPP Forgiveness and Guaranty Exposure",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Among other regulatory requirements, PPP loans are subject to forbearance of loan payments for a ten-month period to the extent that loans are not eligible for forgiveness. If PPP borrowers fail to qualify for loan forgiveness, including by failing to use the funds appropriately in order to qualify ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_003_ppp_litigation_exposure",
+      "title": "PPP Litigation and Liability Exposure",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Since the commencement of the PPP, several banks have been subject to litigation regarding the process and procedures that such banks followed in accepting and processing applications for the PPP. We and BHG may be exposed to the risk of similar litigation, from both customers and non-customers that",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_1_004_ppp_regulatory_scrutiny",
+      "title": "PPP Regulatory Scrutiny and Enforcement",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "In addition, we may be subject to regulatory scrutiny regarding our processing of PPP applications or forgiveness requests or our origination or servicing of PPP loans. While the SBA has said that in many instances, banks may rely on the certifications of borrowers regarding their eligibility for PP",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_2_010_accounting_standard_changes",
+      "title": "Accounting Standards and Credit Losses",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Changes in accounting standards may change the way we calculate our Allowance for Credit Losses.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_4_007_private_investment_valuations",
+      "title": "Private Investment Valuation Volatility",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The fair values of our investments in private companies and venture capital funds are likely to fluctuate and the value that we ultimately realize on those investments may vary materially.\n\nFrom time to time, we and our affiliates, including Pinnacle Bank, make investments in private companies and v",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_6_003_future_acquisitions",
+      "title": "Risks Associated with Future Acquisitions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We may face risks with respect to future acquisitions.",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_6_007_regulatory_compliance_heading",
+      "title": "Regulatory and Compliance Risks",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Regulatory and Compliance Risks",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_6_010_regulatory_capital",
+      "title": "Regulatory Capital Requirements",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We must maintain adequate regulatory capital to support our business objectives.\n\nUnder regulatory capital adequacy guidelines and other regulatory requirements, we must satisfy capital requirements based upon quantitative measures of assets, liabilities and certain off-balance sheet items. Our sati",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_6_011_capital_standards_failure",
+      "title": "Consequences of Capital Standard Failure",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Failure to meet regulatory capital standards could have a material adverse effect on our business, including damaging the confidence of customers in us, adversely impacting our reputation and competitive position and retention of key personnel. Any of these developments could limit our access to:\n\n•",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_005_future_offering_uncertainty",
+      "title": "Future Offerings May Reduce Market Price",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Because our decision to issue securities in any future offering will depend on market conditions and other factors beyond our control, we cannot predict or estimate the amount, timing or nature of our future offerings. Thus, holders of the depositary shares bear the risk of our future offerings redu",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_006_preferred_stock_subordination",
+      "title": "Preferred Stock Ranks Junior To Debt",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The Series B Preferred Stock constitutes an equity security and ranks junior to all of our and our subsidiaries’ existing indebtedness and will rank junior to our and our subsidiaries’ future indebtedness.\n\nShares of the Series B Preferred Stock are equity interests in Pinnacle Financial and do not ",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_007_subsidiary_liability_subordination",
+      "title": "Subsidiary Liabilities Rank Senior",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The Series B Preferred Stock and the depositary shares representing the Series B Preferred Stock effectively rank junior to any existing and all future liabilities of our subsidiaries.\n\nWe are a financial holding company and conduct substantially all of our operations through our subsidiaries. Our r",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_008_bhg_distribution_constraints",
+      "title": "BHG Ownership Limits Distributions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "We, together with Pinnacle Bank, own 49% of the outstanding equity interests of BHG. Our right to participate in any distribution of the assets of BHG upon its liquidation, reorganization, receivership or conservatorship (and thus the ability of the holders of the Series B Preferred Stock and the ho",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_009_preferred_stock_operational_flexibility",
+      "title": "Preferred Stock Imposes Few Restrictions",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The Series B Preferred Stock and the depositary shares representing the Series B Preferred Stock places no restrictions on our business or operations or on our ability to incur indebtedness or engage in any transactions, subject only to the limited voting rights of the shares of Series B Preferred S",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_010_noncumulative_discretionary_dividends",
+      "title": "Preferred Dividends Are Discretionary",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "Dividends on the Series B Preferred Stock are non-cumulative and discretionary. If we do not declare dividends on the Series B Preferred Stock, holders of the depositary shares will not be entitled to receive related distributions on their depositary shares.\n\nDividends on the Series B Preferred Stoc",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    },
+    {
+      "id": "1A_7_011_preferred_stock_voting_rights",
+      "title": "Series B Preferred Voting Rights",
+      "classification": "NEW",
+      "year1_quote": null,
+      "year2_quote_or_null": "The holders of the Series B Preferred Stock, and therefore the holders of the depositary shares representing the Series B Preferred Stock, have limited voting rights.\n\nUntil and unless we are in arrears on our dividend payments on the Series B Preferred Stock for six quarterly dividend periods, whet",
+      "reasoning": "No matching Year-1 disclosure found; this risk was first disclosed in Year-2.",
+      "section": "1A",
+      "confidence": 0.85
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "ticker": "TSLA",
+  "company_name": "Tesla, Inc.",
+  "year1": 2022,
+  "year2": 2023,
+  "generated_at": "2026-08-21T17:19:34.793193+00:00",
+  "summary_counts": {
+    "SOFTENED": 1,
+    "RETAINED": 2
+  },
+  "changes": [
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "foreign currency risks related to our revenue, costs of revenue, operating expenses and localized subsidiary debt denominated in currencies other than the U.S. dollar (primarily the Chinese yuan, euro, pound sterling and Norwegian krone...)",
+      "year2_quote_or_null": "foreign currency risks related to our revenue, costs of revenue and operating expenses denominated in currencies other than the U.S. dollar (primarily the Chinese yuan and euro in relation to our current year operations)",
+      "reasoning": "The core FX exposure disclosure is retained, but Year-2 drops \"localized subsidiary debt\" as an exposure source and narrows the enumerated currencies from four (yuan, euro, pound sterling, krone) to two (yuan, euro), reflecting a reduced/downgraded set of disclosed exposures.",
+      "section": "7A",
+      "confidence": 0.72,
+      "id": "7A_0_000_foreign_currency_risk_overview",
+      "title": "Foreign Currency Risk — Overview and Exposure Sources"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have also experienced, and will continue to experience, fluctuations in our net income as a result of gains (losses) on the settlement and the re-measurement of monetary assets and liabilities denominated in currencies that are not the local currency",
+      "year2_quote_or_null": "We have also experienced, and will continue to experience, fluctuations in our net income as a result of gains (losses) on the settlement and the re-measurement of monetary assets and liabilities denominated in currencies that are not the local currency (primarily consisting of our intercompany and cash and cash equivalents balances).",
+      "reasoning": "Candidate 1 is a verbatim match (similarity=1.00) with identical language describing the same re-measurement risk on monetary assets and liabilities. The underlying economic risk is unchanged.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_001_foreign_currency_monetary_assets_fluctuations",
+      "title": "Foreign Currency Risk — Net Income Fluctuations from Monetary Asset Re-measurement"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "adverse changes in foreign currency exchange rates of 10% for all currencies... would have resulted in a gain or loss of $473 million at December 31, 2022 and $277 million at December 31, 2021, assuming no foreign currency hedging.",
+      "year2_quote_or_null": "adverse changes in foreign currency exchange rates of 10% for all currencies... would have resulted in a gain or loss of $1.01 billion at December 31, 2023 and $473 million at December 31, 2022, assuming no foreign currency hedging.",
+      "reasoning": "Candidate 1 uses identical methodology (10% adverse FX move applied to monetary assets/liabilities, no hedging) and discloses the same underlying risk; only the updated sensitivity figures changed, which reflect increased exposure rather than a change in the risk disclosed.",
+      "section": "7A",
+      "confidence": 0.98,
+      "id": "7A_0_002_foreign_currency_sensitivity_analysis",
+      "title": "Foreign Currency Risk — 10% Adverse Rate Change Sensitivity Analysis"
+    }
+  ]
+}

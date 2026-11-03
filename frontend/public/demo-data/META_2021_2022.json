@@ -1,0 +1,84 @@
+{
+  "ticker": "META",
+  "company_name": "Meta Platforms, Inc.",
+  "year1": 2021,
+  "year2": 2022,
+  "generated_at": "2026-06-04T21:13:53.672660+00:00",
+  "summary_counts": {
+    "RETAINED": 5,
+    "SOFTENED": 1,
+    "ABSORBED": 1
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We are exposed to market risks, including changes to foreign currency exchange rates, interest rates, and equity investment risk.",
+      "year2_quote_or_null": "We are exposed to market risks, including changes to foreign currency exchange rates, interest rates, and equity price risk.",
+      "reasoning": "The same three market risks (FX, interest rate, and equity) are disclosed in materially identical language; \"equity investment risk\" vs \"equity price risk\" is a cosmetic wording change describing the same underlying exposure.",
+      "section": "7A",
+      "confidence": 0.97,
+      "id": "7A_0_000_market_risk_overview",
+      "title": "Overview of Market Risk Exposures"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have foreign currency risks related to our revenue and operating expenses denominated in currencies other than the U.S. dollar, primarily the Euro. Accordingly, changes in exchange rates, and in particular a strengthening of the U.S. dollar, have in the past, and may in the future, negatively affect our revenue",
+      "year2_quote_or_null": "We have foreign currency risks related to our revenue and operating expenses denominated in currencies other than the U.S. dollar, primarily the Euro. Accordingly, changes in exchange rates, and in particular a strengthening of the U.S. dollar, have negatively affected, and may continue to negatively affect, our revenue and other operating results as expressed in U.S. dollars.",
+      "reasoning": "Candidate 1 discloses the identical economic risk (FX exposure on Euro-denominated revenue and operating expenses) with materially the same language; the only change is a slightly firmer framing (\"have negatively affected, and may continue to\") plus an added cross-reference, which is not a softening.",
+      "section": "7A",
+      "confidence": 0.95,
+      "id": "7A_0_001_foreign_currency_exchange_risk_overview",
+      "title": "Foreign Currency Exchange Risk — Revenue and Expenses"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "We have experienced and will continue to experience fluctuations in our net income as a result of transaction gains or losses related to revaluing monetary asset and liability balances that are denominated in currencies other than the functional currency... we have not entered into... derivatives",
+      "year2_quote_or_null": "We have experienced and will continue to experience fluctuations in our net income as a result of transaction gains or losses related to revaluing monetary asset and liability balances that are denominated in currencies other than the functional currency... we have not entered into... derivatives",
+      "reasoning": "Candidate 1 is materially identical language describing the same foreign currency transaction gain/loss risk and unchanged hedging posture (no derivatives entered). Only the disclosed loss figures rolled forward to updated periods, which is a routine numeric update rather than a substantive change in risk.",
+      "section": "7A",
+      "confidence": 0.97,
+      "id": "7A_0_002_foreign_currency_transaction_gains_losses",
+      "title": "Foreign Currency Transaction Gains/Losses and Hedging"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "A hypothetical 100 basis point increase in interest rates would have resulted in a decrease of $714 million and $794 million in the market value of our available-for-sale debt securities as of December 31, 2021 and December 31, 2020, respectively.",
+      "year2_quote_or_null": "A hypothetical 100 basis point increase in market interest rates would have resulted in a decrease of $558 million and $714 million in the market value of our available-for-sale debt securities and cash equivalents as of December 31, 2022 and 2021, respectively.",
+      "reasoning": "Candidate 1 discloses the same interest-rate sensitivity on cash and marketable securities using materially identical methodology and language; only the updated sensitivity figures and an added reference to current unrealized losses changed, reflecting normal period-over-period quantitative updates rather than a change in the underlying risk.",
+      "section": "7A",
+      "confidence": 0.95,
+      "id": "7A_0_003_interest_rate_sensitivity_overview",
+      "title": "Interest Rate Sensitivity — Cash and Marketable Securities"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Our equity investments are subject to a wide variety of market-related risks that could have a material impact on the carrying value of our holdings. We continually evaluate our equity investments in privately-held companies.",
+      "year2_quote_or_null": "Our equity investments are substantially all in non-marketable equity securities and are subject to equity price risks that could have a material impact on the carrying value of our holdings.",
+      "reasoning": "The same underlying economic risk — exposure of privately-held/non-marketable equity investments to market/price risk affecting carrying value — persists in Year-2022, with Candidate 1 mirroring the Year-1 language and Candidate 2 elaborating on valuation and impairment of the same holdings. The risk is materially unchanged.",
+      "section": "7A",
+      "confidence": 0.88,
+      "id": "7A_0_004_equity_investment_risk_overview",
+      "title": "Equity Investment Risk — Privately-Held Companies Overview"
+    },
+    {
+      "classification": "SOFTENED",
+      "year1_quote": "Volatility in the global economic climate and financial markets, including recent and ongoing effects related to the impact of the COVID-19 pandemic, which requires significant judgments, could result in a material impairment charge on our equity investments.",
+      "year2_quote_or_null": "Uncertainties in the global economic climate and financial markets could adversely impact the valuation of these companies we invest in and, therefore, result in a material impairment or downward adjustment in our investments.",
+      "reasoning": "The core economic risk (potential material impairment of privately-held equity investments due to economic/market conditions) is retained in Candidate 1, but the language is hedged: \"Volatility...could result in a material impairment\" is downgraded to \"Uncertainties...could adversely impact...result in a material impairment or downward adjustment,\" and the specific COVID-19 driver plus \"requires significant judgments\" qualifier were dropped, weakening the disclosure.",
+      "section": "7A",
+      "confidence": 0.72,
+      "id": "7A_0_005_equity_investment_valuation_impairment",
+      "title": "Equity Investment Valuation, Impairment Assessment, and Carrying Value"
+    },
+    {
+      "classification": "ABSORBED",
+      "year1_quote": "For additional information about our equity investments, see Note 1 — Summary of Significant Accounting Policies, Note 5 — Equity Investments, and Note 6 — Fair Value Measurements in the notes to the consolidated financial statements...",
+      "year2_quote_or_null": "For additional information, see Note 1 — Summary of Significant Accounting Policies, Note 6 — Non-marketable Equity Securities, Note 7 — Fair Value Measurements, and Note 11 — Long-term Debt in the notes to the consolidated financial statements...",
+      "reasoning": "The Year-1 unit was a pure cross-reference pointer to financial statement notes for equity investments. In Year-2 this same cross-reference function is preserved but broadened into a single consolidated pointer covering equity securities plus additional topics (long-term debt), folding the equity-investment reference into a wider disclosure. The underlying equity investment risk itself is substantively addressed in Candidates 2 and 3.",
+      "section": "7A",
+      "confidence": 0.82,
+      "id": "7A_0_006_equity_investment_cross_references",
+      "title": "Equity Investment Risk — Cross-References to Financial Statement Notes"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "ticker": "WFC",
+  "company_name": "WELLS FARGO & COMPANY/MN",
+  "year1": 2019,
+  "year2": 2020,
+  "model_provider": "azure_foundry",
+  "model_judge": "gpt-5.6-luna",
+  "model_segmenter": "gpt-5.6-luna",
+  "generated_at": "2026-08-23T02:18:31.203755+00:00",
+  "summary_counts": {
+    "RETAINED": 2
+  },
+  "changes": [
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 1A can be found in this report under Item 1 and in the 2019 Annual Report to Shareholders under “Financial Review – Risk Factors.” That information is incorporated into this item by reference.",
+      "year2_quote_or_null": "Information in response to this Item 1A can be found in this report under Item 1 and in the 2020 Annual Report to Shareholders under “Financial Review – Risk Factors.” That information is incorporated into this item by reference.",
+      "reasoning": "The underlying disclosure is the same: Item 1A risk-factor information is incorporated by reference to Item 1 and the annual report’s Financial Review – Risk Factors section. The year change and wording differences are cosmetic, and Candidate 2 addresses a separate market-risk disclosure.",
+      "section": "1A",
+      "confidence": 0.99,
+      "id": "1A_0_000_risk_factors_incorporated_by_reference",
+      "title": "Risk Factors Incorporated By Reference"
+    },
+    {
+      "classification": "RETAINED",
+      "year1_quote": "Information in response to this Item 7A can be found in the 2019 Annual Report to Shareholders under “Financial Review – Risk Management – Asset/Liability Management.” That information is incorporated into this item by reference.",
+      "year2_quote_or_null": "Information in response to this Item 7A can be found in the 2020 Annual Report to Shareholders under “Financial Review – Risk Management – Asset/Liability Management.” That information is incorporated into this item by reference.",
+      "reasoning": "The Year-2020 Item 7A disclosure continues to incorporate the same underlying market-risk information from the same Asset/Liability Management section, with only the reporting year changed. The Item 1A candidate addresses risk factors and does not alter the retained Item 7A market-risk disclosure.",
+      "section": "7A",
+      "confidence": 0.99,
+      "id": "7A_0_000_market_risk_reference",
+      "title": "Market Risk Information Incorporated By Reference"
+    }
+  ]
+}

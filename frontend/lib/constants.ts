@@ -34,7 +34,7 @@ export const CLASS_CONFIG: Record<
   },
   RETAINED: {
     label: "RETAINED",
-    color: "#374151",
+    color: "#71717a",
     border: "border-zinc-700",
     bg: "bg-zinc-900/40",
     textColor: "text-zinc-500",
